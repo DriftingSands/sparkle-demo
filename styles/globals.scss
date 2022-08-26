@@ -48,6 +48,12 @@ button {
   height: 100%;
 }
 
+.yellowBox {
+  background-color: yellow;
+  padding: 6px;
+  
+}
+
 .textLayer {
   height: 100%;
   width: 100%;
@@ -57,10 +63,10 @@ button {
   padding: 10%;
   position: absolute;
   z-index: 20;
+  white-space: pre-line;
 
-  .title {
+  .h2 {
     font-size: 42px;
-    white-space: pre-line;
   }
   
   .left, .right {

@@ -1,17 +1,18 @@
 import Menu from './Menu'
 
 export default function TextLayer(props) {
-  const {type, title, button} = props.data
+
+  
   return (
-    <div className={`textLayer ${type}`}>
+    <div className={`textLayer `}>
 
       <div className="left">
-        <h3 className='title'>
-          {title}
-        </h3>
-        <button className={`button size-${button.size} ${button.style}`}>
-          {button.text}
-        </button>
+        {props.data.leftBox.map((item, index) => {
+          return <item.type className={`${item.type} ${item.styles.map(style => style)}`}>
+            {item.content}
+          </item.type>
+        })
+        }
       </div>
 
       <div className="right">

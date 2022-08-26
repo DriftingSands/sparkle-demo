@@ -2,12 +2,21 @@ export default {
   scenes: [
     {
       textLayer: {
-        type: 'reverse',
-        title: 'The most exciting \n experiences.',
-        button: {
-          size: 's',
-          text: 'outdoor passion'
-        }
+        leftBox: [
+          {
+            type: 'h3',
+            styles: ['yellowBox'],
+            content: 'outdoor passion'
+          },
+          {
+            type: 'h2',
+            styles: [],
+            content: 'The most exciting \n experiences.'
+          }
+        ],
+        rightBox: [
+
+        ],
       },
       background: {
         path: '/WKND SPA/Outdoor Passion/Scene 1/sky.jpg',
