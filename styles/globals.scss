@@ -55,6 +55,8 @@ button {
   justify-content: center;
   align-items: center;
   padding: 10%;
+  position: absolute;
+  z-index: 20;
 
   .title {
     font-size: 42px;
@@ -97,7 +99,7 @@ button {
       border-right: 2px solid black;
       padding: 8px 6px;
       font-weight: 400;
-      transition: all .1s ease-in-out;
+      // transition: all 0.3s ease-in-out;
 
       &:hover, &:focus &.active {
         border-right: 4px solid black;
@@ -109,7 +111,61 @@ button {
   }
 }
 
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
 
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  
+  .backgroundImage {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.layerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  &.debug {
+    border: 2px solid crimson;
+  }
+
+  &.showOverflow {
+    overflow: initial;
+  }
+  &.hideOverflow {
+    overflow: hidden;
+  }
+
+  .image {
+    position: absolute;
+    object-fit: contain;
+    // object-position: bottom left;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+body {
+  min-height: 300vh;
+}
 
 /* @media (prefers-color-scheme: dark) {
   html {
