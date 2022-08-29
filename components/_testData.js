@@ -1,9 +1,9 @@
 export default {
   scenes: [
     {
+      id: 'intro',
       timelineAnimationSettings: {
-        autoDelay: true,
-        debugButton: true,
+        globalAutoDelay: true,
       },
       timelineAnimations: [
         {
@@ -19,22 +19,22 @@ export default {
             bottom: "5%",
             opacity: 1,
             scale: 1.1,
-            delay: 0.2,
             duration: 1,
           },
         },
         {
+          autoDelay: false,
           selector: '#rocks2',
           from: {
             left: "-20%",
           },
           to: {
             left: "0%",
-            delay: 0.1,
             duration: 0.7,
           },
         },
         {
+          autoDelay: false,
           selector: '#rocks3',
           from: {
             right: "-10%",
@@ -45,7 +45,6 @@ export default {
             right: "0%",
             bottom: "0%",
             scale: 1,
-            delay: 0.1,
             duration: 0.7,
           },
         },
@@ -65,7 +64,7 @@ export default {
               start: "0px top",
               end: "100% top",
               // toggleActions: "play reverse play reverse",
-              scrub: 1,
+              scrub: 0.5,
               snap: {
                 snapTo: [0, 1],
                 delay: 0,
@@ -74,6 +73,7 @@ export default {
           },
         },
         {
+          autoDelay: true,
           selector: '#biker',
           from: {
             scale: 0.8,
@@ -82,13 +82,13 @@ export default {
             opacity: 0.1,
           },
           to: {
-            delay: 0.1,
+            delay: -0.1,
             keyframes: {
               "0%": {
                 scale: 0.8,
                 y: "-60%",
                 x: "-50%",
-                opacity: 0.1,
+                opacity: 0,
                 ease: "sine.out",
                 // duration: 1,
               },
@@ -169,6 +169,7 @@ export default {
           {
             text: "Intro",
             link: "#intro",
+            active: true,
           },
           {
             text: "Outdoor Passion",
@@ -185,30 +186,95 @@ export default {
         ],
       },
     },
+
+    //second Item
+
     {
+      timelineAnimationSettings: {
+        globalAutoDelay: false,
+      },
+      timelineAnimations: [
+        {
+          selector: '#buy-bikeHelmet .textWrapper',
+          from: {
+            y: '-50%',
+            // opacity: 0.5,
+          },
+          to: {
+            duration: 2,
+            y: '0%',
+            // opacity: 1,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '50% 50%',
+              markers: true,
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-shorts .textWrapper',
+          from: {
+            y: '-50%',
+            // opacity: 0.5,
+          },
+          to: {
+            duration: 2,
+            y: '0%',
+            // opacity: 1,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '50% 50%',
+              markers: true,
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+      ],
       background: {
-        color: 'yellow',
+        color: '#ffea00',
       },
       textLayer: {
-        leftBox: [
+        id: 'pointLayerId1',
+        pointText: [
           {
-            type: "h3",
-            styles: ["yellowBox"],
-            content: "outdoor passion",
+            id: 'buy-bikeHelmet',
+            text: 'Giro Adult Revel Bike Helmet',
+            price: '$49.99',
+            x: 12,
+            y: -22.5,
           },
           {
-            type: "h2",
-            styles: [],
-            content: "The most exciting \n experiences.",
+            id: 'buy-shorts',
+            text: 'Adult Cyclist City Shorts',
+            price: '$49.99',
+            x: -2.8,
+            y: -9.7,
           },
-        ],
-        rightBox: [],
+          {
+            id: 'buy-sneakers',
+            text: 'Enclave biking sneakers',
+            price: '$49.99',
+            x: -7,
+            y: 8,
+          },
+          {
+            id: 'buy-tubes',
+            text: 'Major Tread Specialty Tubes',
+            price: '$49.99',
+            x: 21,
+            y: 5,
+          },
+        ]
       },
       menu: {
         menuItems: [
           {
             text: "Intro",
             link: "#intro",
+            active: true,
           },
           {
             text: "Outdoor Passion",

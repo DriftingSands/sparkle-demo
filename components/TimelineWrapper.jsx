@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, createContext, useState } from "react";
+import React, { useEffect, useRef, createContext } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import createAnimationTimeline from './TimelineHelperFunctions'
