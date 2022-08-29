@@ -8,7 +8,7 @@ export default function TextLayer(props) {
 
       <div className="left">
         {props.data.leftBox.map((item, index) => {
-          return <item.type className={`${item.type} ${item.styles.map(style => style)}`}>
+          return <item.type key={index} className={`${item.type} ${item.styles.map(style => style)}`}>
             {item.content}
           </item.type>
         })

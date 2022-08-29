@@ -1,7 +1,9 @@
-export default function Background({path, altText}) {
+export default function Background(props) {
+  const {path, altText, color} = props.backgroundProps
+
   return (
-    <div className='backgroundWrapper'>
-      <img src={`${path}`} alt={`${altText}`} className="backgroundImage" />
+    <div className='backgroundWrapper' style={{backgroundColor: color}}>
+      {path && <img src={`${path}`} alt={`${altText}`} className="backgroundImage" />}
     </div>
   )
 }

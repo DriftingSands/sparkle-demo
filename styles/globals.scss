@@ -117,7 +117,7 @@ button {
   }
 }
 
-.page {
+.scene {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -148,17 +148,21 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 10;
   &.debug {
     border: 2px solid crimson;
   }
 
   &.showOverflow {
     overflow: initial;
+    > .image {
+      z-index: 100;
+    }
   }
   &.hideOverflow {
     overflow: hidden;
   }
-
+  
   .image {
     position: absolute;
     object-fit: contain;
