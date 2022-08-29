@@ -16,7 +16,7 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
   if (timelineSettings.debugButton) {
     const debugButton = document.createElement('button')
     debugButton.innerText = 'replay TL: '
-    debugButton.style.position = 'absolute'
+    debugButton.style.position = 'fixed'
     debugButton.style.top = 0
     debugButton.style.zIndex = 9000
     debugButton.style.cursor = 'pointer'

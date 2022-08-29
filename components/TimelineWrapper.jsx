@@ -2,7 +2,9 @@ import React, { useEffect, useRef, createContext, useState } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import createAnimationTimeline from './TimelineHelperFunctions'
+ScrollTrigger.defaults({toggleActions: 'play reverse play reverse'})
 gsap.registerPlugin(ScrollTrigger);
+
 
 export const TimelineProvider = createContext(null);
 

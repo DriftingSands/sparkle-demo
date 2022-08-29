@@ -30,7 +30,7 @@ export default {
           },
           to: {
             left: "0%",
-            delay: 0.2,
+            delay: 0.1,
             duration: 0.7,
           },
         },
@@ -45,7 +45,7 @@ export default {
             right: "0%",
             bottom: "0%",
             scale: 1,
-            delay: 0.2,
+            delay: 0.1,
             duration: 0.7,
           },
         },
@@ -64,9 +64,8 @@ export default {
               trigger: "#biker-layer",
               start: "0px top",
               end: "100% top",
-              toggleActions: "play reverse play reverse",
+              // toggleActions: "play reverse play reverse",
               scrub: 1,
-              markers: true,
               snap: {
                 snapTo: [0, 1],
                 delay: 0,
@@ -83,6 +82,7 @@ export default {
             opacity: 0.1,
           },
           to: {
+            delay: 0.1,
             keyframes: {
               "0%": {
                 scale: 0.8,
@@ -90,7 +90,6 @@ export default {
                 x: "-50%",
                 opacity: 0.1,
                 ease: "sine.out",
-                delay: 3.2,
                 // duration: 1,
               },
               "50%": {
@@ -102,9 +101,10 @@ export default {
                 opacity: 1,
                 scale: 1,
               },
+              easeEach: 'none'
             },
-            ease: "none",
-            duration: 1.5,
+            ease: "power2.out",
+            duration: 1,
           },
         },
       ],
@@ -185,5 +185,45 @@ export default {
         ],
       },
     },
+    {
+      background: {
+        color: 'yellow',
+      },
+      textLayer: {
+        leftBox: [
+          {
+            type: "h3",
+            styles: ["yellowBox"],
+            content: "outdoor passion",
+          },
+          {
+            type: "h2",
+            styles: [],
+            content: "The most exciting \n experiences.",
+          },
+        ],
+        rightBox: [],
+      },
+      menu: {
+        menuItems: [
+          {
+            text: "Intro",
+            link: "#intro",
+          },
+          {
+            text: "Outdoor Passion",
+            link: "#outdoorPassion",
+          },
+          {
+            text: "Into the Nature",
+            link: "#intoTheNature",
+          },
+          {
+            text: "Up to the Sky",
+            link: "#upToTheSky",
+          },
+        ],
+      },
+    }
   ],
 };
