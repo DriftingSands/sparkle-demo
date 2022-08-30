@@ -4,6 +4,7 @@ export default {
       id: 'intro',
       timelineAnimationSettings: {
         globalAutoDelay: true,
+        startDelay: 1
       },
       timelineAnimations: [
         {
@@ -15,8 +16,8 @@ export default {
             scale: 1,
           },
           to: {
-            left: "5%",
-            bottom: "5%",
+            left: "0%",
+            bottom: "0%",
             opacity: 1,
             scale: 1.1,
             duration: 1,
@@ -138,22 +139,21 @@ export default {
           altText: "rocks1",
           id: "rocks1",
           overflow: false,
-          basePosition: "bottom left",
+          basePosition: "bottom-left",
         },
         {
           path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
           altText: "rocks2",
           id: "rocks2",
           overflow: false,
-          basePosition: "bottom left",
+          basePosition: "bottom-left",
         },
         {
           path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
-          debug: true,
           altText: "rocks3",
           id: "rocks3",
           overflow: false,
-          basePosition: "bottom right",
+          basePosition: "bottom-right",
         },
         {
           path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
@@ -161,7 +161,7 @@ export default {
           id: "biker",
           layerId: "biker-layer",
           overflow: true,
-          basePosition: "center center",
+          basePosition: "center-center",
         },
       ],
       menu: {
@@ -198,17 +198,32 @@ export default {
           selector: '#buy-bikeHelmet .textWrapper',
           from: {
             y: '-50%',
-            // opacity: 0.5,
+            opacity: 0,
           },
           to: {
-            duration: 2,
             y: '0%',
-            // opacity: 1,
+            opacity: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
               start: '40% 50%',
-              end: '50% 50%',
-              markers: true,
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-bikeHelmet .dot',
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -217,17 +232,100 @@ export default {
           selector: '#buy-shorts .textWrapper',
           from: {
             y: '-50%',
-            // opacity: 0.5,
+            opacity: 0,
           },
           to: {
-            duration: 2,
             y: '0%',
-            // opacity: 1,
+            opacity: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
               start: '40% 50%',
-              end: '50% 50%',
-              markers: true,
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-shorts .dot',
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-sneakers .textWrapper',
+          from: {
+            y: '-50%',
+            opacity: 0,
+          },
+          to: {
+            y: '0%',
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-sneakers .dot',
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-tubes .textWrapper',
+          from: {
+            y: '-50%',
+            opacity: 0,
+          },
+          to: {
+            y: '0%',
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        },
+        {
+          selector: '#buy-tubes .dot',
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: '#pointLayerId1',
+              start: '40% 50%',
+              end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -238,36 +336,42 @@ export default {
       },
       textLayer: {
         id: 'pointLayerId1',
-        pointText: [
+        pointText: {
+          settings: {
+            width: 6789,
+            height: 3960,
+            fit: 'contain'
+          },
+          content: [
           {
             id: 'buy-bikeHelmet',
             text: 'Giro Adult Revel Bike Helmet',
             price: '$49.99',
-            x: 12,
-            y: -22.5,
+            x: '11%',
+            y: '-30.5%',
           },
           {
             id: 'buy-shorts',
             text: 'Adult Cyclist City Shorts',
             price: '$49.99',
-            x: -2.8,
-            y: -9.7,
+            x: '-2.8%',
+            y: '-14.2%',
           },
           {
             id: 'buy-sneakers',
             text: 'Enclave biking sneakers',
             price: '$49.99',
-            x: -7,
-            y: 8,
+            x: '-7%',
+            y: '9.5%',
           },
           {
             id: 'buy-tubes',
             text: 'Major Tread Specialty Tubes',
             price: '$49.99',
-            x: 21,
-            y: 5,
+            x: '21%',
+            y: '5%',
           },
-        ]
+        ]},
       },
       menu: {
         menuItems: [

@@ -6,10 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function LayerImage({ imageData }) {
   const { layerId, id, path, altText, overflow, basePosition, debug } = imageData
 
-
   return (
-    <div id={layerId} className={`layerImage ${debug ? 'debug' : ''} ${overflow ? 'showOverflow' : 'hideOverflow' }`}>
-      <img id={id}  className='image' src={`${path}`} alt={`${altText}`} style={{objectPosition: basePosition,}} />
+    <div id={layerId} className={`layerImage ${basePosition} ${debug ? 'debug' : ''} ${overflow ? 'showOverflow' : 'hideOverflow' }`}>
+      <img id={id}  className='image' src={`${path}`} alt={`${altText}`} />
     </div>
   )
 }

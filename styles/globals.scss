@@ -59,6 +59,50 @@ button {
   
 }
 
+
+.layerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  &.debug {
+    border: 2px solid crimson;
+  }
+  
+  &.showOverflow {
+    overflow: initial;
+    > .image {
+      border: 2px solid crimson;
+      z-index: 100;
+    }
+  }
+  &.hideOverflow {
+    overflow: hidden;
+  }
+  
+  .image {
+    position: absolute;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+  align-items: center;
+  justify-content: center;
+  &.top-left{align-items: flex-start;justify-content: flex-start;}
+  &.top-center{align-items: flex-start;justify-content: center;}
+  &.top-right{align-items: flex-start;justify-content: flex-end;}
+  &.center-left{align-items: center;justify-content: flex-start;}
+  &.center-right{align-items: center;justify-content: flex-end;}
+  &.bottom-left{align-items: flex-end;justify-content: flex-start;}
+  &.bottom-center{align-items: flex-end;justify-content: center;}
+  &.bottom-right{align-items: flex-end;justify-content: flex-end;}
+}
+
 .textLayer {
   height: 100%;
   width: 100%;
@@ -82,10 +126,7 @@ button {
     // justify-content: start;
     align-items: flex-start;
     gap: 20px;
-    
-    > * {
-      border: solid 1px blue;
-    }
+
   }
   .right {
     align-items: flex-end;
@@ -98,74 +139,90 @@ button {
   }
 }
 
-.pointTextItemWrapper {
+.pointTextLayer{
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translate(-50%, -90%);
-
-  .textWrapper {
-    width: 150px;
-    margin-bottom: 20px;
-    background-color: $blue;
-    padding: 4px 12px;
-    color: white;
-    border-radius: 4px;
-    position: relative;
-    
-    .text {
-      // transition: all .3s ease-in-out;
-      opacity: 1;
-    }
-    .buyText {
-      position: absolute;
-      text-align: center;
-      padding: 0px 4px 3px 4px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: bold;
-      width: 90%;
-      border: 2px solid white;
-      border-radius: 999px;
-      
-      // transition: all .3s ease-in-out;
-      opacity: 0;
-    }
-  }
-  .textWrapper:hover {
-    .text {
-      opacity: 0;
-    }
-    .buyText {
-      opacity: 1;
-    }
-  }
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  border: 2px solid blue;
   
-  .arrow {
+  
+  .pointTextItemWrapper {
     position: absolute;
-    top: calc(100% - 1px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 10px;
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
-    background-color: $blue;
-  }
-
-  .dot {
-    background-color: white;
-    border: black solid 2px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 2px;
+    height: 2px;
+    
+    .textWrapper {
+      width: 150px;
+      margin-bottom: 20px;
+      background-color: $blue;
+      padding: 4px 12px;
+      color: white;
+      border-radius: 4px;
+      position: relative;
+      
+      .text {
+        transition: all .3s ease-in-out;
+        opacity: 1;
+      }
+      .buyText {
+        position: absolute;
+        cursor: pointer;
+        text-align: center;
+        padding: 0px 4px 3px 4px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        width: 90%;
+        border: 2px solid white;
+        border-radius: 999px;
+        
+        transition: all .3s ease-in-out;
+        opacity: 0;
+      }
+    }
+    .textWrapper:hover {
+      .text {
+        opacity: 0;
+      }
+      .buyText {
+        opacity: 1;
+      }
+    }
+    
+    .arrow {
+      position: absolute;
+      top: calc(100% - 1px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 10px;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      background-color: $blue;
+    }
+  
+    .dot {
+      background-color: white;
+      border: black solid 2px;
+      margin-bottom: -10px;
+      border-radius: 50%;
+      width: 20px;
+      min-height: 20px;
+    }
   }
 }
 
 
 .menuWrapper {
-  // border: 2px solid crimson;
+  z-index: 50;
+  
   .menuList {
     list-style: none;
     text-align: right;
@@ -211,35 +268,6 @@ button {
   }
 }
 
-.layerImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  &.debug {
-    border: 2px solid crimson;
-  }
-
-  &.showOverflow {
-    overflow: initial;
-    > .image {
-      z-index: 100;
-    }
-  }
-  &.hideOverflow {
-    overflow: hidden;
-  }
-  
-  .image {
-    position: absolute;
-    object-fit: contain;
-    // object-position: bottom left;
-    width: 100%;
-    height: 100%;
-  }
-}
 
 
 body {

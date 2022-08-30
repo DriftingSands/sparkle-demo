@@ -1,17 +1,22 @@
 
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
-  const tl = gsap.timeline()
-  const standardDelay = timelineSettings.autoDelay ? '>' : '<'
+  const tl = gsap.timeline({delay: timelineSettings.startDelay})
+  const standardDelay = timelineSettings.globalAutoDelay ? '>' : '<'
 
   for (let i = 0; i < timelineArray.length; i++) {
     const animation = timelineArray[i]
 
+    if (animation?.to?.scrollTrigger || animation.from.scrollTrigger) {
+      (animation.to && animation.from) && gsap.fromTo(q(animation.selector), animation.from, animation.to);
+      (animation.to) && gsap.to(q(animation.selector), animation.to);
+      (animation.from) && gsap.from(q(animation.selector), animation.from);
+      continue;
+    }
     
     let delay;
     if (animation.autoDelay !== undefined) {
       delay = animation.autoDelay === true ? '>' : '<'
-    }
-    if (!delay) {
+    } else {
       delay = standardDelay
     }
     
@@ -22,8 +27,8 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
       animation.to && tl.to(q(animation.selector), animation.to, delay)
     }
     
-    if (animation.selector.includes('textWrapper')) console.log(tl)
   }
+  
   if (timelineSettings.debugButton) {
     const debugButton = document.createElement('button')
     debugButton.innerText = 'replay TL: '
