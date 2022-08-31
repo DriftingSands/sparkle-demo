@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import Background from '../components/Background';
 import LayerImage from '../components/LayerImage';
 import TextLayer from '../components/TextLayer';
+import Header from './header';
 import { TimelineProvider } from './TimelineWrapper';
 
 export default function Scene({scene}) {
@@ -13,7 +14,8 @@ export default function Scene({scene}) {
   }, [])
 
   return (
-    <div className="scene" id={scene.id}>
+    <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id}>
+      <Header />
       <Background backgroundProps={scene.background} />
         {scene?.images?.map((image, index) => {
           return <LayerImage

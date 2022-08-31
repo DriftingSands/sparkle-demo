@@ -1,13 +1,17 @@
 
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
-  const tl = gsap.timeline().delay(timelineSettings.startDelay)
+  const tl = gsap.timeline()
+  tl.delay(timelineSettings.startDelay)
   const standardDelay = timelineSettings.globalAutoDelay ? '>' : '<'
 
   for (let i = 0; i < timelineArray.length; i++) {
     const animation = timelineArray[i]
 
     if (animation?.to?.scrollTrigger || animation.from.scrollTrigger) {
-      (animation.to && animation.from) && gsap.fromTo(q(animation.selector), animation.from, animation.to);
+      if (animation.to && animation.from) {
+        gsap.fromTo(q(animation.selector), animation.from, animation.to);
+        continue;
+      }
       (animation.to) && gsap.to(q(animation.selector), animation.to);
       (animation.from) && gsap.from(q(animation.selector), animation.from);
       continue;

@@ -110,11 +110,6 @@ export default {
           },
         },
       ],
-      // spacer
-      // spacer
-      // spacer
-      // spacer
-      // spacer
       textLayer: {
         leftBox: [
           {
@@ -207,7 +202,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -223,7 +218,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -241,7 +236,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -257,7 +252,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -275,7 +270,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -291,7 +286,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -309,7 +304,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -325,7 +320,7 @@ export default {
             duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '40% 50%',
+              start: '20% 50%',
               end: '100% 10%',
               toggleActions: 'play none none reverse'
             }
@@ -395,6 +390,309 @@ export default {
           },
         ],
       },
-    }
+    },
+
+
+    // 3rd scene
+
+
+    {
+      sceneSettings: {
+        dark: true
+      },
+      timelineAnimationSettings: {
+        globalAutoDelay: false,
+      },
+      id: 'outdoorPassion',
+      timelineAnimations: [
+        {
+          selector: '#outdoorPassion .header',
+          from: {
+            background: 'linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 0%)',
+          },
+          to: {
+            background: 'linear-gradient(90deg, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0) 100%)',
+            ease: 'power2.inOut',
+            duration: 1.5,
+            scrollTrigger: {
+              trigger: '#outdoorPassion',
+              start: 'top bottom',
+              end: 'top top',
+              snap: {
+                snapTo: [0, 1],
+                delay: 0,
+              },
+              scrub: 0.5,
+            },
+          },
+        },
+        {
+          selector: '#outdoorPassion .textLayer .left',
+          from: {
+            x: '-100%',
+            opacity: 0,
+            y: '0%',
+          },
+          to: {
+            ease: 'none',
+            keyframes: {
+              '0%': {
+                x: '-100%',
+                opacity: 0,
+                y: '0%',
+                ease: 'none',
+              },
+              '25%': {
+                x: '-50%',
+                opacity: 1,
+                ease: 'power2.in',
+              },
+              '50%': {
+                x: '0%',
+                opacity: 1,
+                y: '0%',
+                ease: 'power2.out',
+              },
+              '70%': {
+                x: '0%',
+                opacity: 1,
+                y: '0%',
+                ease: 'power2.inOut',
+              },
+              '90%': {
+                x: '0%',
+                opacity: 1,
+                y: '-150%',
+              },
+            },
+            scrollTrigger: {
+              trigger: '#outdoorPassion',
+              start: 'top bottom',
+              end: '50% top',
+              scrub: 0.5,
+            },
+          }
+        },
+      ],
+      background: {
+        path: '/WKND SPA/hybrid/AdobeStock_427738038.jpeg',
+        altText: ''
+      },
+      textLayer: {
+        leftBox: [
+          {
+            type: "h3",
+            styles: [],
+            content: "Your dates, your ride distances\nand your style of lodging!",
+          },
+          {
+            type: "button",
+            styles: ["yellowButton"],
+            content: "know more",
+          },
+        ],
+      },
+      menu: {
+        menuItems: [
+          {
+            text: "Intro",
+            link: "#intro",
+          },
+          {
+            text: "Outdoor Passion",
+            link: "#outdoorPassion",
+            active: true,
+          },
+          {
+            text: "Into the Nature",
+            link: "#intoTheNature",
+          },
+          {
+            text: "Up to the Sky",
+            link: "#upToTheSky",
+          },
+        ],
+      },
+    },
+
+
+    // 4th scene
+
+
+
+    {
+      id: 'intoTheNature',
+      timelineAnimationSettings: {
+        globalAutoDelay: false,
+      },
+      timelineAnimations: [
+        {
+          selector: '#intoTheNature #mountains',
+          from: {
+            y: '50%',
+            scale: 1.2
+          },
+          to: {
+            y: '50%',
+            scale: 1,
+            scrollTrigger: {
+              trigger: '#intoTheNature',
+              start: 'top bottom', 
+              end: 'bottom bottom',
+              scrub: 0.5,
+              snap: {
+                snapTo: [0, 1],
+                delay: 0,
+              }
+            },
+            ease: 'expo.in'
+          },
+        },
+        {
+          selector: '#intoTheNature #water',
+          from: {
+            y: '70%',
+          },
+          to: {
+            y: '35%',
+            scrollTrigger: {
+              trigger: '#intoTheNature',
+              start: 'top bottom', 
+              end: 'bottom bottom',
+              scrub: 0.5,
+            },
+          },
+          ease: 'power4.out'
+        },
+        {
+          selector: '#intoTheNature #guy-layer',
+          from: {
+            y: '0%',
+            x: '0%',
+            scale: 1,
+          },
+          to: {
+            y: '70%',
+            x: '-20%',
+            scale: 2,
+            scrollTrigger: {
+              trigger: '#intoTheNature',
+              start: 'top top',
+              end: 'bottom top',
+              markers: true,
+              scrub: 0.5,
+              snap: {
+                snapTo: [0, 1],
+                delay: 0,
+              }
+            },
+            ease: 'power2.inOut'
+          },
+        },
+        {
+          selector: '#intoTheNature #guy',
+          from: {
+            y: '70%',
+            x: '1%',
+          },
+          to: {
+            y: '38%',
+            x: '1%',
+            scrollTrigger: {
+              trigger: '#intoTheNature',
+              start: 'top bottom', 
+              end: 'bottom bottom',
+              scrub: 0.5,
+            },
+          },
+          ease: 'power4.out'
+        },
+      ],
+      background: {
+        path: '/WKND SPA/Outdoor Passion/Scene 2/sky.jpg',
+        altText: '',
+      },
+      images: [
+        {
+          path: "/WKND SPA/Outdoor Passion/Scene 2/mountains.png",
+          altText: "mountains",
+          fit: 'cover',
+          id: "mountains",
+          layerId: 'mountains-layer',
+          overflow: false,
+          basePosition: "bottom-center",
+        },
+        {
+          path: "/WKND SPA/Outdoor Passion/Scene 2/water.png",
+          altText: "water",
+          fit: 'cover',
+          id: "water",
+          layerId: 'water-layer',
+          overflow: false,
+          basePosition: "bottom-center",
+        },
+        {
+          path: "/WKND SPA/Outdoor Passion/Scene 2/guy.png",
+          altText: "guy",
+          fit: 'contain',
+          id: "guy",
+          layerId: 'guy-layer',
+          overflow: true,
+          basePosition: "bottom-center",
+        },
+      ],
+      menu: {
+        menuItems: [
+          {
+            text: "Intro",
+            link: "#intro",
+          },
+          {
+            text: "Outdoor Passion",
+            link: "#outdoorPassion",
+          },
+          {
+            text: "Into the Nature",
+            link: "#intoTheNature",
+            active: true,
+          },
+          {
+            text: "Up to the Sky",
+            link: "#upToTheSky",
+          },
+        ],
+      },
+    },
+
+
+    // 5th scene
+
+
+    {
+      background: {
+        color: '#ffea00',
+      },
+      menu: {
+        menuItems: [
+          {
+            text: "Intro",
+            link: "#intro",
+          },
+          {
+            text: "Outdoor Passion",
+            link: "#outdoorPassion",
+          },
+          {
+            text: "Into the Nature",
+            link: "#intoTheNature",
+            active: true,
+          },
+          {
+            text: "Up to the Sky",
+            link: "#upToTheSky",
+          },
+        ],
+      },
+    },
   ],
 };

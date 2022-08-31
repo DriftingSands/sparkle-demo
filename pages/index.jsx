@@ -4,7 +4,7 @@ import data from '../components/_testData'
 
 export default function Home() {
   return (
-    <div className={'test'}>
+    <div className={'page'}>
       {
         data.scenes.map((scene, index) => {
           return (
