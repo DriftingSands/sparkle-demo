@@ -4,7 +4,7 @@ export default {
       id: 'intro',
       timelineAnimationSettings: {
         globalAutoDelay: true,
-        startDelay: 1
+        startDelay: 0
       },
       timelineAnimations: [
         {
@@ -80,10 +80,10 @@ export default {
             scale: 0.8,
             y: "-60%",
             x: "-50%",
-            opacity: 0.1,
+            opacity: 0,
           },
           to: {
-            delay: -0.1,
+            delay: '-0.2',
             keyframes: {
               "0%": {
                 scale: 0.8,
@@ -91,9 +91,10 @@ export default {
                 x: "-50%",
                 opacity: 0,
                 ease: "sine.out",
-                // duration: 1,
               },
               "50%": {
+                y: "-30%",
+                x: "-25%",
                 opacity: 1,
               },
               "100%": {
