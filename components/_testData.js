@@ -554,7 +554,7 @@ export default {
             y: '70%',
           },
           to: {
-            y: '35%',
+            y: '30%',
             scrollTrigger: {
               trigger: '#intoTheNature',
               start: 'top bottom', 
@@ -572,14 +572,13 @@ export default {
             scale: 1,
           },
           to: {
-            y: '70%',
+            y: '100%',
             x: '-20%',
-            scale: 2,
+            scale: 1.6,
             scrollTrigger: {
               trigger: '#intoTheNature',
               start: 'top top',
               end: 'bottom top',
-              markers: true,
               scrub: 0.5,
               snap: {
                 snapTo: [0, 1],
@@ -593,11 +592,13 @@ export default {
           selector: '#intoTheNature #female-hiker',
           from: {
             y: '70%',
-            x: '1%',
+            x: '16%',
+            scale: 0.6,
           },
           to: {
-            y: '38%',
-            x: '1%',
+            y: '13%',
+            x: '16%',
+            scale: 0.6,
             scrollTrigger: {
               trigger: '#intoTheNature',
               start: 'top bottom', 
@@ -606,6 +607,26 @@ export default {
             },
           },
           ease: 'power4.out'
+        },
+        {
+          selector: '#intoTheNature .textLayer .left',
+          from: {
+            y: '120%',
+          },
+          to: {
+            keyframes: {
+              '0%': {y: '120%'},
+              '45%': {y: '0%'},
+              '50%': {y: '0%'},
+              '100%': {y: '-180%'},
+            },
+            scrollTrigger: {
+              trigger: '#intoTheNature',
+              start: 'top 80%',
+              end: 'bottom top',
+              scrub: 0.5,
+            },
+          },
         },
       ],
       background: {
@@ -641,6 +662,20 @@ export default {
           basePosition: "bottom-center",
         },
       ],
+      textLayer: {
+        leftBox: [
+          {
+            type: "h3",
+            styles: ["yellowBox"],
+            content: "into the nature",
+          },
+          {
+            type: "h2",
+            styles: [],
+            content: "From coastal paths\nto hilltop climbs.",
+          },
+        ],
+      },
       menu: {
         menuItems: [
           {
@@ -672,6 +707,43 @@ export default {
       background: {
         color: '#ffea00',
       },
+      id: 'intoTheNature1',
+      timelineAnimationSettings: {},
+      timelineAnimations: [
+        {
+          selector: '#intoTheNature1 .textLayer .left',
+          from: {
+            y: '100%',
+          },
+          to: {
+            y: '0%',
+            scrollTrigger: {
+              trigger: '#intoTheNature1',
+              start: '40% 80%',
+              toggleActions: 'play none none reverse'
+            },
+          },
+        },
+      ],
+      textLayer: {
+        leftBox: [
+          {
+            type: "h2",
+            styles: [],
+            content: "From coastal paths\nto hilltop climbs.",
+          },
+          {
+            type: 'span',
+            styles: ['uppercase'],
+            content: 'during your tour, we take care of all the logistics and out support vans'
+          },
+          {
+            type: "button",
+            styles: ["darkButton"],
+            content: "into the nature",
+          },
+        ],
+      },
       menu: {
         menuItems: [
           {
@@ -688,6 +760,237 @@ export default {
             active: true,
           },
           {
+            text: "Up to the Sky",
+            link: "#upToTheSky",
+          },
+        ],
+      },
+    },
+
+
+    // 6th scene
+
+
+    {
+      id: 'upToTheSky',
+      size: 150,
+      sceneSettings: {
+        dark: true,
+      },
+      background: {
+        path: '/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.jpeg',
+        altText: '',
+        zIndex: '-3',
+      },
+      timelineAnimationSettings: {
+        globalAutoDelay: false,
+      },
+      timelineAnimations: [
+        {
+          selector: '#upToTheSky',
+          from: {
+          },
+          to: {
+            scrollTrigger: {
+              pin: '#upToTheSky',
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '66.66% top',
+            },
+          },
+        },
+        {
+          selector: '#upToTheSky #mountain1',
+          from: {
+            y: '0%',
+            scale: 1,
+          },
+          to: {
+            y: '-5%',
+            scale: 1.1,
+            scrollTrigger: {
+              trigger: '#upToTheSpy',
+              start: 'top top',
+            }
+          },
+        },
+        {
+          selector: '#upToTheSky #mountain2',
+          from: {},
+          to: {},
+        },
+        {
+          selector: '#upToTheSky #mountain3',
+          from: {},
+          to: {},
+        },
+        {
+          selector: '#upToTheSky #tent',
+          from: {},
+          to: {},
+        },
+        {
+          selector: '#upToTheSky #t0',
+          from: {
+            y: '0px',
+            opacity: 1,
+          },
+          to: {
+            y: '-500px',
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: '5% top',
+              end: '5% top',
+              toggleActions: 'play none none reverse'
+            }
+          },
+        },
+        {
+          selector: '#upToTheSky #t1',
+          from: {
+            y: '0px',
+            opacity: 1,
+          },
+          to: {
+            y: '-500px',
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: '5% top',
+              end: '5% top',
+              toggleActions: 'play none none reverse'
+            }
+          },
+        },
+        {
+          selector: '#upToTheSky #t2',
+          from: {
+            y: '100px',
+          },
+          to: {
+            y: '-350px',
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: '5% top',
+              end: '5% top',
+              toggleActions: 'play none none reverse'
+            }
+          },
+        },
+        {
+          selector: '#upToTheSky #t3',
+          from: {
+            y: '400px',
+          },
+          to: {
+            y: '-350px',
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: '5% top',
+              end: '5% top',
+              toggleActions: 'play none none reverse'
+            }
+          },
+        },
+      ],
+      textLayer: {
+        type: 'column',
+        column: [
+          {
+            type: 'h3',
+            id: 't0',
+            styles: ['yellowBox'],
+            content: 'into the nature',
+          },
+          {
+            id: 't1',
+            type: 'h2',
+            styles: ['alignCenter'],
+            content: "what's better then\nnature by night?",
+          },
+          {
+            id: 't2',
+            type: 'span',
+            styles: ['bold', 'white', 'alignCenter', 'L'],
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+          },
+          {
+            id: 't3',
+            type: 'button',
+            styles: ['yellowButton'],
+            content: "know more",
+          },
+        ],
+      },
+
+      images: [
+        {
+          path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
+          altText: "mountain1",
+          fit: 'cover',
+          id: "mountain1",
+          layerId: 'mountain1-layer',
+          overflow: false,
+          basePosition: "bottom-center",
+          zIndex: '-2',
+        },
+        {
+          path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
+          altText: "mountain2",
+          fit: 'cover',
+          id: "mountain2",
+          layerId: 'mountain2-layer',
+          overflow: false,
+          basePosition: "bottom-right",
+          zIndex: '-1',
+        },
+        {
+          path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.png",
+          altText: "mountain3",
+          fit: 'cover',
+          id: "mountain3",
+          layerId: 'mountain3-layer',
+          overflow: false,
+          basePosition: "bottom-right",
+        },
+        {
+          path: "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
+          altText: "tent",
+          fit: 'cover',
+          id: "tent",
+          layerId: 'tent-layer',
+          overflow: false,
+          basePosition: "bottom-right",
+        },
+      ],
+
+
+
+      menu: {
+        menuItems: [
+          {
+            text: "Intro",
+            link: "#intro",
+          },
+          {
+            text: "Outdoor Passion",
+            link: "#outdoorPassion",
+          },
+          {
+            text: "Into the Nature",
+            link: "#intoTheNature",
+          },
+          {
+            active: true,
             text: "Up to the Sky",
             link: "#upToTheSky",
           },

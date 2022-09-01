@@ -1,5 +1,7 @@
 $yellow: #ffea00;
 $blue: #0e67cf;
+$dark: #202020;
+$gray: #605e41;
 
 
 
@@ -60,6 +62,7 @@ button {
 .yellowBox {
   background-color: $yellow;
   padding: 6px;
+  text-transform: uppercase;
 }
 
 .menuWrapper {
@@ -194,6 +197,11 @@ button {
       width: 100%;
     }
   }
+  &.contain .image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
 
 
   align-items: center;
@@ -224,6 +232,11 @@ button {
   .h3 {
     font-size: 34px;
   }
+  .yellowBox {
+    color: black;
+    &.h2{font-size: 18px;}
+    &.h3{font-size: 14px;}
+  }
   
   .left, .right {
     width: 40%;
@@ -240,10 +253,47 @@ button {
     align-items: flex-end;
   }
 
+  .columnWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 30%;
+  }
+
+  .span {
+    color: $gray;
+    font-size: 14px;
+    &.L {font-size: 18px;}
+  }
+
+  .bold {
+    font-weight: 600;
+  }
+  .white {
+    color: white;
+  }
+  .alignCenter {
+    text-align: center;
+  }
+  
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
   .yellowButton {
     font-size: 10px;
     padding: 12px 16px;
     font-weight: 600;
+  }
+  .darkButton {
+    font-size: 10px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: white;
+    background-color: $dark;
   }
 }
 

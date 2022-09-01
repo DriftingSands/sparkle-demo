@@ -7,7 +7,7 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
   for (let i = 0; i < timelineArray.length; i++) {
     const animation = timelineArray[i]
 
-    if (animation?.to?.scrollTrigger || animation.from.scrollTrigger) {
+    if (animation?.to?.scrollTrigger || animation?.from?.scrollTrigger) {
       if (animation.to && animation.from) {
         gsap.fromTo(q(animation.selector), animation.from, animation.to);
         continue;

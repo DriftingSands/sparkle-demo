@@ -6,12 +6,30 @@ export default function TextLayer(props) {
     <div className={"textLayer"} id={props?.data?.id}>
       <PointTextMap pointText={props?.data?.pointText} />
 
+      {props.data.type === 'column' && 
+        <div className="columnWrapper">
+          {props?.data?.column?.map((item, index) => {
+            return (
+              <item.type
+                key={index}
+                className={`${item.type} ${item?.styles?.join(' ')}`}
+                id={item.id}
+              >
+                {item.content}
+              </item.type>
+            )
+          })}
+        </div>
+      }
+
+      {((!props.data.type) || props.data.type === 'row') ? 
+      <>
       <div className="left">
         {props?.data?.leftBox?.map((item, index) => {
           return (
             <item.type
               key={index}
-              className={`${item.type} ${item?.styles?.map((style) => ' '+style)}`}
+              className={`${item.type} ${item?.styles?.join(' ')}`}
               id={item.id}
             >
               {item.content}
@@ -23,6 +41,7 @@ export default function TextLayer(props) {
       <div className="right">
         <Menu menuItems={props.menu.menuItems} />
       </div>
+      </> : null}
     </div>
   );
 }

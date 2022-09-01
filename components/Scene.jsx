@@ -14,7 +14,7 @@ export default function Scene({scene}) {
   }, [])
 
   return (
-    <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id}>
+    <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id} style={{height: (scene.size || 100)+'vh' }} >
       <Header />
       <Background backgroundProps={scene.background} />
         {scene?.images?.map((image, index) => {
