@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import Background from '../components/Background';
 import LayerImage from '../components/LayerImage';
 import TextLayer from '../components/TextLayer';
-import Header from './header';
+import Header from './Header';
 import { TimelineProvider } from './TimelineWrapper';
 
 export default function Scene({scene}) {
