@@ -565,7 +565,7 @@ export default {
           ease: 'power4.out'
         },
         {
-          selector: '#intoTheNature #guy-layer',
+          selector: '#intoTheNature #female-hiker-layer',
           from: {
             y: '0%',
             x: '0%',
@@ -590,7 +590,7 @@ export default {
           },
         },
         {
-          selector: '#intoTheNature #guy',
+          selector: '#intoTheNature #female-hiker',
           from: {
             y: '70%',
             x: '1%',
@@ -632,11 +632,11 @@ export default {
           basePosition: "bottom-center",
         },
         {
-          path: "/WKND SPA/Outdoor Passion/Scene 2/guy.png",
-          altText: "guy",
+          path: "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.png",
+          altText: "female-hiker",
           fit: 'contain',
-          id: "guy",
-          layerId: 'guy-layer',
+          id: "female-hiker",
+          layerId: 'female-hiker-layer',
           overflow: true,
           basePosition: "bottom-center",
         },
