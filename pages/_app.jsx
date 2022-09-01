@@ -1,4 +1,4 @@
-import Header from '../components/header'
+import Header from '../components/Header'
 import Head from 'next/head'
 import '../styles/globals.scss'
 import { TimelineAnimationWrapper } from '../components/TimelineWrapper'
