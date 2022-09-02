@@ -187,20 +187,18 @@ button {
   .image {
     position: absolute;
     object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
   }
 
-  &.cover {
-    .image {
-      object-fit: cover;
-      width: 100%;
-    }
+  &.cover  .image {
+    object-fit: cover;
+    width: 100%;
   }
   &.contain .image {
     object-fit: contain;
     height: 100%;
     width: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
 

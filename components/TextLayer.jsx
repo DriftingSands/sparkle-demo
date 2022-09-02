@@ -14,7 +14,8 @@ export default function TextLayer(props) {
                 key={index}
                 className={`${item.type} ${item?.styles?.join(' ')}`}
                 id={item.id}
-              >
+                style={{zIndex: item.zIndex}}
+                >
                 {item.content}
               </item.type>
             )
@@ -28,9 +29,10 @@ export default function TextLayer(props) {
         {props?.data?.leftBox?.map((item, index) => {
           return (
             <item.type
-              key={index}
-              className={`${item.type} ${item?.styles?.join(' ')}`}
-              id={item.id}
+            key={index}
+            className={`${item.type} ${item?.styles?.join(' ')}`}
+            id={item.id}
+            style={{zIndex: item.zIndex}}
             >
               {item.content}
             </item.type>

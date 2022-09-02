@@ -154,6 +154,7 @@ export default {
         {
           path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
           altText: "biker",
+          fit: 'contain',
           id: "biker",
           layerId: "biker-layer",
           overflow: true,
@@ -609,6 +610,22 @@ export default {
           ease: 'power4.out'
         },
         {
+          selector: '#intoTheNature #female-hiker',
+          from: {
+            y: '13%',
+          },
+          to: {
+            y: '-10%',
+            duration: 1,
+            scrollTrigger: {
+              trigger: '#intoTheNature1',
+              start: '80% top',
+              toggleActions: 'play none none reverse'
+            },
+            ease: 'none'
+          },
+        },
+        {
           selector: '#intoTheNature .textLayer .left',
           from: {
             y: '120%',
@@ -724,6 +741,21 @@ export default {
             },
           },
         },
+        {
+          selector: '#intoTheNature1',
+          from: {},
+          to: {
+            scrollTrigger: {
+              trigger: '#intoTheNature1',
+              start: 'bottom bottom',
+              end: 'bottom top',
+              snap: {
+                snapTo: [0, 1],
+                delay: 0,
+              }
+            }
+          }
+        },
       ],
       textLayer: {
         leftBox: [
@@ -773,7 +805,6 @@ export default {
 
     {
       id: 'upToTheSky',
-      size: 150,
       sceneSettings: {
         dark: true,
       },
@@ -788,14 +819,30 @@ export default {
       timelineAnimations: [
         {
           selector: '#upToTheSky',
+          from: {},
+          to: {
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '20% top',
+              snap: {
+                snapTo: [0, 1],
+                delay: 0,
+              }
+            }
+          }
+        },
+        {
+          selector: '#upToTheSky',
           from: {
           },
           to: {
             scrollTrigger: {
               pin: '#upToTheSky',
               trigger: '#upToTheSky',
+              // markers: true,
               start: 'top top',
-              end: '66.66% top',
+              end: '20% top',
             },
           },
         },
@@ -806,28 +853,68 @@ export default {
             scale: 1,
           },
           to: {
-            y: '-5%',
-            scale: 1.1,
+            y: '-1%',
+            scale: 1.05,
             scrollTrigger: {
-              trigger: '#upToTheSpy',
+              trigger: '#upToTheSky',
               start: 'top top',
+              end: '20% top',
+              scrub: 0.5,
             }
           },
         },
         {
           selector: '#upToTheSky #mountain2',
-          from: {},
-          to: {},
+          from: {
+            // y: '0%',
+            scale: 1,
+            transformOrigin: 'bottom right',
+          },
+          to: {
+            // y: '-5%',
+            scale: 1.2,
+            transformOrigin: 'bottom right',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '20% top',
+              scrub: 0.5,
+            }
+          },
         },
         {
           selector: '#upToTheSky #mountain3',
-          from: {},
-          to: {},
+          from: {
+            // y: '0%',
+            scale: 1,
+            transformOrigin: 'bottom right',
+          },
+          to: {
+            // y: '-10%',
+            scale: 1.4,
+            transformOrigin: 'bottom right',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '20% top',
+              scrub: 0.5,
+            }
+          },
         },
         {
-          selector: '#upToTheSky #tent',
-          from: {},
-          to: {},
+          selector: '#upToTheSky #tent-layer',
+          from: {
+            y: '35%',
+          },
+          to: {
+            y: '0%',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '20% top',
+              scrub: 0.5,
+            }
+          },
         },
         {
           selector: '#upToTheSky #t0',
@@ -836,15 +923,13 @@ export default {
             opacity: 1,
           },
           to: {
-            y: '-500px',
+            y: '-200px',
             opacity: 0,
-            duration: 1.5,
-            ease: 'power2.inOut',
             scrollTrigger: {
               trigger: '#upToTheSky',
-              start: '5% top',
-              end: '5% top',
-              toggleActions: 'play none none reverse'
+              start: 'top top',
+              end: '20% top',
+              scrub: 1,
             }
           },
         },
@@ -855,15 +940,13 @@ export default {
             opacity: 1,
           },
           to: {
-            y: '-500px',
+            y: '-200px',
             opacity: 0,
-            duration: 1.5,
-            ease: 'power2.inOut',
             scrollTrigger: {
               trigger: '#upToTheSky',
-              start: '5% top',
-              end: '5% top',
-              toggleActions: 'play none none reverse'
+              start: 'top top',
+              end: '20% top',
+              scrub: 1,
             }
           },
         },
@@ -873,14 +956,13 @@ export default {
             y: '100px',
           },
           to: {
-            y: '-350px',
+            y: '-250px',
             duration: 1.5,
-            ease: 'power2.inOut',
             scrollTrigger: {
               trigger: '#upToTheSky',
-              start: '5% top',
-              end: '5% top',
-              toggleActions: 'play none none reverse'
+              start: 'top top',
+              end: '20% top',
+              scrub: 1,
             }
           },
         },
@@ -890,14 +972,13 @@ export default {
             y: '400px',
           },
           to: {
-            y: '-350px',
+            y: '-250px',
             duration: 1.5,
-            ease: 'power2.inOut',
             scrollTrigger: {
               trigger: '#upToTheSky',
-              start: '5% top',
-              end: '5% top',
-              toggleActions: 'play none none reverse'
+              start: 'top top',
+              end: '20% top',
+              scrub: 1,
             }
           },
         },
@@ -910,24 +991,28 @@ export default {
             id: 't0',
             styles: ['yellowBox'],
             content: 'into the nature',
+            zIndex: '-3',
           },
           {
             id: 't1',
             type: 'h2',
             styles: ['alignCenter'],
             content: "what's better then\nnature by night?",
+            zIndex: '-3',
           },
           {
             id: 't2',
             type: 'span',
             styles: ['bold', 'white', 'alignCenter', 'L'],
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+            zIndex: '-3',
           },
           {
             id: 't3',
             type: 'button',
             styles: ['yellowButton'],
             content: "know more",
+            zIndex: '3',
           },
         ],
       },
@@ -941,7 +1026,7 @@ export default {
           layerId: 'mountain1-layer',
           overflow: false,
           basePosition: "bottom-center",
-          zIndex: '-2',
+          zIndex: '23',
         },
         {
           path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
@@ -951,7 +1036,7 @@ export default {
           layerId: 'mountain2-layer',
           overflow: false,
           basePosition: "bottom-right",
-          zIndex: '-1',
+          zIndex: '24',
         },
         {
           path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.png",
@@ -961,6 +1046,7 @@ export default {
           layerId: 'mountain3-layer',
           overflow: false,
           basePosition: "bottom-right",
+          zIndex: '25',
         },
         {
           path: "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
@@ -969,7 +1055,8 @@ export default {
           id: "tent",
           layerId: 'tent-layer',
           overflow: false,
-          basePosition: "bottom-right",
+          basePosition: "bottom-center",
+          zIndex: '28',
         },
       ],
 

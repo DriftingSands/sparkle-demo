@@ -3,6 +3,7 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import createAnimationTimeline from './TimelineHelperFunctions'
 ScrollTrigger.defaults({toggleActions: 'play reverse play reverse'})
+gsap.defaults({ease: 'power1.inOut'});
 gsap.registerPlugin(ScrollTrigger);
 
 

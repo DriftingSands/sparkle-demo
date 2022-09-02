@@ -14,16 +14,17 @@ export default function PointTextMap(props) {
   let width;
   let height;
   if (props?.pointText?.settings?.width && props?.pointText?.settings?.height) {
-    style.aspectRatio = `${props?.pointText?.settings?.width} / ${props?.pointText?.settings?.height}`
-    width = props?.pointText?.settings?.width
-    height = props?.pointText?.settings?.height
+    width = props.pointText.settings.width
+    height = props.pointText.settings.height
+    style.aspectRatio = `${width} / ${height}`
   }
 
   return (
-    <div className="wrapperForRatio" style={{height,}}>
+    <div className="wrapperForRatio" style={{height, width, aspectRatio: style.aspectRatio, objectFit: 'contain' }}>
       <div
         className='pointTextLayer'
-        style={{...style, width,}}
+        // style={{width: '100%', height: '100%', aspectRatio: style.aspectRatio}}
+        style={{...style, width, maxWidth: 'calc(100% '}}
       >
         {props?.pointText?.content?.map((item, index) => {
           return (
