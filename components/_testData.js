@@ -64,7 +64,7 @@ export default {
               trigger: "#biker-layer",
               start: "0px top",
               end: "100% top",
-              // toggleActions: "play reverse play reverse",
+              toggleActions: "play reverse play reverse",
               scrub: 0.5,
               snap: {
                 snapTo: [0, 1],
@@ -335,9 +335,10 @@ export default {
         id: 'pointLayerId1',
         pointText: {
           settings: {
-            width: 6789,
-            height: 3960,
-            fit: 'contain'
+            imgSelector: '#biker',
+            fit: 'contain',
+            // width: 6789,
+            // height: 3960,
           },
           content: [
           {
@@ -866,12 +867,10 @@ export default {
         {
           selector: '#upToTheSky #mountain2',
           from: {
-            // y: '0%',
             scale: 1,
             transformOrigin: 'bottom right',
           },
           to: {
-            // y: '-5%',
             scale: 1.2,
             transformOrigin: 'bottom right',
             scrollTrigger: {
@@ -885,12 +884,10 @@ export default {
         {
           selector: '#upToTheSky #mountain3',
           from: {
-            // y: '0%',
             scale: 1,
             transformOrigin: 'bottom right',
           },
           to: {
-            // y: '-10%',
             scale: 1.4,
             transformOrigin: 'bottom right',
             scrollTrigger: {
@@ -997,7 +994,7 @@ export default {
             id: 't1',
             type: 'h2',
             styles: ['alignCenter'],
-            content: "what's better then\nnature by night?",
+            content: "What's better than\nnature by night?",
             zIndex: '-3',
           },
           {

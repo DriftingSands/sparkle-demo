@@ -4,7 +4,7 @@ import PointTextMap from './PointTextMap';
 export default function TextLayer(props) {
   return (
     <div className={"textLayer"} id={props?.data?.id}>
-      <PointTextMap pointText={props?.data?.pointText} />
+      {props?.data?.pointText && <PointTextMap pointText={props?.data?.pointText} />}
 
       {props.data.type === 'column' && 
         <div className="columnWrapper">
@@ -15,7 +15,7 @@ export default function TextLayer(props) {
                 className={`${item.type} ${item?.styles?.join(' ')}`}
                 id={item.id}
                 style={{zIndex: item.zIndex}}
-                >
+              >
                 {item.content}
               </item.type>
             )

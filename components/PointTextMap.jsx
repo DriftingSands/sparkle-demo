@@ -1,29 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function PointTextMap(props) {
+  const [conformToElement, setConformToElement] = useState(null)
+
+
+  useEffect(() => {
+    const el = document.querySelector(props?.pointText?.settings?.imgSelector)
+    setConformToElement({width: el.naturalWidth, height: el.naturalHeight})
+  }, [])
+
   
-  // useEffect(() => {
-  //   const testImage = document.getElementById('biker')
-  //   console.log("\x1b[31m~ testImage", testImage)
-  // }, [])
+  const objectFit = props?.pointText?.settings?.fit
+  const aspectRatio = `${
+    conformToElement?.width || props?.pointText?.settings?.width || 16
+  } / ${
+    conformToElement?.height || props?.pointText?.settings?.height || 9
+  }`
   
-  const style = {
-    objectFit: props?.pointText?.settings?.fit,
-  }
-  
-  let width;
-  let height;
-  if (props?.pointText?.settings?.width && props?.pointText?.settings?.height) {
-    style.aspectRatio = `${props?.pointText?.settings?.width} / ${props?.pointText?.settings?.height}`
-    width = props?.pointText?.settings?.width
-    height = props?.pointText?.settings?.height
-  }
 
   return (
-    <div className="wrapperForRatio" style={{height,}}>
+    <div className="wrapperForRatio" style={{ aspectRatio, }}>
       <div
         className='pointTextLayer'
-        style={{...style, width,}}
+        style={{ objectFit, aspectRatio, }}
       >
         {props?.pointText?.content?.map((item, index) => {
           return (

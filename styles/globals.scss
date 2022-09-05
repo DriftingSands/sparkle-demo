@@ -295,13 +295,23 @@ button {
   }
 }
 
-.pointTextLayer{
+.wrapperForRatio {
   position: absolute;
+  left: 0;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
+}
+.pointTextLayer{
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
   
   
   .pointTextItemWrapper {
@@ -366,10 +376,10 @@ button {
     .dot {
       background-color: white;
       border: black solid 2px;
-      margin-bottom: -10px;
+      margin-bottom: -15px;
       border-radius: 50%;
-      width: 20px;
-      min-height: 20px;
+      width: 30px;
+      min-height: 30px;
     }
   }
 }
