@@ -41,8 +41,10 @@ export default {
             right: "-10%",
             bottom: "-20%",
             scale: 0.8,
+            transformOrigin: 'bottom right',
           },
           to: {
+            transformOrigin: 'bottom right',
             right: "0%",
             bottom: "0%",
             scale: 1,
@@ -61,10 +63,9 @@ export default {
               "90%": { y: "100%" },
             },
             scrollTrigger: {
-              trigger: "#biker-layer",
+              trigger: "#intro",
               start: "0px top",
               end: "100% top",
-              toggleActions: "play reverse play reverse",
               scrub: 0.5,
               snap: {
                 snapTo: [0, 1],
@@ -119,7 +120,7 @@ export default {
           },
           {
             type: "h2",
-            styles: [],
+            styles: [ ],
             content: "The most exciting \n experiences.",
           },
         ],
@@ -414,18 +415,17 @@ export default {
           },
           to: {
             background: 'linear-gradient(90deg, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0) 100%)',
-            ease: 'power2.inOut',
-            duration: 1.5,
-            scrollTrigger: {
-              trigger: '#outdoorPassion',
-              start: 'top bottom',
-              end: 'top top',
-              snap: {
-                snapTo: [0, 1],
-                delay: 0,
-              },
-              scrub: 0.5,
-            },
+            // ease: 'power2.inOut',
+            // scrollTrigger: {
+            //   trigger: '#outdoorPassion',
+            //   start: 'top bottom',
+            //   end: 'top top',
+            //   snap: {
+            //     snapTo: [0, 1],
+            //     delay: 0,
+            //   },
+            //   scrub: 0.5,
+            // },
           },
         },
         {
@@ -475,6 +475,21 @@ export default {
             },
           }
         },
+        {
+          selector: '#outdoorPassion',
+          to: {
+            scrollTrigger: {
+              trigger: '#outdoorPassion',
+              start: 'top bottom',
+              end: 'bottom bottom',
+              scrub: 0.5,
+              snap: {
+                delay: 0,
+                snapTo: [0, 1],
+              }
+            },
+          }
+        },
       ],
       background: {
         path: '/WKND SPA/hybrid/AdobeStock_427738038.jpeg',
@@ -484,7 +499,7 @@ export default {
         leftBox: [
           {
             type: "h3",
-            styles: [],
+            styles: ['thin'],
             content: "Your dates, your ride distances\nand your style of lodging!",
           },
           {
@@ -617,13 +632,13 @@ export default {
           },
           to: {
             y: '-10%',
-            duration: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#intoTheNature1',
-              start: '80% top',
+              start: '20% top',
               toggleActions: 'play none none reverse'
             },
-            ease: 'none'
+            ease: 'power1.inOut'
           },
         },
         {
@@ -689,7 +704,7 @@ export default {
           },
           {
             type: "h2",
-            styles: [],
+            styles: ['thin', ],
             content: "From coastal paths\nto hilltop climbs.",
           },
         ],
@@ -762,7 +777,7 @@ export default {
         leftBox: [
           {
             type: "h2",
-            styles: [],
+            styles: ['thin', ],
             content: "From coastal paths\nto hilltop climbs.",
           },
           {
@@ -981,7 +996,6 @@ export default {
         },
       ],
       textLayer: {
-        type: 'column',
         column: [
           {
             type: 'h3',
@@ -993,14 +1007,14 @@ export default {
           {
             id: 't1',
             type: 'h2',
-            styles: ['alignCenter'],
+            styles: ['alignCenter', 'thin'],
             content: "What's better than\nnature by night?",
             zIndex: '-3',
           },
           {
             id: 't2',
             type: 'span',
-            styles: ['bold', 'white', 'alignCenter', 'L'],
+            styles: ['white', 'alignCenter', 'L', 'uppercase'],
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
             zIndex: '-3',
           },
@@ -1056,8 +1070,6 @@ export default {
           zIndex: '28',
         },
       ],
-
-
 
       menu: {
         menuItems: [

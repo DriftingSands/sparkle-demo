@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@font-face {
+  font-family: Adobe Clean;
+  src: url('../public/AdobeClean-Regular.otf');
+}
+
 $yellow: #ffea00;
 $blue: #0e67cf;
 $dark: #202020;
 $gray: #605e41;
+
+
+* {
+  font-family: Source Sands Pro
+}
+
+h1 {
+  font-family: Bebas Neue;
+}
 
 
 
@@ -60,13 +77,13 @@ button {
 }
 
 .yellowBox {
+  font-family: Bebas Neue;
   background-color: $yellow;
   padding: 6px;
   text-transform: uppercase;
 }
 
 .menuWrapper {
-  z-index: 50;
   
   .menuList {
     list-style: none;
@@ -76,21 +93,37 @@ button {
       border-right: 2px solid black;
       padding: 8px 6px;
       font-weight: 400;
-      // transition: all 0.3s ease-in-out;
-
+      letter-spacing: 0.28px;
+      font-family: Source Sans Pro;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: all 0.3s ease-in-out;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      
       &:hover, &:focus, &.active {
+        transition: all 0.3s ease-in-out;
+        font-size: 18px;
+        letter-spacing: 0.36px;
         border-right: 4px solid black;
         padding-right: 5px;
         margin-right: -1px;
         font-weight: 600;
+      }
+      &.active {
+        cursor: default;
       }
     }
   }
 }
 
 .logoText {
-  font-size: 42px;
-  font-weight: 800;
+  font-size: 48px;
+  font-weight: 600;  
+  letter-spacing: 2px;
 }
 .arrowButton {
   background-color: transparent;
@@ -128,27 +161,49 @@ button {
 }
 
 .header {
+  font-family: Bebas Neue;
   position: absolute;
   top: 0;
   left: 0;
   height: 100px;
   width: 100%;
+  padding: 0 10%;
   z-index: 100;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
+  .left {
+    font-size: 48px;
+  }
+  
   .middle {
     display: flex;
     gap: 20px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
+    letter-spacing: 2px;
+    a h4 {
+      font-family: Source Sans Pro;
+      letter-spacing: 0.28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
   }
-
+  
   .right {
     display: flex;
     align-items: center;
+    span {
+      font-family: Source Sans Pro;
+      letter-spacing: 0.28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .accountIcon {
+      margin-right: 0;
+    }
   }
 }
 .darkScene {
@@ -217,6 +272,7 @@ button {
 .textLayer {
   height: 100%;
   width: 100%;
+  padding: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -226,20 +282,34 @@ button {
 
   .h2 {
     font-size: 42px;
+    font-family: Source Serif Pro;
   }
   .h3 {
     font-size: 34px;
+    font-family: Source Serif Pro;
+  }
+  .thin {
+    font-weight: 400;
+  }
+  .bold {
+    font-weight: 700;
   }
   .yellowBox {
     color: black;
+    font-family: Source Sans Pro;
+    letter-spacing: 0.4px;
+    
     &.h2{font-size: 18px;}
     &.h3{font-size: 14px;}
   }
   
   .left, .right {
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
+    > * {
+      font-weight: 600;
+    }
   }
   .left {
     // justify-content: start;
@@ -252,17 +322,23 @@ button {
   }
 
   .columnWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
-    width: 30%;
   }
 
   .span {
     color: $gray;
     font-size: 14px;
+    font-family: Source Sans Pro;
     &.L {font-size: 18px;}
   }
 
@@ -282,12 +358,14 @@ button {
   }
 
   .yellowButton {
-    font-size: 10px;
+    font-size: 14px;
     padding: 12px 16px;
     font-weight: 600;
+    font-family: Source Sans Pro;
   }
   .darkButton {
-    font-size: 10px;
+    font-family: Source Sans Pro;
+    font-size: 14px;
     padding: 12px 16px;
     font-weight: 600;
     color: white;
@@ -331,14 +409,15 @@ button {
       color: white;
       border-radius: 4px;
       position: relative;
+      cursor: pointer;
       
       .text {
+        font-family: Adobe Clean;
         transition: all .3s ease-in-out;
         opacity: 1;
       }
       .buyText {
         position: absolute;
-        cursor: pointer;
         text-align: center;
         padding: 0px 4px 3px 4px;
         top: 50%;
@@ -348,9 +427,11 @@ button {
         width: 90%;
         border: 2px solid white;
         border-radius: 999px;
+        background-color: $blue;
         
         transition: all .3s ease-in-out;
         opacity: 0;
+        > a {font-family: Adobe Clean;}
       }
     }
     .textWrapper:hover {
@@ -401,10 +482,6 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  // overflow: hidden;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   
   .backgroundImage {
     object-fit: cover;
