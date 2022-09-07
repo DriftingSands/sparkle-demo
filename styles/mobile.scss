@@ -1,0 +1,143 @@
+@import './variables';
+
+.mobileHeaderWrapper {
+  position: fixed;
+  z-index: 90;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  * {font-family: Source Sans Pro;}
+  .logo {
+    font-family: Bebas Neue;
+    letter-spacing: 1px;
+  }
+
+  .mainHeader {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    gap: 20px;
+    height: 60px;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  
+  .profileIconWrapper {
+    margin-left: auto;
+    aspect-ratio: 1;
+    height: 90%;
+  }
+
+  .menuProfileIcon {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+
+  .menuButton {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    padding: 16px;
+    cursor: pointer;
+    background-color: white;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .headerNavigation {
+    position: relative;
+
+    .navigationButton {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+    }
+
+    .navigationMenu {
+      position: absolute;
+      opacity: 0;
+      top: 100%;
+      left: 0;
+      z-index: 90;
+      background-color: $dark;
+      padding: 8px;
+      color: white;
+      width: 100%;
+      cursor: pointer;
+      display: none;
+      transition: all 0.5s ease-in-out;
+      
+      &.open {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  .headerMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 60%;
+    height: 100%;
+    z-index: 100;
+    transform: translate(-100%, 0%);
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    
+
+    &.open {
+      transform: translate(0%, 0%);
+    }
+    .top {
+      height: 60px;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    .list {
+      flex-grow: 1;
+      padding: 60px 0px;
+
+      border: 0px;
+      border-top: 2px solid blue;
+      border-image: linear-gradient(90deg, #ffffff 0%, #ffffff 9%, #D6D6D6 10%, #D6D6D6 60%, #ffffff 61% ) 1;
+
+      
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      li {
+        list-style: none;
+      }
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15%;
+      text-transform: uppercase;
+      font-weight: 600;
+
+      > img {
+        border-radius: 50%;
+      }
+    }
+  }
+}

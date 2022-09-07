@@ -5,7 +5,7 @@ import TextLayer from '../components/TextLayer';
 import Header from './Header';
 import { TimelineProvider } from './TimelineWrapper';
 
-export default function Scene({scene}) {
+export default function Scene({scene, settings}) {
   const createTimeline = useContext(TimelineProvider)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Scene({scene}) {
 
   return (
     <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id} >
-      <Header />
+      {settings?.header === 'mobile' ? null : <Header />}
       <Background backgroundProps={scene.background} />
         {scene?.images?.map((image, index) => {
           return <LayerImage

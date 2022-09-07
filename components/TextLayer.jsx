@@ -7,7 +7,7 @@ export default function TextLayer(props) {
       {props?.data?.pointText && <PointTextMap pointText={props?.data?.pointText} />}
 
       {props.data.column && 
-        <div className="columnWrapper">
+        <div className={`columnWrapper ${props?.data?.settings?.noPadding ? 'noPadding' : ''}`}>
           {props?.data?.column?.map((item, index) => {
             return (
               <item.type
@@ -39,7 +39,7 @@ export default function TextLayer(props) {
       </div>
 
       <div className="right" style={{ transform: 'translate(1px, 1px)'}} >
-        <Menu menuItems={props.menu.menuItems} />
+        {props?.menu?.menuItems && <Menu menuItems={props.menu.menuItems} />}
       </div>
     </div>
   );
