@@ -5,7 +5,7 @@ import data from '../components/_mobileData'
 export default function Home() {
   return (
     <div className={'page'} style={{maxWidth: data?.settings?.maxWidth}} >
-      {data.settings.header === 'mobile' && <MobileHeader />}
+      {data.settings.header === 'mobile' && <MobileHeader maxWidth={data?.settings?.maxWidth} />}
       {
         data.scenes.map((scene, index) => {
           return (

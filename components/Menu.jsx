@@ -1,13 +1,6 @@
-export default function Menu({ menuItems }) {
+import { scrollToId } from './utils';
 
-  const scrollToId = (id) => {
-    if (!id.startsWith('#')) return
-    const element = document.getElementById(id.substring(1))
-    window.scrollBy({
-      top: element.getBoundingClientRect().top,
-      behavior: 'smooth',
-    })
-  }
+export default function Menu({ menuItems }) {
 
   return (
     <div className="menuWrapper">

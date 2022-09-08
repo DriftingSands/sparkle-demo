@@ -1,6 +1,7 @@
+import { scrollToId } from './utils';
 import { useState } from 'react';
 
-export default function MobileHeader() {
+export default function MobileHeader({maxWidth}) {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNav, setOpenNav] = useState(false)
 
@@ -24,14 +25,14 @@ export default function MobileHeader() {
   ]
 
   return (
-    <header className="mobileHeaderWrapper">
+    <header className="mobileHeaderWrapper" style={{maxWidth, }} >
 
       <div className="mainHeader">
-        <button className="menuButton" onClick={() => setOpenMenu(true)}>
+        <button className={`menuButton ${openMenu ? 'menuOpen' : 'menuClosed'}`} onClick={() => setOpenMenu(true)}>
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18" > <defs></defs> <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="8" />  <rect className="fill" height="2" rx="0.5" width="14" x="2" y="3" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="13" /> </svg> 
         </button>
 
-        <h1 className='logo'>WKND</h1>
+        <h1 className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`}>WKND</h1>
 
         <a className='profileIconWrapper' ><img className='menuProfileIcon' src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" /></a>
       </div> 
@@ -45,14 +46,14 @@ export default function MobileHeader() {
         <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>
           <ul>
             {menuItems.map((item, index) => {
-              return <a href={item.link} key={index}><li> {item.title} </li></a>
+              return <a onClick={() => {scrollToId(item.link); setOpenNav(false)}} key={index}><li> {item.title} </li></a>
             })}
           </ul>
         </menu>
       </nav>
 
 
-      <menu className={`headerMenu ${openMenu ? 'open' : 'closed'}`}>
+      <menu className={`headerMenu ${openMenu ? 'open' : 'closed'}`} style={{maxWidth: maxWidth ? (maxWidth * 0.6) : null, }} >
         <div className='top'>
           <button className='closeButton menuButton' onClick={() => setOpenMenu(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
