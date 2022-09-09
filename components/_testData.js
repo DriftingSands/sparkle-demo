@@ -111,77 +111,89 @@ export default {
           },
         },
       ],
-      textLayer: {
-        leftBox: [
-          {
-            type: "h3",
-            styles: ["yellowBox"],
-            content: "outdoor passion",
+      layers: [
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
+            altText: "rocks1",
+            id: "rocks1",
+            overflow: false,
+            basePosition: "bottom-left",
           },
-          {
-            type: "h2",
-            styles: [ ],
-            content: "The most exciting \n experiences.",
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
+            altText: "rocks2",
+            id: "rocks2",
+            overflow: false,
+            basePosition: "bottom-left",
           },
-        ],
-        rightBox: [],
-      },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
+            altText: "rocks3",
+            id: "rocks3",
+            overflow: false,
+            basePosition: "bottom-right",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
+            altText: "biker",
+            fit: 'contain',
+            id: "biker",
+            layerId: "biker-layer",
+            overflow: true,
+            basePosition: "center-center",
+          },
+        },
+        {type: 'text',
+          content: {
+            leftBox: [
+              {
+                type: "h3",
+                styles: ["yellowBox"],
+                content: "outdoor passion",
+              },
+              {
+                type: "h2",
+                styles: [ ],
+                content: "The most exciting \n experiences.",
+              },
+            ],
+            rightBox: [
+              {
+                type: 'menu',
+                menuItems: [
+                  {
+                    text: "Intro",
+                    link: "#intro",
+                    active: true,
+                  },
+                  {
+                    text: "Outdoor Passion",
+                    link: "#outdoorPassion",
+                  },
+                  {
+                    text: "Into the Nature",
+                    link: "#intoTheNature",
+                  },
+                  {
+                    text: "Up to the Sky",
+                    link: "#upToTheSky",
+                  },
+                ],
+              }
+            ],
+          }
+        },
+      ],
       background: {
         path: "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
         altText: "sky",
-      },
-      images: [
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
-          altText: "rocks1",
-          id: "rocks1",
-          overflow: false,
-          basePosition: "bottom-left",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
-          altText: "rocks2",
-          id: "rocks2",
-          overflow: false,
-          basePosition: "bottom-left",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
-          altText: "rocks3",
-          id: "rocks3",
-          overflow: false,
-          basePosition: "bottom-right",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
-          altText: "biker",
-          fit: 'contain',
-          id: "biker",
-          layerId: "biker-layer",
-          overflow: true,
-          basePosition: "center-center",
-        },
-      ],
-      menu: {
-        menuItems: [
-          {
-            text: "Intro",
-            link: "#intro",
-            active: true,
-          },
-          {
-            text: "Outdoor Passion",
-            link: "#outdoorPassion",
-          },
-          {
-            text: "Into the Nature",
-            link: "#intoTheNature",
-          },
-          {
-            text: "Up to the Sky",
-            link: "#upToTheSky",
-          },
-        ],
       },
     },
 
