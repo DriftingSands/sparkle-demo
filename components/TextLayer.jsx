@@ -7,7 +7,7 @@ export default function TextLayer(props) {
       {props?.data?.pointText && <PointTextMap pointText={props?.data?.pointText} />}
 
       {props.data.column && 
-        <div className={`columnWrapper ${props?.data?.settings?.noPadding ? 'noPadding' : ''}`}>
+        <div className={`columnWrapper ${props?.data?.settings?.textPosition || ''} ${props?.data?.settings?.noPadding ? 'noPadding' : ''}`}>
           {props?.data?.column?.map((item, index) => {
             return (
               <item.type

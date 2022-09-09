@@ -1,11 +1,13 @@
 import { scrollToId } from './utils';
-import { useState } from 'react';
+import { debounce } from 'lodash/debounce'
+import { useEffect, useState } from 'react';
 
 export default function MobileHeader({maxWidth}) {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNav, setOpenNav] = useState(false)
+  const [navLabel, setNavLabel] = useState('Intro')
 
-  const menuItems = [
+  const navItems = [
     {
       title: 'Intro',
       link: '#intro',
@@ -24,6 +26,37 @@ export default function MobileHeader({maxWidth}) {
     },
   ]
 
+  function debounce(func, wait) {
+    let timeout;
+    return () => {
+      if (timeout) {
+          clearTimeout(timeout);
+      }
+      timeout = setTimeout(func, wait)
+    }
+  }
+
+
+  const handleScroll = debounce(() => {
+    let newLabel = null;
+    for (let i = 0; i < navItems.length; i++) {
+      const element = document.getElementById(navItems[i].link.substring(1))
+      if (!element) {continue}
+      const rect = element.getBoundingClientRect()
+      if (rect.top < (window.innerHeight / 2)) {
+        newLabel = navItems[i].link.substring(1)
+        console.log("\x1b[31m~ newLabel", newLabel)
+      }        
+    }
+    newLabel && setNavLabel(newLabel)
+  }, 100)
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  
+
   return (
     <header className="mobileHeaderWrapper" style={{maxWidth, }} >
 
@@ -39,13 +72,13 @@ export default function MobileHeader({maxWidth}) {
 
       <nav className="headerNavigation">
         <button className="navigationButton" onClick={() => setOpenNav(!openNav)} >
-          <span>outdoor passion</span>
+          <span>{navLabel}</span>
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18"  width="18" > <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <path className="fill" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" /> </svg>
         </button>
 
         <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>
           <ul>
-            {menuItems.map((item, index) => {
+            {navItems.map((item, index) => {
               return <a onClick={() => {scrollToId(item.link); setOpenNav(false)}} key={index}><li> {item.title} </li></a>
             })}
           </ul>

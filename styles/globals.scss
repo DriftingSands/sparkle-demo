@@ -334,6 +334,15 @@ button {
     align-items: center;
     justify-content: center;
     gap: 50px;
+
+    &.top-left{justify-content: flex-start;align-items: flex-start;}
+    &.top-center{justify-content: flex-start;align-items: center;}
+    &.top-right{justify-content: flex-start;align-items: flex-end;}
+    &.center-left{justify-content: center;align-items: flex-start;}
+    &.center-right{justify-content: center;align-items: flex-end;}
+    &.bottom-left{justify-content: flex-end;align-items: flex-start;}
+    &.bottom-center{justify-content: flex-end;align-items: center;}
+    &.bottom-right{justify-content: flex-end;align-items: flex-end;}
   }
 
   .span {

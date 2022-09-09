@@ -36,9 +36,9 @@ export default {
           },
         },
         {
-          selector: '#introText0',
-          from: {y: '30vh'},
-          to: {y: '30vh'},
+          selector: '#bikerTextLayer',
+          from: {y: '-10%'},
+          to: {y: '-10%'},
         },
         {
           selector: '#rocks1',
@@ -59,7 +59,9 @@ export default {
       textLayer: {
         settings: {
           noPadding: true,
+          textPosition: 'bottom-center',
         },
+        id: 'bikerTextLayer',
         column: [
           {
             type: "h2",
@@ -352,8 +354,8 @@ export default {
         },
         {
           selector: '#outdoorTextLayer',
-          from: {y: '30%'},
-          to: {y: '30%'},
+          from: {y: '-10%'},
+          to: {y: '-10%'},
         },
       ],
       background: {
@@ -363,7 +365,8 @@ export default {
       textLayer: {
         id: 'outdoorTextLayer',
         settings: {
-          noPadding: true
+          noPadding: true,
+          textPosition: 'bottom-center',
         },
         column: [
           {
@@ -408,12 +411,13 @@ export default {
         {
           selector: '#intoTheNature #mountains',
           from: {y: '50%', scale: 1.2, transformOrigin: 'bottom right', x: '20%', },
-          to: {y: '50%', scale: 1.2, transformOrigin: 'bottom right', x: '0%', 
+          to: {y: '47%', scale: 1.4, transformOrigin: 'bottom right', x: '20%', 
             scrollTrigger: {
               trigger: '#intoTheNature',
               toggleActions: 'play none none reverse',
-              start: '30% top',
+              start: '10% top',
             },
+            duration: 1,
           },
         },
         {
@@ -423,19 +427,20 @@ export default {
         },
         {
           selector: '#intoTheNature #water-layer',
-          from: {y: '0%', scale: 2, transformOrigin: 'bottom center', x: '-50%', },
-          to: {y: '0%', scale: 2, transformOrigin: 'bottom center', x: '50%', 
+          from: {y: '0%', scale: 2, transformOrigin: 'bottom center', x: '50%', },
+          to: {y: '0%', scale: 2.2, transformOrigin: 'bottom center', x: '50%', 
             scrollTrigger: {
               trigger: '#intoTheNature',
               toggleActions: 'play none none reverse',
-              start: '30% top',
+              start: '10% top',
             },
+            duration: 1,
           },
         },
         {
           selector: '#intoTheNature #female-hiker-layer',
-          from: {y: '25%', scale: 0.4, x: '0%', },
-          to: {y: '95%', scale: 0.5, x: '0%', 
+          from: {y: '0%', scale: 0.4, transformOrigin: 'bottom center', },
+          to: {y: '63%', scale: 0.5, transformOrigin: 'bottom center', 
             scrollTrigger: {
               trigger: '#intoTheNature',
               start: 'top top',
@@ -451,8 +456,8 @@ export default {
         },
         {
           selector: '#hikerGirlTextLayer',
-          from: {y: '-20%', },
-          to: {y: '-20%', },
+          from: {y: '152px', },
+          to: {y: '152px', },
         },
       ],
       background: {
@@ -491,6 +496,7 @@ export default {
       textLayer: {
         settings: {
           noPadding: true,
+          textPosition: 'top-center',
         },
         id: 'hikerGirlTextLayer',
         column: [
@@ -535,8 +541,8 @@ export default {
         },
         {
           selector: '#intoTheNature1-textLayer .columnWrapper',
-          from: {gap: '20px', y: '35%'},
-          to: {gap: '20px', y: '35%'},
+          from: {gap: '20px', y: '-20px'},
+          to: {gap: '20px', y: '-20px'},
         },
         {
           selector: '#intoTheNature1',
@@ -557,6 +563,7 @@ export default {
       textLayer: {
         settings: {
           noPadding: true,
+          textPosition: 'bottom-center',
         },
         id: 'intoTheNature1-textLayer',
         column: [
@@ -718,15 +725,16 @@ export default {
             transformOrigin: 'bottom center',
           },
         },
+        {selector: '#upToTheSky #tent', from: {x: '-1%'}, to: {x: '-1%'}}, // prettier ignore
         {
           selector: '#upToTheSky #tent-layer',
           from: {
-            scale: 2,
+            scale: 3,
             transformOrigin: 'bottom center',
             y: '35%',
           },
           to: {
-            scale: 2,
+            scale: 3.4,
             transformOrigin: 'bottom center',
             y: '0%',
             scrollTrigger: {

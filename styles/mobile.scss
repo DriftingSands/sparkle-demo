@@ -35,12 +35,15 @@ $transition: all 0.3s ease-in-out;
   .profileIconWrapper {
     margin-left: auto;
     aspect-ratio: 1;
-    height: 90%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .menuProfileIcon {
-    max-height: 100%;
-    max-width: 100%;
+    min-height: 100%;
+    min-width: 100%;
     border-radius: 50%;
   }
 
