@@ -1,5 +1,4 @@
 import { scrollToId } from './utils';
-import { debounce } from 'lodash/debounce'
 import { useEffect, useState } from 'react';
 
 export default function MobileHeader({maxWidth}) {
@@ -45,8 +44,7 @@ export default function MobileHeader({maxWidth}) {
       const rect = element.getBoundingClientRect()
       if (rect.top < (window.innerHeight / 2)) {
         newLabel = navItems[i].link.substring(1)
-        console.log("\x1b[31m~ newLabel", newLabel)
-      }        
+      }
     }
     newLabel && setNavLabel(newLabel)
   }, 100)
