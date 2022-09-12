@@ -1,20 +1,19 @@
 import Menu from "./Menu";
 import PointTextMap from './PointTextMap';
 
-export default function TextLayer(props) {
+export default function TextLayer({data, settings}) {
   return (
-    <div className={"textLayer"} id={props?.data?.id}>
-      {props?.data?.pointText && <PointTextMap pointText={props?.data?.pointText} />}
+    <div className={"textLayer"} id={data?.id}>
+      {data?.pointText && <PointTextMap pointText={data?.pointText} />}
 
-      {props.data.column && 
-        <div className={`columnWrapper ${props?.data?.settings?.textPosition || ''} ${props?.data?.settings?.noPadding ? 'noPadding' : ''}`}>
-          {props?.data?.column?.map((item, index) => {
+      {data?.column && 
+        <div className={`columnWrapper ${settings?.textPosition || ''} ${settings?.noPadding ? 'noPadding' : ''}`}>
+          {data?.column?.map((item, index) => {
             return (
               <item.type
                 key={index}
                 className={`${item.type} ${item?.styles?.join(' ')}`}
                 id={item.id}
-                style={{zIndex: item.zIndex}}
               >
                 {item.content}
               </item.type>
@@ -24,13 +23,12 @@ export default function TextLayer(props) {
       }
 
       <div className="left">
-        {props?.data?.leftBox?.map((item, index) => {
+        {data?.leftBox?.map((item, index) => {
           return (
             <item.type
             key={index}
             className={`${item.type} ${item?.styles?.join(' ')}`}
             id={item.id}
-            style={{zIndex: item.zIndex}}
             >
               {item.content}
             </item.type>
@@ -38,8 +36,19 @@ export default function TextLayer(props) {
         })}
       </div>
 
-      <div className="right" style={{ transform: 'translate(1px, 1px)'}} >
-        {props?.menu?.menuItems && <Menu menuItems={props.menu.menuItems} />}
+      <div className="right" >
+        {data?.rightBox?.map((item, index) => {
+          const Component = item.type === 'menu' ? Menu : item.type
+          return (
+            <Component menuItems={item.menuItems}
+              key={index}
+              className={`${item.type} ${item?.styles?.join(' ')}`}
+              id={item.id}
+            >
+              {item.content}
+            </Component>
+          )
+        })}
       </div>
     </div>
   );

@@ -5,6 +5,11 @@ import TextLayer from '../components/TextLayer';
 import Header from './Header';
 import { TimelineProvider } from './TimelineWrapper';
 
+const lookupObject = {
+  image: LayerImage,
+  text: TextLayer
+}
+
 export default function Scene({scene, settings}) {
   const createTimeline = useContext(TimelineProvider)
 
@@ -13,17 +18,23 @@ export default function Scene({scene, settings}) {
     createTimeline(scene.timelineAnimations, scene.timelineAnimationSettings)
   }, [])
 
+
   return (
     <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id} >
       {settings?.header === 'mobile' ? null : <Header />}
-      <Background backgroundProps={scene.background} />
-        {scene?.images?.map((image, index) => {
+      {scene?.background && <Background backgroundProps={scene.background} />}
+      {scene?.layers?.length && scene.layers.map((layer, index) => {
+        const Component = lookupObject[layer.type]
+        if (!Component) {return null}
+        return <Component data={layer.content} settings={layer.settings} key={index} />
+      })}
+        {/* {scene?.images?.map((image, index) => {
           return <LayerImage
             imageData={image}
             key={index}
           />
           })}
-      <TextLayer data={scene.textLayer} menu={scene.menu} />
+      <TextLayer data={scene.textLayer} menu={scene.menu} /> */}
     </div>
   )
 }

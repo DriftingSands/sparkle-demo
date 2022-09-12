@@ -3,12 +3,13 @@ import { gsap } from "gsap/dist/gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function LayerImage({ imageData }) {
-  const { layerId, id, path, altText, overflow, basePosition, debug, fit, zIndex } = imageData
+export default function LayerImage({ data, settings }) {
+  const { path, altText } = data
+  const { layerId, id, overflow, basePosition, debug, fit } = settings
 
   return (
-    <div id={layerId} style={{zIndex,}} className={`layerImage ${fit} ${basePosition} ${debug ? 'debug' : ''} ${overflow ? 'showOverflow' : 'hideOverflow' }`}>
-      <img id={id} style={{zIndex,}} className='image' src={`${path}`} alt={`${altText}`} />
+    <div id={layerId} className={`layerImage ${fit} ${basePosition} ${debug ? 'debug' : ''} ${overflow ? 'showOverflow' : 'hideOverflow' }`}>
+      <img id={id} className='image' src={`${path}`} alt={`${altText}`} />
     </div>
   )
 }
