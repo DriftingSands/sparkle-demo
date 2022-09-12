@@ -3,7 +3,7 @@ import PointTextMap from './PointTextMap';
 
 export default function TextLayer({data, settings}) {
   return (
-    <div className={"textLayer"} id={data?.id}>
+    <div className={"textLayer"} id={settings?.id}>
       {data?.pointText && <PointTextMap pointText={data?.pointText} />}
 
       {data?.column && 

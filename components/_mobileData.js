@@ -32,7 +32,7 @@ export default {
                 delay: 0,
               },
             },
-            ease: 'none',
+            ease: 'power1.inOut',
           },
         },
         {
@@ -112,7 +112,7 @@ export default {
               {
                 type: "h2",
                 id: 'introText0',
-                styles: ['alignCenter', ],
+                styles: ['alignCenter', 'thin'],
                 content: "The most exciting \n experiences.",
               },
             ],
@@ -120,8 +120,8 @@ export default {
           settings: {
             noPadding: true,
             textPosition: 'bottom-center',
+            id: 'bikerTextLayer',
           },
-          id: 'bikerTextLayer',
         },
       ],
       background: {
@@ -154,11 +154,10 @@ export default {
             y: '65%',
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -172,11 +171,10 @@ export default {
           to: {
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -192,11 +190,10 @@ export default {
             y: '65%',
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -210,11 +207,10 @@ export default {
           to: {
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -230,11 +226,10 @@ export default {
             y: '65%',
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -248,11 +243,10 @@ export default {
           to: {
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -268,11 +262,10 @@ export default {
             y: '65%',
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -286,11 +279,10 @@ export default {
           to: {
             opacity: 1,
             scale: 0.4,
-            duration: 0.5, delay: 1,
+            duration: 0.5,
             scrollTrigger: {
               trigger: '#pointLayerId1',
-              start: '20% 50%',
-              end: '100% 10%',
+              start: '30% 50%',
               toggleActions: 'play none none reverse'
             }
           }
@@ -301,8 +293,10 @@ export default {
       },
       layers: [
         {type: 'text',
-          content: {
+          settings: {
             id: 'pointLayerId1',
+          },
+          content: {
             pointText: {
               settings: {
                 imgSelector: '#biker',
@@ -385,8 +379,8 @@ export default {
       },
       layers: [
         {type: 'text',
-          id: 'outdoorTextLayer',
-          settings: {
+        settings: {
+            id: 'outdoorTextLayer',
             noPadding: true,
             textPosition: 'bottom-center',
           },
@@ -476,7 +470,7 @@ export default {
                 delay: 0,
               },
             },
-            ease: 'none',
+            ease: 'power1.inOut',
           },
         },
         {
@@ -548,8 +542,8 @@ export default {
           settings: {
             noPadding: true,
             textPosition: 'top-center',
+            id: 'hikerGirlTextLayer',
           },
-          id: 'hikerGirlTextLayer',
         },
       ],
     },
@@ -581,8 +575,8 @@ export default {
         },
         {
           selector: '#intoTheNature1-textLayer .columnWrapper',
-          from: {gap: '20px', y: '-20px'},
-          to: {gap: '20px', y: '-20px'},
+          from: {gap: '15px', y: '-60px'},
+          to: {gap: '15px', y: '-60px'},
         },
         {
           selector: '#intoTheNature1',
@@ -605,13 +599,13 @@ export default {
           settings: {
             noPadding: true,
             textPosition: 'bottom-center',
+            id: 'intoTheNature1-textLayer',
           },
-          id: 'intoTheNature1-textLayer',
           content: {
             column: [
               {
                 type: "h2",
-                styles: ['thin', 'alignCenter', 'S'],
+                styles: ['thin', 'alignCenter', 'XS'],
                 content: "Your dates, your distances\nand your style of lodging!",
               },
               {
@@ -771,15 +765,28 @@ export default {
         },
         {selector: '#upToTheSky #tent', from: {x: '-1%'}, to: {x: '-1%'}}, // prettier ignore
         {
-          selector: '#upToTheSky #tent-layer',
+          selector: '#upToTheSky #tent',
           from: {
             scale: 3,
             transformOrigin: 'bottom center',
-            y: '35%',
           },
           to: {
             scale: 3.4,
             transformOrigin: 'bottom center',
+            scrollTrigger: {
+              trigger: '#upToTheSky',
+              start: 'top top',
+              end: '2% top',
+              toggleActions: 'play none none reverse',
+            }
+          },
+        },
+        {
+          selector: '#upToTheSky #tent-layer',
+          from: {
+            y: '35%',
+          },
+          to: {
             y: '0%',
             scrollTrigger: {
               trigger: '#upToTheSky',
@@ -834,8 +841,8 @@ export default {
           type: 'text',
           settings: {
             noPadding: true,
+            id: 'sky-textLayer',
           },
-          id: 'sky-textLayer',
           content: {
             column: [
               {

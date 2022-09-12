@@ -661,22 +661,6 @@ export default {
           ease: 'power4.out'
         },
         {
-          selector: '#intoTheNature #female-hiker',
-          from: {
-            y: '13%',
-          },
-          to: {
-            y: '-10%',
-            duration: 0.5,
-            scrollTrigger: {
-              trigger: '#intoTheNature1',
-              start: '20% top',
-              toggleActions: 'play none none reverse'
-            },
-            ease: 'power1.inOut'
-          },
-        },
-        {
           selector: '#intoTheNature .textLayer .left',
           from: {
             y: '120%',
@@ -913,7 +897,6 @@ export default {
             scrollTrigger: {
               pin: '#upToTheSky',
               trigger: '#upToTheSky',
-              // markers: true,
               start: 'top top',
               end: '20% top',
             },

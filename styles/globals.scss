@@ -58,6 +58,7 @@ button {
 
 .page {
   overflow: hidden;
+  margin: auto;
 }
 
 .button {
@@ -82,6 +83,7 @@ button {
 }
 
 .menuWrapper {
+  z-index: 100;
   
   .menuList {
     list-style: none;
@@ -227,8 +229,9 @@ button {
   }
   
   &.showOverflow {
-    overflow: initial;
+    overflow: visible;
     > .image {
+      overflow: visible;
       z-index: 100;
     }
   }
@@ -280,11 +283,13 @@ button {
     font-size: 42px;
     font-family: Source Serif Pro;
     &.S {font-size: 36px;}
+    &.XS {font-size: 26px;}
   }
   .h3 {
     font-size: 34px;
     font-family: Source Serif Pro;
     &.S {font-size: 28px;}
+    &.S {font-size: 18px;}
   }
   .thin {
     font-weight: 400;
@@ -485,7 +490,7 @@ button {
 }
 
 .backgroundWrapper {
-  z-index: -1;
+  z-index: -100;
   position: absolute;
   top: 0;
   left: 0;

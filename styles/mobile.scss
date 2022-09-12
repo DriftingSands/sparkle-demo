@@ -12,19 +12,21 @@ $transition: all 0.3s ease-in-out;
 
   * {font-family: Source Sans Pro;}
   .logo {
+    font-size: 28px;
+    margin-bottom: -3px;
     font-family: Bebas Neue;
     letter-spacing: 1px;
 
     transition: $transition;
     &.menuClosed {transform: translateX(0);}
-    &.menuOpen {transform: translateX(-60px)}
+    &.menuOpen {transform: translateX(-44px)}
   }
 
   .mainHeader {
     display: flex;
     align-items: center;
     padding-right: 10px;
-    gap: 20px;
+    // gap: 20px;
     height: 60px;
 
     position: sticky;
@@ -71,7 +73,7 @@ $transition: all 0.3s ease-in-out;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 12px;
+      padding: 12px 12px 12px 16px;
       cursor: pointer;
     }
 
@@ -127,7 +129,7 @@ $transition: all 0.3s ease-in-out;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0 16px;
     
     
     transition: $transition;
