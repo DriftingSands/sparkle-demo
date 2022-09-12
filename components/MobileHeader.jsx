@@ -43,7 +43,7 @@ export default function MobileHeader({maxWidth}) {
       if (!element) {continue}
       const rect = element.getBoundingClientRect()
       if (rect.top < (window.innerHeight / 2)) {
-        newLabel = navItems[i].link.substring(1)
+        newLabel = navItems[i].title
       }
     }
     newLabel && setNavLabel(newLabel)

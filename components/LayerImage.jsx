@@ -3,8 +3,8 @@ import { gsap } from "gsap/dist/gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function LayerImage({ content, settings }) {
-  const { path, altText } = content
+export default function LayerImage({ data, settings }) {
+  const { path, altText } = data
   const { layerId, id, overflow, basePosition, debug, fit } = settings
 
   return (

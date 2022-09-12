@@ -24,10 +24,9 @@ export default function Scene({scene, settings}) {
       {settings?.header === 'mobile' ? null : <Header />}
       {scene?.background && <Background backgroundProps={scene.background} />}
       {scene?.layers?.length && scene.layers.map((layer, index) => {
-        if (index > 4) return null
         const Component = lookupObject[layer.type]
         if (!Component) {return null}
-        return <Component content={layer.content} settings={layer.settings} key={index} />
+        return <Component data={layer.content} settings={layer.settings} key={index} />
       })}
         {/* {scene?.images?.map((image, index) => {
           return <LayerImage
