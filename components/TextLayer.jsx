@@ -36,7 +36,7 @@ export default function TextLayer({data, settings}) {
         })}
       </div>
 
-      <div className="right" style={{ transform: 'translate(1px, 1px)'}} >
+      <div className="right" >
         {data?.rightBox?.map((item, index) => {
           const Component = item.type === 'menu' ? Menu : item.type
           return (

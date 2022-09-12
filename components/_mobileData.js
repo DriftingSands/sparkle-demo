@@ -56,61 +56,78 @@ export default {
           to: {scale: 0.4, transformOrigin: 'bottom right', x: '10%'},
         },
       ],
-      textLayer: {
-        settings: {
-          noPadding: true,
-          textPosition: 'bottom-center',
-        },
-        id: 'bikerTextLayer',
-        column: [
-          {
-            type: "h2",
-            id: 'introText0',
-            styles: ['alignCenter', ],
-            content: "The most exciting \n experiences.",
+      layers: [
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
+            altText: "rocks1",
           },
-        ],
-        rightBox: [],
-      },
+          settings: {
+            id: "rocks1",
+            layerId: "rocks1-layer",
+            overflow: false,
+            basePosition: "bottom-left",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
+            altText: "rocks2",
+          },
+          settings: {
+            id: "rocks2",
+            layerId: "rocks2-layer",
+            overflow: false,
+            basePosition: "bottom-left",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
+            altText: "rocks3",
+          },
+          settings: {
+            id: "rocks3",
+            layerId: "rocks3-layer",
+            overflow: false,
+            basePosition: "bottom-right",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
+            altText: "biker",
+          },
+          settings: {
+            fit: 'contain',
+            id: "biker",
+            layerId: "biker-layer",
+            overflow: true,
+            basePosition: "center-center",
+          },
+        },
+        {type: 'text',
+          content: {
+            column: [
+              {
+                type: "h2",
+                id: 'introText0',
+                styles: ['alignCenter', ],
+                content: "The most exciting \n experiences.",
+              },
+            ],
+          },
+          settings: {
+            noPadding: true,
+            textPosition: 'bottom-center',
+          },
+          id: 'bikerTextLayer',
+        },
+      ],
       background: {
         path: "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
         altText: "sky",
       },
-      images: [
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
-          altText: "rocks1",
-          id: "rocks1",
-          layerId: "rocks1-layer",
-          overflow: false,
-          basePosition: "bottom-left",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
-          altText: "rocks2",
-          id: "rocks2",
-          layerId: "rocks2-layer",
-          overflow: false,
-          basePosition: "bottom-left",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
-          altText: "rocks3",
-          id: "rocks3",
-          layerId: "rocks3-layer",
-          overflow: false,
-          basePosition: "bottom-right",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
-          altText: "biker",
-          fit: 'contain',
-          id: "biker",
-          layerId: "biker-layer",
-          overflow: true,
-          basePosition: "center-center",
-        },
-      ],
     },
 
     //2nd Item
@@ -282,46 +299,50 @@ export default {
       background: {
         color: '#ffea00',
       },
-      textLayer: {
-        id: 'pointLayerId1',
-        pointText: {
-          settings: {
-            imgSelector: '#biker',
-            fit: 'contain',
-            // width: 6789,
-            // height: 3960,
+      layers: [
+        {type: 'text',
+          content: {
+            id: 'pointLayerId1',
+            pointText: {
+              settings: {
+                imgSelector: '#biker',
+                fit: 'contain',
+                // width: 6789,
+                // height: 3960,
+              },
+              content: [
+              {
+                id: 'buy-bikeHelmet',
+                text: 'Giro Adult Revel Bike Helmet',
+                price: '$49.99',
+                x: '11%',
+                y: '-30.5%',
+              },
+              {
+                id: 'buy-shorts',
+                text: 'Adult Cyclist City Shorts',
+                price: '$49.99',
+                x: '-2.8%',
+                y: '-14.2%',
+              },
+              {
+                id: 'buy-sneakers',
+                text: 'Enclave biking sneakers',
+                price: '$49.99',
+                x: '-7%',
+                y: '9.5%',
+              },
+              {
+                id: 'buy-tubes',
+                text: 'Major Tread Specialty Tubes',
+                price: '$49.99',
+                x: '21%',
+                y: '5%',
+              },
+            ]},
           },
-          content: [
-          {
-            id: 'buy-bikeHelmet',
-            text: 'Giro Adult Revel Bike Helmet',
-            price: '$49.99',
-            x: '11%',
-            y: '-30.5%',
-          },
-          {
-            id: 'buy-shorts',
-            text: 'Adult Cyclist City Shorts',
-            price: '$49.99',
-            x: '-2.8%',
-            y: '-14.2%',
-          },
-          {
-            id: 'buy-sneakers',
-            text: 'Enclave biking sneakers',
-            price: '$49.99',
-            x: '-7%',
-            y: '9.5%',
-          },
-          {
-            id: 'buy-tubes',
-            text: 'Major Tread Specialty Tubes',
-            price: '$49.99',
-            x: '21%',
-            y: '5%',
-          },
-        ]},
-      },
+        }
+      ],
     },
 
 
@@ -362,25 +383,29 @@ export default {
         path: '/WKND SPA/hybrid/AdobeStock_427738038.jpeg',
         altText: ''
       },
-      textLayer: {
-        id: 'outdoorTextLayer',
-        settings: {
-          noPadding: true,
-          textPosition: 'bottom-center',
-        },
-        column: [
-          {
-            type: "h3",
-            styles: ['thin', 'alignCenter', 'S'],
-            content: "Your dates, your ride distances\n and your style of lodging!",
+      layers: [
+        {type: 'text',
+          id: 'outdoorTextLayer',
+          settings: {
+            noPadding: true,
+            textPosition: 'bottom-center',
           },
-          {
-            type: "button",
-            styles: ["darkButton"],
-            content: "sign up",
+          content: {
+            column: [
+              {
+                type: "h3",
+                styles: ['thin', 'alignCenter', 'S'],
+                content: "Your dates, your ride distances\n and your style of lodging!",
+              },
+              {
+                type: "button",
+                styles: ["darkButton"],
+                content: "sign up",
+              },
+            ],
           },
-        ],
-      },
+        }
+      ],
     },
 
 
@@ -464,54 +489,69 @@ export default {
         path: '/WKND SPA/Outdoor Passion/Scene 2/sky.jpg',
         altText: '',
       },
-      images: [
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 2/mountains.png",
-          altText: "mountains",
-          fit: 'cover',
-          id: "mountains",
-          layerId: 'mountains-layer',
-          overflow: false,
-          basePosition: "bottom-right",
+      layers: [
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 2/mountains.png",
+            altText: "mountains",
+          },
+          settings: {
+            fit: 'cover',
+            id: "mountains",
+            layerId: 'mountains-layer',
+            overflow: false,
+            basePosition: "bottom-right",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 2/water.png",
+            altText: "water",
+          },
+          settings: {
+            fit: 'cover',
+            id: "water",
+            layerId: 'water-layer',
+            overflow: false,
+            basePosition: "bottom-right",
+          },
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.png",
+            altText: "female-hiker",
+          },
+          settings: {
+            fit: 'contain',
+            id: "female-hiker",
+            layerId: 'female-hiker-layer',
+            overflow: true,
+            basePosition: "bottom-center",
+          },
         },
         {
-          path: "/WKND SPA/Outdoor Passion/Scene 2/water.png",
-          altText: "water",
-          fit: 'cover',
-          id: "water",
-          layerId: 'water-layer',
-          overflow: false,
-          basePosition: "bottom-right",
-        },
-        {
-          path: "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.png",
-          altText: "female-hiker",
-          fit: 'contain',
-          id: "female-hiker",
-          layerId: 'female-hiker-layer',
-          overflow: true,
-          basePosition: "bottom-center",
+          type: 'text',
+          content: {
+            column: [
+              {
+                type: "h3",
+                styles: ["yellowBox"],
+                content: "into the nature",
+              },
+              {
+                type: "h2",
+                styles: ['thin', 'alignCenter', ],
+                content: "From coastal paths\nto hilltop climbs.",
+              },
+            ],
+          },
+          settings: {
+            noPadding: true,
+            textPosition: 'top-center',
+          },
+          id: 'hikerGirlTextLayer',
         },
       ],
-      textLayer: {
-        settings: {
-          noPadding: true,
-          textPosition: 'top-center',
-        },
-        id: 'hikerGirlTextLayer',
-        column: [
-          {
-            type: "h3",
-            styles: ["yellowBox"],
-            content: "into the nature",
-          },
-          {
-            type: "h2",
-            styles: ['thin', 'alignCenter', ],
-            content: "From coastal paths\nto hilltop climbs.",
-          },
-        ],
-      },
     },
 
 
@@ -560,30 +600,34 @@ export default {
           }
         },
       ],
-      textLayer: {
-        settings: {
-          noPadding: true,
-          textPosition: 'bottom-center',
-        },
-        id: 'intoTheNature1-textLayer',
-        column: [
-          {
-            type: "h2",
-            styles: ['thin', 'alignCenter', 'S'],
-            content: "Your dates, your distances\nand your style of lodging!",
+      layers: [
+        {type: 'text',
+          settings: {
+            noPadding: true,
+            textPosition: 'bottom-center',
           },
-          {
-            type: 'span',
-            styles: ['uppercase'],
-            content: 'during your tour, we take care of all\nthe logistics and out support vans'
+          id: 'intoTheNature1-textLayer',
+          content: {
+            column: [
+              {
+                type: "h2",
+                styles: ['thin', 'alignCenter', 'S'],
+                content: "Your dates, your distances\nand your style of lodging!",
+              },
+              {
+                type: 'span',
+                styles: ['uppercase'],
+                content: 'during your tour, we take care of all\nthe logistics and out support vans'
+              },
+              {
+                type: "button",
+                styles: ["darkButton"],
+                content: "sign up",
+              },
+            ],
           },
-          {
-            type: "button",
-            styles: ["darkButton"],
-            content: "sign up",
-          },
-        ],
-      },
+        }
+      ],
     },
 
 
@@ -746,69 +790,82 @@ export default {
           },
         },
       ],
-      textLayer: {
-        settings: {
-          noPadding: true,
+      layers: [
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
+            altText: "mountain1",
+          },
+          settings: {
+            fit: 'cover',
+            id: "mountain1",
+            layerId: 'mountain1-layer',
+            overflow: false,
+            basePosition: "bottom-center",
+          },
         },
-        id: 'sky-textLayer',
-        column: [
-          {
-            type: 'h3',
-            id: 't0',
-            styles: ['yellowBox'],
-            content: 'into the nature',
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
+            altText: "mountain2",
           },
-          {
-            id: 't1',
-            type: 'h2',
-            styles: ['alignCenter', 'thin'],
-            content: "What's better than\nnature by night?",
+          settings: {
+            fit: 'cover',
+            id: "mountain2",
+            layerId: 'mountain2-layer',
+            overflow: false,
+            basePosition: "bottom-center",
           },
-          {
-            id: 't2',
-            type: 'span',
-            styles: ['white', 'alignCenter', 'L', 'uppercase'],
-            content: "Lorem ipsum dolor sit amet,\n consectetur adipiscing elit, sed do\n eiusmod tempor incididunt ut\n labore et dolore magna aliqua. Ut",
+        },
+        {type: 'image',
+          content: {
+            path: "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
+            altText: "tent",
           },
-          {
-            id: 't3',
-            type: 'button',
-            styles: ['darkButton'],
-            content: "sign up",
+          settings: {
+            fit: 'cover',
+            id: "tent",
+            layerId: 'tent-layer',
+            overflow: false,
+            basePosition: "bottom-center",
           },
-        ],
-      },
-
-      images: [
-        {
-          path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
-          altText: "mountain1",
-          fit: 'cover',
-          id: "mountain1",
-          layerId: 'mountain1-layer',
-          overflow: false,
-          basePosition: "bottom-center",
         },
         {
-          path: "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
-          altText: "mountain2",
-          fit: 'cover',
-          id: "mountain2",
-          layerId: 'mountain2-layer',
-          overflow: false,
-          basePosition: "bottom-center",
-        },
-        {
-          path: "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
-          altText: "tent",
-          fit: 'cover',
-          id: "tent",
-          layerId: 'tent-layer',
-          overflow: false,
-          basePosition: "bottom-center",
+          type: 'text',
+          settings: {
+            noPadding: true,
+          },
+          id: 'sky-textLayer',
+          content: {
+            column: [
+              {
+                type: 'h3',
+                id: 't0',
+                styles: ['yellowBox'],
+                content: 'into the nature',
+              },
+              {
+                id: 't1',
+                type: 'h2',
+                styles: ['alignCenter', 'thin'],
+                content: "What's better than\nnature by night?",
+              },
+              {
+                id: 't2',
+                type: 'span',
+                styles: ['white', 'alignCenter', 'L', 'uppercase'],
+                content: "Lorem ipsum dolor sit amet,\n consectetur adipiscing elit, sed do\n eiusmod tempor incididunt ut\n labore et dolore magna aliqua. Ut",
+              },
+              {
+                id: 't3',
+                type: 'button',
+                styles: ['darkButton'],
+                content: "sign up",
+              },
+            ],
+          },
         },
       ],
-
     },
   ],
 };
