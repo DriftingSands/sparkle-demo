@@ -5,9 +5,10 @@ import mobileData from '../components/_mobileData'
 import MobileHeader from '../components/MobileHeader';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect, useState } from 'react';
+import { TimelineAnimationWrapper } from '../components/TimelineWrapper'
 
 export default function Home() {
-  const [data, setData] = useState(desktopData)
+  const [data, setData] = useState(null)
 
   function debounce(func, wait) {
     let timeout;
@@ -21,35 +22,38 @@ export default function Home() {
 
   const handleResize = debounce(() => {
     ScrollTrigger.refresh()
-    if (window.innerWidth > 800) {
-      return setData(desktopData)
-    }
-    return setData(mobileData)
+    setData(null)
   }, 100)
   
   useEffect(() => {
-    if (window.innerWidth > 800) {
-      setData(desktopData)
-    } else {
-      setData(mobileData)
-    }
     window.addEventListener('resize', handleResize)
     return () => {window.removeEventListener('resize', handleResize)}
   }, [])
   
-
-  return (
-    <div className={'page'} style={{maxWidth: data?.settings?.maxWidth}} >
-      {data?.settings?.header === 'mobile' && <MobileHeader maxWidth={data?.settings?.maxWidth} />}
-      {
-        data?.scenes?.map((scene, index) => {
-          return data === desktopData ? (
-            <Scene settings={data.settings} scene={scene} key={index} />
-          ) : (
-            <Scene settings={data.settings} scene={scene} key={index} />
-          )
-        })
+  useEffect(() => {
+    if (data === null) {
+      if (window.innerWidth > 800) {
+        setData(desktopData)
+      } else {
+        setData(mobileData)
       }
-    </div>
-  )
+    }
+  }, [data])
+
+  
+
+  return data ? (
+    <TimelineAnimationWrapper key={{...data}}>
+      <div className={'page'} style={{maxWidth: data?.settings?.maxWidth}} >
+        {data?.settings?.type === 'mobile' && <MobileHeader maxWidth={data?.settings?.maxWidth} />}
+        {
+          data?.scenes?.map((scene, index) => {
+            return (
+              <Scene settings={data.settings} scene={scene} key={index} />
+            )
+          })
+        }
+      </div>
+    </TimelineAnimationWrapper>
+  ) : null
 }

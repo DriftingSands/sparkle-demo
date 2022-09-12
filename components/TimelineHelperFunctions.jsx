@@ -1,3 +1,15 @@
+let animationsList = []
+
+const isBrowser = () => typeof window !== "undefined"
+
+isBrowser() && window.addEventListener('message', ({data}) => {
+  if (data.type !== "clear-animations") {return}
+  console.log("\x1b[31m~ animationsList", animationsList)
+  animationsList.forEach((item) => {
+    item.kill()
+  })
+  animationsList = []
+})
 
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
   const tl = gsap.timeline()
@@ -9,11 +21,18 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
 
     if (animation?.to?.scrollTrigger || animation?.from?.scrollTrigger) {
       if (animation.to && animation.from) {
-        gsap.fromTo(q(animation.selector), animation.from, animation.to);
+        const scrollAnimation = gsap.fromTo(q(animation.selector), animation.from, animation.to);
+        animationsList.push(scrollAnimation)
         continue;
       }
-      (animation.to) && gsap.to(q(animation.selector), animation.to);
-      (animation.from) && gsap.from(q(animation.selector), animation.from);
+      if (animation.to) {
+        const scrollAnimation = gsap.to(q(animation.selector), animation.to)
+        animationsList.push(scrollAnimation)
+      };
+      if (animation.from) {
+        const scrollAnimation = gsap.from(q(animation.selector), animation.from)
+        animationsList.push(scrollAnimation)
+      };
       continue;
     }
     
@@ -32,17 +51,10 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
     }
     
   }
-  
-  if (timelineSettings.debugButton) {
-    const debugButton = document.createElement('button')
-    debugButton.innerText = 'replay TL: '
-    debugButton.style.position = 'fixed'
-    debugButton.style.top = 0
-    debugButton.style.zIndex = 9000
-    debugButton.style.cursor = 'pointer'
-    debugButton.addEventListener('click', () => tl.play(0))
-    document.body.prepend(debugButton)
-  }
+  animationsList.push(tl)
+
+
+
 
 }
 

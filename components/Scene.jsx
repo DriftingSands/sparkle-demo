@@ -21,7 +21,7 @@ export default function Scene({scene, settings}) {
 
   return (
     <div className={`scene ${scene?.sceneSettings?.dark ? 'darkScene' : ''}`} id={scene.id} >
-      {settings?.header === 'mobile' ? null : <Header />}
+      {settings?.type === 'mobile' ? null : <Header />}
       {scene?.background && <Background backgroundProps={scene.background} />}
       {scene?.layers?.length && scene.layers.map((layer, index) => {
         const Component = lookupObject[layer.type]

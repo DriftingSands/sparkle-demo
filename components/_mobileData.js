@@ -1,6 +1,6 @@
 export default {
   settings: {
-    header: 'mobile',
+    type: 'mobile',
     maxWidth: 800,
   },
   scenes: [

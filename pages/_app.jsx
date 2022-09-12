@@ -1,7 +1,5 @@
-import Header from '../components/Header'
 import Head from 'next/head'
 import '../styles/globals.scss'
-import { TimelineAnimationWrapper } from '../components/TimelineWrapper'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,10 +9,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header /> */}
-      <TimelineAnimationWrapper>
         <Component {...pageProps} />
-      </TimelineAnimationWrapper>
     </>
   )
 }
