@@ -6,8 +6,8 @@ import Header from './Header';
 import { TimelineProvider } from './TimelineWrapper';
 
 const lookupObject = {
-  image: 'LayerImage',
-  text: 'TextLayer'
+  image: LayerImage,
+  text: TextLayer
 }
 
 export default function Scene({scene, settings}) {
@@ -24,7 +24,7 @@ export default function Scene({scene, settings}) {
       {settings?.header === 'mobile' ? null : <Header />}
       {scene?.background && <Background backgroundProps={scene.background} />}
       {scene?.layers?.length && scene.layers.map((layer, index) => {
-        if (index > 1) return null
+        if (index > 4) return null
         const Component = lookupObject[layer.type]
         if (!Component) {return null}
         return <Component content={layer.content} settings={layer.settings} key={index} />
