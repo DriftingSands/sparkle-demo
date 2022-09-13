@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 export default function Background(props) {
   const {path, altText, color, zIndex} = props.backgroundProps
 

@@ -14,11 +14,10 @@ export default function Scene({ scene, settings }) {
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
-    if (!createTimeline || !scene.timelineAnimations) {
-      return;
-    }
+    if (!createTimeline || !scene.timelineAnimations) {return;}
+
     createTimeline(scene.timelineAnimations, scene.timelineAnimationSettings);
-  }, []);
+  }, [createTimeline, scene.timelineAnimationSettings, scene.timelineAnimations]);
 
   return (
     <div

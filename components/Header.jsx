@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Header() {
   return (
     <header className="header">
@@ -43,7 +45,7 @@ export default function Header() {
         <a className='accountLink' href=""><span>my account</span></a>
 
         <div className="accountIcon">
-          <img src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          <Image src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
         </div>
       </div>
     </header>

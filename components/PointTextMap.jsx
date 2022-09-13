@@ -7,7 +7,7 @@ export default function PointTextMap(props) {
     const el = document.querySelector(props?.pointText?.settings?.imgSelector);
     if (!el) {return;}
     setConformToElement({ width: el.naturalWidth, height: el.naturalHeight });
-  }, []);
+  }, [props?.pointText?.settings?.imgSelector]);
 
   const objectFit = props?.pointText?.settings?.fit;
   const aspectRatio = `${

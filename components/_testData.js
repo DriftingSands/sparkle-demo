@@ -1,4 +1,4 @@
-export default {
+const data = {
   scenes: [
     {
       id: 'intro',
@@ -1155,3 +1155,5 @@ export default {
     },
   ],
 };
+
+export default data

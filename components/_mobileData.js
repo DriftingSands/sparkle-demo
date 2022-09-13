@@ -1,4 +1,4 @@
-export default {
+const data = {
   settings: {
     type: 'mobile',
     maxWidth: 800,
@@ -876,3 +876,5 @@ export default {
     },
   ],
 };
+
+export default data
