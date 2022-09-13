@@ -1,4 +1,4 @@
-import Scene from "../components/Scene";
+import Panel from "../components/Panel";
 import desktopData from "../components/_testData";
 import mobileData from "../components/_mobileData";
 import MobileHeader from "../components/MobileHeader";
@@ -48,8 +48,8 @@ export default function Home() {
       {data?.settings?.type === "mobile" && (
         <MobileHeader maxWidth={data?.settings?.maxWidth} />
       )}
-      {data?.scenes?.map((scene, index) => {
-        return <Scene settings={data.settings} scene={scene} key={index} />;
+      {data?.panels?.map((panel, index) => {
+        return <Panel settings={data.settings} panel={panel} key={index} />;
       })}
     </div>
   ) : null;

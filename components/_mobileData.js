@@ -3,7 +3,7 @@ const data = {
     type: "mobile",
     maxWidth: 800,
   },
-  scenes: [
+  panels: [
     {
       id: "intro",
       timelineAnimationSettings: {
@@ -346,10 +346,10 @@ const data = {
       ],
     },
 
-    // 3rd scene
+    // 3rd panel
 
     {
-      sceneSettings: {
+      panelSettings: {
         dark: true,
       },
       timelineAnimationSettings: {
@@ -408,7 +408,7 @@ const data = {
       ],
     },
 
-    // 4th scene
+    // 4th panel
 
     {
       id: "intoTheNature",
@@ -565,7 +565,7 @@ const data = {
       ],
     },
 
-    // 5th scene
+    // 5th panel
 
     {
       background: {
@@ -640,11 +640,11 @@ const data = {
       ],
     },
 
-    // 6th scene
+    // 6th panel
 
     {
       id: "upToTheSky",
-      sceneSettings: {
+      panelSettings: {
         dark: true,
       },
       background: {
@@ -744,7 +744,7 @@ const data = {
           },
         },
         {
-          // for pinning the scene
+          // for pinning the panel
           selector: "#upToTheSky",
           from: {},
           to: {

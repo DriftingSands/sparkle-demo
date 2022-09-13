@@ -2,115 +2,117 @@ const data = {
   panels: [
     {
       id: "intro",
-      timelineAnimationSettings: {
-        globalAutoDelay: true,
-        startDelay: 0,
+      animations: {
+        timelineAnimationSettings: {
+          globalAutoDelay: true,
+          startDelay: 0,
+        },
+        timelineAnimations: [
+          {
+            selector: "#rocks1",
+            from: {
+              left: "-10%",
+              bottom: "-10%",
+              opacity: 0.5,
+              scale: 1,
+            },
+            to: {
+              left: "0%",
+              bottom: "0%",
+              opacity: 1,
+              scale: 1.1,
+              duration: 1,
+            },
+          },
+          {
+            autoDelay: false,
+            selector: "#rocks2",
+            from: {
+              left: "-20%",
+            },
+            to: {
+              left: "0%",
+              duration: 0.7,
+            },
+          },
+          {
+            autoDelay: false,
+            selector: "#rocks3",
+            from: {
+              right: "-10%",
+              bottom: "-20%",
+              scale: 0.8,
+              transformOrigin: "bottom right",
+            },
+            to: {
+              transformOrigin: "bottom right",
+              right: "0%",
+              bottom: "0%",
+              scale: 1,
+              duration: 0.7,
+            },
+          },
+          {
+            selector: "#biker-layer",
+            from: {
+              y: "0%",
+            },
+            to: {
+              keyframes: {
+                "0%": { y: "0%" },
+                "20%": { y: "0%" },
+                "90%": { y: "100%" },
+              },
+              scrollTrigger: {
+                trigger: "#intro",
+                start: "0px top",
+                end: "100% top",
+                scrub: 0.5,
+                snap: {
+                  snapTo: [0, 1],
+                  delay: 0,
+                },
+              },
+            },
+          },
+          {
+            autoDelay: true,
+            selector: "#biker",
+            from: {
+              scale: 0.8,
+              y: "-60%",
+              x: "-50%",
+              opacity: 0,
+            },
+            to: {
+              delay: "-0.2",
+              keyframes: {
+                "0%": {
+                  scale: 0.8,
+                  y: "-60%",
+                  x: "-50%",
+                  opacity: 0,
+                  ease: "sine.out",
+                },
+                "50%": {
+                  y: "-30%",
+                  x: "-25%",
+                  opacity: 1,
+                },
+                "100%": {
+                  y: "0%",
+                  x: "0%",
+                  opacity: 1,
+                  scale: 1,
+                },
+                easeEach: "none",
+              },
+              ease: "power2.out",
+              duration: 1,
+            },
+          },
+        ],
       },
-      timelineAnimations: [
-        {
-          selector: "#rocks1",
-          from: {
-            left: "-10%",
-            bottom: "-10%",
-            opacity: 0.5,
-            scale: 1,
-          },
-          to: {
-            left: "0%",
-            bottom: "0%",
-            opacity: 1,
-            scale: 1.1,
-            duration: 1,
-          },
-        },
-        {
-          autoDelay: false,
-          selector: "#rocks2",
-          from: {
-            left: "-20%",
-          },
-          to: {
-            left: "0%",
-            duration: 0.7,
-          },
-        },
-        {
-          autoDelay: false,
-          selector: "#rocks3",
-          from: {
-            right: "-10%",
-            bottom: "-20%",
-            scale: 0.8,
-            transformOrigin: "bottom right",
-          },
-          to: {
-            transformOrigin: "bottom right",
-            right: "0%",
-            bottom: "0%",
-            scale: 1,
-            duration: 0.7,
-          },
-        },
-        {
-          selector: "#biker-layer",
-          from: {
-            y: "0%",
-          },
-          to: {
-            keyframes: {
-              "0%": { y: "0%" },
-              "20%": { y: "0%" },
-              "90%": { y: "100%" },
-            },
-            scrollTrigger: {
-              trigger: "#intro",
-              start: "0px top",
-              end: "100% top",
-              scrub: 0.5,
-              snap: {
-                snapTo: [0, 1],
-                delay: 0,
-              },
-            },
-          },
-        },
-        {
-          autoDelay: true,
-          selector: "#biker",
-          from: {
-            scale: 0.8,
-            y: "-60%",
-            x: "-50%",
-            opacity: 0,
-          },
-          to: {
-            delay: "-0.2",
-            keyframes: {
-              "0%": {
-                scale: 0.8,
-                y: "-60%",
-                x: "-50%",
-                opacity: 0,
-                ease: "sine.out",
-              },
-              "50%": {
-                y: "-30%",
-                x: "-25%",
-                opacity: 1,
-              },
-              "100%": {
-                y: "0%",
-                x: "0%",
-                opacity: 1,
-                scale: 1,
-              },
-              easeEach: "none",
-            },
-            ease: "power2.out",
-            duration: 1,
-          },
-        },
-      ],
       layers: [
         {
           type: "image",
@@ -434,8 +436,8 @@ const data = {
     // 3rd panel
 
     {
+      dark: true,
       panelSettings: {
-        dark: true,
       },
       timelineAnimationSettings: {
         globalAutoDelay: false,
@@ -869,8 +871,8 @@ const data = {
 
     {
       id: "upToTheSky",
+      dark: true,
       panelSettings: {
-        dark: true,
       },
       background: {
         path: "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.jpeg",

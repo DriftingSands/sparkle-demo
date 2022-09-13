@@ -10,24 +10,24 @@ const lookupObject = {
   text: TextLayer,
 };
 
-export default function Scene({ scene, settings }) {
+export default function Panel({ panel, settings }) {
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
-    if (!createTimeline || !scene.timelineAnimations) {return;}
+    if (!createTimeline || !panel.timelineAnimations) {return;}
 
-    createTimeline(scene.timelineAnimations, scene.timelineAnimationSettings);
-  }, [createTimeline, scene.timelineAnimationSettings, scene.timelineAnimations]);
+    createTimeline(panel.timelineAnimations, panel.timelineAnimationSettings);
+  }, [createTimeline, panel.timelineAnimationSettings, panel.timelineAnimations]);
 
   return (
     <div
-      className={`scene ${scene?.sceneSettings?.dark ? "darkScene" : ""}`}
-      id={scene.id}
+      className={`panel ${panel?.panelSettings?.dark ? "darkPanel" : ""}`}
+      id={panel.id}
     >
       {settings?.type === "mobile" ? null : <Header />}
-      {scene?.background && <Background backgroundProps={scene.background} />}
-      {scene?.layers?.length &&
-        scene.layers.map((layer, index) => {
+      {panel?.background && <Background backgroundProps={panel.background} />}
+      {panel?.layers?.length &&
+        panel.layers.map((layer, index) => {
           const Component = lookupObject[layer.type];
           if (!Component) {
             return null;
