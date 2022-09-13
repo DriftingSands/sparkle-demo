@@ -1,59 +1,56 @@
-
-import Scene from '../components/Scene';
-import desktopData from '../components/_testData'
-import mobileData from '../components/_mobileData'
-import MobileHeader from '../components/MobileHeader';
+import Scene from "../components/Scene";
+import desktopData from "../components/_testData";
+import mobileData from "../components/_mobileData";
+import MobileHeader from "../components/MobileHeader";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect, useState } from 'react';
-import { TimelineAnimationWrapper } from '../components/TimelineWrapper'
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
 
   function debounce(func, wait) {
     let timeout;
     return () => {
       if (timeout) {
-          clearTimeout(timeout);
+        clearTimeout(timeout);
       }
-      timeout = setTimeout(func, wait)
-    }
+      timeout = setTimeout(func, wait);
+    };
   }
+  
 
   const handleResize = debounce(() => {
-    ScrollTrigger.refresh()
-    setData(null)
-  }, 100)
-  
+    ScrollTrigger.refresh();
+    setData(null);
+  }, 100);
+
+
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => {window.removeEventListener('resize', handleResize)}
-  }, [])
-  
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   useEffect(() => {
     if (data === null) {
       if (window.innerWidth > 800) {
-        setData(desktopData)
+        setData(desktopData);
       } else {
-        setData(mobileData)
+        setData(mobileData);
       }
     }
-  }, [data])
-
-  
+  }, [data]);
 
   return data ? (
-    <TimelineAnimationWrapper key={{...data}}>
-      <div className={'page'} style={{maxWidth: data?.settings?.maxWidth}} >
-        {data?.settings?.type === 'mobile' && <MobileHeader maxWidth={data?.settings?.maxWidth} />}
-        {
-          data?.scenes?.map((scene, index) => {
-            return (
-              <Scene settings={data.settings} scene={scene} key={index} />
-            )
-          })
-        }
-      </div>
-    </TimelineAnimationWrapper>
-  ) : null
+    <div className={"page"} style={{ maxWidth: data?.settings?.maxWidth }}>
+      {data?.settings?.type === "mobile" && (
+        <MobileHeader maxWidth={data?.settings?.maxWidth} />
+      )}
+      {data?.scenes?.map((scene, index) => {
+        return <Scene settings={data.settings} scene={scene} key={index} />;
+      })}
+    </div>
+  ) : null;
 }
