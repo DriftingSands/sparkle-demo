@@ -4,7 +4,8 @@ export default function Header() {
   return (
     <header className="header">
       <div className="left">
-        <h1 className="logoText">WKND</h1>
+        {/* <h1 className="logoText">WKND</h1> */}
+        <Image src={'/wknd-logo-dk.svg'} alt='logo' height={36} width={'100%'} className='logo' />
       </div>
 
       <div className="middle">

@@ -64,7 +64,10 @@ export default function MobileHeader({maxWidth}) {
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18" > <defs></defs> <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="8" />  <rect className="fill" height="2" rx="0.5" width="14" x="2" y="3" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="13" /> </svg> 
         </button>
 
-        <h1 className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`}>WKND</h1>
+        {/* <h1 className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`}>WKND</h1> */}
+        
+        {/* eslint-expect-error-next-line @next/next/no-img-element */}
+        <img src={'/wknd-logo-dk.svg'} alt='logo' height={22} className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`} /> 
 
         <a className='profileIconWrapper' ><Image className='menuProfileIcon' src={"/WKND SPA/stacey-roswells.webp"} width={42} height={42} alt="profile picture" /></a>
       </div> 

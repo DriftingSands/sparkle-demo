@@ -5,6 +5,10 @@
   font-family: Adobe Clean;
   src: url('../public/AdobeClean-Regular.otf');
 }
+@font-face {
+  font-family: Asar;
+  src: url('../public/Asar Regular.ttf');
+}
 
 @import './variables';
 @import './mobile.scss';
@@ -16,6 +20,10 @@
 
 h1 {
   font-family: Bebas Neue;
+}
+h2, h3, h4, h5, h6 {
+  font-family: Asar, 'Times New Roman', Times, serif;
+  line-height: 1.2;
 }
 
 
@@ -124,6 +132,9 @@ button {
   font-size: 48px;
   font-weight: 600;  
   letter-spacing: 2px;
+}
+.darkPanel .logo {
+  filter: invert(100%);
 }
 .arrowButton {
   background-color: transparent;
@@ -250,8 +261,6 @@ button {
   }
   &.contain .image {
     object-fit: contain;
-    height: 100%;
-    width: 100%;
     max-width: 100%;
     max-height: 100%;
   }
@@ -281,13 +290,15 @@ button {
 
   .h2 {
     font-size: 42px;
-    font-family: Source Serif Pro;
+    // font-family: Source Serif Pro;
+    font-family: Asar, 'Times New Roman', Times, serif;
     &.S {font-size: 36px;}
     &.XS {font-size: 26px;}
   }
   .h3 {
     font-size: 34px;
-    font-family: Source Serif Pro;
+    // font-family: Source Serif Pro;
+    font-family: Asar, 'Times New Roman', Times, serif;
     &.S {font-size: 28px;}
     &.S {font-size: 18px;}
   }
@@ -296,6 +307,9 @@ button {
   }
   .bold {
     font-weight: 700;
+  }
+  .sourceSerif {
+    font-family: Source Serif Pro;
   }
   .yellowBox {
     color: black;
@@ -310,9 +324,7 @@ button {
     width: 50%;
     display: flex;
     flex-direction: column;
-    > * {
-      font-weight: 600;
-    }
+
   }
   .left {
     // justify-content: start;
@@ -425,7 +437,7 @@ button {
       cursor: pointer;
       
       .text {
-        font-family: Adobe Clean;
+        font-family: Source Sans Pro;
         transition: all .3s ease-in-out;
         opacity: 1;
       }
@@ -444,7 +456,7 @@ button {
         
         transition: all .3s ease-in-out;
         opacity: 0;
-        > a {font-family: Adobe Clean;}
+        > a {font-family: Source Sans Pro;}
       }
     }
     .textWrapper:hover {
@@ -472,8 +484,8 @@ button {
       border: black solid 2px;
       margin-bottom: -15px;
       border-radius: 50%;
-      width: 30px;
-      min-height: 30px;
+      width: 15px;
+      min-height: 15px;
     }
   }
 }

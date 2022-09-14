@@ -318,13 +318,13 @@ const data = {
                   x: "11%",
                   y: "-30.5%",
                 },
-                {
-                  id: "buy-shorts",
-                  text: "Adult Cyclist City Shorts",
-                  price: "$49.99",
-                  x: "-2.8%",
-                  y: "-14.2%",
-                },
+                // {
+                //   id: "buy-shorts",
+                //   text: "Adult Cyclist City Shorts",
+                //   price: "$49.99",
+                //   x: "-2.8%",
+                //   y: "-14.2%",
+                // },
                 {
                   id: "buy-sneakers",
                   text: "Enclave biking sneakers",

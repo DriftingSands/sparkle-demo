@@ -12,10 +12,6 @@ $transition: all 0.3s ease-in-out;
 
   * {font-family: Source Sans Pro;}
   .logo {
-    font-size: 28px;
-    margin-bottom: -3px;
-    font-family: Bebas Neue;
-    letter-spacing: 1px;
 
     transition: $transition;
     &.menuClosed {transform: translateX(0);}

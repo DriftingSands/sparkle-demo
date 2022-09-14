@@ -3,7 +3,7 @@ const data = {
     {
       id: "intro",
       timelineAnimationSettings: {
-        globalAutoDelay: true,
+        globalAutoDelay: false,
         startDelay: 0,
       },
       timelineAnimations: [
@@ -20,26 +20,31 @@ const data = {
             bottom: "0%",
             opacity: 1,
             scale: 1.1,
-            duration: 1,
+            duration: 1.5,
           },
         },
         {
-          autoDelay: false,
           selector: "#rocks2",
           from: {
             left: "-20%",
+            opacity: 0.5,
+            transformOrigin: "bottom left",
+            scale: 0.9,
           },
           to: {
             left: "0%",
-            duration: 0.7,
+            opacity: 1,
+            transformOrigin: "bottom left",
+            scale: 1,
+            duration: 1.5,
           },
         },
         {
-          autoDelay: false,
           selector: "#rocks3",
           from: {
             right: "-10%",
-            bottom: "-20%",
+            bottom: "0%",
+            opacity: 0.5,
             scale: 0.8,
             transformOrigin: "bottom right",
           },
@@ -47,8 +52,9 @@ const data = {
             transformOrigin: "bottom right",
             right: "0%",
             bottom: "0%",
+            opacity: 1,
             scale: 1,
-            duration: 0.7,
+            duration: 1.5,
           },
         },
         {
@@ -75,39 +81,31 @@ const data = {
           },
         },
         {
-          autoDelay: true,
           selector: "#biker",
           from: {
-            scale: 0.8,
-            y: "-60%",
-            x: "-50%",
+            scale: 1,
+            y: "10%",
+            x: "-10%",
             opacity: 0,
           },
           to: {
-            delay: "-0.2",
-            keyframes: {
-              "0%": {
-                scale: 0.8,
-                y: "-60%",
-                x: "-50%",
-                opacity: 0,
-                ease: "sine.out",
-              },
-              "50%": {
-                y: "-30%",
-                x: "-25%",
-                opacity: 1,
-              },
-              "100%": {
-                y: "0%",
-                x: "0%",
-                opacity: 1,
-                scale: 1,
-              },
-              easeEach: "none",
-            },
-            ease: "power2.out",
-            duration: 1,
+            duration: 1.5,
+            y: "0%",
+            x: "0%",
+            opacity: 1,
+            scale: 1,
+          },
+        },
+        {
+          selector: "#intro .textLayer .left",
+          from: {
+            opacity: 0,
+            x: "-30%",
+          },
+          to: {
+            duration: 1.5,
+            opacity: 1,
+            x: "0%",
           },
         },
       ],
@@ -118,6 +116,7 @@ const data = {
             id: "rocks1",
             overflow: false,
             basePosition: "bottom-left",
+            fit: "contain",
           },
           content: {
             path: "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
@@ -130,6 +129,7 @@ const data = {
             id: "rocks2",
             overflow: false,
             basePosition: "bottom-left",
+            fit: "contain",
           },
           content: {
             path: "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
@@ -142,6 +142,7 @@ const data = {
             id: "rocks3",
             overflow: false,
             basePosition: "bottom-right",
+            fit: "contain",
           },
           content: {
             path: "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
@@ -173,7 +174,7 @@ const data = {
               },
               {
                 type: "h2",
-                styles: [],
+                styles: ["thin"],
                 content: "The most exciting \n experiences.",
               },
             ],
@@ -376,13 +377,13 @@ const data = {
                   x: "11%",
                   y: "-30.5%",
                 },
-                {
-                  id: "buy-shorts",
-                  text: "Adult Cyclist City Shorts",
-                  price: "$49.99",
-                  x: "-2.8%",
-                  y: "-14.2%",
-                },
+                // {
+                //   id: "buy-shorts",
+                //   text: "Adult Cyclist City Shorts",
+                //   price: "$49.99",
+                //   x: "-2.8%",
+                //   y: "-14.2%",
+                // },
                 {
                   id: "buy-sneakers",
                   text: "Enclave biking sneakers",
@@ -624,13 +625,15 @@ const data = {
           selector: "#intoTheNature #female-hiker-layer",
           from: {
             y: "0%",
-            x: "0%",
+            x: "-25%",
             scale: 1,
+            transformOrigin: "center right",
           },
           to: {
             y: "100%",
-            x: "-20%",
+            x: "-25%",
             scale: 1.6,
+            transformOrigin: "center right",
             scrollTrigger: {
               trigger: "#intoTheNature",
               start: "top top",
@@ -729,7 +732,7 @@ const data = {
             id: "female-hiker",
             layerId: "female-hiker-layer",
             overflow: true,
-            basePosition: "bottom-center",
+            basePosition: "bottom-right",
           },
         },
         {
@@ -823,7 +826,7 @@ const data = {
               {
                 type: "h2",
                 styles: ["thin"],
-                content: "From coastal paths\nto hilltop climbs.",
+                content: "Your dates, your distances\nand your style of lodging!",
               },
               {
                 type: "span",
@@ -1025,12 +1028,12 @@ const data = {
           },
         },
         {
-          selector: "#upToTheSky #t3",
+          selector: "#upToTheSky #layer-button",
           from: {
-            y: "400px",
+            y: "60%",
           },
           to: {
-            y: "-250px",
+            y: "-35%",
             duration: 1.5,
             scrollTrigger: {
               trigger: "#upToTheSky",
@@ -1055,8 +1058,8 @@ const data = {
               {
                 id: "t1",
                 type: "h2",
-                styles: ["alignCenter", "thin"],
-                content: "What's better than\nnature by night?",
+                styles: ["alignCenter", "thin", "sourceSerif"],
+                content: "What’s better than\nnature by night?",
               },
               {
                 id: "t2",
@@ -1138,9 +1141,9 @@ const data = {
           type: "text",
           settings: {
             textPosition: "bottom-center",
+            id: "layer-button",
           },
           content: {
-            id: "buttonLayer",
             column: [
               {
                 id: "t3",
