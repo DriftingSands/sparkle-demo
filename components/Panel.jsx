@@ -10,14 +10,14 @@ const lookupObject = {
   text: TextLayer,
 };
 
-export default function Panel({ panel, settings }) {
+export default function Panel({ panel, settings}) {
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
-    if (!createTimeline || !panel.timelineAnimations) {return;}
+    if (!createTimeline || !panel?.animations?.timelineAnimations) {return;}
 
-    createTimeline(panel.timelineAnimations, panel.timelineAnimationSettings);
-  }, [createTimeline, panel.timelineAnimationSettings, panel.timelineAnimations]);
+    createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings);
+  }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]);
 
   return (
     <div
