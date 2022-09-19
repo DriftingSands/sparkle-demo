@@ -14,7 +14,7 @@ export default function LayerImage({ data }) {
         overflow ? "showOverflow" : "hideOverflow"
       }`}
     >
-      <img id={id} className="image" src={`${path}`} alt={'test'} />
+      <img id={id} className="image" src={`${path}`} alt={altText?.plaintext} />
     </div>
   );
 }
