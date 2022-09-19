@@ -4,9 +4,8 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function LayerImage({ data, settings }) {
-  const { path, altText } = data;
-  const { layerId, id, overflow, basePosition, debug, fit } = settings;
+export default function LayerImage({ data }) {
+  const { path, altText, layerId, id, overflow, basePosition, debug, fit } = data;
 
   return (
     <div
@@ -15,7 +14,7 @@ export default function LayerImage({ data, settings }) {
         overflow ? "showOverflow" : "hideOverflow"
       }`}
     >
-      <img id={id} className="image" src={`${path}`} alt={`${altText}`} />
+      <img id={id} className="image" src={`${path}`} alt={'test'} />
     </div>
   );
 }

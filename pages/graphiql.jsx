@@ -10,7 +10,7 @@ import Panel from '../components/Panel'
 export default function Graphiql() {
   const [data, setData] = useState(null)
 
-  const panels = temp.data.panelList.items
+  const panels = temp.data.pageList.items[0].panels
   
 
   return (
