@@ -17,7 +17,7 @@ export default function PointTextMap({ data }) {
   } / ${conformToElement?.height || data?.height || 9}`;
 
   return (
-    <div className="wrapperForRatio" style={{ aspectRatio }}>
+    <div className="wrapperForRatio" id={data.id} style={{ aspectRatio }}>
       <div className="pointTextLayer" style={{ objectFit, aspectRatio }}>
         {data?.content?.map((item, index) => {
           return (

@@ -3,91 +3,39 @@
     "pageList": {
       "items": [
         {
+          "_variation": "mobile",
           "_variations": [
             "mobile"
           ],
           "panels": [
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intro",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
-                  "globalAutoDelay": false,
-                  "startDelay": 1
+                  "globalAutoDelay": true,
+                  "startDelay": 0
                 },
                 "timelineAnimations": [
                   {
-                    "selector": "#rocks1",
-                    "from": {
-                      "left": "-10%",
-                      "bottom": "-10%",
-                      "opacity": 0.5,
-                      "scale": 1
-                    },
-                    "to": {
-                      "left": "0%",
-                      "bottom": "0%",
-                      "opacity": 1,
-                      "scale": 1.1,
-                      "duration": 1.5
-                    }
-                  },
-                  {
-                    "selector": "#rocks2",
-                    "from": {
-                      "left": "-20%",
-                      "opacity": 0.5,
-                      "transformOrigin": "bottom left",
-                      "scale": 0.9
-                    },
-                    "to": {
-                      "left": "0%",
-                      "opacity": 1,
-                      "transformOrigin": "bottom left",
-                      "scale": 1,
-                      "duration": 1.5
-                    }
-                  },
-                  {
-                    "selector": "#rocks3",
-                    "from": {
-                      "right": "-10%",
-                      "bottom": "0%",
-                      "opacity": 0.5,
-                      "scale": 0.8,
-                      "transformOrigin": "bottom right"
-                    },
-                    "to": {
-                      "transformOrigin": "bottom right",
-                      "right": "0%",
-                      "bottom": "0%",
-                      "opacity": 1,
-                      "scale": 1,
-                      "duration": 1.5
-                    }
-                  },
-                  {
                     "selector": "#biker-layer",
                     "from": {
-                      "y": "0%"
+                      "y": "0%",
+                      "scale": 2,
+                      "x": "-10%"
                     },
                     "to": {
-                      "keyframes": {
-                        "0%": {
-                          "y": "0%"
-                        },
-                        "20%": {
-                          "y": "0%"
-                        },
-                        "90%": {
-                          "y": "100%"
-                        }
-                      },
+                      "y": "100%",
+                      "scale": 2,
+                      "x": "-10%",
                       "scrollTrigger": {
                         "trigger": "#intro",
                         "start": "0px top",
                         "end": "100% top",
-                        "scrub": 0.5,
+                        "scrub": true,
                         "snap": {
                           "snapTo": [
                             0,
@@ -95,35 +43,54 @@
                           ],
                           "delay": 0
                         }
-                      }
+                      },
+                      "ease": "power1.inOut"
                     }
                   },
                   {
-                    "selector": "#biker",
+                    "selector": "#bikerTextLayer",
                     "from": {
-                      "scale": 1,
-                      "y": "10%",
-                      "x": "-10%",
-                      "opacity": 0
+                      "y": "-10%"
                     },
                     "to": {
-                      "duration": 1.5,
-                      "y": "0%",
-                      "x": "0%",
-                      "opacity": 1,
-                      "scale": 1
+                      "y": "-10%"
                     }
                   },
                   {
-                    "selector": "#intro .textLayer .left",
+                    "selector": "#rocks1",
                     "from": {
-                      "opacity": 0,
-                      "x": "-30%"
+                      "scale": 0.3,
+                      "x": "-4%",
+                      "transformOrigin": "bottom left"
                     },
                     "to": {
-                      "duration": 1.5,
-                      "opacity": 1,
-                      "x": "0%"
+                      "scale": 0.3,
+                      "x": "-4%",
+                      "transformOrigin": "bottom left"
+                    }
+                  },
+                  {
+                    "selector": "#rocks2",
+                    "from": {
+                      "scale": 0.4,
+                      "transformOrigin": "bottom left"
+                    },
+                    "to": {
+                      "scale": 0.4,
+                      "transformOrigin": "bottom left"
+                    }
+                  },
+                  {
+                    "selector": "#rocks3",
+                    "from": {
+                      "scale": 0.4,
+                      "transformOrigin": "bottom right",
+                      "x": "10%"
+                    },
+                    "to": {
+                      "scale": 0.4,
+                      "transformOrigin": "bottom right",
+                      "x": "10%"
                     }
                   }
                 ]
@@ -141,6 +108,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
                   "altText": {
                     "plaintext": "rocks1"
@@ -155,6 +124,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
                   "altText": {
                     "plaintext": "rocks2"
@@ -169,6 +140,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
                   "altText": {
                     "plaintext": "rocks3"
@@ -183,6 +156,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
                   "altText": {
                     "plaintext": "biker"
@@ -195,13 +170,18 @@
                 },
                 {
                   "id": "intro-text1",
+                  "textPosition": "bottom-center",
+                  "noPadding": true,
                   "_model": {
                     "title": "Text Layer"
                   },
+                  "_variation": "mobile",
                   "_variations": [
                     "mobile"
                   ],
-                  "leftBox": [
+                  "leftBox": [],
+                  "rightBox": [],
+                  "column": [
                     {
                       "type": "h2",
                       "id": null,
@@ -209,73 +189,48 @@
                         "plaintext": "The most exciting\nexperiences."
                       },
                       "styles": [
-                        "thin"
-                      ]
-                    },
-                    {
-                      "type": "h3",
-                      "id": null,
-                      "content": {
-                        "plaintext": "outdoor passion"
-                      },
-                      "styles": [
-                        "yellowBox",
-                        "uppercase"
+                        "thin",
+                        "alignCenter"
                       ]
                     }
-                  ],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
+                  ]
                 }
               ]
             },
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intro2",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimations": [
                   {
-                    "selector": "#buy-bikerHelmet .textWrapper",
+                    "selector": "#intro2 #intro-shoppableMomentsLayer",
                     "from": {
-                      "y": "-50%",
-                      "opacity": 0
+                      "x": "-10%",
+                      "scale": 2
                     },
                     "to": {
-                      "y": "0%",
+                      "x": "-10%",
+                      "scale": 2
+                    }
+                  },
+                  {
+                    "selector": "#buy-bikerHelmet .textWrapper",
+                    "from": {
+                      "y": "15%",
+                      "opacity": 0,
+                      "scale": 0.4
+                    },
+                    "to": {
+                      "y": "65%",
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -283,15 +238,16 @@
                   {
                     "selector": "#buy-bikerHelmet .dot",
                     "from": {
-                      "opacity": 0
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -299,17 +255,18 @@
                   {
                     "selector": "#buy-shorts .textWrapper",
                     "from": {
-                      "y": "-50%",
-                      "opacity": 0
+                      "y": "15%",
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
-                      "y": "0%",
+                      "y": "65%",
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -317,15 +274,16 @@
                   {
                     "selector": "#buy-shorts .dot",
                     "from": {
-                      "opacity": 0
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -333,17 +291,18 @@
                   {
                     "selector": "#buy-sneakers .textWrapper",
                     "from": {
-                      "y": "-50%",
-                      "opacity": 0
+                      "y": "15%",
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
-                      "y": "0%",
+                      "y": "65%",
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -351,15 +310,16 @@
                   {
                     "selector": "#buy-sneakers .dot",
                     "from": {
-                      "opacity": 0
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -367,17 +327,18 @@
                   {
                     "selector": "#buy-tubes .textWrapper",
                     "from": {
-                      "y": "-50%",
-                      "opacity": 0
+                      "y": "15%",
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
-                      "y": "0%",
+                      "y": "65%",
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -385,15 +346,16 @@
                   {
                     "selector": "#buy-tubes .dot",
                     "from": {
-                      "opacity": 0
+                      "opacity": 0,
+                      "scale": 0.4
                     },
                     "to": {
                       "opacity": 1,
+                      "scale": 0.4,
                       "duration": 0.5,
                       "scrollTrigger": {
                         "trigger": "#intro2",
                         "start": "0% 50%",
-                        "end": "100% 10%",
                         "toggleActions": "play none none reverse"
                       }
                     }
@@ -413,6 +375,7 @@
                   "_model": {
                     "title": "Shoppable Moment Layer"
                   },
+                  "id": "intro-shoppableMomentsLayer",
                   "fit": "contain",
                   "imageSelector": "#biker",
                   "width": null,
@@ -440,111 +403,20 @@
                       "y": 5
                     }
                   ]
-                },
-                {
-                  "id": null,
-                  "_model": {
-                    "title": "Text Layer"
-                  },
-                  "_variations": [],
-                  "leftBox": [],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
                 }
               ]
             },
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/outdoorpassion",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
                 },
                 "timelineAnimations": [
-                  {
-                    "selector": "#outdoorPassion .header",
-                    "from": {
-                      "background": "linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 0%)"
-                    },
-                    "to": {
-                      "background": "linear-gradient(90deg, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0) 100%)"
-                    }
-                  },
-                  {
-                    "selector": "#outdoorPassion .textLayer .left",
-                    "from": {
-                      "x": "-100%",
-                      "opacity": 0,
-                      "y": "0%"
-                    },
-                    "to": {
-                      "ease": "none",
-                      "keyframes": {
-                        "0%": {
-                          "x": "-100%",
-                          "opacity": 0,
-                          "y": "0%",
-                          "ease": "none"
-                        },
-                        "25%": {
-                          "x": "-50%",
-                          "opacity": 1,
-                          "ease": "power2.in"
-                        },
-                        "50%": {
-                          "x": "0%",
-                          "opacity": 1,
-                          "y": "0%",
-                          "ease": "power2.out"
-                        },
-                        "70%": {
-                          "x": "0%",
-                          "opacity": 1,
-                          "y": "0%",
-                          "ease": "power2.inOut"
-                        },
-                        "90%": {
-                          "x": "0%",
-                          "opacity": 1,
-                          "y": "-150%"
-                        }
-                      },
-                      "scrollTrigger": {
-                        "trigger": "#outdoorPassion",
-                        "start": "top bottom",
-                        "end": "50% top",
-                        "scrub": 0.5
-                      }
-                    }
-                  },
                   {
                     "selector": "#outdoorPassion",
                     "to": {
@@ -562,6 +434,15 @@
                         }
                       }
                     }
+                  },
+                  {
+                    "selector": "#outdoorTextLayer",
+                    "from": {
+                      "y": "-10%"
+                    },
+                    "to": {
+                      "y": "-10%"
+                    }
                   }
                 ]
               },
@@ -576,11 +457,18 @@
               "layers": [
                 {
                   "id": null,
+                  "textPosition": "bottom-center",
+                  "noPadding": true,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
-                  "leftBox": [
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "leftBox": [],
+                  "rightBox": [],
+                  "column": [
                     {
                       "type": "h3",
                       "id": null,
@@ -588,7 +476,8 @@
                         "plaintext": "Your dates, your ride distances\nand your style of lodging!"
                       },
                       "styles": [
-                        "thin"
+                        "thin",
+                        "alignCenter"
                       ]
                     },
                     {
@@ -601,62 +490,37 @@
                         "yellowBox"
                       ]
                     }
-                  ],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
+                  ]
                 }
               ]
             },
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
                 },
                 "timelineAnimations": [
                   {
-                    "selector": "#intoTheNature #mountains",
+                    "selector": "#intoTheNature .textLayer",
                     "from": {
-                      "y": "50%",
-                      "scale": 1.2
+                      "y": "102px"
                     },
                     "to": {
-                      "y": "50%",
-                      "scale": 1,
+                      "y": "102px"
+                    }
+                  },
+                  {
+                    "selector": "#intoTheNature",
+                    "to": {
                       "scrollTrigger": {
                         "trigger": "#intoTheNature",
                         "start": "top bottom",
                         "end": "bottom bottom",
-                        "scrub": 0.5,
                         "snap": {
                           "snapTo": [
                             0,
@@ -664,44 +528,76 @@
                           ],
                           "delay": 0
                         }
+                      }
+                    }
+                  },
+                  {
+                    "selector": "#intoTheNature #mountains",
+                    "from": {
+                      "y": "50%",
+                      "scale": 1.2,
+                      "transformOrigin": "bottom right",
+                      "x": "20%"
+                    },
+                    "to": {
+                      "y": "47%",
+                      "scale": 1.4,
+                      "transformOrigin": "bottom right",
+                      "x": "20%",
+                      "scrollTrigger": {
+                        "trigger": "#intoTheNature",
+                        "toggleActions": "play none none reverse",
+                        "start": "10% top"
                       },
-                      "ease": "expo.in"
+                      "duration": 1
                     }
                   },
                   {
                     "selector": "#intoTheNature #water",
                     "from": {
-                      "y": "70%"
+                      "y": "35%"
                     },
                     "to": {
-                      "y": "30%",
+                      "y": "35%"
+                    }
+                  },
+                  {
+                    "selector": "#intoTheNature #water-layer",
+                    "from": {
+                      "y": "0%",
+                      "scale": 2,
+                      "transformOrigin": "bottom center",
+                      "x": "50%"
+                    },
+                    "to": {
+                      "y": "0%",
+                      "scale": 2.2,
+                      "transformOrigin": "bottom center",
+                      "x": "50%",
                       "scrollTrigger": {
                         "trigger": "#intoTheNature",
-                        "start": "top bottom",
-                        "end": "bottom bottom",
-                        "scrub": 0.5
-                      }
-                    },
-                    "ease": "power4.out"
+                        "toggleActions": "play none none reverse",
+                        "start": "10% top"
+                      },
+                      "duration": 1
+                    }
                   },
                   {
                     "selector": "#intoTheNature #female-hiker-layer",
                     "from": {
                       "y": "0%",
-                      "x": "-25%",
-                      "scale": 1,
-                      "transformOrigin": "center right"
+                      "scale": 0.4,
+                      "transformOrigin": "bottom center"
                     },
                     "to": {
-                      "y": "100%",
-                      "x": "-25%",
-                      "scale": 1.6,
-                      "transformOrigin": "center right",
+                      "y": "63%",
+                      "scale": 0.5,
+                      "transformOrigin": "bottom center",
                       "scrollTrigger": {
                         "trigger": "#intoTheNature",
                         "start": "top top",
                         "end": "bottom top",
-                        "scrub": 0.5,
+                        "scrub": true,
                         "snap": {
                           "snapTo": [
                             0,
@@ -710,55 +606,16 @@
                           "delay": 0
                         }
                       },
-                      "ease": "power2.inOut"
+                      "ease": "power1.inOut"
                     }
                   },
                   {
-                    "selector": "#intoTheNature #female-hiker",
+                    "selector": "#hikerGirlTextLayer",
                     "from": {
-                      "y": "70%",
-                      "x": "16%",
-                      "scale": 0.6
+                      "y": "152px"
                     },
                     "to": {
-                      "y": "13%",
-                      "x": "16%",
-                      "scale": 0.6,
-                      "scrollTrigger": {
-                        "trigger": "#intoTheNature",
-                        "start": "top bottom",
-                        "end": "bottom bottom",
-                        "scrub": 0.5
-                      }
-                    },
-                    "ease": "power4.out"
-                  },
-                  {
-                    "selector": "#intoTheNature .textLayer .left",
-                    "from": {
-                      "y": "120%"
-                    },
-                    "to": {
-                      "keyframes": {
-                        "0%": {
-                          "y": "120%"
-                        },
-                        "45%": {
-                          "y": "0%"
-                        },
-                        "50%": {
-                          "y": "0%"
-                        },
-                        "100%": {
-                          "y": "-180%"
-                        }
-                      },
-                      "scrollTrigger": {
-                        "trigger": "#intoTheNature",
-                        "start": "top 80%",
-                        "end": "bottom top",
-                        "scrub": 0.5
-                      }
+                      "y": "152px"
                     }
                   }
                 ]
@@ -776,6 +633,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/mountains.png",
                   "altText": {
                     "plaintext": "mountains"
@@ -790,6 +649,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/water.png",
                   "altText": {
                     "plaintext": "water"
@@ -804,6 +665,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.png",
                   "altText": {
                     "plaintext": "female-hiker"
@@ -816,11 +679,18 @@
                 },
                 {
                   "id": null,
+                  "textPosition": "top-center",
+                  "noPadding": true,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
-                  "leftBox": [
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "leftBox": [],
+                  "rightBox": [],
+                  "column": [
                     {
                       "type": "h3",
                       "id": null,
@@ -841,58 +711,28 @@
                         "thin"
                       ]
                     }
-                  ],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
+                  ]
                 }
               ]
             },
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature2",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {},
                 "timelineAnimations": [
                   {
-                    "selector": "#intoTheNature2 .textLayer .left",
+                    "selector": "#intoTheNature2-textLayer .columnWrapper",
                     "from": {
-                      "y": "100%"
+                      "gap": "15px",
+                      "y": "-60px"
                     },
                     "to": {
-                      "y": "0%",
-                      "scrollTrigger": {
-                        "trigger": "#intoTheNature2",
-                        "start": "40% 80%",
-                        "toggleActions": "play none none reverse"
-                      }
+                      "gap": "15px",
+                      "y": "-60px"
                     }
                   },
                   {
@@ -925,12 +765,19 @@
               "id": "intoTheNature2",
               "layers": [
                 {
-                  "id": null,
+                  "id": "intoTheNature2-textLayer",
+                  "textPosition": "bottom-center",
+                  "noPadding": true,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
-                  "leftBox": [
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "leftBox": [],
+                  "rightBox": [],
+                  "column": [
                     {
                       "type": "h2",
                       "id": null,
@@ -961,156 +808,33 @@
                         "darkButton"
                       ]
                     }
-                  ],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
+                  ]
                 }
               ]
             },
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/uptothesky",
-              "_variation": "master",
+              "_variation": "mobile",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
                 },
                 "timelineAnimations": [
                   {
-                    "selector": "#upToTheSky",
-                    "from": {},
-                    "to": {
-                      "scrollTrigger": {
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top",
-                        "snap": {
-                          "snapTo": [
-                            0,
-                            1
-                          ],
-                          "delay": 0
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "selector": "#upToTheSky",
-                    "from": {},
-                    "to": {
-                      "scrollTrigger": {
-                        "pin": "#upToTheSky",
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top"
-                      }
-                    }
-                  },
-                  {
-                    "selector": "#upToTheSky #mountain1",
-                    "from": {
-                      "y": "0%",
-                      "scale": 1
-                    },
-                    "to": {
-                      "y": "-1%",
-                      "scale": 1.05,
-                      "scrollTrigger": {
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top",
-                        "scrub": 0.5
-                      }
-                    }
-                  },
-                  {
-                    "selector": "#upToTheSky #mountain2",
-                    "from": {
-                      "scale": 1,
-                      "transformOrigin": "bottom right"
-                    },
-                    "to": {
-                      "scale": 1.2,
-                      "transformOrigin": "bottom right",
-                      "scrollTrigger": {
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top",
-                        "scrub": 0.5
-                      }
-                    }
-                  },
-                  {
-                    "selector": "#upToTheSky #mountain3",
-                    "from": {
-                      "scale": 1,
-                      "transformOrigin": "bottom right"
-                    },
-                    "to": {
-                      "scale": 1.4,
-                      "transformOrigin": "bottom right",
-                      "scrollTrigger": {
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top",
-                        "scrub": 0.5
-                      }
-                    }
-                  },
-                  {
-                    "selector": "#upToTheSky #tent-layer",
-                    "from": {
-                      "y": "35%"
-                    },
-                    "to": {
-                      "y": "0%",
-                      "scrollTrigger": {
-                        "trigger": "#upToTheSky",
-                        "start": "top top",
-                        "end": "20% top",
-                        "scrub": 0.5
-                      }
-                    }
-                  },
-                  {
                     "selector": "#upToTheSky #back-text-layer",
                     "from": {
-                      "y": "0%"
+                      "y": "20%"
                     },
                     "to": {
-                      "y": "-35%",
+                      "y": "-20%",
                       "scrollTrigger": {
                         "trigger": "#upToTheSky",
                         "start": "top top",
-                        "end": "20% top",
-                        "scrub": 1
+                        "end": "2% top",
+                        "toggleActions": "play none none reverse"
                       }
                     }
                   },
@@ -1124,8 +848,8 @@
                       "scrollTrigger": {
                         "trigger": "#upToTheSky",
                         "start": "top top",
-                        "end": "20% top",
-                        "scrub": 1
+                        "end": "2% top",
+                        "toggleActions": "play none none reverse"
                       }
                     }
                   },
@@ -1139,37 +863,99 @@
                       "scrollTrigger": {
                         "trigger": "#upToTheSky",
                         "start": "top top",
-                        "end": "20% top",
-                        "scrub": 1
+                        "end": "2% top",
+                        "toggleActions": "play none none reverse"
                       }
                     }
                   },
                   {
-                    "selector": "#upToTheSky #t2",
+                    "selector": "#upToTheSky",
                     "from": {},
                     "to": {
-                      "duration": 1.5,
                       "scrollTrigger": {
                         "trigger": "#upToTheSky",
                         "start": "top top",
                         "end": "20% top",
-                        "scrub": 1
+                        "snap": {
+                          "snapTo": [
+                            0,
+                            1
+                          ],
+                          "delay": 0,
+                          "duration": 0.1,
+                          "inertia": false
+                        }
                       }
                     }
                   },
                   {
-                    "selector": "#upToTheSky #layer-button",
-                    "from": {
-                      "y": "60%"
-                    },
+                    "selector": "#upToTheSky",
+                    "from": {},
                     "to": {
-                      "y": "-10%",
-                      "duration": 1.5,
                       "scrollTrigger": {
+                        "pin": "#upToTheSky",
                         "trigger": "#upToTheSky",
                         "start": "top top",
                         "end": "20% top",
-                        "scrub": 1
+                        "toggleActions": "play none none reverse"
+                      }
+                    }
+                  },
+                  {
+                    "selector": "#upToTheSky #mountain1",
+                    "from": {
+                      "y": "0%",
+                      "scale": 2.5,
+                      "transformOrigin": "bottom center"
+                    },
+                    "to": {
+                      "y": "0%",
+                      "scale": 2.5,
+                      "transformOrigin": "bottom center"
+                    }
+                  },
+                  {
+                    "selector": "#upToTheSky #mountain2",
+                    "from": {
+                      "scale": 2.7,
+                      "transformOrigin": "bottom center"
+                    },
+                    "to": {
+                      "scale": 2.7,
+                      "transformOrigin": "bottom center"
+                    }
+                  },
+                  {
+                    "selector": "#upToTheSky #tent",
+                    "from": {
+                      "x": "-1%",
+                      "scale": 3,
+                      "transformOrigin": "bottom center"
+                    },
+                    "to": {
+                      "x": "-1%",
+                      "scale": 3.4,
+                      "transformOrigin": "bottom center",
+                      "scrollTrigger": {
+                        "trigger": "#upToTheSky",
+                        "start": "top top",
+                        "end": "2% top",
+                        "toggleActions": "play none none reverse"
+                      }
+                    }
+                  },
+                  {
+                    "selector": "#upToTheSky #tent-layer",
+                    "from": {
+                      "y": "35%"
+                    },
+                    "to": {
+                      "y": "0%",
+                      "scrollTrigger": {
+                        "trigger": "#upToTheSky",
+                        "start": "top top",
+                        "end": "2% top",
+                        "toggleActions": "play none none reverse"
                       }
                     }
                   }
@@ -1185,11 +971,80 @@
               "id": "upToTheSky",
               "layers": [
                 {
+                  "_model": {
+                    "title": "Image Layer"
+                  },
+                  "_variation": "master",
+                  "_variations": [],
+                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
+                  "altText": {
+                    "plaintext": null
+                  },
+                  "id": "mountain1",
+                  "layerId": "mountain1-layer",
+                  "basePosition": "bottom-center",
+                  "fit": "cover",
+                  "overflow": false
+                },
+                {
+                  "_model": {
+                    "title": "Image Layer"
+                  },
+                  "_variation": "master",
+                  "_variations": [],
+                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
+                  "altText": {
+                    "plaintext": "mountain2"
+                  },
+                  "id": "mountain2",
+                  "layerId": "mountain2-layer",
+                  "basePosition": "bottom-right",
+                  "fit": "cover",
+                  "overflow": false
+                },
+                {
+                  "_model": {
+                    "title": "Image Layer"
+                  },
+                  "_variation": "master",
+                  "_variations": [],
+                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.png",
+                  "altText": {
+                    "plaintext": "mountain3"
+                  },
+                  "id": "mountain3",
+                  "layerId": "mountain3-layer",
+                  "basePosition": "bottom-right",
+                  "fit": "cover",
+                  "overflow": false
+                },
+                {
+                  "_model": {
+                    "title": "Image Layer"
+                  },
+                  "_variation": "master",
+                  "_variations": [],
+                  "path": "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
+                  "altText": {
+                    "plaintext": "tent"
+                  },
+                  "id": "tent",
+                  "layerId": "tent-layer",
+                  "basePosition": "bottom-center",
+                  "fit": "cover",
+                  "overflow": false
+                },
+                {
                   "id": "back-text-layer",
+                  "textPosition": null,
+                  "noPadding": true,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
                   "leftBox": [],
                   "rightBox": [],
                   "column": [
@@ -1227,60 +1082,7 @@
                         "alignCenter",
                         "white"
                       ]
-                    }
-                  ]
-                },
-                {
-                  "_model": {
-                    "title": "Image Layer"
-                  },
-                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
-                  "altText": {
-                    "plaintext": null
-                  },
-                  "id": "mountain1",
-                  "layerId": "mountain1-layer",
-                  "basePosition": "bottom-center",
-                  "fit": "cover",
-                  "overflow": false
-                },
-                {
-                  "_model": {
-                    "title": "Image Layer"
-                  },
-                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
-                  "altText": {
-                    "plaintext": "mountain2"
-                  },
-                  "id": "mountain2",
-                  "layerId": "mountain2-layer",
-                  "basePosition": "bottom-right",
-                  "fit": "cover",
-                  "overflow": false
-                },
-                {
-                  "_model": {
-                    "title": "Image Layer"
-                  },
-                  "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.png",
-                  "altText": {
-                    "plaintext": "mountain3"
-                  },
-                  "id": "mountain3",
-                  "layerId": "mountain3-layer",
-                  "basePosition": "bottom-right",
-                  "fit": "cover",
-                  "overflow": false
-                },
-                {
-                  "id": "layer-button",
-                  "_model": {
-                    "title": "Text Layer"
-                  },
-                  "_variations": [],
-                  "leftBox": [],
-                  "rightBox": [],
-                  "column": [
+                    },
                     {
                       "type": "button",
                       "id": "t3",
@@ -1292,58 +1094,6 @@
                       ]
                     }
                   ]
-                },
-                {
-                  "_model": {
-                    "title": "Image Layer"
-                  },
-                  "path": "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
-                  "altText": {
-                    "plaintext": "tent"
-                  },
-                  "id": "tent",
-                  "layerId": "tent-layer",
-                  "basePosition": "bottom-center",
-                  "fit": "cover",
-                  "overflow": false
-                },
-                {
-                  "id": null,
-                  "_model": {
-                    "title": "Text Layer"
-                  },
-                  "_variations": [],
-                  "leftBox": [],
-                  "rightBox": [
-                    {
-                      "_model": {
-                        "title": "Panel Menu"
-                      },
-                      "menuItems": [
-                        {
-                          "text": "Intro",
-                          "link": "#intro",
-                          "menuItemId": "intro"
-                        },
-                        {
-                          "text": "Outdoor Passion",
-                          "link": "#outdoorPassion",
-                          "menuItemId": "outdoorPassion"
-                        },
-                        {
-                          "text": "Into the Nature",
-                          "link": "#intoTheNature",
-                          "menuItemId": "intoTheNature"
-                        },
-                        {
-                          "text": "Up to the Sky",
-                          "link": "#upToTheSky",
-                          "menuItemId": "upToTheSky"
-                        }
-                      ]
-                    }
-                  ],
-                  "column": []
                 }
               ]
             }

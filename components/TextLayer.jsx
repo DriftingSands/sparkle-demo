@@ -4,7 +4,7 @@ export default function TextLayer({data, activeMenuItem}) {
   return (
     <div className={"textLayer"} id={data?.id}>
 
-      {data?.column && 
+      {data?.column?.length ? 
         <div className={`columnWrapper ${data?.textPosition || ''} ${data?.noPadding ? 'noPadding' : ''}`}>
           {data?.column?.map((item, index) => {
             return (
@@ -17,7 +17,7 @@ export default function TextLayer({data, activeMenuItem}) {
               </item.type>
             )
           })}
-        </div>
+        </div> : null
       }
 
       <div className="left">
