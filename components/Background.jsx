@@ -33,7 +33,7 @@ export default function Background(props) {
 
   return (
     <div className={`backgroundWrapper ${isVideo ? 'isVideo' : ''}`} style={{ backgroundColor: color, zIndex, }}>
-      {path && !isVideo && <img src={`${path}`} alt={`${altText}`} className="backgroundImage" />}
+      {path && !isVideo && <img src={`${path}`} alt={`${altText}`} className="backgroundImage" loading={props.lazy ? 'lazy' : 'eager'} />}
       {isVideo && (
         <iframe
           style={aspectRatioStyle}

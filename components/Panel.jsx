@@ -15,13 +15,13 @@ const lookupObject = {
   "Shoppable Moment Layer": PointTextMap,
 };
 
-export default function Panel({ panel, settings }) {
+export default function Panel({ panel, panelNr, settings, runOnEnd }) {
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
     if (!createTimeline || !panel?.animations?.timelineAnimations) {return;}
 
-    createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings);
+    createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
   }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]);
 
   return (
@@ -30,7 +30,7 @@ export default function Panel({ panel, settings }) {
       id={panel.id}
     >
       {settings?.type === "mobile" ? null : <Header />}
-      {panel?.background && <Background backgroundProps={panel.background} />}
+      {panel?.background && <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} />}
       {panel?.layers?.length &&
         panel.layers.map((layer, index) => {
           const Component = lookupObject[layer.type || layer?._model?.title];
@@ -41,6 +41,7 @@ export default function Panel({ panel, settings }) {
             <Component
               activeMenuItem={panel.activeMenuItem}
               data={layer}
+              panelNr={panelNr}
               key={index}
             />
           );

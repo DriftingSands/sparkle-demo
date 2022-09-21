@@ -31,7 +31,7 @@ export default function Home() {
         <MobileHeader maxWidth={data?.settings?.maxWidth} />
       )}
       {data?.panels?.map((panel, index) => {
-        return <Panel settings={data.settings} panel={panel} key={index} />;
+        return <Panel settings={data.settings} panel={panel} panelNr={index} key={index} />;
       })}
     </div>
   ) : null;

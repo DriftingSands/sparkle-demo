@@ -20,12 +20,12 @@ export default function Graphiql() {
   
 
   return (
-    <div className={"page"}>
+    <div className={"page"} style={{maxWidth: 800, margin: '0 auto'}} >
       {type === "mobile" && (
         <MobileHeader maxWidth={800} />
       )}
       {data && data.map((panel, index) => {
-        return <Panel panel={panel} settings={{type, }} key={index} />;
+        return <Panel panel={panel} panelNr={index} settings={{type, }} key={index} />;
       })}
     </div>
   )

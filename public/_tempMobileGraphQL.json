@@ -55,51 +55,14 @@
                     "to": {
                       "y": "-10%"
                     }
-                  },
-                  {
-                    "selector": "#rocks1",
-                    "from": {
-                      "scale": 0.3,
-                      "x": "-4%",
-                      "transformOrigin": "bottom left"
-                    },
-                    "to": {
-                      "scale": 0.3,
-                      "x": "-4%",
-                      "transformOrigin": "bottom left"
-                    }
-                  },
-                  {
-                    "selector": "#rocks2",
-                    "from": {
-                      "scale": 0.4,
-                      "transformOrigin": "bottom left"
-                    },
-                    "to": {
-                      "scale": 0.4,
-                      "transformOrigin": "bottom left"
-                    }
-                  },
-                  {
-                    "selector": "#rocks3",
-                    "from": {
-                      "scale": 0.4,
-                      "transformOrigin": "bottom right",
-                      "x": "10%"
-                    },
-                    "to": {
-                      "scale": 0.4,
-                      "transformOrigin": "bottom right",
-                      "x": "10%"
-                    }
                   }
                 ]
               },
               "dark": false,
               "background": {
                 "color": null,
-                "isVideo": null,
-                "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
+                "isVideo": false,
+                "path": "/WKND SPA/Outdoor Passion/Scene 1/sky_m.jpg",
                 "videoWidth": null,
                 "videoHeight": null,
                 "altText": "sky"
@@ -111,9 +74,11 @@
                   "_model": {
                     "title": "Image Layer"
                   },
-                  "_variation": "master",
-                  "_variations": [],
-                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1_m.png",
                   "altText": {
                     "plaintext": "rocks1"
                   },
@@ -127,9 +92,11 @@
                   "_model": {
                     "title": "Image Layer"
                   },
-                  "_variation": "master",
-                  "_variations": [],
-                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2_m.png",
                   "altText": {
                     "plaintext": "rocks2"
                   },
@@ -143,9 +110,11 @@
                   "_model": {
                     "title": "Image Layer"
                   },
-                  "_variation": "master",
-                  "_variations": [],
-                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3_m.png",
                   "altText": {
                     "plaintext": "rocks3"
                   },
@@ -159,9 +128,11 @@
                   "_model": {
                     "title": "Image Layer"
                   },
-                  "_variation": "master",
-                  "_variations": [],
-                  "path": "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
+                  "_variation": "mobile",
+                  "_variations": [
+                    "mobile"
+                  ],
+                  "path": "/WKND SPA/Outdoor Passion/Scene 1/biker_m.png",
                   "altText": {
                     "plaintext": "biker"
                   },
