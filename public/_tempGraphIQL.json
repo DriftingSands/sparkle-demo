@@ -3,6 +3,7 @@
     "pageList": {
       "items": [
         {
+          "_variation": "master",
           "_variations": [
             "mobile"
           ],
@@ -10,6 +11,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intro",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false,
@@ -131,7 +135,10 @@
               "dark": false,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": "sky"
               },
               "activeMenuItem": "intro",
@@ -141,6 +148,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
                   "altText": {
                     "plaintext": "rocks1"
@@ -155,6 +164,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
                   "altText": {
                     "plaintext": "rocks2"
@@ -169,6 +180,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
                   "altText": {
                     "plaintext": "rocks3"
@@ -183,6 +196,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
                   "altText": {
                     "plaintext": "biker"
@@ -195,9 +210,12 @@
                 },
                 {
                   "id": "intro-text1",
+                  "textPosition": null,
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
+                  "_variation": "master",
                   "_variations": [
                     "mobile"
                   ],
@@ -260,6 +278,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intro2",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimations": [
                   {
@@ -403,7 +424,10 @@
               "dark": false,
               "background": {
                 "color": "#ffea00",
+                "isVideo": null,
                 "path": null,
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "intro",
@@ -413,6 +437,7 @@
                   "_model": {
                     "title": "Shoppable Moment Layer"
                   },
+                  "id": "intro-shoppableMomentsLayer",
                   "fit": "contain",
                   "imageSelector": "#biker",
                   "width": null,
@@ -443,9 +468,12 @@
                 },
                 {
                   "id": null,
+                  "textPosition": null,
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
+                  "_variation": "master",
                   "_variations": [],
                   "leftBox": [],
                   "rightBox": [
@@ -484,6 +512,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/outdoorpassion",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
@@ -568,7 +599,10 @@
               "dark": true,
               "background": {
                 "color": null,
-                "path": "/WKND SPA/hybrid/AdobeStock_427738038.jpeg",
+                "isVideo": true,
+                "path": "https://video.tv.adobe.com/v/3409386/",
+                "videoWidth": 4096,
+                "videoHeight": 2160,
                 "altText": null
               },
               "activeMenuItem": "outdoorPassion",
@@ -576,10 +610,15 @@
               "layers": [
                 {
                   "id": null,
+                  "textPosition": "center-center",
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
+                  "_variation": "master",
+                  "_variations": [
+                    "mobile"
+                  ],
                   "leftBox": [
                     {
                       "type": "h3",
@@ -638,6 +677,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
@@ -766,7 +808,10 @@
               "dark": false,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Outdoor Passion/Scene 2/sky.jpg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": "sky"
               },
               "activeMenuItem": "intoTheNature",
@@ -776,6 +821,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/mountains.png",
                   "altText": {
                     "plaintext": "mountains"
@@ -790,6 +837,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/water.png",
                   "altText": {
                     "plaintext": "water"
@@ -804,6 +853,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.png",
                   "altText": {
                     "plaintext": "female-hiker"
@@ -816,10 +867,15 @@
                 },
                 {
                   "id": null,
+                  "textPosition": null,
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
+                  "_variation": "master",
+                  "_variations": [
+                    "mobile"
+                  ],
                   "leftBox": [
                     {
                       "type": "h3",
@@ -878,6 +934,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature2",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {},
                 "timelineAnimations": [
@@ -918,18 +977,26 @@
               "dark": false,
               "background": {
                 "color": "#ffea00",
+                "isVideo": null,
                 "path": null,
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "intoTheNature",
               "id": "intoTheNature2",
               "layers": [
                 {
-                  "id": null,
+                  "id": "intoTheNature2-textLayer",
+                  "textPosition": null,
+                  "noPadding": false,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
+                  "_variation": "master",
+                  "_variations": [
+                    "mobile"
+                  ],
                   "leftBox": [
                     {
                       "type": "h2",
@@ -998,6 +1065,9 @@
             {
               "_path": "/content/dam/sparkle-demo/en/data/panels/uptothesky",
               "_variation": "master",
+              "_variations": [
+                "mobile"
+              ],
               "animations": {
                 "timelineAnimationSettings": {
                   "globalAutoDelay": false
@@ -1178,7 +1248,10 @@
               "dark": true,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.jpeg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "upToTheSky",
@@ -1186,10 +1259,15 @@
               "layers": [
                 {
                   "id": "back-text-layer",
+                  "textPosition": null,
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
-                  "_variations": [],
+                  "_variation": "master",
+                  "_variations": [
+                    "mobile"
+                  ],
                   "leftBox": [],
                   "rightBox": [],
                   "column": [
@@ -1234,6 +1312,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.png",
                   "altText": {
                     "plaintext": null
@@ -1248,6 +1328,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.png",
                   "altText": {
                     "plaintext": "mountain2"
@@ -1262,6 +1344,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.png",
                   "altText": {
                     "plaintext": "mountain3"
@@ -1274,9 +1358,12 @@
                 },
                 {
                   "id": "layer-button",
+                  "textPosition": "bottom-center",
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
+                  "_variation": "master",
                   "_variations": [],
                   "leftBox": [],
                   "rightBox": [],
@@ -1297,6 +1384,8 @@
                   "_model": {
                     "title": "Image Layer"
                   },
+                  "_variation": "master",
+                  "_variations": [],
                   "path": "/WKND SPA/Into The Nature/Scene 1/Tent/tent.png",
                   "altText": {
                     "plaintext": "tent"
@@ -1309,9 +1398,12 @@
                 },
                 {
                   "id": null,
+                  "textPosition": null,
+                  "noPadding": null,
                   "_model": {
                     "title": "Text Layer"
                   },
+                  "_variation": "master",
                   "_variations": [],
                   "leftBox": [],
                   "rightBox": [

@@ -113,11 +113,15 @@ export const graphqlMobile = `
       panels {
         _path
         _variation
+        _variations
         animations
         dark
         background {
           color
+          isVideo
           path
+          videoWidth
+          videoHeight
           altText
         }
         activeMenuItem
@@ -125,6 +129,8 @@ export const graphqlMobile = `
         layers {
           ... on TextLayerModel {
             id
+            textPosition
+            noPadding
             _model {
               title
             }
@@ -191,6 +197,7 @@ export const graphqlMobile = `
             _model {
               title
             }
+            id
             fit
             imageSelector
             width

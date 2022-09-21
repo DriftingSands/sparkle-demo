@@ -3,45 +3,27 @@ import desktopData from "../components/_testData";
 import mobileData from "../components/_mobileData";
 import MobileHeader from "../components/MobileHeader";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import {WindowSizeProvider} from "../components/ResizeProvider"
 
 export default function Home() {
   const [data, setData] = useState(null);
+  const windowSize = useContext(WindowSizeProvider);
 
-  function debounce(func, wait) {
-    let timeout;
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-      timeout = setTimeout(func, wait);
-    };
-  }
-  
-
-  const handleResize = debounce(() => {
-    ScrollTrigger.refresh();
-    setData(null);
-  }, 100);
 
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [handleResize]);
-
-
-  useEffect(() => {
-    if (data === null) {
-      if (window.innerWidth > 800) {
-        setData(desktopData);
-      } else {
-        setData(mobileData);
-      }
+    if (windowSize.width > 800) {
+      setData(null);
+      ScrollTrigger.refresh()
+      setData(desktopData);
+    } else {
+      setData(null);
+      ScrollTrigger.refresh()
+      setData(mobileData);
     }
-  }, [data]);
+  }, [windowSize])
+
 
   return data ? (
     <div className={"page"} style={{ maxWidth: data?.settings?.maxWidth }}>

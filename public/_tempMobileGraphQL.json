@@ -98,7 +98,10 @@
               "dark": false,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": "sky"
               },
               "activeMenuItem": "intro",
@@ -365,7 +368,10 @@
               "dark": false,
               "background": {
                 "color": "#ffea00",
+                "isVideo": null,
                 "path": null,
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "intro",
@@ -449,7 +455,10 @@
               "dark": true,
               "background": {
                 "color": null,
+                "isVideo": false,
                 "path": "/WKND SPA/hybrid/AdobeStock_427738038.jpeg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "outdoorPassion",
@@ -623,7 +632,10 @@
               "dark": false,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Outdoor Passion/Scene 2/sky.jpg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": "sky"
               },
               "activeMenuItem": "intoTheNature",
@@ -758,7 +770,10 @@
               "dark": false,
               "background": {
                 "color": "#ffea00",
+                "isVideo": null,
                 "path": null,
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "intoTheNature",
@@ -964,7 +979,10 @@
               "dark": true,
               "background": {
                 "color": null,
+                "isVideo": null,
                 "path": "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.jpeg",
+                "videoWidth": null,
+                "videoHeight": null,
                 "altText": null
               },
               "activeMenuItem": "upToTheSky",
