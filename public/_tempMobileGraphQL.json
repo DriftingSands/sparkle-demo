@@ -771,7 +771,8 @@
                         "plaintext": "Your dates, your distances\nand your style of lodging!"
                       },
                       "styles": [
-                        "thin"
+                        "thin",
+                        "alignCenter"
                       ]
                     },
                     {

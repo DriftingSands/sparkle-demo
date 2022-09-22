@@ -5,7 +5,6 @@ import TextLayer from "../components/TextLayer";
 import PointTextMap from './PointTextMap';
 import Header from "./Header";
 import { TimelineProvider } from "./TimelineWrapper";
-import data from './_testData';
 
 const lookupObject = {
   image: LayerImage,
