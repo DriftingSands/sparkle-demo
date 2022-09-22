@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
 export default function Header() {
@@ -46,7 +47,8 @@ export default function Header() {
         <a className='accountLink' href=""><span>my account</span></a>
 
         <div className="accountIcon">
-          <Image src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          {/* using next Image component causes the image to be blurry for some reason */}
+          <img src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
         </div>
       </div>
     </header>

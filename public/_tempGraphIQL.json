@@ -135,7 +135,7 @@
               "dark": false,
               "background": {
                 "color": null,
-                "isVideo": null,
+                "isVideo": false,
                 "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.jpg",
                 "videoWidth": null,
                 "videoHeight": null,
@@ -149,7 +149,9 @@
                     "title": "Image Layer"
                   },
                   "_variation": "master",
-                  "_variations": [],
+                  "_variations": [
+                    "mobile"
+                  ],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1.png",
                   "altText": {
                     "plaintext": "rocks1"
@@ -165,7 +167,9 @@
                     "title": "Image Layer"
                   },
                   "_variation": "master",
-                  "_variations": [],
+                  "_variations": [
+                    "mobile"
+                  ],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2.png",
                   "altText": {
                     "plaintext": "rocks2"
@@ -181,7 +185,9 @@
                     "title": "Image Layer"
                   },
                   "_variation": "master",
-                  "_variations": [],
+                  "_variations": [
+                    "mobile"
+                  ],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3.png",
                   "altText": {
                     "plaintext": "rocks3"
@@ -197,7 +203,9 @@
                     "title": "Image Layer"
                   },
                   "_variation": "master",
-                  "_variations": [],
+                  "_variations": [
+                    "mobile"
+                  ],
                   "path": "/WKND SPA/Outdoor Passion/Scene 1/biker.png",
                   "altText": {
                     "plaintext": "biker"
@@ -1233,7 +1241,7 @@
                       "y": "60%"
                     },
                     "to": {
-                      "y": "-10%",
+                      "y": "-40%",
                       "duration": 1.5,
                       "scrollTrigger": {
                         "trigger": "#upToTheSky",
