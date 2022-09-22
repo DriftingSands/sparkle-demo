@@ -11,10 +11,10 @@ isBrowser() && window.addEventListener('message', ({data}) => {
   animationsList = []
 })
 
-const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings) => {
-  const tl = gsap.timeline()
-  tl.delay(timelineSettings.startDelay)
-  const standardDelay = timelineSettings.globalAutoDelay ? '>' : '<'
+const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOnEnd) => {
+  const tl = gsap.timeline({onComplete: runOnEnd})
+  timelineSettings?.startDelay && tl.delay(timelineSettings.startDelay)
+  const standardDelay = timelineSettings?.globalAutoDelay ? '>' : '<'
 
   for (let i = 0; i < timelineArray.length; i++) {
     const animation = timelineArray[i]

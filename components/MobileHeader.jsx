@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { scrollToId } from './utils';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function MobileHeader({maxWidth}) {
   const [openMenu, setOpenMenu] = useState(false)
@@ -69,7 +70,7 @@ export default function MobileHeader({maxWidth}) {
         {/* eslint-expect-error-next-line @next/next/no-img-element */}
         <img src={'/wknd-logo-dk.svg'} alt='logo' height={22} className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`} /> 
 
-        <a className='profileIconWrapper' ><Image className='menuProfileIcon' src={"/WKND SPA/stacey-roswells.webp"} width={42} height={42} alt="profile picture" /></a>
+        <a className='profileIconWrapper' ><img className='menuProfileIcon' src={"/WKND SPA/stacey-roswells.webp"} width={42} height={42} alt="profile picture" /></a>
       </div> 
 
       <nav className="headerNavigation">
@@ -107,7 +108,8 @@ export default function MobileHeader({maxWidth}) {
 
         <div className="bottom">
           <span>my account</span>
-          <Image src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          
+          <img src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
         </div>
       </menu>
 

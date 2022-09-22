@@ -12,10 +12,15 @@ $transition: all 0.3s ease-in-out;
 
   * {font-family: Source Sans Pro;}
   .logo {
-
+    position: relative;
+    z-index: 910;
     transition: $transition;
-    &.menuClosed {transform: translateX(0);}
-    &.menuOpen {transform: translateX(-44px)}
+    &.menuClosed {
+      transform: translateX(0);
+    }
+    &.menuOpen {
+      transform: translateX(-34px);
+    }
   }
 
   .mainHeader {
@@ -40,6 +45,7 @@ $transition: all 0.3s ease-in-out;
   }
 
   .menuProfileIcon {
+    object-fit: cover;
     min-height: 100%;
     min-width: 100%;
     border-radius: 50%;
@@ -49,6 +55,7 @@ $transition: all 0.3s ease-in-out;
     aspect-ratio: 1 / 1;
     height: 100%;
     padding: 16px;
+    margin-right: -10px;
     cursor: pointer;
     background-color: white;
 
@@ -116,7 +123,7 @@ $transition: all 0.3s ease-in-out;
   }
 
   .headerMenu {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     background: linear-gradient(180deg, transparent 60px, white 60px);
@@ -126,7 +133,8 @@ $transition: all 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     padding: 0 16px;
-    
+    z-index: 0;
+    height: 100vh;
     
     transition: $transition;
     opacity: 0;
@@ -171,6 +179,8 @@ $transition: all 0.3s ease-in-out;
       font-weight: 600;
 
       img {
+        object-fit: cover;
+        min-height: 100%;
         border-radius: 50%;
       }
     }

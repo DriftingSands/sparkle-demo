@@ -1,36 +1,38 @@
 import { useEffect, useState } from "react";
 
-export default function PointTextMap(props) {
+export default function PointTextMap({ data }) {
   const [conformToElement, setConformToElement] = useState(null);
 
+
+
   useEffect(() => {
-    const el = document.querySelector(props?.pointText?.settings?.imgSelector);
+    const el = document.querySelector(data?.imageSelector);
     if (!el) {return;}
     setConformToElement({ width: el.naturalWidth, height: el.naturalHeight });
-  }, [props?.pointText?.settings?.imgSelector]);
+  }, [data?.imageSelector]);
 
-  const objectFit = props?.pointText?.settings?.fit;
+  const objectFit = data?.fit;
   const aspectRatio = `${
-    conformToElement?.width || props?.pointText?.settings?.width || 16
-  } / ${conformToElement?.height || props?.pointText?.settings?.height || 9}`;
+    conformToElement?.width || data?.width || 16
+  } / ${conformToElement?.height || data?.height || 9}`;
 
   return (
-    <div className="wrapperForRatio" style={{ aspectRatio }}>
+    <div className="wrapperForRatio" id={data.id} style={{ aspectRatio }}>
       <div className="pointTextLayer" style={{ objectFit, aspectRatio }}>
-        {props?.pointText?.content?.map((item, index) => {
+        {data?.content?.map((item, index) => {
           return (
             <div
               key={index}
               className="pointTextItemWrapper"
               id={item.id}
               style={{
-                left: `calc(${item.x} + 50%)`,
-                top: `calc(${item.y} + 50%)`,
+                left: `calc(${item.x}% + 50%)`,
+                top: `calc(${item.y}% + 50%)`,
               }}
             >
               <div className="textWrapper">
                 <div className="buyText">
-                  <a href={item.link || null}>Buy for {item.price}</a>
+                  <a href={item.link || null}>Buy for {item.pricetag}</a>
                 </div>
                 <div className="text">{item.text}</div>
                 <div className="arrow" />

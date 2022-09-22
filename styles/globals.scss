@@ -166,8 +166,8 @@ button {
 
   img {
     object-fit: cover;
-    min-width: 120%;
-    min-height: 120%;
+    min-width: 140%;
+    min-height: 140%;
   }
 }
 
@@ -178,7 +178,7 @@ button {
   left: 0;
   height: 100px;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 12.5%;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -281,7 +281,7 @@ button {
 .textLayer {
   height: 100%;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 12.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,18 +289,21 @@ button {
   white-space: pre-line;
 
   .h2 {
-    font-size: 42px;
+    font-size: 60px;
+    @media screen and (max-width: 800px) {
+      font-size: 40px;
+    }
     // font-family: Source Serif Pro;
     font-family: Asar, 'Times New Roman', Times, serif;
-    &.S {font-size: 36px;}
-    &.XS {font-size: 26px;}
+    // &.S {font-size: 36px;}
+    // &.XS {font-size: 26px;}
   }
   .h3 {
     font-size: 34px;
     // font-family: Source Serif Pro;
     font-family: Asar, 'Times New Roman', Times, serif;
-    &.S {font-size: 28px;}
-    &.S {font-size: 18px;}
+    // &.S {font-size: 28px;}
+    // &.S {font-size: 18px;}
   }
   .thin {
     font-weight: 400;
@@ -482,7 +485,8 @@ button {
     .dot {
       background-color: white;
       border: black solid 2px;
-      margin-bottom: -15px;
+      // margin bot but be minus half of dot radius
+      margin-bottom: -7.5px;
       border-radius: 50%;
       width: 15px;
       min-height: 15px;
@@ -508,6 +512,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
+
   
   .backgroundImage {
     object-fit: cover;
@@ -515,12 +520,15 @@ button {
     width: 100%;
     height: 100%;
   }
-}
 
-
-
-body {
-  min-height: 400vh;
+  .videoIFrame {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {

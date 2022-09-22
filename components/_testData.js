@@ -878,7 +878,6 @@ const data = {
       background: {
         path: "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.jpeg",
         altText: "",
-        zIndex: "-3",
       },
       timelineAnimationSettings: {
         globalAutoDelay: false,

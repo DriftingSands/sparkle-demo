@@ -1,13 +1,11 @@
 import Menu from "./Menu";
-import PointTextMap from './PointTextMap';
 
-export default function TextLayer({data, settings}) {
+export default function TextLayer({data, activeMenuItem}) {
   return (
-    <div className={"textLayer"} id={settings?.id}>
-      {data?.pointText && <PointTextMap pointText={data?.pointText} />}
+    <div className={"textLayer"} id={data?.id}>
 
-      {data?.column && 
-        <div className={`columnWrapper ${settings?.textPosition || ''} ${settings?.noPadding ? 'noPadding' : ''}`}>
+      {data?.column?.length ? 
+        <div className={`columnWrapper ${data?.textPosition || ''} ${data?.noPadding ? 'noPadding' : ''}`}>
           {data?.column?.map((item, index) => {
             return (
               <item.type
@@ -15,11 +13,11 @@ export default function TextLayer({data, settings}) {
                 className={`${item.type} ${item?.styles?.join(' ')}`}
                 id={item.id}
               >
-                {item.content}
+                {item.content?.plaintext}
               </item.type>
             )
           })}
-        </div>
+        </div> : null
       }
 
       <div className="left">
@@ -30,7 +28,7 @@ export default function TextLayer({data, settings}) {
             className={`${item.type} ${item?.styles?.join(' ')}`}
             id={item.id}
             >
-              {item.content}
+              {item.content?.plaintext}
             </item.type>
           );
         })}
@@ -38,14 +36,14 @@ export default function TextLayer({data, settings}) {
 
       <div className="right" >
         {data?.rightBox?.map((item, index) => {
-          const Component = item.type === 'menu' ? Menu : item.type
+          const Component = item?._model?.title === 'Panel Menu' ? Menu : item.type
           return (
-            <Component menuItems={item.menuItems}
+            <Component menuItems={item.menuItems} activeMenuItem={activeMenuItem}
               key={index}
               className={`${item.type} ${item?.styles?.join(' ')}`}
               id={item.id}
             >
-              {item.content}
+              {item.content?.plaintext}
             </Component>
           )
         })}
