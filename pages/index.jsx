@@ -38,28 +38,28 @@ export default function Graphiql(props) {
   const [type, setType] = useState('desktop')
   const [loadRest, setLoadRest] = useState(false)
 
-    const [desktopData, setDesktopData] = useState(null)
-    const [mobileData, setMobileData] = useState(null)
+  const [desktopData, setDesktopData] = useState(null)
+  const [mobileData, setMobileData] = useState(null)
 
+  
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return}
-    
-    fetch(process.env.NEXT_PUBLIC_AEM_HOST + '/' + 'graphql/execute.json/sparkle-demo/homepage', {
-      headers: new Headers({
-        'Authorization': 'Basic '+btoa(process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER +':'+ process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD),   
-      })})
-      .then( response => response.json() )
-      .then( data => {
-        return setDesktopData(data.data.pageByPath.item.panels) 
-      })
-    fetch(process.env.NEXT_PUBLIC_AEM_HOST + '/' + 'graphql/execute.json/sparkle-demo/mobile', {
-      headers: new Headers({
-        'Authorization': 'Basic '+btoa(process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER +':'+ process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD),   
-      })})
-      .then( response => response.json() )
-      .then( data => {
-        return setMobileData(data.data.pageByPath.item.panels) 
-      })      
+    // if (typeof window === 'undefined') {return}
+    const aemHeadlessClient = new AEMHeadless({
+      serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+      endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+      auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
+      // fetch: fetch
+    })
+  
+    const getData = async (variation, setState) => {
+      const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+      return setState(response.data.pageByPath.item.panels)
+    }
+
+    getData('desktop', setDesktopData)
+    getData('mobile', setMobileData)
+
   }, [])
   
   const windowSize = useContext(WindowSizeProvider);
