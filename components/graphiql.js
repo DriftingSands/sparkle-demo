@@ -1,4 +1,4 @@
-export default function getGraphiqlCall(variation = "master") {
+export default function getGraphqlCall(variation = "master") {
   return `
     {
       pageList(variation: "${variation}") {
