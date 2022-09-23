@@ -5,33 +5,33 @@ import MobileHeader from '../components/MobileHeader'
 import { WindowSizeProvider } from '../components/ResizeProvider'
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-export async function getServerSideProps () {
-  if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
-    return {
-      props: {
-        shouldClientsideRender: true,
-      }
-    }
-  }
+// export async function getServerSideProps () {
+//   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
+//     return {
+//       props: {
+//         shouldClientsideRender: true,
+//       }
+//     }
+//   }
   
-  const aemHeadlessClient = new AEMHeadless({
-    serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-    endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-    auth: [process.env.AEM_AUTH_USER, process.env.AEM_AUTH_PASSWORD],
-    fetch: fetch
-  })
+//   const aemHeadlessClient = new AEMHeadless({
+//     serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+//     endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+//     auth: [process.env.AEM_AUTH_USER, process.env.AEM_AUTH_PASSWORD],
+//     fetch: fetch
+//   })
   
-  const desktopResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {}, {})
-  const mobileResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/mobile', {}, {})
+//   const desktopResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {}, {})
+//   const mobileResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/mobile', {}, {})
   
-  return {
-    props: {
-      mobileData: mobileResponse.data.pageByPath.item.panels,
-      desktopData: desktopResponse.data.pageByPath.item.panels,
-      shouldClientsideRender: false,
-    }
-  }
-}
+//   return {
+//     props: {
+//       mobileData: mobileResponse.data.pageByPath.item.panels,
+//       desktopData: desktopResponse.data.pageByPath.item.panels,
+//       shouldClientsideRender: false,
+//     }
+//   }
+// }
 
 export default function Graphiql(props) {
   const [data, setData] = useState(null)
@@ -42,7 +42,7 @@ export default function Graphiql(props) {
     const [mobileData, setMobileData] = useState(null)
 
   useEffect(() => {
-    if (!props.shouldClientsideRender) {return}
+    // if (!props.shouldClientsideRender) {return}
     
     fetch(process.env.NEXT_PUBLIC_AEM_HOST + '/' + 'graphql/execute.json/sparkle-demo/homepage', {
       headers: new Headers({
@@ -73,10 +73,19 @@ export default function Graphiql(props) {
   useEffect(() => {
     if (data !== null ) {return}
     if (windowSize.width > 800 || windowSize.width === null) {
-      props.shouldClientsideRender ? setData(desktopData) : setData(props.desktopData)
+      // props.shouldClientsideRender ? (
+          setData(desktopData)
+        // ) : (
+        //   setData(props.desktopData)
+        // )
       setType('desktop')
+
     } else {
-      props.shouldClientsideRender ? setData(mobileData) : setData(props.mobileData)
+      // props.shouldClientsideRender ? (
+        setData(mobileData)
+        // ) : (
+        //   setData(props.mobileData)
+        // )
       setType('mobile')
     }
     ScrollTrigger.refresh()
