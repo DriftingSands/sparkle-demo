@@ -1,34 +1,74 @@
 import { useEffect, useState } from 'react'
-// import { AEMHeadless } from '@adobe/aem-headless-client-js'
-// import getGraphiqlCall from '../components/graphiql'
-
-import temp from '../public/_tempGraphIQL.json'
+import { AEMHeadless } from '@adobe/aem-headless-client-js'
 import Panel from '../components/Panel'
+import MobileHeader from '../components/MobileHeader'
 
+// export async function getServerSideProps () {
+//   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
+//     return {
+//       props: {
+//         shouldClientsideRender: true,
+//       }
+//     }
+//   }
+  
+//   const aemHeadlessClient = new AEMHeadless({
+//     serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+//     endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+//     auth: [process.env.AEM_AUTH_USER, process.env.AEM_AUTH_PASSWORD],
+//     fetch: fetch
+//   })
+  
+//   const desktopResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: 'desktop'}, {})
+  
+//   return {
+//     props: {
+//       desktopData: desktopResponse.data.pageByPath.item.panels,
+//       shouldClientsideRender: false,
+//     }
+//   }
+// }
 
-export default function Graphiql() {
+export default function Graphiql(props) {
   const [data, setData] = useState(null)
-  const [type, setType] = useState('desktop')
   const [loadRest, setLoadRest] = useState(false)
-
+  
   useEffect(() => {
-    setData(temp.data.pageList.items[0].panels)
-    setType(temp.data.pageList.items[0]._variation)
+    // if (!props.shouldClientsideRender) {return setData(props.desktopData)}
+    // if (typeof window === 'undefined') {return}
+    const aemHeadlessClient = new AEMHeadless({
+      serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+      endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+      auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
+      // fetch: fetch
+    })
+  
+    const getData = async (variation, setState) => {
+      try {
+        const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+        return setState(response.data.pageByPath.item.panels)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    getData('desktop', setData)
   }, [])
+
+
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true)
   }
-  
 
-  return (
+  return !data ? null : (
     <div className={"page"} >
       {data && data.map((panel, index) => {
         if (index > 0 && !loadRest) {
           document.body.style.overflowY = 'scroll'
           return null
         }
-        return <Panel panel={panel} panelNr={index} settings={{type, }} key={index} runOnEnd={index === 0 ? handleEndOfIntroAnimation : null} />;
+        return <Panel panel={panel} panelNr={index} settings={{type: 'desktop', }} key={index} runOnEnd={index === 0 ? handleEndOfIntroAnimation : null} />;
       })}
     </div>
   )

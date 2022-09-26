@@ -53,8 +53,13 @@ export default function Graphiql(props) {
     })
   
     const getData = async (variation, setState) => {
-      const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
-      return setState(response.data.pageByPath.item.panels)
+      try {
+        const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+        return setState(response.data.pageByPath.item.panels)
+      } catch (error) {
+        console.error(error)
+        setState(error)
+      }
     }
 
     getData('desktop', setDesktopData)
