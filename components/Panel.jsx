@@ -21,7 +21,8 @@ export default function Panel({ panel, panelNr, settings, runOnEnd }) {
     if (!createTimeline || !panel?.animations?.timelineAnimations) {return;}
 
     createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
-  }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations,]); // adding runOnEnd makes into animations re-run on end
 
   return (
     <div

@@ -2,7 +2,6 @@
 
 export default function Background(props) {
   const { backgroundContent, isVideo, altText, color, zIndex } = props.backgroundProps;
-  console.log("\x1b[31m~ backgroundContent", backgroundContent)
 
   // const aspectRatioStyle = {
   //   aspectRatio: `${videoWidth} / ${videoHeight}`
@@ -24,9 +23,9 @@ export default function Background(props) {
         //   />
         <video 
           className='videoWrapper'
-          autoplay='autoplay'
-          loop='loop'
-          muted='muted'
+          autoPlay
+          loop
+          muted
         >
           <source src={backgroundContent._publishUrl} />
         </video>

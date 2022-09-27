@@ -27,7 +27,8 @@ export default function ResizeListener({children}) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // adding handleResize causes endless re-renders
 
 
   return (

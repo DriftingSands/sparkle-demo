@@ -103,7 +103,7 @@ export default function Graphiql(props) {
       setType('mobile')
     }
     ScrollTrigger.refresh()
-  }, [data, desktopData, mobileData])
+  }, [data, desktopData, mobileData, windowSize.width])
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true)
