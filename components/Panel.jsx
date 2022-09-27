@@ -26,7 +26,7 @@ export default function Panel({ panel, panelNr, settings, runOnEnd }) {
 
   return (
     <div
-      className={`panel ${panel?.dark ? "darkPanel" : ""}`}
+      className={`panel ${panel?.dark ? "darkPanel" : ""} `}
       id={panel.id}
     >
       {settings?.type === "mobile" ? null : <Header />}

@@ -58,6 +58,10 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky_m.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Outdoor Passion/Scene 1/sky_m.webp",
@@ -86,28 +90,6 @@
               },
               "id": "rocks1",
               "layerId": "layer-rocks1",
-              "basePosition": "bottom-left",
-              "fit": "fill",
-              "overflow": false
-            },
-            {
-              "_model": {
-                "title": "Image Layer"
-              },
-              "image": {
-                "format": "image/webp",
-                "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2_m.webp"
-              },
-              "_variation": "mobile",
-              "_variations": [
-                "mobile"
-              ],
-              "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2_m.webp",
-              "altText": {
-                "plaintext": "rocks2"
-              },
-              "id": "rocks2",
-              "layerId": "layer-rocks2",
               "basePosition": "bottom-left",
               "fit": "fill",
               "overflow": false
@@ -213,7 +195,7 @@
                   "transformOrigin": "bottom center"
                 },
                 "to": {
-                  "y": "0%",
+                  "y": "30%",
                   "opacity": 1,
                   "scale": 0.5,
                   "transformOrigin": "bottom center",
@@ -248,6 +230,7 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": null,
             "color": "#ffea00",
             "isVideo": null,
             "path": null,
@@ -291,7 +274,7 @@
                 },
                 {
                   "id": "shorts",
-                  "text": "shorts",
+                  "text": "awesome giro shorts",
                   "pricetag": "42",
                   "x": 0,
                   "y": -10
@@ -342,6 +325,10 @@
           },
           "dark": true,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/AdobeStock_427738038.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/hybrid/AdobeStock_427738038.webp",
@@ -509,6 +496,10 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Outdoor Passion/Scene 2/sky.webp",
@@ -659,6 +650,7 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": null,
             "color": "#ffea00",
             "isVideo": null,
             "path": null,
@@ -781,7 +773,7 @@
                   "scrollTrigger": {
                     "trigger": "#upToTheSky",
                     "start": "top top",
-                    "end": "20% top",
+                    "end": "100% top",
                     "snap": {
                       "snapTo": [
                         0,
@@ -802,7 +794,7 @@
                     "pin": "#upToTheSky",
                     "trigger": "#upToTheSky",
                     "start": "top top",
-                    "end": "20% top",
+                    "end": "100% top",
                     "toggleActions": "play none none reverse"
                   }
                 }
@@ -869,6 +861,10 @@
           },
           "dark": true,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/AdobeStock_327178105.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.webp",
@@ -883,7 +879,10 @@
               "_model": {
                 "title": "Image Layer"
               },
-              "image": null,
+              "image": {
+                "format": "image/webp",
+                "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.webp"
+              },
               "_variation": "master",
               "_variations": [],
               "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.webp",

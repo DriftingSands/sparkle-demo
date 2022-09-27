@@ -24,13 +24,15 @@
                   "left": "-10%",
                   "bottom": "-10%",
                   "opacity": 0.5,
-                  "scale": 1
+                  "scale": 0.5,
+                  "transformOrigin": "bottom left"
                 },
                 "to": {
                   "left": "0%",
                   "bottom": "0%",
                   "opacity": 1,
-                  "scale": 1.1,
+                  "scale": 0.7,
+                  "transformOrigin": "bottom left",
                   "duration": 1.5
                 }
               },
@@ -40,13 +42,13 @@
                   "left": "-20%",
                   "opacity": 0.5,
                   "transformOrigin": "bottom left",
-                  "scale": 0.9
+                  "scale": 0.7
                 },
                 "to": {
                   "left": "0%",
                   "opacity": 1,
                   "transformOrigin": "bottom left",
-                  "scale": 1,
+                  "scale": 0.9,
                   "duration": 1.5
                 }
               },
@@ -56,7 +58,7 @@
                   "right": "-10%",
                   "bottom": "0%",
                   "opacity": 0.5,
-                  "scale": 0.8,
+                  "scale": 1.2,
                   "transformOrigin": "bottom right"
                 },
                 "to": {
@@ -64,7 +66,7 @@
                   "right": "0%",
                   "bottom": "0%",
                   "opacity": 1,
-                  "scale": 1,
+                  "scale": 1.5,
                   "duration": 1.5
                 }
               },
@@ -132,6 +134,10 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.webp",
@@ -233,7 +239,7 @@
             {
               "id": "intro-text1",
               "textPosition": null,
-              "noPadding": null,
+              "noPadding": false,
               "_model": {
                 "title": "Text Layer"
               },
@@ -243,16 +249,6 @@
               ],
               "leftBox": [
                 {
-                  "type": "h2",
-                  "id": null,
-                  "content": {
-                    "plaintext": "The most exciting\nexperiences."
-                  },
-                  "styles": [
-                    "thin"
-                  ]
-                },
-                {
                   "type": "h3",
                   "id": null,
                   "content": {
@@ -261,6 +257,16 @@
                   "styles": [
                     "yellowBox",
                     "uppercase"
+                  ]
+                },
+                {
+                  "type": "h2",
+                  "id": null,
+                  "content": {
+                    "plaintext": "The most exciting\nexperiences."
+                  },
+                  "styles": [
+                    "thin"
                   ]
                 }
               ],
@@ -343,6 +349,7 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": null,
             "color": "#ffea00",
             "isVideo": null,
             "path": null,
@@ -427,7 +434,7 @@
                 },
                 {
                   "id": "shorts",
-                  "text": "shorts",
+                  "text": "awesome giro shorts",
                   "pricetag": "42",
                   "x": 0,
                   "y": -10
@@ -525,6 +532,10 @@
           },
           "dark": true,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/adobe%20Stock%20Bikers.mp4",
+              "format": "video/mp4"
+            },
             "color": null,
             "isVideo": true,
             "path": "https://video.tv.adobe.com/v/3409386/",
@@ -734,6 +745,10 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Outdoor Passion/Scene 2/sky.webp",
@@ -915,6 +930,7 @@
           },
           "dark": false,
           "background": {
+            "backgroundContent": null,
             "color": "#ffea00",
             "isVideo": null,
             "path": null,
@@ -1186,6 +1202,10 @@
           },
           "dark": true,
           "background": {
+            "backgroundContent": {
+              "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/AdobeStock_327178105.webp",
+              "format": "image/webp"
+            },
             "color": null,
             "isVideo": false,
             "path": "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.webp",
@@ -1251,7 +1271,10 @@
               "_model": {
                 "title": "Image Layer"
               },
-              "image": null,
+              "image": {
+                "format": "image/webp",
+                "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.webp"
+              },
               "_variation": "master",
               "_variations": [],
               "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.webp",
