@@ -55,11 +55,6 @@ export default function Graphiql(props) {
   }, [])
 
 
-
-  const handleEndOfIntroAnimation = () => {
-    setLoadRest(true)
-  }
-
   return !data ? null : (
     <div className={"page"} style={{maxWidth: 800, margin: '0 auto'}} >
       <MobileHeader maxWidth={800} />

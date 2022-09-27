@@ -48,7 +48,7 @@ export default function Header() {
 
         <div className="accountIcon">
           {/* using next Image component causes the image to be blurry for some reason */}
-          <img src={"/WKND SPA/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
         </div>
       </div>
     </header>

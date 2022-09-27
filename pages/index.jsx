@@ -55,6 +55,15 @@ export default function Graphiql(props) {
     const getData = async (variation, setState) => {
       try {
         const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+        if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === 'true') {
+          fetch('http://localhost:3000/api/saveJson', {
+            method: 'POST',
+            body: JSON.stringify({
+              type: variation,
+              data: response.data
+            })
+          })
+        }
         return setState(response.data.pageByPath.item.panels)
       } catch (error) {
         console.error(error)
@@ -103,7 +112,7 @@ export default function Graphiql(props) {
   return !data ? null : (
     <div className={"page"} >
       {type === "mobile" && (<MobileHeader />)}
-      {data && data.map((panel, index) => {
+      {data?.map && data.map((panel, index) => {
         if (type === 'desktop' && index > 0 && !loadRest) {
           document.body.style.overflowY = 'scroll'
           return null

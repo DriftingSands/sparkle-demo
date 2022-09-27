@@ -394,7 +394,7 @@ button {
   .darkButton {
     font-family: Source Sans Pro;
     font-size: 14px;
-    padding: 12px 16px;
+    padding: 16px 40px;
     font-weight: 600;
     color: white;
     background-color: $dark;
@@ -528,6 +528,11 @@ button {
     left: 50%;
     top: 0;
     transform: translateX(-50%);
+  }
+  .videoWrapper {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
