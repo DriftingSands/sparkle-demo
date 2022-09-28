@@ -45,30 +45,35 @@ export default function Graphiql(props) {
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return}
     // if (typeof window === 'undefined') {return}
-    const aemHeadlessClient = new AEMHeadless({
-      serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-      endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-      auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
-      // fetch: fetch
-    })
+    // const aemHeadlessClient = new AEMHeadless({
+    //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+    //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+    //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
+    //   // fetch: fetch
+    // })
   
     const getData = async (variation, setState) => {
-      try {
-        const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
-        if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === 'true') {
-          fetch('http://localhost:3000/api/saveJson', {
-            method: 'POST',
-            body: JSON.stringify({
-              type: variation,
-              data: response.data
-            })
-          })
-        }
-        return setState(response.data.pageByPath.item.panels)
-      } catch (error) {
-        console.error(error)
-        setState(error)
-      }
+      const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
+        {credentials: 'include'})
+      console.log("\x1b[31m~ response", response)
+      const data = await response.json()
+      return setState(data.data.pageByPath.item.panels)
+      // try {
+      //   const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+      //   if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === 'true') {
+      //     fetch('http://localhost:3000/api/saveJson', {
+      //       method: 'POST',
+      //       body: JSON.stringify({
+      //         type: variation,
+      //         data: response.data
+      //       })
+      //     })
+      //   }
+      //   return setState(response.data.pageByPath.item.panels)
+      // } catch (error) {
+      //   console.error(error)
+      //   setState(error)
+      // }
     }
 
     getData('desktop', setDesktopData)
