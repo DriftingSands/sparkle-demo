@@ -117,10 +117,10 @@ export default function Graphiql(props) {
     <div className={"page"} >
       {type === "mobile" && (<MobileHeader />)}
       {data?.map && data.map((panel, index) => {
-        // if (type === 'desktop' && index > 0 && !loadRest) {
-        //   document.body.style.overflowY = 'scroll'
-        //   return null
-        // }
+        if (type === 'desktop' && index > 0 && !loadRest) {
+          document.body.style.overflowY = 'scroll'
+          return null
+        }
         return <Panel panel={panel} panelNr={index} settings={{type, }} key={index} runOnEnd={index === 0 ? handleEndOfIntroAnimation : null} />;
       })}
     </div>
