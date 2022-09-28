@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 export default function LayerImage({ data, panelNr }) {
-  const { image, altText, layerId, id, overflow, basePosition, debug, fit } = data;
+  const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
 
   return (
     <div
@@ -12,7 +12,7 @@ export default function LayerImage({ data, panelNr }) {
     >
       <img
         id={id}
-        loading={panelNr === 0 ? "eager" : "lazy"}
+        loading={(panelNr === 0 || forceLoad) ? "eager" : "lazy"}
         className="image"
         src={image?._publishUrl}
         alt={altText?.plaintext}
