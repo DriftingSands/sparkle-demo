@@ -254,29 +254,28 @@ button {
   .image {
     position: absolute;
     object-fit: contain;
+    object-fit: center center;
   }
 
   &.cover .image {
-    object-fit: cover;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   &.contain .image {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
   }
 
-
-  align-items: center;
-  justify-content: center;
-  &.top-left{align-items: flex-start;justify-content: flex-start;}
-  &.top-center{align-items: flex-start;justify-content: center;}
-  &.top-right{align-items: flex-start;justify-content: flex-end;}
-  &.center-left{align-items: center;justify-content: flex-start;}
-  &.center-right{align-items: center;justify-content: flex-end;}
-  &.bottom-left{align-items: flex-end;justify-content: flex-start;}
-  &.bottom-center{align-items: flex-end;justify-content: center;}
-  &.bottom-right{align-items: flex-end;justify-content: flex-end;}
+  &.top-left .image{object-position: top left;}
+  &.top-center .image{object-position: top center;}
+  &.top-right .image{object-position: top right;}
+  &.center-left .image{object-position: center left;}
+  &.center-right .image{object-position: center right;}
+  &.bottom-left .image{object-position: bottom left;}
+  &.bottom-center .image{object-position: bottom center;}
+  &.bottom-right .image{object-position: bottom right;}
 }
 
 .textLayer {
@@ -399,7 +398,7 @@ button {
     font-weight: 600;
     color: white;
     background-color: $dark;
-
+  
     &:hover {
       background-color: black;
     }
@@ -539,6 +538,46 @@ button {
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+}
+
+.fallbackWrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  * {
+    font-family: Adobe Clean;
+    text-align: center;
+  }
+  
+  .fallbackMenu {
+    width: 60%;
+    background-color: #F5F5F5;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .submit {
+    background-color: $blue;
+    padding: 7px 20px 10px 20px;
+    border-radius: 100px;
+    color: white;
   }
 }
 

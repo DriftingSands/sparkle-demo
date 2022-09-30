@@ -4,6 +4,7 @@ import Panel from '../components/Panel'
 import MobileHeader from '../components/MobileHeader'
 import { WindowSizeProvider } from '../components/ResizeProvider'
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import LoginFallback from '../components/LoginFallback'
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -37,9 +38,38 @@ export default function Graphiql(props) {
   const [data, setData] = useState(null)
   const [type, setType] = useState('desktop')
   const [loadRest, setLoadRest] = useState(false)
+  const [fallback, setFallback] = useState(false)
 
   const [desktopData, setDesktopData] = useState(null)
   const [mobileData, setMobileData] = useState(null)
+
+
+  const getData = async (variation, setState) => {
+    try {
+      const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
+        {credentials: 'include'})
+      const data = await response.json()
+      return setState(data.data.pageByPath.item.panels)
+    } catch (error) {
+      setFallback(true)
+    }
+    // try {
+    //   const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
+    //   if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === 'true') {
+    //     fetch('http://localhost:3000/api/saveJson', {
+    //       method: 'POST',
+    //       body: JSON.stringify({
+    //         type: variation,
+    //         data: response.data
+    //       })
+    //     })
+    //   }
+    //   return setState(response.data.pageByPath.item.panels)
+    // } catch (error) {
+    //   console.error(error)
+    //   setState(error)
+    // }
+  }
 
   
   useEffect(() => {
@@ -52,29 +82,6 @@ export default function Graphiql(props) {
     //   // fetch: fetch
     // })
   
-    const getData = async (variation, setState) => {
-      const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
-        {credentials: 'include'})
-      console.log("\x1b[31m~ response", response)
-      const data = await response.json()
-      return setState(data.data.pageByPath.item.panels)
-      // try {
-      //   const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
-      //   if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === 'true') {
-      //     fetch('http://localhost:3000/api/saveJson', {
-      //       method: 'POST',
-      //       body: JSON.stringify({
-      //         type: variation,
-      //         data: response.data
-      //       })
-      //     })
-      //   }
-      //   return setState(response.data.pageByPath.item.panels)
-      // } catch (error) {
-      //   console.error(error)
-      //   setState(error)
-      // }
-    }
 
     getData('desktop', setDesktopData)
     getData('mobile', setMobileData)
@@ -118,7 +125,7 @@ export default function Graphiql(props) {
     setLoadRest(true)
   }
 
-  return !data ? null : (
+  return !data ? (fallback ? <LoginFallback getData={getData} setDesktopData={setDesktopData} setMobileData={setMobileData} /> : null) : (
     <div className={"page"} >
       {type === "mobile" && (<MobileHeader />)}
       {data?.map && data.map((panel, index) => {

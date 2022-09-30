@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AEMHeadless } from '@adobe/aem-headless-client-js'
 import Panel from '../components/Panel'
 import MobileHeader from '../components/MobileHeader'
+import loginFallback from '../components/loginFallback'
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -32,6 +33,7 @@ import MobileHeader from '../components/MobileHeader'
 export default function Graphiql(props) {
   const [data, setData] = useState(null)
   const [loadRest, setLoadRest] = useState(false)
+  const [fallback, setFallback] = useState(false)
   
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return setData(props.desktopData)}
@@ -44,11 +46,14 @@ export default function Graphiql(props) {
     // })
   
     const getData = async (variation, setState) => {
-      const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
-        {credentials: 'include'})
-      console.log("\x1b[31m~ response", response)
-      const data = await response.json()
-      return setState(data.data.pageByPath.item.panels)
+      try {
+        const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
+          {credentials: 'include'})
+        const data = await response.json()
+        return setState(data.data.pageByPath.item.panels)
+      } catch (error) {
+        setFallback(true)
+      }
     // const getData = async (variation, setState) => {
     //   try {
     //     const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
@@ -67,7 +72,7 @@ export default function Graphiql(props) {
     setLoadRest(true)
   }
 
-  return !data ? null : (
+  return !data ? (fallback ? <LoginFallback /> : null) : (
     <div className={"page"} >
       {data && data.map((panel, index) => {
         if (index > 0 && !loadRest) {
