@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 
-export default function Background(props) {
-  const { backgroundContent, isVideo, altText, color, zIndex } = props.backgroundProps;
+export default function Background({ backgroundProps, lazy, isAuthorVersion }) {
+  const { backgroundContent, isVideo, altText, color, zIndex } = backgroundProps;
+
+  const source = isAuthorVersion ? backgroundContent?._authorUrl : backgroundContent?._publishUrl
 
   // const aspectRatioStyle = {
   //   aspectRatio: `${videoWidth} / ${videoHeight}`
@@ -10,7 +12,7 @@ export default function Background(props) {
 
   return (
     <div className={`backgroundWrapper ${isVideo ? 'isVideo' : ''}`} style={{ backgroundColor: color, zIndex, }}>
-      {backgroundContent?.format?.includes('image/') && <img src={backgroundContent._publishUrl} alt={altText} className="backgroundImage" loading={props.lazy ? 'lazy' : 'eager'} />}
+      {backgroundContent?.format?.includes('image/') && <img src={source} alt={altText} className="backgroundImage" loading={lazy ? 'lazy' : 'eager'} />}
       {backgroundContent?.format?.includes('video/') && (
         // <iframe
         //   style={aspectRatioStyle}
@@ -27,7 +29,7 @@ export default function Background(props) {
           loop
           muted
         >
-          <source src={backgroundContent._publishUrl} />
+          <source src={source} />
         </video>
       )}
     </div>

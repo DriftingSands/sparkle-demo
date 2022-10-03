@@ -541,43 +541,23 @@ button {
   }
 }
 
-.fallbackWrapper {
+.errorComponentWrapper {
   width: 100%;
-  padding: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   * {
     font-family: Adobe Clean;
-    text-align: center;
   }
-  
-  .fallbackMenu {
+
+  .errorComponent {
+    margin-top: 20%;
     width: 60%;
-    background-color: #F5F5F5;
+    background-color: indianred;
     padding: 20px;
     border: 2px solid black;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  form {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .submit {
-    background-color: $blue;
-    padding: 7px 20px 10px 20px;
-    border-radius: 100px;
-    color: white;
+    border-radius: 6px;
   }
 }
 

@@ -3,7 +3,7 @@ import { scrollToId } from './utils';
 import { useEffect, useState } from 'react';
 // import Image from 'next/image';
 
-export default function MobileHeader({maxWidth}) {
+export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNav, setOpenNav] = useState(false)
   const [navLabel, setNavLabel] = useState('Intro')
@@ -107,9 +107,11 @@ export default function MobileHeader({maxWidth}) {
         </div>
 
         <div className="bottom">
-          <span>my account</span>
+          <a href={isAuthorVersion ? '' : host} target="_blank" rel="noopener noreferrer">
+            <span>{isAuthorVersion ? 'my account' : 'login'}</span>
+          </a>
           
-          <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          {isAuthorVersion && <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />}
         </div>
       </menu>
 

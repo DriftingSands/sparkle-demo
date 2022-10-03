@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import { AEMHeadless } from '@adobe/aem-headless-client-js'
-import Panel from '../components/Panel'
-import MobileHeader from '../components/MobileHeader'
+import { useEffect, useState } from "react";
+import { AEMHeadless } from "@adobe/aem-headless-client-js";
+import Panel from "../components/Panel";
+import MobileHeader from "../components/MobileHeader";
+import ErrorComponent from "../components/ErrorComponent";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -11,16 +12,16 @@ import MobileHeader from '../components/MobileHeader'
 //       }
 //     }
 //   }
-  
+
 //   const aemHeadlessClient = new AEMHeadless({
 //     serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
 //     endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
 //     auth: [process.env.AEM_AUTH_USER, process.env.AEM_AUTH_PASSWORD],
 //     fetch: fetch
 //   })
-  
+
 //   const mobileResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: 'mobile'}, {})
-  
+
 //   return {
 //     props: {
 //       mobileData: mobileResponse.data.pageByPath.item.panels,
@@ -30,8 +31,48 @@ import MobileHeader from '../components/MobileHeader'
 // }
 
 export default function Graphiql(props) {
-  const [data, setData] = useState(null)
-  
+  const [data, setData] = useState(null);
+  const [isAuthorVersion, setIsAuthorVersion] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+
+  const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
+  const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
+  const [customHost, setCustomHost] = useState("");
+
+  const getData = async (variation, setState) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let host = urlParams.get("host");
+    if (host?.endsWith("/")) {
+      host = host.slice(0, -1);
+    }
+    setCustomHost(host);
+    if (customHost) {
+      try {
+        const response = await fetch(customHost + ";variation=" + variation, { credentials: "include" });
+        const data = await response.json();
+        return setState(data.data.pageByPath.item.panels);
+      } catch (error) {
+        return setFetchError({ type: "customHost", customHost, error });
+      }
+    }
+    try {
+      const response = await fetch(`${authorPath};variation=${variation}?timestamp=${Date.now()}`, {
+        credentials: "include",
+      });
+      const data = await response.json();
+      setIsAuthorVersion(true);
+      return setState(data.data.pageByPath.item.panels);
+    } catch (error) {
+      try {
+        const response = await fetch(`${publishPath};variation=${variation}?timestamp=${Date.now()}`);
+        const data = await response.json();
+        return setState(data.data.pageByPath.item.panels);
+      } catch (error) {
+        return setFetchError({ type: "publish", publishPath, error });
+      }
+    }
+  };
+
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return setData(props.mobileData)}
     // if (typeof window === 'undefined') {return}
@@ -42,32 +83,30 @@ export default function Graphiql(props) {
     //   // fetch: fetch
     // })
 
+    getData("mobile", setData);
+  }, []);
 
-    const getData = async (variation, setState) => {
-      const response = await fetch('https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage%3Bvariation%3D'+variation,
-        {credentials: 'include'})
-      console.log("\x1b[31m~ response", response)
-      const data = await response.json()
-      return setState(data.data.pageByPath.item.panels)
-    // const getData = async (variation, setState) => {
-    //   try {
-    //     const response = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {variation: variation}, {})
-    //     return setState(response.data.pageByPath.item.panels)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    }
-
-    getData('mobile', setData)
-  }, [])
-
-
-  return !data ? null : (
-    <div className={"page"} style={{maxWidth: 800, margin: '0 auto'}} >
-      <MobileHeader maxWidth={800} />
-      {data && data.map((panel, index) => {
-        return <Panel panel={panel} panelNr={index} settings={{type: 'mobile', }} key={index} runOnEnd={null} />;
-      })}
+  return !data ? (
+    fetchError ? (
+      <ErrorComponent type={fetchError.type} url={fetchError.host} error={fetchError.error} />
+    ) : null
+  ) : (
+    <div className={"page"} style={{ maxWidth: 800, margin: "0 auto" }}>
+      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || authorPath} />
+      {data &&
+        data.map((panel, index) => {
+          return (
+            <Panel
+              panel={panel}
+              panelNr={index}
+              settings={{ type: "mobile" }}
+              key={index}
+              runOnEnd={null}
+              isAuthorVersion={isAuthorVersion}
+              host={customHost || authorPath}
+            />
+          );
+        })}
     </div>
-  )
+  );
 }

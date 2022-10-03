@@ -4,7 +4,6 @@ const isBrowser = () => typeof window !== "undefined"
 
 isBrowser() && window.addEventListener('message', ({data}) => {
   if (data.type !== "clear-animations") {return}
-  console.log("\x1b[31m~ animationsList", animationsList)
   animationsList.forEach((item) => {
     item.kill()
   })

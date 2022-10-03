@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
-export default function Header() {
+export default function Header({ isAuthorVersion, host, }) {
   return (
     <header className="header">
       <div className="left">
@@ -44,12 +44,19 @@ export default function Header() {
           </svg>
         </button> */}
 
-        <a className='accountLink' href=""><span>my account</span></a>
+        <a 
+          href={isAuthorVersion ? '' : host}
+          target="_blank"
+          rel="noopener noreferrer"
+          className='accountLink'
+        >
+          <span>{isAuthorVersion ? 'my account' : 'login'}</span>
+        </a>
 
-        <div className="accountIcon">
+        {isAuthorVersion && <div className="accountIcon">
           {/* using next Image component causes the image to be blurry for some reason */}
           <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
-        </div>
+        </div>}
       </div>
     </header>
   );
