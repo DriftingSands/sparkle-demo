@@ -5,6 +5,7 @@ import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
+import { scrollToId } from "../components/utils";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -40,10 +41,13 @@ export default function Graphiql(props) {
   const [loadRest, setLoadRest] = useState(false);
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [hash, setHash] = useState(null);
+  const [ignoreHash, setIgnoreHash] = useState(false)
 
   const [desktopData, setDesktopData] = useState(null);
   const [mobileData, setMobileData] = useState(null);
 
+  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
   const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const [customHost, setCustomHost] = useState("");
@@ -81,6 +85,17 @@ export default function Graphiql(props) {
       }
     }
   };
+  const saveBackupData = (type, data) => {
+    if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === "true") {
+      fetch("http://localhost:3000/api/saveJson", {
+        method: "POST",
+        body: JSON.stringify({
+          type: type,
+          data: data,
+        }),
+      });
+    }
+  };
 
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return}
@@ -94,20 +109,20 @@ export default function Graphiql(props) {
 
     getData("desktop", setDesktopData);
     getData("mobile", setMobileData);
+    desktopData && saveBackupData("desktop", desktopData);
+    mobileData && saveBackupData("mobile", mobileData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
-    if (windowSize.width === null) {
-      return;
-    }
+    if (windowSize.width === null) return;
+
     setData(null);
   }, [windowSize.width]);
 
   useEffect(() => {
-    if (windowSize.height === null) {
-      return;
-    }
+    if (windowSize.height === null) return;
     ScrollTrigger.refresh();
   }, [windowSize.height]);
 
@@ -121,17 +136,24 @@ export default function Graphiql(props) {
       // ) : (
       //   setData(props.desktopData)
       // )
-      setType("desktop");
+      type !== "desktop" && setType("desktop");
     } else {
       // props.shouldClientsideRender ? (
       setData(mobileData);
       // ) : (
       //   setData(props.mobileData)
       // )
-      setType("mobile");
+      type !== "mobile" && setType("mobile");
     }
     ScrollTrigger.refresh();
   }, [data, desktopData, mobileData, windowSize.width]);
+
+  useEffect(() => {
+    if (window.location.hash) {
+      setLoadRest(true);
+      setHash(window.location.hash);
+    }
+  }, [type]);
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true);
@@ -143,7 +165,7 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"}>
-      {type === "mobile" && <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost || authorPath} />}
+      {type === "mobile" && <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost || loginRedirect} />}
       {data?.map &&
         data.map((panel, index) => {
           if (type === "desktop" && index > 0 && !loadRest) {
@@ -158,7 +180,10 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || authorPath}
+              host={customHost || loginRedirect}
+              hash={hash}
+              ignoreHash={ignoreHash}
+              setIgnoreHash={setIgnoreHash}
             />
           );
         })}

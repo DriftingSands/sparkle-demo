@@ -33,8 +33,11 @@ export default function Graphiql(props) {
   const [data, setData] = useState(null);
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [loadRest, setLoadRest] = useState(false);
+  const [hash, setHash] = useState(null);
+  const [ignoreHash, setIgnoreHash] = useState(false)
   const [fetchError, setFetchError] = useState(null);
 
+  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
   const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const [customHost, setCustomHost] = useState("");
@@ -84,7 +87,13 @@ export default function Graphiql(props) {
     // })
 
     getData("desktop", setData);
+    if (window.location.hash) {
+      setHash(window.location.hash)
+      setLoadRest(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true);
@@ -110,7 +119,10 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || authorPath}
+              host={customHost || loginRedirect}
+              hash={hash}
+              ignoreHash={ignoreHash}
+              setIgnoreHash={setIgnoreHash}
             />
           );
         })}

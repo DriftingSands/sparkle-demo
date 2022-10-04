@@ -34,7 +34,10 @@ export default function Graphiql(props) {
   const [data, setData] = useState(null);
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [hash, setHash] = useState(null);
+  const [ignoreHash, setIgnoreHash] = useState(false)
 
+  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
   const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
   const [customHost, setCustomHost] = useState("");
@@ -84,6 +87,7 @@ export default function Graphiql(props) {
     // })
 
     getData("mobile", setData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return !data ? (
@@ -92,7 +96,7 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"} style={{ maxWidth: 800, margin: "0 auto" }}>
-      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || authorPath} />
+      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || loginRedirect} />
       {data &&
         data.map((panel, index) => {
           return (
@@ -103,7 +107,10 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || authorPath}
+              host={customHost || loginRedirect}
+              hash={window.location.hash}
+              ignoreHash={ignoreHash}
+              setIgnoreHash={setIgnoreHash}
             />
           );
         })}

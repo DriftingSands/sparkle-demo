@@ -13,6 +13,7 @@ export default function Graphiql(props) {
   const [data, setData] = useState(null)
   const [type, setType] = useState('desktop')
   const [loadRest, setLoadRest] = useState(false)
+  const [hash, setHash] = useState(null)
   
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
@@ -46,24 +47,38 @@ export default function Graphiql(props) {
         // )
       setType('mobile')
     }
+    const hash = window.location.hash
+    if (hash) {
+      setLoadRest(true)
+      setHash(hash)
+    }
     ScrollTrigger.refresh()
-  }, [data, desktopData, mobileData, windowSize.width])
+  }, [data, windowSize.width, windowSize.height])
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true)
   }
 
   return !data ? null : (
-    <div className={"page"} >
-      {type === "mobile" && (<MobileHeader />)}
-      {data.pageByPath.item.panels.map((panel, index) => {
-        // if (type === 'desktop' && index > 0 && !loadRest) {
-        //   document.body.style.overflowY = 'scroll'
-        //   return null
-        // }
-        return <Panel panel={panel} panelNr={index} settings={{type, }} key={index} runOnEnd={index === 0 ? handleEndOfIntroAnimation : null} />;
-      })}
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+    <div className={"page"}>
+      {type === "mobile" && <MobileHeader />}
+      {data?.map &&
+        data.map((panel, index) => {
+          if (type === "desktop" && index > 0 && !loadRest) {
+            document.body.style.overflowY = "scroll";
+            return null;
+          }
+          return (
+            <Panel
+              panel={panel}
+              panelNr={index}
+              settings={{ type }}
+              key={index}
+              runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
+              hash={hash}
+            />
+          );
+        })}
     </div>
-  )
+  );
 }

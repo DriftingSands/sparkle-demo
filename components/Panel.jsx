@@ -5,6 +5,7 @@ import TextLayer from "../components/TextLayer";
 import PointTextMap from './PointTextMap';
 import Header from "./Header";
 import { TimelineProvider } from "./TimelineWrapper";
+import { scrollToId } from '../components/utils';
 
 const lookupObject = {
   image: LayerImage,
@@ -14,13 +15,18 @@ const lookupObject = {
   "Shoppable Moment Layer": PointTextMap,
 };
 
-export default function Panel({ panel, panelNr, settings, runOnEnd, isAuthorVersion, host }) {
+export default function Panel({ panel, panelNr, settings, runOnEnd, isAuthorVersion, host, hash, ignoreHash, setIgnoreHash }) {
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
     if (!createTimeline || !panel?.animations?.timelineAnimations) {return;}
-
     createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
+
+    if (hash === '#'+panel.id && !ignoreHash) {
+      scrollToId(hash)
+      setIgnoreHash(true)
+    }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations,]); // adding runOnEnd makes into animations re-run on end
 

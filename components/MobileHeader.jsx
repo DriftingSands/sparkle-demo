@@ -50,12 +50,20 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
     }
     newLabel && setNavLabel(newLabel)
   }, 100)
+
   
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
   
+
+  const onClickHandler = (link) => {
+    if (link) scrollToId(link)
+    window.history.replaceState(window.location.href.split('#')[0], null, link)
+    setOpenNav(false);
+  }
+
 
   return (
     <header className="mobileHeaderWrapper" style={{maxWidth, }} >
@@ -82,7 +90,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
         <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>
           <ul>
             {navItems.map((item, index) => {
-              return <a onClick={() => {scrollToId(item.link); setOpenNav(false)}} key={index}><li> {item.title} </li></a>
+              return <a onClick={() => onClickHandler(item.link)} key={index}><li> {item.title} </li></a>
             })}
           </ul>
         </menu>
