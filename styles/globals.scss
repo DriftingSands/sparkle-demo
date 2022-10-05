@@ -252,20 +252,24 @@ button {
   }
   
   .image {
-    position: absolute;
-    object-fit: contain;
-    object-fit: center center;
+    width: 100%;
+    height: 100%;
   }
 
   &.cover .image {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
   }
   &.contain .image {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
+  }
+  &.fill .image {
+    object-fit: fill;
+  }
+  &.scale-down .image {
+    object-fit: scale-down;
+  }
+  &.none .image {
+    object-fit: none;
   }
 
   &.top-left .image{object-position: top left;}
@@ -282,11 +286,11 @@ button {
   height: 100%;
   width: 100%;
   padding: 0 12.5%;
+  gap: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  white-space: pre-line;
 
   .h2 {
     font-size: 60px;

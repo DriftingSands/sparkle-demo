@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import { AEMHeadless } from '@adobe/aem-headless-client-js'
 import Panel from "../components/Panel";
 import ErrorComponent from "../components/ErrorComponent";
+import { tryFetch } from "../components/utils";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -34,46 +35,30 @@ export default function Graphiql(props) {
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [loadRest, setLoadRest] = useState(false);
   const [hash, setHash] = useState(null);
-  const [ignoreHash, setIgnoreHash] = useState(false)
+  const [ignoreHash, setIgnoreHash] = useState(false);
   const [fetchError, setFetchError] = useState(null);
 
-  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
-  const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
-  const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
+  const hostConfig = {
+    loginRedirect: "https://author-p54352-e657273.adobeaemcloud.com",
+    authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
+    publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
+    endpoint: "/graphql/execute.json/sparkle-demo/homepage",
+  };
   const [customHost, setCustomHost] = useState("");
 
-  const getData = async (variation, setState) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    let host = urlParams.get("host");
-    if (host?.endsWith("/")) {
-      host = host.slice(0, -1);
+  const getData = async (variation, setState, customUrl) => {
+    let successfulFetch = null;
+    setCustomHost(customUrl);
+    if (customUrl) {
+      successfulFetch = await tryFetch(customUrl, hostConfig.endpoint, variation, setState, true);
+    } else {
+      successfulFetch = await tryFetch(hostConfig.authorHost, hostConfig.endpoint, variation, setState, true);
     }
-    setCustomHost(host);
-    if (customHost) {
-      try {
-        const response = await fetch(customHost + ";variation=" + variation, { credentials: "include" });
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "customHost", customHost, error });
-      }
+    if (successfulFetch === false) {
+      successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setState, false);
     }
-    try {
-      const response = await fetch(`${authorPath};variation=${variation}?timestamp=${Date.now()}`, {
-        credentials: "include",
-      });
-      const data = await response.json();
-      setIsAuthorVersion(true);
-      return setState(data.data.pageByPath.item.panels);
-    } catch (error) {
-      try {
-        const response = await fetch(`${publishPath};variation=${variation}?timestamp=${Date.now()}`);
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "publish", publishPath, error });
-      }
-    }
+    if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
+    if (successfulFetch === "author") setIsAuthorVersion(true);
   };
 
   useEffect(() => {
@@ -85,15 +70,19 @@ export default function Graphiql(props) {
     //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
     //   // fetch: fetch
     // })
+    const urlParams = new URLSearchParams(window.location.search);
+    let host = urlParams.get("host");
+    if (host?.endsWith("/")) {
+      host = host.slice(0, -1);
+    }
 
-    getData("desktop", setData);
+    getData("desktop", setData, host);
     if (window.location.hash) {
-      setHash(window.location.hash)
-      setLoadRest(true)
+      setHash(window.location.hash);
+      setLoadRest(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true);
@@ -119,7 +108,7 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || loginRedirect}
+              host={customHost || hostConfig.loginRedirect}
               hash={hash}
               ignoreHash={ignoreHash}
               setIgnoreHash={setIgnoreHash}

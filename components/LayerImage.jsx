@@ -8,7 +8,7 @@ export default function LayerImage({ data, panelNr, isAuthorVersion }) {
   return (
     <div
       id={layerId}
-      className={`layerImage ${fit || 'contain'} ${basePosition || 'center-center'} ${debug ? "debug" : ""} ${
+      className={`layerImage ${fit || ''} ${basePosition || 'center-center'} ${debug ? "debug" : ""} ${
         overflow ? "showOverflow" : "hideOverflow"
       }`}
     >
@@ -16,6 +16,8 @@ export default function LayerImage({ data, panelNr, isAuthorVersion }) {
         id={id}
         loading={(panelNr === 0 || forceLoad) ? "eager" : "lazy"}
         className="image"
+        width={image.width}
+        height={image.height}
         src={source}
         alt={altText?.plaintext}
       />

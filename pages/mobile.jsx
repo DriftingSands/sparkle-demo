@@ -3,6 +3,7 @@ import { AEMHeadless } from "@adobe/aem-headless-client-js";
 import Panel from "../components/Panel";
 import MobileHeader from "../components/MobileHeader";
 import ErrorComponent from "../components/ErrorComponent";
+import { tryFetch } from "../components/utils";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -37,43 +38,27 @@ export default function Graphiql(props) {
   const [hash, setHash] = useState(null);
   const [ignoreHash, setIgnoreHash] = useState(false)
 
-  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
-  const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
-  const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
+  const hostConfig = {
+    loginRedirect: "https://author-p54352-e657273.adobeaemcloud.com",
+    authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
+    publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
+    endpoint: "/graphql/execute.json/sparkle-demo/homepage",
+  };
   const [customHost, setCustomHost] = useState("");
 
-  const getData = async (variation, setState) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    let host = urlParams.get("host");
-    if (host?.endsWith("/")) {
-      host = host.slice(0, -1);
+  const getData = async (variation, setState, customUrl) => {
+    let successfulFetch = null;
+    setCustomHost(customUrl);
+    if (customUrl) {
+      successfulFetch = await tryFetch(customUrl, hostConfig.endpoint, variation, setState, true);
+    } else {
+      successfulFetch = await tryFetch(hostConfig.authorHost, hostConfig.endpoint, variation, setState, true);
     }
-    setCustomHost(host);
-    if (customHost) {
-      try {
-        const response = await fetch(customHost + ";variation=" + variation, { credentials: "include" });
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "customHost", customHost, error });
-      }
+    if (successfulFetch === false) {
+      successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setState, false);
     }
-    try {
-      const response = await fetch(`${authorPath};variation=${variation}?timestamp=${Date.now()}`, {
-        credentials: "include",
-      });
-      const data = await response.json();
-      setIsAuthorVersion(true);
-      return setState(data.data.pageByPath.item.panels);
-    } catch (error) {
-      try {
-        const response = await fetch(`${publishPath};variation=${variation}?timestamp=${Date.now()}`);
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "publish", publishPath, error });
-      }
-    }
+    if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
+    if (successfulFetch === "author") setIsAuthorVersion(true);
   };
 
   useEffect(() => {
@@ -85,8 +70,13 @@ export default function Graphiql(props) {
     //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
     //   // fetch: fetch
     // })
+    const urlParams = new URLSearchParams(window.location.search);
+    let host = urlParams.get("host");
+    if (host?.endsWith("/")) {
+      host = host.slice(0, -1);
+    }
 
-    getData("mobile", setData);
+    getData("mobile", setData, host);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -96,7 +86,7 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"} style={{ maxWidth: 800, margin: "0 auto" }}>
-      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || loginRedirect} />
+      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || hostConfig.loginRedirect} />
       {data &&
         data.map((panel, index) => {
           return (
@@ -107,7 +97,7 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || loginRedirect}
+              host={customHost || hostConfig.loginRedirect}
               hash={window.location.hash}
               ignoreHash={ignoreHash}
               setIgnoreHash={setIgnoreHash}

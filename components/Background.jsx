@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 export default function Background({ backgroundProps, lazy, isAuthorVersion }) {
-  const { backgroundContent, isVideo, altText, color, zIndex } = backgroundProps;
+  const { backgroundContent, isVideo, altText, color, zIndex, type } = backgroundProps;
 
   const source = isAuthorVersion ? backgroundContent?._authorUrl : backgroundContent?._publishUrl
 
@@ -12,7 +12,7 @@ export default function Background({ backgroundProps, lazy, isAuthorVersion }) {
 
   return (
     <div className={`backgroundWrapper ${isVideo ? 'isVideo' : ''}`} style={{ backgroundColor: color, zIndex, }}>
-      {backgroundContent?.format?.includes('image/') && <img src={source} alt={altText} className="backgroundImage" loading={lazy ? 'lazy' : 'eager'} />}
+      {backgroundContent?.type === 'image' && <img src={source} alt={altText} className="backgroundImage" loading={lazy ? 'lazy' : 'eager'} />}
       {backgroundContent?.format?.includes('video/') && (
         // <iframe
         //   style={aspectRatioStyle}

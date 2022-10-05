@@ -5,7 +5,7 @@ import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
-import { scrollToId } from "../components/utils";
+import { tryFetch } from "../components/utils";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -42,49 +42,35 @@ export default function Graphiql(props) {
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
   const [hash, setHash] = useState(null);
-  const [ignoreHash, setIgnoreHash] = useState(false)
+  const [ignoreHash, setIgnoreHash] = useState(false);
 
   const [desktopData, setDesktopData] = useState(null);
   const [mobileData, setMobileData] = useState(null);
 
-  const loginRedirect = "https://author-p54352-e657273.adobeaemcloud.com/";
-  const authorPath = "https://author-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
-  const publishPath = "https://publish-p54352-e657273.adobeaemcloud.com/graphql/execute.json/sparkle-demo/homepage";
+  const hostConfig = {
+    loginRedirect: "https://author-p54352-e657273.adobeaemcloud.com",
+    authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
+    publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
+    endpoint: "/graphql/execute.json/sparkle-demo/homepage",
+  };
   const [customHost, setCustomHost] = useState("");
 
-  const getData = async (variation, setState) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    let host = urlParams.get("host");
-    if (host?.endsWith("/")) {
-      host = host.slice(0, -1);
+  const getData = async (variation, setState, customUrl) => {
+    let successfulFetch = null;
+    setCustomHost(customUrl);
+    if (customUrl) {
+      successfulFetch = await tryFetch(customUrl, hostConfig.endpoint, variation, setState, true);
+    } else {
+      successfulFetch = await tryFetch(hostConfig.authorHost, hostConfig.endpoint, variation, setState, true);
     }
-    setCustomHost(host);
-    if (customHost) {
-      try {
-        const response = await fetch(customHost + ";variation=" + variation, { credentials: "include" });
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "customHost", customHost, error });
-      }
+    if (successfulFetch === false) {
+      successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setState, false);
     }
-    try {
-      const response = await fetch(`${authorPath};variation=${variation}?timestamp=${Date.now()}`, {
-        credentials: "include",
-      });
-      const data = await response.json();
-      setIsAuthorVersion(true);
-      return setState(data.data.pageByPath.item.panels);
-    } catch (error) {
-      try {
-        const response = await fetch(`${publishPath};variation=${variation}?timestamp=${Date.now()}`);
-        const data = await response.json();
-        return setState(data.data.pageByPath.item.panels);
-      } catch (error) {
-        return setFetchError({ type: "publish", publishPath, error });
-      }
-    }
+    if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
+    if (successfulFetch === "author") setIsAuthorVersion(true);
   };
+  
+  
   const saveBackupData = (type, data) => {
     if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === "true") {
       fetch("http://localhost:3000/api/saveJson", {
@@ -96,19 +82,25 @@ export default function Graphiql(props) {
       });
     }
   };
-
+  
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return}
     // if (typeof window === 'undefined') {return}
     // const aemHeadlessClient = new AEMHeadless({
-    //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-    //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-    //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
-    //   // fetch: fetch
+      //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+      //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+      //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
+      //   // fetch: fetch
     // })
 
-    getData("desktop", setDesktopData);
-    getData("mobile", setMobileData);
+    const urlParams = new URLSearchParams(window.location.search);
+    let host = urlParams.get("host");
+    if (host?.endsWith("/")) {
+      host = host.slice(0, -1);
+    }
+
+    getData("desktop", setDesktopData, host);
+    getData("mobile", setMobileData, host);
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -165,7 +157,9 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"}>
-      {type === "mobile" && <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost || loginRedirect} />}
+      {type === "mobile" && (
+        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost || hostConfig.loginRedirect} />
+      )}
       {data?.map &&
         data.map((panel, index) => {
           if (type === "desktop" && index > 0 && !loadRest) {
@@ -180,7 +174,7 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || loginRedirect}
+              host={customHost || hostConfig.loginRedirect}
               hash={hash}
               ignoreHash={ignoreHash}
               setIgnoreHash={setIgnoreHash}

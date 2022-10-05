@@ -12,9 +12,10 @@ export default function PointTextMap({ data }) {
   }, [data?.imageSelector]);
 
   const objectFit = data?.fit;
-  const aspectRatio = `${
-    conformToElement?.width || data?.width || 16
-  } / ${conformToElement?.height || data?.height || 9}`;
+  // const aspectRatio = `${
+  //   conformToElement?.width || data?.width || 16
+  // } / ${conformToElement?.height || data?.height || 9}`;
+  const aspectRatio = `844 / 729`;
 
   return (
     <div className="wrapperForRatio" id={data.id} style={{ aspectRatio }}>
