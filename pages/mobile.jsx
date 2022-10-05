@@ -3,7 +3,8 @@ import { AEMHeadless } from "@adobe/aem-headless-client-js";
 import Panel from "../components/Panel";
 import MobileHeader from "../components/MobileHeader";
 import ErrorComponent from "../components/ErrorComponent";
-import { tryFetch } from "../components/utils";
+import { getData, tryFetch } from "../components/utils";
+import Head from 'next/head';
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -39,27 +40,12 @@ export default function Graphiql(props) {
   const [ignoreHash, setIgnoreHash] = useState(false)
 
   const hostConfig = {
-    loginRedirect: "https://author-p54352-e657273.adobeaemcloud.com",
     authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
     publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
     endpoint: "/graphql/execute.json/sparkle-demo/homepage",
   };
   const [customHost, setCustomHost] = useState("");
 
-  const getData = async (variation, setState, customUrl) => {
-    let successfulFetch = null;
-    setCustomHost(customUrl);
-    if (customUrl) {
-      successfulFetch = await tryFetch(customUrl, hostConfig.endpoint, variation, setState, true);
-    } else {
-      successfulFetch = await tryFetch(hostConfig.authorHost, hostConfig.endpoint, variation, setState, true);
-    }
-    if (successfulFetch === false) {
-      successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setState, false);
-    }
-    if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
-    if (successfulFetch === "author") setIsAuthorVersion(true);
-  };
 
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return setData(props.mobileData)}
@@ -71,12 +57,17 @@ export default function Graphiql(props) {
     //   // fetch: fetch
     // })
     const urlParams = new URLSearchParams(window.location.search);
-    let host = urlParams.get("host");
-    if (host?.endsWith("/")) {
-      host = host.slice(0, -1);
-    }
+    let authorHost = urlParams.get("authorHost");
+    if (authorHost?.endsWith("/")) authorHost = authorHost.slice(0, -1);
+    let publishHost = urlParams.get("publishHost");
+    if (publishHost?.endsWith("/")) publishHost = publishHost.slice(0, -1);
 
-    getData("mobile", setData, host);
+    if (!authorHost && !publishHost) {
+      authorHost = hostConfig.authorHost
+      publishHost = hostConfig.publishHost
+    }
+    const setStates = {setIsAuthorVersion, setFetchError, setCustomHost}
+    getData("mobile", {setData: setData, ...setStates}, hostConfig, authorHost, publishHost);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -86,9 +77,13 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"} style={{ maxWidth: 800, margin: "0 auto" }}>
-      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost || hostConfig.loginRedirect} />
-      {data &&
-        data.map((panel, index) => {
+      <Head>
+        <title>{data?.title || 'Sparkle Demo'}</title>
+        <meta name='description' content={data?.description?.plaintext} />
+      </Head>
+      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost} mobileNavObj={data?.mobileNavMenu} />
+      {data?.panels?.map &&
+        data.panels.map((panel, index) => {
           return (
             <Panel
               panel={panel}
@@ -97,7 +92,7 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || hostConfig.loginRedirect}
+              host={customHost}
               hash={window.location.hash}
               ignoreHash={ignoreHash}
               setIgnoreHash={setIgnoreHash}

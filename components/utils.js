@@ -11,14 +11,13 @@ export const scrollToId = (id) => {
 };
 
 export const tryFetch = async (host, endpoint, variation, setState, isAuthor) => {
-  console.log("\x1b[31m~ host", host)
   try {
     const response = await fetch(
       `${host}${endpoint};variation=${variation}?timestamp=${Date.now()}`,
-      isAuthor ? { credentials: "include" } : null
+      (isAuthor ? { credentials: "include" } : null)
     );
     const data = await response.json();
-    setState(data.data.pageByPath.item.panels);
+    setState(data.data.pageByPath.item);
     return isAuthor ? "author" : true;
   } catch (error) {
     return false;
@@ -32,7 +31,7 @@ export const getData = async (variation, setStates, hostConfig, authorHost, publ
     setCustomHost(authorHost);
     successfulFetch = await tryFetch(authorHost, hostConfig.endpoint, variation, setData, true);
   }
-  if (publishHost) {
+  if (publishHost && !successfulFetch) {
     successfulFetch = await tryFetch(publishHost, hostConfig.endpoint, variation, setData, true);
   }
   if (successfulFetch === false) {

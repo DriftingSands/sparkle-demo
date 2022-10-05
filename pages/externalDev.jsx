@@ -61,9 +61,9 @@ export default function Graphiql(props) {
 
   return !data ? null : (
     <div className={"page"}>
-      {type === "mobile" && <MobileHeader />}
-      {data?.map &&
-        data.map((panel, index) => {
+      {type === "mobile" && <MobileHeader mobileNavObj={data?.mobileNavMenu} />}
+      {data?.panels?.map &&
+        data.panels.map((panel, index) => {
           if (type === "desktop" && index > 0 && !loadRest) {
             document.body.style.overflowY = "scroll";
             return null;

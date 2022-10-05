@@ -3,29 +3,12 @@ import { scrollToId } from './utils';
 import { useEffect, useState } from 'react';
 // import Image from 'next/image';
 
-export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
+export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNavObj }) {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNav, setOpenNav] = useState(false)
-  const [navLabel, setNavLabel] = useState('Intro')
+  const [navLabel, setNavLabel] = useState(mobileNavObj?.menuItems[0].text || 'Navigation')
 
-  const navItems = [
-    {
-      title: 'Intro',
-      link: '#intro',
-    },
-    {
-      title: 'Outdoor Passion',
-      link: '#outdoorPassion',
-    },
-    {
-      title: 'Into The Nature',
-      link: '#intoTheNature',
-    },
-    {
-      title: 'Up To The Sky',
-      link: '#upToTheSky',
-    },
-  ]
+  const navItems = mobileNavObj?.menuItems || []
 
   function debounce(func, wait) {
     let timeout;
@@ -45,7 +28,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
       if (!element) {continue}
       const rect = element.getBoundingClientRect()
       if (rect.top < (window.innerHeight / 2)) {
-        newLabel = navItems[i].title
+        newLabel = navItems[i].text
       }
     }
     newLabel && setNavLabel(newLabel)
@@ -90,7 +73,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host }) {
         <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>
           <ul>
             {navItems.map((item, index) => {
-              return <a onClick={() => onClickHandler(item.link)} key={index}><li> {item.title} </li></a>
+              return <a onClick={() => onClickHandler(item.link)} key={index}><li> {item.text} </li></a>
             })}
           </ul>
         </menu>
