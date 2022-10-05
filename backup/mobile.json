@@ -51,8 +51,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 857,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky_m.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky_m.jpg"
       },
@@ -71,9 +69,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 355,
-          "height": 189,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1_m.png"
         },
@@ -97,9 +92,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 261,
-          "height": 107,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3_m.png"
         },
@@ -123,9 +115,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 415,
-          "height": 357,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker_m.png"
         },
@@ -331,8 +320,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1920,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/AdobeStock_427738038.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/AdobeStock_427738038.jpg"
       },
@@ -364,7 +351,7 @@
             "type": "h3",
             "id": null,
             "content": {
-              "plaintext": "Your dates, your ride distances\nand your style of lodging!"
+              "plaintext": "Name your dates, distances and lodging style. We'll take care of the rest..."
             },
             "styles": [
               "thin",
@@ -375,7 +362,7 @@
             "type": "button",
             "id": null,
             "content": {
-              "plaintext": "sign up"
+              "plaintext": "sign up now"
             },
             "styles": [
               "darkButton"
@@ -503,8 +490,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1620,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg"
       },
@@ -523,9 +508,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 835,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains_m.png"
         },
@@ -549,9 +531,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 805,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water_m.png"
         },
@@ -575,9 +554,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1108,
-          "height": 2146,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png"
         },
@@ -889,8 +865,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1618,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg"
       },
@@ -909,9 +883,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 826,
-          "height": 964,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1_m.png"
         },
@@ -935,9 +906,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1232,
-          "height": 568,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png"
         },
@@ -959,9 +927,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 873,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png"
         },
@@ -983,9 +948,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 779,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent_m.png"
         },

@@ -5,7 +5,7 @@ import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
-import { tryFetch } from "../components/utils";
+import { getData } from "../components/utils";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -55,20 +55,7 @@ export default function Graphiql(props) {
   };
   const [customHost, setCustomHost] = useState("");
 
-  const getData = async (variation, setState, customUrl) => {
-    let successfulFetch = null;
-    setCustomHost(customUrl);
-    if (customUrl) {
-      successfulFetch = await tryFetch(customUrl, hostConfig.endpoint, variation, setState, true);
-    } else {
-      successfulFetch = await tryFetch(hostConfig.authorHost, hostConfig.endpoint, variation, setState, true);
-    }
-    if (successfulFetch === false) {
-      successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setState, false);
-    }
-    if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
-    if (successfulFetch === "author") setIsAuthorVersion(true);
-  };
+
   
   
   const saveBackupData = (type, data) => {
@@ -94,13 +81,18 @@ export default function Graphiql(props) {
     // })
 
     const urlParams = new URLSearchParams(window.location.search);
-    let host = urlParams.get("host");
-    if (host?.endsWith("/")) {
-      host = host.slice(0, -1);
-    }
+    let authorHost = urlParams.get("authorHost");
+    if (authorHost?.endsWith("/")) authorHost = authorHost.slice(0, -1);
+    let publishHost = urlParams.get("publishHost");
+    if (publishHost?.endsWith("/")) publishHost = publishHost.slice(0, -1);
 
-    getData("desktop", setDesktopData, host);
-    getData("mobile", setMobileData, host);
+    if (!authorHost && !publishHost) {
+      authorHost = hostConfig.authorHost
+      publishHost = hostConfig.publishHost
+    }
+    const setStates = {setIsAuthorVersion, setFetchError, setCustomHost}
+    getData("desktop", {setData: setDesktopData, ...setStates}, hostConfig, authorHost, publishHost);
+    getData("mobile", {setData: setMobileData, ...setStates}, hostConfig, authorHost, publishHost);
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -158,7 +150,7 @@ export default function Graphiql(props) {
   ) : (
     <div className={"page"}>
       {type === "mobile" && (
-        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost || hostConfig.loginRedirect} />
+        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost} />
       )}
       {data?.map &&
         data.map((panel, index) => {
@@ -174,7 +166,7 @@ export default function Graphiql(props) {
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}
-              host={customHost || hostConfig.loginRedirect}
+              host={customHost}
               hash={hash}
               ignoreHash={ignoreHash}
               setIgnoreHash={setIgnoreHash}

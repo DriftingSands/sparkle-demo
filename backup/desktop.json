@@ -129,8 +129,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1851,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky.jpg"
       },
@@ -149,9 +147,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1388,
-          "height": 711,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png"
         },
@@ -175,9 +170,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 493,
-          "height": 327,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png"
         },
@@ -201,9 +193,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 942,
-          "height": 414,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png"
         },
@@ -227,9 +216,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 844,
-          "height": 729,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png"
         },
@@ -264,7 +250,7 @@
             "type": "h3",
             "id": null,
             "content": {
-              "plaintext": "outdoor passion"
+              "plaintext": "get in gear"
             },
             "styles": [
               "yellowBox",
@@ -275,7 +261,7 @@
             "type": "h2",
             "id": null,
             "content": {
-              "plaintext": "The most exciting\nexperiences."
+              "plaintext": "The great outdoors is calling"
             },
             "styles": [
               "thin"
@@ -289,12 +275,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -304,7 +290,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
@@ -389,12 +375,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -404,7 +390,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
@@ -568,7 +554,7 @@
             "type": "h3",
             "id": null,
             "content": {
-              "plaintext": "Your dates, your ride distances\nand your style of lodging!"
+              "plaintext": "Name your dates, distances and lodging style. We'll take care of the rest..."
             },
             "styles": [
               "thin"
@@ -578,7 +564,7 @@
             "type": "button",
             "id": null,
             "content": {
-              "plaintext": "sign up"
+              "plaintext": "sign up now"
             },
             "styles": [
               "darkButton"
@@ -592,12 +578,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -607,7 +593,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
@@ -753,8 +739,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1620,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg"
       },
@@ -773,9 +757,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1620,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png"
         },
@@ -799,9 +780,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1620,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png"
         },
@@ -825,9 +803,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1108,
-          "height": 2146,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png"
         },
@@ -884,12 +859,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -899,7 +874,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
@@ -1016,12 +991,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -1031,7 +1006,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
@@ -1241,8 +1216,6 @@
     "background": {
       "backgroundContent": {
         "type": "image",
-        "width": 1618,
-        "height": 1080,
         "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg",
         "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg"
       },
@@ -1312,9 +1285,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1648,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png"
         },
@@ -1338,9 +1308,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1232,
-          "height": 568,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png"
         },
@@ -1362,9 +1329,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 873,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png"
         },
@@ -1410,9 +1374,6 @@
           "title": "Image Layer"
         },
         "image": {
-          "type": "image",
-          "width": 1648,
-          "height": 1080,
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png"
         },
@@ -1448,12 +1409,12 @@
             },
             "menuItems": [
               {
-                "text": "Intro",
+                "text": "Get In Gear",
                 "link": "#intro",
                 "menuItemId": "intro"
               },
               {
-                "text": "Outdoor Passion",
+                "text": "Embrace Experience",
                 "link": "#outdoorPassion",
                 "menuItemId": "outdoorPassion"
               },
@@ -1463,7 +1424,7 @@
                 "menuItemId": "intoTheNature"
               },
               {
-                "text": "Up to the Sky",
+                "text": "Be Amazed",
                 "link": "#upToTheSky",
                 "menuItemId": "upToTheSky"
               }
