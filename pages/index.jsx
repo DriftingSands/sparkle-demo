@@ -6,6 +6,7 @@ import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
 import { getData } from "../components/utils";
+import Head from 'next/head';
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -48,7 +49,6 @@ export default function Graphiql(props) {
   const [mobileData, setMobileData] = useState(null);
 
   const hostConfig = {
-    loginRedirect: "https://author-p54352-e657273.adobeaemcloud.com",
     authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
     publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
     endpoint: "/graphql/execute.json/sparkle-demo/homepage",
@@ -149,11 +149,15 @@ export default function Graphiql(props) {
     ) : null
   ) : (
     <div className={"page"}>
+      <Head>
+        <title>{data?.title || 'Sparkle Demo'}</title>
+        <meta name='description' content={data?.description?.plaintext} />
+      </Head>
       {type === "mobile" && (
-        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost} />
+        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost} mobileNavObj={data?.mobileNavMenu} />
       )}
-      {data?.map &&
-        data.map((panel, index) => {
+      {data?.panels?.map &&
+        data.panels.map((panel, index) => {
           if (type === "desktop" && index > 0 && !loadRest) {
             document.body.style.overflowY = "scroll";
             return null;

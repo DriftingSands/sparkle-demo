@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import desktopData from '../backup/desktop.json'
 import mobileData from '../backup/mobile.json'
+import Head from 'next/head'
 
 
 export default function Graphiql(props) {
@@ -61,9 +62,13 @@ export default function Graphiql(props) {
 
   return !data ? null : (
     <div className={"page"}>
-      {type === "mobile" && <MobileHeader />}
-      {data?.map &&
-        data.map((panel, index) => {
+      <Head>
+        <title>{data?.title || 'Sparkle Demo'}</title>
+        <meta name='description' content={data?.description?.plaintext} />
+      </Head>
+      {type === "mobile" && <MobileHeader mobileNavObj={data?.mobileNavMenu} />}
+      {data?.panels?.map &&
+        data.panels.map((panel, index) => {
           if (type === "desktop" && index > 0 && !loadRest) {
             document.body.style.overflowY = "scroll";
             return null;
