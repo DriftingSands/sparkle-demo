@@ -62,6 +62,10 @@ export default function Graphiql(props) {
 
   return !data ? null : (
     <div className={"page"}>
+      <Head>
+        <title>{data?.title || 'Sparkle Demo'}</title>
+        <meta name='description' content={data?.description?.plaintext} />
+      </Head>
       {type === "mobile" && <MobileHeader mobileNavObj={data?.mobileNavMenu} />}
       {data?.panels?.map &&
         data.panels.map((panel, index) => {
