@@ -230,9 +230,9 @@ button {
 
 
 .layerImage {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -242,7 +242,7 @@ button {
   
   &.showOverflow {
     overflow: visible;
-    > .image {
+    .image {
       overflow: visible;
       z-index: 100;
     }
@@ -280,6 +280,16 @@ button {
   &.bottom-left .image{object-position: bottom left;}
   &.bottom-center .image{object-position: bottom center;}
   &.bottom-right .image{object-position: bottom right;}
+}
+
+.overflowImageWrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  &.showOverflow {
+    overflow: visible;
+  }
 }
 
 .textLayer {
