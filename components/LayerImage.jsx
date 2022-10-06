@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 
-export default function LayerImage({ data, panelNr, isAuthorVersion }) {
+export default function LayerImage({ data, panelNr, host }) {
   const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
 
-  const source = isAuthorVersion ? image?._authorUrl : image?._publishUrl
+  const source = host+image._path
 
   return (
     <div

@@ -36,7 +36,7 @@ export default function Panel({ panel, panelNr, settings, runOnEnd, isAuthorVers
       id={panel.id}
     >
       {settings?.type === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
-      {panel?.background && <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} isAuthorVersion={isAuthorVersion} />}
+      {panel?.background && <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} />}
       {panel?.layers?.length &&
         panel.layers.map((layer, index) => {
           const Component = lookupObject[layer.type || layer?._model?.title];
@@ -45,11 +45,11 @@ export default function Panel({ panel, panelNr, settings, runOnEnd, isAuthorVers
           }
           return (
             <Component
+              host={host}
               activeMenuItem={panel.activeMenuItem}
               data={layer}
               panelNr={panelNr}
               key={index}
-              isAuthorVersion={isAuthorVersion}
             />
           );
         })}

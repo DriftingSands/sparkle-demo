@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 
-export default function Background({ backgroundProps, lazy, isAuthorVersion }) {
+export default function Background({ backgroundProps, lazy, host }) {
   const { backgroundContent, isVideo, altText, color, zIndex, type } = backgroundProps;
 
-  const source = isAuthorVersion ? backgroundContent?._authorUrl : backgroundContent?._publishUrl
+  const source = host+backgroundContent?._path
 
   // const aspectRatioStyle = {
   //   aspectRatio: `${videoWidth} / ${videoHeight}`

@@ -32,10 +32,8 @@ export const getData = async (variation, setStates, hostConfig, authorHost, publ
     successfulFetch = await tryFetch(authorHost, hostConfig.endpoint, variation, setData, true);
   }
   if (publishHost && !successfulFetch) {
-    successfulFetch = await tryFetch(publishHost, hostConfig.endpoint, variation, setData, true);
-  }
-  if (successfulFetch === false) {
-    successfulFetch = await tryFetch(hostConfig.publishHost, hostConfig.endpoint, variation, setData, false);
+    setCustomHost(publishHost);
+    successfulFetch = await tryFetch(publishHost, hostConfig.endpoint, variation, setData, false);
   }
   if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
   if (successfulFetch === "author") setIsAuthorVersion(true);

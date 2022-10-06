@@ -86,10 +86,8 @@ export default function Graphiql(props) {
     let publishHost = urlParams.get("publishHost");
     if (publishHost?.endsWith("/")) publishHost = publishHost.slice(0, -1);
 
-    if (!authorHost && !publishHost) {
-      authorHost = hostConfig.authorHost
-      publishHost = hostConfig.publishHost
-    }
+    if (!authorHost) authorHost = hostConfig.authorHost
+    if (!publishHost) publishHost = hostConfig.publishHost
     const setStates = {setIsAuthorVersion, setFetchError, setCustomHost}
     getData("desktop", {setData: setDesktopData, ...setStates}, hostConfig, authorHost, publishHost);
     getData("mobile", {setData: setMobileData, ...setStates}, hostConfig, authorHost, publishHost);

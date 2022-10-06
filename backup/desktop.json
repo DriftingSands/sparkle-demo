@@ -1,10 +1,8 @@
 {
-  "title": "Demo",
-  "description": {
-    "plaintext": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-  },
-  "mobileNavMenu": null,
   "_variation": "master",
+  "_variations": [
+    "mobile"
+  ],
   "panels": [
     {
       "_path": "/content/dam/sparkle-demo/en/data/panels/intro",
@@ -135,6 +133,7 @@
       "dark": false,
       "background": {
         "backgroundContent": {
+          "_path": "/content/dam/sparkle-demo/en/data/image-files/sky.jpg",
           "type": "image",
           "width": 1851,
           "height": 1080,
@@ -159,6 +158,7 @@
             "type": "image",
             "width": 1388,
             "height": 711,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks1.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png"
           },
@@ -185,6 +185,7 @@
             "type": "image",
             "width": 493,
             "height": 327,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks2.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png"
           },
@@ -211,6 +212,7 @@
             "type": "image",
             "width": 942,
             "height": 414,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks3.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png"
           },
@@ -237,6 +239,7 @@
             "type": "image",
             "width": 844,
             "height": 729,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/biker.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png"
           },
@@ -545,6 +548,7 @@
       "dark": true,
       "background": {
         "backgroundContent": {
+          "_path": "/content/dam/sparkle-demo/en/data/image-files/biker video.mp4",
           "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker%20video.mp4",
           "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker%20video.mp4",
           "format": "video/mp4"
@@ -643,7 +647,7 @@
               "scale": 1.2
             },
             "to": {
-              "y": "10%",
+              "y": "30%",
               "scale": 1,
               "scrollTrigger": {
                 "trigger": "#intoTheNature",
@@ -759,6 +763,7 @@
       "dark": false,
       "background": {
         "backgroundContent": {
+          "_path": "/content/dam/sparkle-demo/en/data/image-files/sky0.jpg",
           "type": "image",
           "width": 1620,
           "height": 1080,
@@ -783,6 +788,7 @@
             "type": "image",
             "width": 1620,
             "height": 1080,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountains.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png"
           },
@@ -809,6 +815,7 @@
             "type": "image",
             "width": 1620,
             "height": 1080,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/water.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png"
           },
@@ -835,6 +842,7 @@
             "type": "image",
             "width": 1108,
             "height": 2146,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png"
           },
@@ -1247,6 +1255,7 @@
       "dark": true,
       "background": {
         "backgroundContent": {
+          "_path": "/content/dam/sparkle-demo/en/data/image-files/uptothesky sky.jpg",
           "type": "image",
           "width": 1618,
           "height": 1080,
@@ -1322,6 +1331,7 @@
             "type": "image",
             "width": 1648,
             "height": 1080,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain1.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png"
           },
@@ -1348,6 +1358,7 @@
             "type": "image",
             "width": 1232,
             "height": 568,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png"
           },
@@ -1372,6 +1383,7 @@
             "type": "image",
             "width": 873,
             "height": 1080,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png"
           },
@@ -1420,6 +1432,7 @@
             "type": "image",
             "width": 1648,
             "height": 1080,
+            "_path": "/content/dam/sparkle-demo/en/data/image-files/tent.png",
             "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png",
             "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png"
           },
@@ -1481,5 +1494,33 @@
         }
       ]
     }
-  ]
+  ],
+  "title": "WKND App",
+  "description": {
+    "plaintext": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+  },
+  "mobileNavMenu": {
+    "menuItems": [
+      {
+        "link": "#intro",
+        "text": "Get In Gear",
+        "menuItemId": "intro"
+      },
+      {
+        "link": "#outdoorPassion",
+        "text": "Embrace Experience",
+        "menuItemId": "outdoorPassion"
+      },
+      {
+        "link": "#intoTheNature",
+        "text": "Into the Nature",
+        "menuItemId": "intoTheNature"
+      },
+      {
+        "link": "#upToTheSky",
+        "text": "Be Amazed",
+        "menuItemId": "upToTheSky"
+      }
+    ]
+  }
 }
