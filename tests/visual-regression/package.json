@@ -1,0 +1,15 @@
+{
+  "name": "visual-regression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "bash ./node_modules/.bin/backstop test --config=local.test.config.js",
+    "approve": "./node_modules/.bin/backstop approve --config=local.test.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "backstopjs": "^6.1.3"
+  }
+}

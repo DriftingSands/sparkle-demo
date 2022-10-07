@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+tests/visual-regression/test_data
+tests/visual-regression/node_modules
