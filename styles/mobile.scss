@@ -78,6 +78,13 @@ $transition: all 0.3s ease-in-out;
       justify-content: space-between;
       padding: 12px 12px 12px 16px;
       cursor: pointer;
+
+    }
+    .navigationButton .dropdownIcon {
+      transition: transform 0.3s ease-in-out;
+    }
+    .navigationButton.navOpen .dropdownIcon {
+      transform: rotate(180deg);
     }
 
     .navigationMenu {

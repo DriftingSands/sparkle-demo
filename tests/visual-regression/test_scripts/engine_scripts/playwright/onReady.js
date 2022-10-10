@@ -9,7 +9,7 @@ module.exports = async (
 
   // add more ready handlers here...
   await require("./lazyLoadScroll")(page, scenario);
-  // await require("./clickAndHoverHelper")(page, scenario);
+  await require("./clickAndHoverHelper")(page, scenario);
   
   // if (!!viewport.emulateDark) {
   //   await page.emulateMedia({colorScheme: 'dark'});

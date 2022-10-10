@@ -35,5 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-tests/visual-regression/test_data
+tests/visual-regression/test_data/bitmaps_test
+tests/visual-regression/test_data/html_report
 tests/visual-regression/node_modules

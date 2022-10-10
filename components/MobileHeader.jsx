@@ -52,7 +52,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
     <header className="mobileHeaderWrapper" style={{maxWidth, }} >
 
       <div className="mainHeader">
-        <button className={`menuButton ${openMenu ? 'menuOpen' : 'menuClosed'}`} onClick={() => setOpenMenu(true)}>
+        <button className={`menuButton ${openMenu ? 'menuOpen' : 'menuClosed'}`} id={'mobile-menu-button'} onClick={() => setOpenMenu(true)}>
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18" > <defs></defs> <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="8" />  <rect className="fill" height="2" rx="0.5" width="14" x="2" y="3" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="13" /> </svg> 
         </button>
 
@@ -65,9 +65,9 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
       </div> 
 
       <nav className="headerNavigation">
-        <button className="navigationButton" onClick={() => setOpenNav(!openNav)} >
+        <button className={`navigationButton ${openNav ? 'navOpen' : 'navClosed'}`} id={'mobile-nav-button'} onClick={() => setOpenNav(!openNav)} >
           <span>{navLabel}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18"  width="18" > <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <path className="fill" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" /> </svg>
+          <svg className='dropdownIcon' xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18"  width="18" > <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <path className="fill" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" /> </svg>
         </button>
 
         <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>

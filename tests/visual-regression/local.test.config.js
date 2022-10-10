@@ -12,13 +12,13 @@ const pagesToTest = [
   // 'externalDev',
 ];
 const selectorsToCapture = [
+  'viewport',
   "#intro",
   "#intro2",
   "#outdoorPassion",
   "#intoTheNature",
   "#intoTheNature2",
   "#upToTheSky",
-  '#tent-layer'
 ];
 
 const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
@@ -32,7 +32,6 @@ const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
       url: config.baseURL + url + config.queryParams,
       readySelector: "#upToTheSky",
       selectors: selectorsToCapture,
-      hoverSelectors: selectorsToCapture,
     });
   });
 
@@ -41,6 +40,51 @@ const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
 
 // add advanced tests here:
 const advancedScenarios = [
+  {
+    label: "mobile-menu",
+    url: baseURL + queryParams,
+    // wait for this long after clicking menu button
+    postInteractionWait: 400,
+    readySelector: "#upToTheSky",
+    selectors: ['viewport'],
+    viewports: [
+      {
+        label: "phone",
+        emulateDark: false,
+        width: 320,
+        height: 480,
+      },
+      {
+        label: "tablet",
+        emulateDark: false,
+        width: 800,
+        height: 1280,
+      },
+    ],
+    clickSelectors: ["#mobile-menu-button"],
+  },
+  {
+    label: "mobile-nav",
+    url: baseURL + queryParams,
+    postInteractionWait: 400,
+    readySelector: "#upToTheSky",
+    selectors: ['viewport'],
+    viewports: [
+      {
+        label: "phone",
+        emulateDark: false,
+        width: 320,
+        height: 480,
+      },
+      {
+        label: "tablet",
+        emulateDark: false,
+        width: 800,
+        height: 1280,
+      },
+    ],
+    clickSelectors: ["#mobile-nav-button"],
+  },
   // possible values
   // {
   //   label: "",

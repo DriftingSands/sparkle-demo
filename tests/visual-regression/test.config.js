@@ -8,24 +8,24 @@ module.exports = {
       width: 360,
       height: 640,
     },
-    // {
-    //   label: "tablet",
-    //   emulateDark: false,
-    //   width: 800,
-    //   height: 1280,
-    // },
-    // {
-    //   label: "laptop",
-    //   emulateDark: false,
-    //   width: 1080,
-    //   height: 720,
-    // },
-    // {
-    //   label: "desktop",
-    //   emulateDark: false,
-    //   width: 1920,
-    //   height: 1080,
-    // },
+    {
+      label: "tablet",
+      emulateDark: false,
+      width: 800,
+      height: 1280,
+    },
+    {
+      label: "laptop",
+      emulateDark: false,
+      width: 1080,
+      height: 720,
+    },
+    {
+      label: "desktop",
+      emulateDark: false,
+      width: 1920,
+      height: 1080,
+    },
   ],
   onBeforeScript: "playwright/onBefore.js",
   onReadyScript: "playwright/onReady.js",
@@ -44,7 +44,7 @@ module.exports = {
   engineOptions: {
     args: ["--no-sandbox"],
   },
-  asyncCaptureLimit: 1,
+  asyncCaptureLimit: 5,
   asyncCompareLimit: 50,
   resembleOutputOptions: {
     errorColor: {
@@ -54,10 +54,10 @@ module.exports = {
     },
     errorType: "movement",
     transparency: 0.3,
-    ignoreAntialiasing: false,
+    ignoreAntialiasing: true,
     usePreciseMatching: true,
   },
   debug: false,
   // Headless / Headed mode, caution: snapshots will be slightly different
-  debugWindow: true,
+  debugWindow: false,
 };

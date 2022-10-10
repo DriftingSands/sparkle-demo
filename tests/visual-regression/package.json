@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "bash ./node_modules/.bin/backstop test --config=local.test.config.js",
+    "test": "./node_modules/.bin/backstop test --config=local.test.config.js",
     "approve": "./node_modules/.bin/backstop approve --config=local.test.config.js"
   },
   "author": "",
