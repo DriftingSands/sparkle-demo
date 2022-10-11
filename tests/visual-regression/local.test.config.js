@@ -12,17 +12,19 @@ const pagesToTest = [
   // 'externalDev',
 ];
 const selectorsToCapture = [
-  'viewport',
+  // 'viewport',
   "#intro",
   "#intro2",
   "#outdoorPassion",
   "#intoTheNature",
   "#intoTheNature2",
   "#upToTheSky",
+  ".pin-spacer-reference"
 ];
 
 const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
   const output = advancedScenarios;
+  // const output = [];
 
   simpleScenarios.forEach((url) => {
     const name = url || "index";
@@ -32,6 +34,7 @@ const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
       url: config.baseURL + url + config.queryParams,
       readySelector: "#upToTheSky",
       selectors: selectorsToCapture,
+      selectorExpansion: true,
     });
   });
 

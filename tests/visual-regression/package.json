@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/backstop test --config=local.test.config.js",
-    "approve": "./node_modules/.bin/backstop approve --config=local.test.config.js"
+    "test": "npx backstop test --config=local.test.config.js",
+    "approve": "npx backstop approve --config=local.test.config.js"
   },
   "author": "",
   "license": "ISC",

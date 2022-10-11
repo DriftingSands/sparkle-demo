@@ -3,7 +3,7 @@ import { scrollToId } from './utils';
 import { useEffect, useState } from 'react';
 // import Image from 'next/image';
 
-export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNavObj }) {
+export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNavObj, debugAnim }) {
   const [openMenu, setOpenMenu] = useState(false)
   const [openNav, setOpenNav] = useState(false)
   const [navLabel, setNavLabel] = useState(mobileNavObj?.menuItems[0].text || 'Navigation')
@@ -20,8 +20,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
     }
   }
 
-
-  const handleScroll = debounce(() => {
+  function findCurrentElement() {
     let newLabel = null;
     for (let i = 0; i < navItems.length; i++) {
       const element = document.getElementById(navItems[i].link.substring(1))
@@ -32,7 +31,14 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
       }
     }
     newLabel && setNavLabel(newLabel)
-  }, 100)
+  }
+
+
+  const handleScroll = debugAnim !== 'instant' ? (
+    debounce(() => findCurrentElement(), 100)
+  ) : (
+    () => findCurrentElement()
+  )
 
   
   useEffect(() => {

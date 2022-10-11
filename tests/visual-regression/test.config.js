@@ -1,28 +1,30 @@
 
 module.exports = {
   id: "test_default",
+  fileNameTemplate: '{scenarioLabel}_{selectorLabel}_{selectorIndex}_{viewportLabel}',
   viewports: [
     {
       label: "mobile",
-      emulateDark: false,
-      width: 360,
-      height: 640,
+      width: 540,
+      height: 1200,
     },
     {
-      label: "tablet",
-      emulateDark: false,
-      width: 800,
-      height: 1280,
+      label: "ipad-air",
+      width: 820,
+      height: 1180,
+    },
+    {
+      label: "ipad-pro",
+      width: 1024,
+      height: 1366,
     },
     {
       label: "laptop",
-      emulateDark: false,
-      width: 1080,
-      height: 720,
+      width: 1600,
+      height: 900,
     },
     {
       label: "desktop",
-      emulateDark: false,
       width: 1920,
       height: 1080,
     },
