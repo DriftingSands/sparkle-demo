@@ -173,13 +173,13 @@ button {
 }
 
 .header {
+  @include contentPadding;
   font-family: Bebas Neue;
   position: absolute;
   top: 0;
   left: 0;
   height: 100px;
   width: 100%;
-  padding: 0 12.5%;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -293,9 +293,9 @@ button {
 }
 
 .textLayer {
+  @include contentPadding;
   height: 100%;
   width: 100%;
-  padding: 0 12.5%;
   gap: 20%;
   display: flex;
   justify-content: center;
@@ -553,6 +553,9 @@ button {
     width: 100%;
     object-fit: cover;
   }
+}
+.darkPanel .backgroundWrapper .videoWrapper {
+  background-color: #353535;
 }
 
 .errorComponentWrapper {

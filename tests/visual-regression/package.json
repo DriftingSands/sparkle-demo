@@ -1,0 +1,15 @@
+{
+  "name": "visual-regression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx backstop test --config=local.test.config.js",
+    "approve": "npx backstop approve --config=local.test.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "backstopjs": "^6.1.3"
+  }
+}

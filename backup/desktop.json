@@ -5,7 +5,7 @@
   ],
   "panels": [
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/intro",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikerInCanyon",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -133,18 +133,14 @@
       "dark": false,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/data/image-files/sky.jpg",
+          "_path": "/content/dam/sparkle-demo/en/image-files/sky.jpg",
           "type": "image",
           "width": 1851,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky.jpg"
+          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky.jpg",
+          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky.jpg"
         },
         "color": null,
-        "isVideo": false,
-        "path": "/WKND SPA/Outdoor Passion/Scene 1/sky.webp",
-        "videoWidth": null,
-        "videoHeight": null,
         "altText": "sky"
       },
       "activeMenuItem": "intro",
@@ -158,22 +154,21 @@
             "type": "image",
             "width": 1388,
             "height": 711,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks1.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks1.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/rocks1.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks1.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks1.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks1.webp",
           "altText": {
             "plaintext": "rocks1"
           },
           "id": "rocks1",
           "layerId": "layer-rocks1",
           "basePosition": "bottom-left",
-          "fit": "fill",
+          "fit": "contain",
           "overflow": false,
           "forceLoad": false
         },
@@ -185,15 +180,14 @@
             "type": "image",
             "width": 493,
             "height": 327,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks2.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks2.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/rocks2.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks2.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks2.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks2.webp",
           "altText": {
             "plaintext": "rocks2"
           },
@@ -212,15 +206,14 @@
             "type": "image",
             "width": 942,
             "height": 414,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/rocks3.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/rocks3.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/rocks3.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks3.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks3.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 1/rocks3.webp",
           "altText": {
             "plaintext": "rocks3"
           },
@@ -239,15 +232,14 @@
             "type": "image",
             "width": 844,
             "height": 729,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/biker.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/biker.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 1/biker.webp",
           "altText": {
             "plaintext": "biker"
           },
@@ -255,7 +247,7 @@
           "layerId": "biker-layer",
           "basePosition": "center-center",
           "fit": "contain",
-          "overflow": false,
+          "overflow": true,
           "forceLoad": false
         },
         {
@@ -309,7 +301,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -326,7 +318,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/intro2",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikerOnWkndYellow",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -373,10 +365,6 @@
       "background": {
         "backgroundContent": null,
         "color": "#ffea00",
-        "isVideo": null,
-        "path": null,
-        "videoWidth": null,
-        "videoHeight": null,
         "altText": null
       },
       "activeMenuItem": "intro",
@@ -409,7 +397,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -459,7 +447,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/outdoorpassion",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikersVideo",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -548,16 +536,12 @@
       "dark": true,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/data/image-files/biker video.mp4",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker%20video.mp4",
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/biker%20video.mp4",
+          "_path": "/content/dam/sparkle-demo/en/image-files/biker video.mp4",
+          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker%20video.mp4",
+          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker%20video.mp4",
           "format": "video/mp4"
         },
         "color": null,
-        "isVideo": true,
-        "path": "https://video.tv.adobe.com/v/3409386/",
-        "videoWidth": 4096,
-        "videoHeight": 2160,
         "altText": null
       },
       "activeMenuItem": "outdoorPassion",
@@ -613,7 +597,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -630,7 +614,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/hikerInMountains",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -643,11 +627,11 @@
           {
             "selector": "#intoTheNature #mountains",
             "from": {
-              "y": "10%",
+              "y": "20%",
               "scale": 1.2
             },
             "to": {
-              "y": "30%",
+              "y": "40%",
               "scale": 1,
               "scrollTrigger": {
                 "trigger": "#intoTheNature",
@@ -668,10 +652,10 @@
           {
             "selector": "#intoTheNature #water",
             "from": {
-              "y": "60%"
+              "y": "40vw"
             },
             "to": {
-              "y": "40%",
+              "y": "20vw",
               "scrollTrigger": {
                 "trigger": "#intoTheNature",
                 "start": "top bottom",
@@ -763,18 +747,14 @@
       "dark": false,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/data/image-files/sky0.jpg",
+          "_path": "/content/dam/sparkle-demo/en/image-files/sky0.jpg",
           "type": "image",
           "width": 1620,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/sky0.jpg"
+          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky0.jpg",
+          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky0.jpg"
         },
         "color": null,
-        "isVideo": false,
-        "path": "/WKND SPA/Outdoor Passion/Scene 2/sky.webp",
-        "videoWidth": null,
-        "videoHeight": null,
         "altText": "sky"
       },
       "activeMenuItem": "intoTheNature",
@@ -788,15 +768,14 @@
             "type": "image",
             "width": 1620,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountains.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountains.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/mountains.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountains.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountains.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 2/mountains.webp",
           "altText": {
             "plaintext": "mountains"
           },
@@ -815,15 +794,14 @@
             "type": "image",
             "width": 1620,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/water.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/water.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/water.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/water.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/water.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Outdoor Passion/Scene 2/water.webp",
           "altText": {
             "plaintext": "water"
           },
@@ -842,13 +820,12 @@
             "type": "image",
             "width": 1108,
             "height": 2146,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/female-hiker.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/female-hiker.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/female-hiker.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/female-hiker.png"
           },
           "_variation": "master",
           "_variations": [],
-          "path": "/WKND SPA/Outdoor Passion/Scene 2/female-hiker.webp",
           "altText": {
             "plaintext": "female-hiker"
           },
@@ -909,7 +886,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -926,7 +903,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/intothenature2",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/hikerOnWkndYellow",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -972,10 +949,6 @@
       "background": {
         "backgroundContent": null,
         "color": "#ffea00",
-        "isVideo": null,
-        "path": null,
-        "videoWidth": null,
-        "videoHeight": null,
         "altText": null
       },
       "activeMenuItem": "intoTheNature",
@@ -1041,7 +1014,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -1058,7 +1031,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/data/panels/uptothesky",
+      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/arcticCamping",
       "_variation": "master",
       "_variations": [
         "mobile"
@@ -1255,18 +1228,14 @@
       "dark": true,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/data/image-files/uptothesky sky.jpg",
+          "_path": "/content/dam/sparkle-demo/en/image-files/uptothesky sky.jpg",
           "type": "image",
           "width": 1618,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/uptothesky%20sky.jpg"
+          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/uptothesky%20sky.jpg",
+          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/uptothesky%20sky.jpg"
         },
         "color": null,
-        "isVideo": false,
-        "path": "/WKND SPA/Into The Nature/Scene 1/Sky/AdobeStock_327178105.webp",
-        "videoWidth": null,
-        "videoHeight": null,
         "altText": null
       },
       "activeMenuItem": "upToTheSky",
@@ -1331,15 +1300,14 @@
             "type": "image",
             "width": 1648,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain1.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain1.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/mountain1.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain1.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain1.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain1.webp",
           "altText": {
             "plaintext": null
           },
@@ -1358,13 +1326,12 @@
             "type": "image",
             "width": 1232,
             "height": 568,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain2.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/mountain2.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain2.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain2.png"
           },
           "_variation": "master",
           "_variations": [],
-          "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain2.webp",
           "altText": {
             "plaintext": "mountain2"
           },
@@ -1381,22 +1348,23 @@
           },
           "image": {
             "type": "image",
-            "width": 873,
-            "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/mountain3_m.png"
+            "width": 1648,
+            "height": 546,
+            "_path": "/content/dam/sparkle-demo/en/image-files/mountain3.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain3.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain3.png"
           },
           "_variation": "master",
-          "_variations": [],
-          "path": "/WKND SPA/Into The Nature/Scene 1/Mountains/mountain3.webp",
+          "_variations": [
+            "mobile"
+          ],
           "altText": {
             "plaintext": "mountain3"
           },
           "id": "mountain3",
           "layerId": "mountain3-layer",
           "basePosition": "bottom-right",
-          "fit": "scale-down",
+          "fit": "contain",
           "overflow": false,
           "forceLoad": false
         },
@@ -1432,15 +1400,14 @@
             "type": "image",
             "width": 1648,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/data/image-files/tent.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/data/image-files/tent.png"
+            "_path": "/content/dam/sparkle-demo/en/image-files/tent.png",
+            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/tent.png",
+            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/tent.png"
           },
           "_variation": "master",
           "_variations": [
             "mobile"
           ],
-          "path": "/WKND SPA/Into The Nature/Scene 1/Tent/tent.webp",
           "altText": {
             "plaintext": "tent"
           },
@@ -1478,7 +1445,7 @@
                   "menuItemId": "outdoorPassion"
                 },
                 {
-                  "text": "Into the Nature",
+                  "text": "Choose Your Adventure",
                   "link": "#intoTheNature",
                   "menuItemId": "intoTheNature"
                 },
@@ -1513,7 +1480,7 @@
       },
       {
         "link": "#intoTheNature",
-        "text": "Into the Nature",
+        "text": "Choose Your Adventure",
         "menuItemId": "intoTheNature"
       },
       {

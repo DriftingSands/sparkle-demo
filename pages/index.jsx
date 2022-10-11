@@ -6,7 +6,7 @@ import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
 import { getData } from "../components/utils";
-import Head from 'next/head';
+import Head from "next/head";
 
 // export async function getServerSideProps () {
 //   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
@@ -54,10 +54,8 @@ export default function Graphiql(props) {
     endpoint: "/graphql/execute.json/sparkle-demo/homepage",
   };
   const [customHost, setCustomHost] = useState("");
+  const [debugAnim, setDebugAnim] = useState(null);
 
-
-  
-  
   const saveBackupData = (type, data) => {
     if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === "true") {
       fetch("http://localhost:3000/api/saveJson", {
@@ -69,15 +67,15 @@ export default function Graphiql(props) {
       });
     }
   };
-  
+
   useEffect(() => {
     // if (!props.shouldClientsideRender) {return}
     // if (typeof window === 'undefined') {return}
     // const aemHeadlessClient = new AEMHeadless({
-      //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-      //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-      //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
-      //   // fetch: fetch
+    //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
+    //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
+    //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
+    //   // fetch: fetch
     // })
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -85,12 +83,14 @@ export default function Graphiql(props) {
     if (authorHost?.endsWith("/")) authorHost = authorHost.slice(0, -1);
     let publishHost = urlParams.get("publishHost");
     if (publishHost?.endsWith("/")) publishHost = publishHost.slice(0, -1);
+    let debugAnimQuery = urlParams.get("debugAnim");
+    if (debugAnimQuery) setDebugAnim(debugAnimQuery);
 
-    if (!authorHost) authorHost = hostConfig.authorHost
-    if (!publishHost) publishHost = hostConfig.publishHost
-    const setStates = {setIsAuthorVersion, setFetchError, setCustomHost}
-    getData("desktop", {setData: setDesktopData, ...setStates}, hostConfig, authorHost, publishHost);
-    getData("mobile", {setData: setMobileData, ...setStates}, hostConfig, authorHost, publishHost);
+    if (!authorHost) authorHost = hostConfig.authorHost;
+    if (!publishHost) publishHost = hostConfig.publishHost;
+    const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
+    getData("desktop", { setData: setDesktopData, ...setStates }, hostConfig, authorHost, publishHost);
+    getData("mobile", { setData: setMobileData, ...setStates }, hostConfig, authorHost, publishHost);
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,7 +112,7 @@ export default function Graphiql(props) {
     if (data !== null) {
       return;
     }
-    if (windowSize.width > 800 || windowSize.width === null) {
+    if (windowSize.width > 840 || windowSize.width === null) {
       // props.shouldClientsideRender ? (
       setData(desktopData);
       // ) : (
@@ -148,11 +148,16 @@ export default function Graphiql(props) {
   ) : (
     <div className={"page"}>
       <Head>
-        <title>{data?.title || 'Sparkle Demo'}</title>
-        <meta name='description' content={data?.description?.plaintext} />
+        <title>{data?.title || "Sparkle Demo"}</title>
+        <meta name="description" content={data?.description?.plaintext} />
       </Head>
       {type === "mobile" && (
-        <MobileHeader isAuthorVersion={isAuthorVersion} host={customHost} mobileNavObj={data?.mobileNavMenu} />
+        <MobileHeader
+          isAuthorVersion={isAuthorVersion}
+          host={customHost}
+          mobileNavObj={data?.mobileNavMenu}
+          debugAnim={debugAnim}
+        />
       )}
       {data?.panels?.map &&
         data.panels.map((panel, index) => {

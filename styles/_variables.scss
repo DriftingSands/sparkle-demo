@@ -3,3 +3,7 @@ $yellow: #ffea00;
 $blue: #0e67cf;
 $dark: #202020;
 $gray: #605e41;
+
+@mixin contentPadding {
+  padding: 0 12.5%;
+}
