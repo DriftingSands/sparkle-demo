@@ -76,12 +76,12 @@ export default function Graphiql(props) {
       <ErrorComponent type={fetchError.type} url={fetchError.host} error={fetchError.error} />
     ) : null
   ) : (
-    <div className={"page"} style={{ maxWidth: 800, margin: "0 auto" }}>
+    <div className={"page"} style={{ maxWidth: 840, margin: "0 auto" }}>
       <Head>
         <title>{data?.title || 'Sparkle Demo'}</title>
         <meta name='description' content={data?.description?.plaintext} />
       </Head>
-      <MobileHeader maxWidth={800} isAuthorVersion={isAuthorVersion} host={customHost} mobileNavObj={data?.mobileNavMenu} />
+      <MobileHeader maxWidth={840} isAuthorVersion={isAuthorVersion} host={customHost} mobileNavObj={data?.mobileNavMenu} />
       {data?.panels?.map &&
         data.panels.map((panel, index) => {
           return (

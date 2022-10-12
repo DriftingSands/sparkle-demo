@@ -32,7 +32,7 @@ export default function Graphiql(props) {
   
   useEffect(() => {
     if (data !== null ) {return}
-    if ((windowSize.width > 800 && windowSize.height > 400) || windowSize.width === null) {
+    if ((windowSize.width > 840 && windowSize.height > 400) || windowSize.width === null) {
       // props.shouldClientsideRender ? (
           setData(desktopData)
         // ) : (

@@ -1,97 +1,134 @@
 /* eslint-disable @next/next/no-img-element */
-import { scrollToId } from './utils';
-import { useEffect, useState } from 'react';
+import { scrollToId } from "./utils";
+import { useEffect, useState } from "react";
 // import Image from 'next/image';
 
-export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNavObj, debugAnim }) {
-  const [openMenu, setOpenMenu] = useState(false)
-  const [openNav, setOpenNav] = useState(false)
-  const [navLabel, setNavLabel] = useState(mobileNavObj?.menuItems[0].text || 'Navigation')
+const DropdownIcon = () => (
+  <svg className="dropdownIcon" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+    <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" />
+    <path
+      className="fill"
+      d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z"
+    />
+  </svg>
+);
 
-  const navItems = mobileNavObj?.menuItems || []
+const MenuButtonIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+    <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" />
+    <path
+      className="fill"
+      d="M13.2425,3.343,9,7.586,4.7575,3.343a.5.5,0,0,0-.707,0L3.343,4.05a.5.5,0,0,0,0,.707L7.586,9,3.343,13.2425a.5.5,0,0,0,0,.707l.707.7075a.5.5,0,0,0,.707,0L9,10.414l4.2425,4.243a.5.5,0,0,0,.707,0l.7075-.707a.5.5,0,0,0,0-.707L10.414,9l4.243-4.2425a.5.5,0,0,0,0-.707L13.95,3.343a.5.5,0,0,0-.70711-.00039Z"
+    />
+  </svg>
+);
+
+export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNavObj, debugAnim }) {
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openNav, setOpenNav] = useState(false);
+  const [navLabel, setNavLabel] = useState(mobileNavObj?.menuItems[0].text || "Navigation");
+
+  const navItems = mobileNavObj?.menuItems || [];
 
   function debounce(func, wait) {
     let timeout;
     return () => {
       if (timeout) {
-          clearTimeout(timeout);
+        clearTimeout(timeout);
       }
-      timeout = setTimeout(func, wait)
-    }
+      timeout = setTimeout(func, wait);
+    };
   }
 
   function findCurrentElement() {
     let newLabel = null;
     for (let i = 0; i < navItems.length; i++) {
-      const element = document.getElementById(navItems[i].link.substring(1))
-      if (!element) {continue}
-      const rect = element.getBoundingClientRect()
-      if (rect.top < (window.innerHeight / 2)) {
-        newLabel = navItems[i].text
+      const element = document.getElementById(navItems[i].link.substring(1));
+      if (!element) {
+        continue;
+      }
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2) {
+        newLabel = navItems[i].text;
       }
     }
-    newLabel && setNavLabel(newLabel)
+    newLabel && setNavLabel(newLabel);
   }
 
+  const handleScroll = debugAnim !== "instant" ? debounce(() => findCurrentElement(), 100) : () => findCurrentElement();
 
-  const handleScroll = debugAnim !== 'instant' ? (
-    debounce(() => findCurrentElement(), 100)
-  ) : (
-    () => findCurrentElement()
-  )
-
-  
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
-  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   const onClickHandler = (link) => {
-    if (link) scrollToId(link)
-    window.history.replaceState(window.location.href.split('#')[0], null, link)
+    if (link) scrollToId(link);
+    window.history.replaceState(window.location.href.split("#")[0], null, link);
     setOpenNav(false);
-  }
-
+  };
 
   return (
-    <header className="mobileHeaderWrapper" style={{maxWidth, }} >
-
+    <header className="mobileHeaderWrapper" style={{ maxWidth }}>
       <div className="mainHeader">
-        <button className={`menuButton ${openMenu ? 'menuOpen' : 'menuClosed'}`} id={'mobile-menu-button'} onClick={() => setOpenMenu(true)}>
-          <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18" > <defs></defs> <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="8" />  <rect className="fill" height="2" rx="0.5" width="14" x="2" y="3" /> <rect className="fill" height="2" rx="0.5" width="14" x="2" y="13" /> </svg> 
+        <button
+          className={`menuButton ${openMenu ? "menuOpen" : "menuClosed"}`}
+          id={"mobile-menu-button"}
+          onClick={() => setOpenMenu(true)}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+            {" "}
+            <defs></defs> <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" />{" "}
+            <rect className="fill" height="2" rx="0.5" width="14" x="2" y="8" />{" "}
+            <rect className="fill" height="2" rx="0.5" width="14" x="2" y="3" />{" "}
+            <rect className="fill" height="2" rx="0.5" width="14" x="2" y="13" />{" "}
+          </svg>
         </button>
 
         {/* <h1 className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`}>WKND</h1> */}
-        
-        {/* eslint-expect-error-next-line @next/next/no-img-element */}
-        <img src={'/wknd-logo-dk.svg'} alt='logo' height={22} className={`logo ${openMenu ? 'menuOpen' : 'menuClosed'}`} /> 
 
-        <a className='profileIconWrapper' ><img className='menuProfileIcon' src={"/stacey-roswells.webp"} width={42} height={42} alt="profile picture" /></a>
-      </div> 
+        {/* eslint-expect-error-next-line @next/next/no-img-element */}
+        <img
+          src={"/wknd-logo-dk.svg"}
+          alt="logo"
+          height={22}
+          className={`logo ${openMenu ? "menuOpen" : "menuClosed"}`}
+        />
+
+        <a className="profileIconWrapper">
+          <img className="menuProfileIcon" src={"/stacey-roswells.webp"} width={42} height={42} alt="profile picture" />
+        </a>
+      </div>
 
       <nav className="headerNavigation">
-        <button className={`navigationButton ${openNav ? 'navOpen' : 'navClosed'}`} id={'mobile-nav-button'} onClick={() => setOpenNav(!openNav)} >
+        <button
+          className={`navigationButton ${openNav ? "navOpen" : "navClosed"}`}
+          id={"mobile-nav-button"}
+          onClick={() => setOpenNav(!openNav)}
+        >
           <span>{navLabel}</span>
-          <svg className='dropdownIcon' xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18"  width="18" > <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /> <path className="fill" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" /> </svg>
+          <DropdownIcon />
         </button>
-
-        <menu className={`navigationMenu ${openNav ? 'open' : 'closed'}`}>
+        <menu className={`navigationMenu ${openNav ? "open" : "closed"}`}>
           <ul>
             {navItems.map((item, index) => {
-              return <a onClick={() => onClickHandler(item.link)} key={index}><li> {item.text} </li></a>
+              return (
+                <a onClick={() => onClickHandler(item.link)} key={index}>
+                  <li> {item.text} </li>
+                </a>
+              );
             })}
           </ul>
         </menu>
       </nav>
 
-
-      <menu className={`headerMenu ${openMenu ? 'open' : 'closed'}`} style={{maxWidth: maxWidth ? (maxWidth * 0.6) : null, }} >
-        <div className='top'>
-          <button className='closeButton menuButton' onClick={() => setOpenMenu(false)}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
-              <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /><path className="fill" d="M13.2425,3.343,9,7.586,4.7575,3.343a.5.5,0,0,0-.707,0L3.343,4.05a.5.5,0,0,0,0,.707L7.586,9,3.343,13.2425a.5.5,0,0,0,0,.707l.707.7075a.5.5,0,0,0,.707,0L9,10.414l4.2425,4.243a.5.5,0,0,0,.707,0l.7075-.707a.5.5,0,0,0,0-.707L10.414,9l4.243-4.2425a.5.5,0,0,0,0-.707L13.95,3.343a.5.5,0,0,0-.70711-.00039Z" />
-            </svg>
+      <menu
+        className={`headerMenu ${openMenu ? "open" : "closed"}`}
+        style={{ maxWidth: maxWidth ? maxWidth * 0.6 : null }}
+      >
+        <div className="top">
+          <button className="closeButton menuButton" onClick={() => setOpenMenu(false)}>
+            <MenuButtonIcon />
           </button>
         </div>
 
@@ -104,14 +141,13 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
         </div>
 
         <div className="bottom">
-          <a href={isAuthorVersion ? '' : host} target="_blank" rel="noopener noreferrer">
-            <span>{isAuthorVersion ? 'my account' : 'login'}</span>
+          <a href={isAuthorVersion ? "" : host} target="_blank" rel="noopener noreferrer">
+            <span>{isAuthorVersion ? "my account" : "login"}</span>
           </a>
-          
+
           {isAuthorVersion && <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />}
         </div>
       </menu>
-
     </header>
   );
 }

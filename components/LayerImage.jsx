@@ -5,7 +5,6 @@ export default function LayerImage({ data, panelNr, host }) {
 
   const source = host+image?._path
 
-
   return (
     <div className={`overflowImageWrapper  ${overflow ? "showOverflow" : "hideOverflow"}`}>
     <div

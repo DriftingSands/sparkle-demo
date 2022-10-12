@@ -173,7 +173,6 @@ button {
 }
 
 .header {
-  @include contentPadding;
   font-family: Bebas Neue;
   position: absolute;
   top: 0;
@@ -182,8 +181,17 @@ button {
   width: 100%;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+
+  .content {
+    max-width: $contentMaxWidth;
+    padding: $contentPadding;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .left {
     font-size: 48px;
@@ -293,7 +301,8 @@ button {
 }
 
 .textLayer {
-  @include contentPadding;
+  max-width: $contentMaxWidth;
+  padding: $contentPadding;
   height: 100%;
   width: 100%;
   gap: 20%;
@@ -304,7 +313,7 @@ button {
 
   .h2 {
     font-size: 60px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 840px) {
       font-size: 40px;
     }
     // font-family: Source Serif Pro;
