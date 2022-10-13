@@ -12,7 +12,6 @@ const pagesToTest = [
   // 'externalDev',
 ];
 const selectorsToCapture = [
-  // 'viewport',
   "#intro",
   "#intro2",
   "#outdoorPassion",
@@ -24,7 +23,6 @@ const selectorsToCapture = [
 
 const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
   const output = advancedScenarios;
-  // const output = [];
 
   simpleScenarios.forEach((url) => {
     const name = url || "index";

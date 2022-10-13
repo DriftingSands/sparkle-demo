@@ -8,34 +8,6 @@ import ErrorComponent from "../components/ErrorComponent";
 import { getData } from "../components/utils";
 import Head from "next/head";
 
-// export async function getServerSideProps () {
-//   if (process.env.NEXT_PUBLIC_SHOULD_CLIENTSIDE_RENDER.toLowerCase() === 'true') {
-//     return {
-//       props: {
-//         shouldClientsideRender: true,
-//       }
-//     }
-//   }
-
-//   const aemHeadlessClient = new AEMHeadless({
-//     serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-//     endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-//     auth: [process.env.AEM_AUTH_USER, process.env.AEM_AUTH_PASSWORD],
-//     fetch: fetch
-//   })
-
-//   const desktopResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/homepage', {}, {})
-//   const mobileResponse = await aemHeadlessClient.runPersistedQuery('sparkle-demo/mobile', {}, {})
-
-//   return {
-//     props: {
-//       mobileData: mobileResponse.data.pageByPath.item.panels,
-//       desktopData: desktopResponse.data.pageByPath.item.panels,
-//       shouldClientsideRender: false,
-//     }
-//   }
-// }
-
 export default function Graphiql(props) {
   const [data, setData] = useState(null);
   const [type, setType] = useState("desktop");
@@ -49,9 +21,9 @@ export default function Graphiql(props) {
   const [mobileData, setMobileData] = useState(null);
 
   const hostConfig = {
-    authorHost: "https://author-p54352-e657273.adobeaemcloud.com",
-    publishHost: "https://publish-p54352-e657273.adobeaemcloud.com",
-    endpoint: "/graphql/execute.json/sparkle-demo/homepage",
+    authorHost: "https://author-p81252-e700817.adobeaemcloud.com",
+    publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
+    endpoint: "graphql/execute.json/sample-wknd-app/homepage",
   };
   const [customHost, setCustomHost] = useState("");
   const [debugAnim, setDebugAnim] = useState(null);
@@ -69,28 +41,40 @@ export default function Graphiql(props) {
   };
 
   useEffect(() => {
-    // if (!props.shouldClientsideRender) {return}
-    // if (typeof window === 'undefined') {return}
-    // const aemHeadlessClient = new AEMHeadless({
-    //   serviceURL: process.env.NEXT_PUBLIC_AEM_HOST,
-    //   endpoint: process.env.NEXT_PUBLIC_AEM_GRAPHQL_ENDPOINT,
-    //   auth: [process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_USER, process.env.NEXT_PUBLIC_CLIENTSIDE_AEM_PASSWORD],
-    //   // fetch: fetch
-    // })
+    const aemHeadlessClient = new AEMHeadless({serviceUrl: ''})
 
     const urlParams = new URLSearchParams(window.location.search);
     let authorHost = urlParams.get("authorHost");
-    if (authorHost?.endsWith("/")) authorHost = authorHost.slice(0, -1);
+    if (!authorHost?.endsWith("/")) authorHost = authorHost+'/';
     let publishHost = urlParams.get("publishHost");
-    if (publishHost?.endsWith("/")) publishHost = publishHost.slice(0, -1);
+    if (!publishHost?.endsWith("/")) publishHost = publishHost+'/';
+    let endpoint = urlParams.get("endpoint");
+    if (endpoint?.startsWith("/")) endpoint = endpoint.substring(1);
     let debugAnimQuery = urlParams.get("debugAnim");
     if (debugAnimQuery) setDebugAnim(debugAnimQuery);
 
     if (!authorHost) authorHost = hostConfig.authorHost;
     if (!publishHost) publishHost = hostConfig.publishHost;
+    if (!endpoint) endpoint = hostConfig.endpoint;
     const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
-    getData("desktop", { setData: setDesktopData, ...setStates }, hostConfig, authorHost, publishHost);
-    getData("mobile", { setData: setMobileData, ...setStates }, hostConfig, authorHost, publishHost);
+    getData(
+      "desktop",
+      { setData: setDesktopData, ...setStates },
+      hostConfig,
+      authorHost,
+      publishHost,
+      endpoint,
+      aemHeadlessClient,
+    );
+    getData(
+      "mobile",
+      { setData: setMobileData, ...setStates },
+      hostConfig,
+      authorHost,
+      publishHost,
+      endpoint,
+      aemHeadlessClient,
+    );
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,18 +97,10 @@ export default function Graphiql(props) {
       return;
     }
     if (windowSize.width > 840 || windowSize.width === null) {
-      // props.shouldClientsideRender ? (
       setData(desktopData);
-      // ) : (
-      //   setData(props.desktopData)
-      // )
       type !== "desktop" && setType("desktop");
     } else {
-      // props.shouldClientsideRender ? (
       setData(mobileData);
-      // ) : (
-      //   setData(props.mobileData)
-      // )
       type !== "mobile" && setType("mobile");
     }
     ScrollTrigger.refresh();

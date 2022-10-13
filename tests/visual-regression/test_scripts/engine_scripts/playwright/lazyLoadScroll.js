@@ -21,16 +21,6 @@ module.exports = async (page, scenario) => {
     });
   });
 
-  // await new Promise(resolve => setTimeout(resolve, 999999))
-  // await new Promise(resolve => setTimeout(resolve, 2000))
-
-  // await page.waitForFunction(() => {
-  //   return Array.from(document.images).every((i) => {
-  //     // console.log(i);
-  //     return i.complete;
-  //   });
-  // });
-
   await page.evaluate(async () => {
     const selectors = Array.from(document.querySelectorAll("img"));
     await Promise.all(selectors.map(img => {
@@ -41,7 +31,4 @@ module.exports = async (page, scenario) => {
       });
     }));
   })
-
-  // waiting for browser sync notification to go away
-  // await page.waitForSelector("#__bs_notify__", { state: "detached" });
 };

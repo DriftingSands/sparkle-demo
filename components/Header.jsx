@@ -17,7 +17,6 @@ export default function Header({ isAuthorVersion, host }) {
     <header className="header">
       <div className="content">
         <div className="left">
-          {/* <h1 className="logoText">WKND</h1> */}
           <Image src={"/wknd-logo-dk.svg"} alt="logo" height={36} width={"100%"} className="logo" />
         </div>
 

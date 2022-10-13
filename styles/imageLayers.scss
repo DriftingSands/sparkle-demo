@@ -1,0 +1,59 @@
+.layerImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  &.debug {
+    border: 2px solid crimson;
+  }
+  
+  &.showOverflow {
+    overflow: visible;
+    .image {
+      overflow: visible;
+      z-index: 100;
+    }
+  }
+  &.hideOverflow {
+    overflow: hidden;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.cover .image {
+    object-fit: cover;
+  }
+  &.contain .image {
+    object-fit: contain;
+  }
+  &.fill .image {
+    object-fit: fill;
+  }
+  &.scale-down .image {
+    object-fit: scale-down;
+  }
+  &.none .image {
+    object-fit: none;
+  }
+
+  &.top-left .image{object-position: top left;}
+  &.top-center .image{object-position: top center;}
+  &.top-right .image{object-position: top right;}
+  &.center-left .image{object-position: center left;}
+  &.center-right .image{object-position: center right;}
+  &.bottom-left .image{object-position: bottom left;}
+  &.bottom-center .image{object-position: bottom center;}
+  &.bottom-right .image{object-position: bottom right;}
+}
+
+.overflowImageWrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  &.showOverflow {
+    overflow: visible;
+  }
+}

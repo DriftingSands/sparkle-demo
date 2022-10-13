@@ -10,30 +10,29 @@ export const scrollToId = (id) => {
   });
 };
 
-export const tryFetch = async (host, endpoint, variation, setState, isAuthor) => {
+export const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuthor) => {
   try {
-    const response = await fetch(
-      `${host}${endpoint};variation=${variation}?timestamp=${Date.now()}`,
-      (isAuthor ? { credentials: "include" } : null)
-    );
-    const data = await response.json();
-    setState(data.data.pageByPath.item);
+    AEMHeadless.serviceURL = host
+
+    const response = await AEMHeadless.runPersistedQuery(endpoint, {variation: variation, timestamp: Date.now()}, { credentials: "include" })
+
+    setState(response.data.pageByPath.item);
     return isAuthor ? "author" : true;
   } catch (error) {
     return false;
   }
 };
 
-export const getData = async (variation, setStates, hostConfig, authorHost, publishHost) => {
+export const getData = async (variation, setStates, hostConfig, authorHost, publishHost, endpoint, AEMHeadless) => {
   const {setData, setIsAuthorVersion, setFetchError, setCustomHost} = setStates
   let successfulFetch = null;
   if (authorHost) {
     setCustomHost(authorHost);
-    successfulFetch = await tryFetch(authorHost, hostConfig.endpoint, variation, setData, true);
+    successfulFetch = await tryFetch(AEMHeadless, authorHost, endpoint, variation, setData, true);
   }
   if (publishHost && !successfulFetch) {
     setCustomHost(publishHost);
-    successfulFetch = await tryFetch(publishHost, hostConfig.endpoint, variation, setData, false);
+    successfulFetch = await tryFetch(AEMHeadless, publishHost, endpoint, variation, setData, false);
   }
   if (successfulFetch === false) setFetchError({ type: "publish", url: hostConfig.publishPath });
   if (successfulFetch === "author") setIsAuthorVersion(true);

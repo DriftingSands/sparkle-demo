@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 
 export default function PointTextMap({ data }) {
-  const [conformToElement, setConformToElement] = useState(null);
-
-
+  const [aspectRatio, setAspectRatio] = useState(null);
+  const [retries, setRetries] = useState(0);
 
   useEffect(() => {
+    if (retries > 2) return;
     const el = document.querySelector(data?.imageSelector);
-    if (!el) {return;}
-    setConformToElement({ width: el.naturalWidth, height: el.naturalHeight });
-  }, [data?.imageSelector]);
-
-  const objectFit = data?.fit;
-  // const aspectRatio = `${
-  //   conformToElement?.width || data?.width || 16
-  // } / ${conformToElement?.height || data?.height || 9}`;
-  const aspectRatio = `844 / 729`;
+    if (!el || el.naturalWidth === 0) {
+      setAspectRatio(`${data?.width || 16} / ${data?.height || 9}`);
+      setTimeout(() => {
+        setRetries(retries + 1);
+      }, 500);
+      return;
+    }
+    setAspectRatio(`${el.naturalWidth} / ${el.naturalHeight}`);
+  }, [retries]);
 
   return (
     <div className="wrapperForRatio" id={data.id} style={{ aspectRatio }}>
-      <div className="pointTextLayer" style={{ objectFit, aspectRatio }}>
+      <div className="pointTextLayer" style={{ objectFit: data?.fit || "contain", aspectRatio }}>
         {data?.content?.map((item, index) => {
           return (
             <div

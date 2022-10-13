@@ -1,70 +1,64 @@
-import { useContext, useEffect, useState } from 'react'
-import { AEMHeadless } from '@adobe/aem-headless-client-js'
-import Panel from '../components/Panel'
-import MobileHeader from '../components/MobileHeader'
-import { WindowSizeProvider } from '../components/ResizeProvider'
+import { useContext, useEffect, useState } from "react";
+import Panel from "../components/Panel";
+import MobileHeader from "../components/MobileHeader";
+import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-import desktopData from '../backup/desktop.json'
-import mobileData from '../backup/mobile.json'
-import Head from 'next/head'
-
+import desktopData from "../backup/desktop.json";
+import mobileData from "../backup/mobile.json";
+import Head from "next/head";
 
 export default function Graphiql(props) {
-  const [data, setData] = useState(null)
-  const [type, setType] = useState('desktop')
-  const [loadRest, setLoadRest] = useState(false)
-  const [hash, setHash] = useState(null)
-  
+  const [data, setData] = useState(null);
+  const [type, setType] = useState("desktop");
+  const [loadRest, setLoadRest] = useState(false);
+  const [hash, setHash] = useState(null);
+  const [ignoreHash, setIgnoreHash] = useState(false);
+  const [customHost, setCustomHost] = useState('https://publish-p54352-e657273.adobeaemcloud.com')
+
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
-    if (windowSize.width === null) {return}
+    if (windowSize.width === null) {
+      return;
+    }
     setData(null);
-
-  }, [windowSize.width])
-
+  }, [windowSize.width]);
 
   useEffect(() => {
-    if (windowSize.height === null) {return}
-    ScrollTrigger.refresh()
-  }, [windowSize.height])
+    if (windowSize.height === null) {
+      return;
+    }
+    ScrollTrigger.refresh();
+  }, [windowSize.height]);
 
-  
   useEffect(() => {
-    if (data !== null ) {return}
+    if (data !== null) {
+      return;
+    }
     if ((windowSize.width > 840 && windowSize.height > 400) || windowSize.width === null) {
-      // props.shouldClientsideRender ? (
-          setData(desktopData)
-        // ) : (
-        //   setData(props.desktopData)
-        // )
-      setType('desktop')
-
+      setData(desktopData);
+      setType("desktop");
     } else {
-      // props.shouldClientsideRender ? (
-        setData(mobileData)
-        // ) : (
-        //   setData(props.mobileData)
-        // )
-      setType('mobile')
+      setData(mobileData);
+      setType("mobile");
     }
-    const hash = window.location.hash
+    const hash = window.location.hash;
     if (hash) {
-      setLoadRest(true)
-      setHash(hash)
+      setLoadRest(true);
+      setHash(hash);
     }
-    ScrollTrigger.refresh()
-  }, [data, windowSize.width, windowSize.height])
+    ScrollTrigger.refresh();
+  }, [data, windowSize.width, windowSize.height]);
 
   const handleEndOfIntroAnimation = () => {
-    setLoadRest(true)
-  }
+    setLoadRest(true);
+  };
 
   return !data ? null : (
     <div className={"page"}>
       <Head>
-        <title>{data?.title || 'Sparkle Demo'}</title>
-        <meta name='description' content={data?.description?.plaintext} />
+        <title>{data?.title || "Sparkle Demo"}</title>
+        <meta name="description" content={data?.description?.plaintext} />
       </Head>
       {type === "mobile" && <MobileHeader mobileNavObj={data?.mobileNavMenu} />}
       {data?.panels?.map &&
@@ -80,7 +74,10 @@ export default function Graphiql(props) {
               settings={{ type }}
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
+              host={customHost}
               hash={hash}
+              ignoreHash={ignoreHash}
+              setIgnoreHash={setIgnoreHash}
             />
           );
         })}

@@ -11,7 +11,6 @@ module.exports = async (page, scenario) => {
         position: 'absolute',
         left: 0,
         top: spacer.style.paddingBottom,
-        // backgroundColor: 'crimson'
       }
       Object.assign(refDiv.style, refDivStyle)
       refDiv.className = 'pin-spacer-reference'

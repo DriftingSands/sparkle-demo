@@ -1,1 +1,3 @@
 Thank you for your interest in Adobe’s products and services! The images in this demo website are from [Adobe Stock](https://stock.adobe.com/) and are Third Party Material as defined in the Demo Asset Additional Terms at [https://www.adobe.com/legal/terms.html](https://www.adobe.com/legal/terms.html).  If you want to use an Adobe Stock image for other purposes beyond viewing this demo website, such as featuring it on a website, or in marketing materials, you can purchase a license on [Adobe Stock](https://stock.adobe.com/).
+
+?authorHost=https://author-p54352-e657273.adobeaemcloud.com&publishHost=https://publish-p54352-e657273.adobeaemcloud.com&endpoint=sparkle-demo/homepage
