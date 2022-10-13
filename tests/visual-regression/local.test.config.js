@@ -2,7 +2,7 @@ const config = require("./test.config");
 
 const baseURL = `http://localhost:3000/`;
 
-const queryParams = "?debugAnim=instant";
+const queryParams = "?debugAnim=instant&authorHost=https://author-p54352-e657273.adobeaemcloud.com&publishHost=https://publish-p54352-e657273.adobeaemcloud.com&endpoint=sparkle-demo/homepage";
 
 // add pages you want tested here:
 const pagesToTest = [

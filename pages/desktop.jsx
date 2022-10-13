@@ -26,18 +26,20 @@ export default function Graphiql(props) {
 
     const urlParams = new URLSearchParams(window.location.search);
     let authorHost = urlParams.get("authorHost");
+    if (!authorHost) authorHost = hostConfig.authorHost;
     if (!authorHost?.endsWith("/")) authorHost = authorHost+'/';
+
     let publishHost = urlParams.get("publishHost");
+    if (!publishHost) publishHost = hostConfig.publishHost;
     if (!publishHost?.endsWith("/")) publishHost = publishHost+'/';
+
     let endpoint = urlParams.get("endpoint");
+    if (!endpoint) endpoint = hostConfig.endpoint;
     if (endpoint?.startsWith("/")) endpoint = endpoint.substring(1);
+    
     let debugAnimQuery = urlParams.get("debugAnim");
     if (debugAnimQuery) setDebugAnim(debugAnimQuery);
 
-
-    if (!authorHost) authorHost = hostConfig.authorHost;
-    if (!publishHost) publishHost = hostConfig.publishHost;
-    if (!endpoint) endpoint = hostConfig.endpoint;
     const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
     getData(
       "desktop",
