@@ -2,7 +2,11 @@ const config = require("./test.config");
 
 const baseURL = `http://localhost:3000/`;
 
-const queryParams = "?debugAnim=instant&authorHost=https://author-p54352-e657273.adobeaemcloud.com&publishHost=https://publish-p54352-e657273.adobeaemcloud.com&endpoint=sparkle-demo/homepage";
+const queryParams = "?" + new URLSearchParams({
+    debugAnim: "instant",
+    publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
+    endpoint: "sample-wknd-app/homepage",
+  }).toString();
 
 // add pages you want tested here:
 const pagesToTest = [
@@ -18,13 +22,13 @@ const selectorsToCapture = [
   "#intoTheNature",
   "#intoTheNature2",
   "#upToTheSky",
-  ".pin-spacer-reference"
+  ".pin-spacer-reference",
 ];
 
 const scenarioBuilder = (config, simpleScenarios, advancedScenarios) => {
   const output = advancedScenarios;
 
-  simpleScenarios.forEach((url) => {
+  simpleScenarios.forEach(url => {
     const name = url || "index";
 
     output.push({
@@ -47,7 +51,7 @@ const advancedScenarios = [
     // wait for this long after clicking menu button
     postInteractionWait: 400,
     readySelector: "#upToTheSky",
-    selectors: ['viewport'],
+    selectors: ["viewport"],
     viewports: [
       {
         label: "mobile",
@@ -67,7 +71,7 @@ const advancedScenarios = [
     url: baseURL + queryParams,
     postInteractionWait: 400,
     readySelector: "#upToTheSky",
-    selectors: ['viewport'],
+    selectors: ["viewport"],
     viewports: [
       {
         label: "mobile",

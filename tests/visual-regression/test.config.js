@@ -1,7 +1,6 @@
-
 module.exports = {
   id: "test_default",
-  fileNameTemplate: '{scenarioLabel}_{selectorLabel}_{selectorIndex}_{viewportLabel}',
+  fileNameTemplate: "{scenarioLabel}_{selectorLabel}_{selectorIndex}_{viewportLabel}",
   viewports: [
     {
       label: "mobile",
@@ -47,6 +46,7 @@ module.exports = {
     args: ["--no-sandbox"],
   },
   asyncCaptureLimit: 5,
+  // asyncCaptureLimit: 1,
   asyncCompareLimit: 50,
   resembleOutputOptions: {
     errorColor: {
@@ -62,4 +62,5 @@ module.exports = {
   debug: false,
   // Headless / Headed mode, caution: snapshots will be slightly different
   debugWindow: false,
+  // debugWindow: true,
 };
