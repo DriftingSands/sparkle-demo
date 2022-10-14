@@ -39,29 +39,29 @@ When both hosts fail to work, the app will display an error message. **The data 
 
 ## Visual Regression Testing
 
-Everything you need for visual regression testing is in the `./tests/visual-regression/` folder. We use [BackstopJS](https://github.com/garris/BackstopJS) to take screenshots of the panels created in out app
+The config files for adjusting the visual regression testing is in the `./tests/visual-regression/` folder. We use [BackstopJS](https://github.com/garris/BackstopJS) to take screenshots of the panels created in out app
 
 ### Running Tests
-To start you will need to install all dependencies
+Make sure all dev dependencies are installed
 ```
 npm i
 ```
 
 To run a test use the following command:
 ```
-npx backstop test --config=local.test.config.js
+npx backstop test --config=./tests/visual-regression/local.test.config.js
 ```
 
 If you want to create/update the reference images with the results of the last test use:
 ```
-npx backstop approve --config=local.test.config.js
+npx backstop approve --config=./tests/visual-regression/local.test.config.js
 ```
 
 ### Adjusting Tests
 
 Most of what you will want to adjust can be found in `test.config.js` and `local.test.config.js`. In `test.config.js` you will find global [BackstopJS Settings](https://github.com/garris/BackstopJS#using-backstopjs), most scenario-level settings can also be added here, and they will be used for every scenario including viewports.
 
-> A `Scenatio` is the browser instance that is created for the test.
+> A `Scenario` is the browser instance that is created for the test.
 
 > For help with debugging, you can change the `debugWindow` in `test.config.js` to `true`, this will open the browser as a window so you can see what is going wrong! **Caution! Make sure you have `asyncCaptureLimit` set to `1` so only one browser instance opens at a time.**
 
