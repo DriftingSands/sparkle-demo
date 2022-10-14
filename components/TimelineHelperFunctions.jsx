@@ -1,3 +1,39 @@
+const scrolltriggerDurationOverride = (animation) => {
+  if (animation.to) {
+    if (!animation.to.scrollTrigger.scrub) {
+      animation.to.duration = 0;
+    }
+    if (typeof animation.to.scrollTrigger.scrub === "number") {
+      animation.to.scrollTrigger.scrub = true;
+    }
+    animation.to.delay = 0;
+  }
+  if (animation?.from) {
+    animation.from.delay = 0;
+    animation.from.duration = 0;
+  }
+}
+
+const createScrollTriggerAnimation = (gsap, q, animation, instant) => {
+    // duration override
+    if (instant) {
+      scrolltriggerDurationOverride(animation)
+    }
+
+    // apply animation based on what is present
+    if (animation.to && animation.from) {
+      gsap.fromTo(q(animation.selector), animation.from, animation.to);
+      return;
+    } else {
+      if (animation.to) {
+        gsap.to(q(animation.selector), animation.to);
+      }
+      if (animation.from) {
+        gsap.from(q(animation.selector), animation.from);
+      }
+    }
+}
+
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOnEnd, debugAnim) => {
   // value to control duration overrides
   const instant = debugAnim === "instant";
@@ -14,43 +50,18 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOn
 
     // if animation has a Scrolltrigger, exclude it from timeline
     if (animation?.to?.scrollTrigger || animation?.from?.scrollTrigger) {
-      // duration override
-      if (animation.to && instant) {
-        if (!animation.to.scrollTrigger.scrub) {
-          animation.to.duration = 0;
-        }
-        if (typeof animation.to.scrollTrigger.scrub === "number") {
-          animation.to.scrollTrigger.scrub = true;
-        }
-        animation.to.delay = 0;
-      }
-      if (animation?.from && instant) {
-        animation.from.delay = 0;
-        animation.from.duration = 0;
-      }
-
-      // apply animation based on what is present
-      if (animation.to && animation.from) {
-        gsap.fromTo(q(animation.selector), animation.from, animation.to);
-        continue;
-      } else {
-        if (animation.to) {
-          gsap.to(q(animation.selector), animation.to);
-        }
-        if (animation.from) {
-          gsap.from(q(animation.selector), animation.from);
-        }
-      }
+      createScrollTriggerAnimation(gsap, q, animation, instant)
       continue;
     }
 
-    // adding to timeline (no Scrolltrigger)
+    // adding to timeline
     let delay;
     if (animation.autoDelay !== undefined) {
       delay = animation.autoDelay === true ? ">" : "<";
     } else {
       delay = standardDelay;
     }
+    
     // delay override
     if (instant) {
       delay = 0;

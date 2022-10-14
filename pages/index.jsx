@@ -5,7 +5,7 @@ import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
-import { getData } from "../components/utils";
+import { getData, fetchAndSetData } from "../components/utils";
 import Head from "next/head";
 
 export default function Graphiql(props) {
@@ -40,60 +40,11 @@ export default function Graphiql(props) {
     }
   };
 
+
   useEffect(() => {
-    // initializing AEM headless here for later
-    const aemHeadlessClient = new AEMHeadless({ serviceUrl: "" });
+    const setStates = { setIsAuthorVersion, setFetchError, setCustomHost, setDesktopData, setMobileData, setDebugAnim };
+    fetchAndSetData(hostConfig, setStates)
 
-    // get queryparams and replace with default if it's not present
-    const urlParams = new URLSearchParams(window.location.search);
-    let authorHost = urlParams.get("authorHost");
-    if (!authorHost) {
-      authorHost = hostConfig.authorHost;
-    }
-    if (!authorHost?.endsWith("/")) {
-      authorHost = authorHost + "/";
-    }
-
-    let publishHost = urlParams.get("publishHost");
-    if (!publishHost) {
-      publishHost = hostConfig.publishHost;
-    }
-    if (!publishHost?.endsWith("/")) {
-      publishHost = publishHost + "/";
-    }
-
-    let endpoint = urlParams.get("endpoint");
-    if (!endpoint) {
-      endpoint = hostConfig.endpoint;
-    }
-    if (endpoint?.startsWith("/")) {
-      endpoint = endpoint.substring(1);
-    }
-
-    let debugAnimQuery = urlParams.get("debugAnim");
-    if (debugAnimQuery) {
-      setDebugAnim(debugAnimQuery);
-    }
-
-    const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
-    getData(
-      "desktop",
-      { setData: setDesktopData, ...setStates },
-      hostConfig,
-      authorHost,
-      publishHost,
-      endpoint,
-      aemHeadlessClient
-    );
-    getData(
-      "mobile",
-      { setData: setMobileData, ...setStates },
-      hostConfig,
-      authorHost,
-      publishHost,
-      endpoint,
-      aemHeadlessClient
-    );
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps

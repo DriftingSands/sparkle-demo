@@ -1,3 +1,5 @@
+import AEMHeadless from '@adobe/aem-headless-client-js';
+
 export const scrollToId = id => {
   if (!id.startsWith("#")) {
     return;
@@ -57,3 +59,63 @@ export const getData = async (variation, setStates, hostConfig, authorHost, publ
     setIsAuthorVersion(true);
   }
 };
+
+
+export const fetchAndSetData = (hostConfig, setStates, ) => {
+  // initializing AEM headless here for later
+  const aemHeadlessClient = new AEMHeadless({ serviceUrl: "" });
+
+  // get queryparams and replace with default if it's not present
+  const urlParams = new URLSearchParams(window.location.search);
+  let authorHost = urlParams.get("authorHost");
+  if (!authorHost) {
+    authorHost = hostConfig.authorHost;
+  }
+  if (!authorHost?.endsWith("/")) {
+    authorHost = authorHost + "/";
+  }
+
+  let publishHost = urlParams.get("publishHost");
+  if (!publishHost) {
+    publishHost = hostConfig.publishHost;
+  }
+  if (!publishHost?.endsWith("/")) {
+    publishHost = publishHost + "/";
+  }
+
+  let endpoint = urlParams.get("endpoint");
+  if (!endpoint) {
+    endpoint = hostConfig.endpoint;
+  }
+  if (endpoint?.startsWith("/")) {
+    endpoint = endpoint.substring(1);
+  }
+
+  let debugAnimQuery = urlParams.get("debugAnim");
+  if (debugAnimQuery) {
+    setStates.setDebugAnim(debugAnimQuery);
+  }
+
+  const fetchVariations = [
+    {
+      variationName: "desktop",
+      setData: setStates.setDesktopData,
+    },
+    {
+      variationName: "mobile",
+      setData: setStates.setMobileData,
+    },
+  ];
+
+  fetchVariations.forEach((fetchVariation) => {
+    getData(
+      fetchVariation.variationName,
+      {setData: fetchVariation.setData, ...setStates},
+      hostConfig,
+      authorHost,
+      publishHost,
+      endpoint,
+      aemHeadlessClient,
+    )
+  })
+}
