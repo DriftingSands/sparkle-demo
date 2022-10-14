@@ -41,23 +41,39 @@ export default function Graphiql(props) {
   };
 
   useEffect(() => {
-    const aemHeadlessClient = new AEMHeadless({serviceUrl: ''})
+    // initializing AEM headless here for later
+    const aemHeadlessClient = new AEMHeadless({ serviceUrl: "" });
 
+    // get queryparams and replace with default if it's not present
     const urlParams = new URLSearchParams(window.location.search);
     let authorHost = urlParams.get("authorHost");
-    if (!authorHost) authorHost = hostConfig.authorHost;
-    if (!authorHost?.endsWith("/")) authorHost = authorHost+'/';
+    if (!authorHost) {
+      authorHost = hostConfig.authorHost;
+    }
+    if (!authorHost?.endsWith("/")) {
+      authorHost = authorHost + "/";
+    }
 
     let publishHost = urlParams.get("publishHost");
-    if (!publishHost) publishHost = hostConfig.publishHost;
-    if (!publishHost?.endsWith("/")) publishHost = publishHost+'/';
+    if (!publishHost) {
+      publishHost = hostConfig.publishHost;
+    }
+    if (!publishHost?.endsWith("/")) {
+      publishHost = publishHost + "/";
+    }
 
     let endpoint = urlParams.get("endpoint");
-    if (!endpoint) endpoint = hostConfig.endpoint;
-    if (endpoint?.startsWith("/")) endpoint = endpoint.substring(1);
-    
+    if (!endpoint) {
+      endpoint = hostConfig.endpoint;
+    }
+    if (endpoint?.startsWith("/")) {
+      endpoint = endpoint.substring(1);
+    }
+
     let debugAnimQuery = urlParams.get("debugAnim");
-    if (debugAnimQuery) setDebugAnim(debugAnimQuery);
+    if (debugAnimQuery) {
+      setDebugAnim(debugAnimQuery);
+    }
 
     const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
     getData(
@@ -67,7 +83,7 @@ export default function Graphiql(props) {
       authorHost,
       publishHost,
       endpoint,
-      aemHeadlessClient,
+      aemHeadlessClient
     );
     getData(
       "mobile",
@@ -76,25 +92,32 @@ export default function Graphiql(props) {
       authorHost,
       publishHost,
       endpoint,
-      aemHeadlessClient,
+      aemHeadlessClient
     );
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // reset content on width change
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
-    if (windowSize.width === null) return;
+    if (windowSize.width === null) {
+      return;
+    }
 
     setData(null);
   }, [windowSize.width]);
 
+  // refresh scrolltrigger on height change
   useEffect(() => {
-    if (windowSize.height === null) return;
+    if (windowSize.height === null) {
+      return;
+    }
     ScrollTrigger.refresh();
   }, [windowSize.height]);
 
+  // setData depending on width
   useEffect(() => {
     if (data !== null) {
       return;
@@ -109,6 +132,7 @@ export default function Graphiql(props) {
     ScrollTrigger.refresh();
   }, [data, desktopData, mobileData, windowSize.width]);
 
+  // if a hash exists don't wait for first animation to finish
   useEffect(() => {
     if (window.location.hash) {
       setLoadRest(true);

@@ -1,8 +1,11 @@
 import { scrollToId } from "./utils";
 
 export default function Menu({ menuItems, activeMenuItem }) {
-  const onClickHandler = (link) => {
-    if (link) scrollToId(link);
+  const onClickHandler = link => {
+    if (link) {
+      scrollToId(link);
+    }
+    // add hash to url without refreshing page
     window.history.replaceState(window.location.href.split("#")[0], null, link);
   };
 

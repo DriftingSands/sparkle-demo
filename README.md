@@ -70,7 +70,7 @@ Most of what you will want to adjust can be found in `test.config.js` and `local
 Here you can change base URL & queryparams. Make sure you have the `debugAnim` param set to `instant` to make sure animations happen instantly for the screenshots!
 
 ```js
-const baseURL = `http://localhost:3000/`;
+const baseURL = "http://localhost:3000/";
 
 const queryParams = "?" + new URLSearchParams({
     debugAnim: "instant",
@@ -83,8 +83,8 @@ To add more pages/paths to run the test on, add them to the `pagesToTest` array
 ```js
 const pagesToTest = [
   "",
-  // 'desktop',
-  // 'mobile',
+  // "desktop",
+  // "mobile",
 ];
 ```
 
@@ -117,7 +117,7 @@ const advancedScenarios = [
     // wait for this long after clicking menu button
     postInteractionWait: 400,
     readySelector: "#upToTheSky",
-    selectors: ['viewport'],
+    selectors: ["viewport"],
     viewports: [
       {
         label: "mobile",

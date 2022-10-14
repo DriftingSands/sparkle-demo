@@ -29,6 +29,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
 
   const navItems = mobileNavObj?.menuItems || [];
 
+  // runs passed function if timeout has gone by without being called again.
   function debounce(func, wait) {
     let timeout;
     return () => {
@@ -40,6 +41,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
   }
 
   function findCurrentElement() {
+    // searches each nav item for closest.
     let newLabel = null;
     for (let i = 0; i < navItems.length; i++) {
       const element = document.getElementById(navItems[i].link.substring(1));
@@ -47,13 +49,16 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
         continue;
       }
       const rect = element.getBoundingClientRect();
+      // if top of panel is within top half of screen
       if (rect.top < window.innerHeight / 2) {
         newLabel = navItems[i].text;
       }
     }
+    // after finding the closest label set that as nav button label.
     newLabel && setNavLabel(newLabel);
   }
 
+  // run without debounce if debugAnim is not set
   const handleScroll = debugAnim !== "instant" ? debounce(() => findCurrentElement(), 100) : () => findCurrentElement();
 
   useEffect(() => {
@@ -61,8 +66,11 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const onClickHandler = (link) => {
-    if (link) scrollToId(link);
+  const onClickHandler = link => {
+    if (link) {
+      scrollToId(link);
+    }
+    // add hash to url without refreshing page
     window.history.replaceState(window.location.href.split("#")[0], null, link);
     setOpenNav(false);
   };

@@ -11,9 +11,9 @@ const queryParams = "?" + new URLSearchParams({
 // add pages you want tested here:
 const pagesToTest = [
   "",
-  // 'desktop',
-  // 'mobile',
-  // 'externalDev',
+  // "desktop",
+  // "mobile",
+  // "externalDev",
 ];
 const selectorsToCapture = [
   "#intro",

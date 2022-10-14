@@ -5,6 +5,7 @@ export const WindowSizeProvider = createContext(null);
 export default function ResizeListener({ children }) {
   const [size, setSize] = useState({ width: null, height: null });
 
+  // runs passed function if timeout has gone by without being called again.
   function debounce(func, wait) {
     let timeout;
     return () => {

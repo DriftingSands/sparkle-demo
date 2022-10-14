@@ -5,8 +5,12 @@ export default function PointTextMap({ data }) {
   const [retries, setRetries] = useState(0);
 
   useEffect(() => {
-    if (retries > 2) return;
+    // retries 3 times, because sometimes image doesn't have naturalHeight/Width on first try
+    if (retries > 2) {
+      return;
+    }
     const el = document.querySelector(data?.imageSelector);
+    // if naturalWidth isn't currently present, set a default / forced size, and retry in 100ms
     if (!el || el.naturalWidth === 0) {
       setAspectRatio(`${data?.width || 16} / ${data?.height || 9}`);
       setTimeout(() => {

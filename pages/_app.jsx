@@ -1,7 +1,7 @@
 import Head from "next/head";
 import "../styles/globals.scss";
 import { TimelineAnimationWrapper } from "../components/TimelineWrapper";
-import ResizeProvider from "../components/ResizeProvider"
+import ResizeProvider from "../components/ResizeProvider";
 
 function MyApp({ Component, pageProps }) {
   return (

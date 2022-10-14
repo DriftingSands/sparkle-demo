@@ -34,8 +34,10 @@ export default function Panel({
     }
     createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
 
+    // if hash matches id, scroll this panel
     if (hash === "#" + panel.id && !ignoreHash) {
       scrollToId(hash);
+      // stops page from scrolling to hash every time viewport is resized
       setIgnoreHash(true);
     }
 

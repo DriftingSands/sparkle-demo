@@ -1,51 +1,65 @@
-let animationsList = [];
-
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOnEnd, debugAnim) => {
+  // value to control duration overrides
   const instant = debugAnim === "instant";
+  // initialize timeline
   const tl = gsap.timeline({ onComplete: runOnEnd });
-  if (timelineSettings?.startDelay && !instant) tl.delay(timelineSettings.startDelay);
+  if (timelineSettings?.startDelay && !instant) {
+    tl.delay(timelineSettings.startDelay);
+  }
   const standardDelay = timelineSettings?.globalAutoDelay && !instant ? ">" : "<";
 
+  // apply each animation
   for (let i = 0; i < timelineArray.length; i++) {
     const animation = timelineArray[i];
 
+    // if animation has a Scrolltrigger, exclude it from timeline
     if (animation?.to?.scrollTrigger || animation?.from?.scrollTrigger) {
+      // duration override
       if (animation.to && instant) {
-        if (!animation.to.scrollTrigger.scrub) animation.to.duration = 0;
-        if (typeof animation.to.scrollTrigger.scrub === "number") animation.to.scrollTrigger.scrub = true;
+        if (!animation.to.scrollTrigger.scrub) {
+          animation.to.duration = 0;
+        }
+        if (typeof animation.to.scrollTrigger.scrub === "number") {
+          animation.to.scrollTrigger.scrub = true;
+        }
         animation.to.delay = 0;
       }
       if (animation?.from && instant) {
         animation.from.delay = 0;
         animation.from.duration = 0;
       }
+
+      // apply animation based on what is present
       if (animation.to && animation.from) {
-        const scrollAnimation = gsap.fromTo(q(animation.selector), animation.from, animation.to);
-        animationsList.push(scrollAnimation);
+        gsap.fromTo(q(animation.selector), animation.from, animation.to);
         continue;
-      }
-      if (animation.to) {
-        const scrollAnimation = gsap.to(q(animation.selector), animation.to);
-        animationsList.push(scrollAnimation);
-      }
-      if (animation.from) {
-        const scrollAnimation = gsap.from(q(animation.selector), animation.from);
-        animationsList.push(scrollAnimation);
+      } else {
+        if (animation.to) {
+          gsap.to(q(animation.selector), animation.to);
+        }
+        if (animation.from) {
+          gsap.from(q(animation.selector), animation.from);
+        }
       }
       continue;
     }
 
+    // adding to timeline (no Scrolltrigger)
     let delay;
     if (animation.autoDelay !== undefined) {
       delay = animation.autoDelay === true ? ">" : "<";
     } else {
       delay = standardDelay;
     }
-    if (instant) delay = 0;
+    // delay override
+    if (instant) {
+      delay = 0;
+    }
     if (animation.to && instant) {
       animation.to.duration = 0;
     }
 
+    // apply animation based on what is present
     if (animation.from && animation.to) {
       tl.fromTo(q(animation.selector), animation.from, animation.to, delay);
     } else {
@@ -53,7 +67,6 @@ const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOn
       animation.to && tl.to(q(animation.selector), animation.to, delay);
     }
   }
-  animationsList.push(tl);
 };
 
 export default createAnimationTimeline;
