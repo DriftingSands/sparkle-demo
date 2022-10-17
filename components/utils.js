@@ -34,7 +34,7 @@ const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuth
   }
 };
 
-export const getData = async (variation, setStates, hostConfig, authorHost, publishHost, endpoint, AEMHeadless) => {
+const getData = async (variation, setStates, hostConfig, authorHost, publishHost, endpoint, AEMHeadless) => {
   const { setData, setIsAuthorVersion, setFetchError, setCustomHost } = setStates;
   // tryFetch() will return a truthy value if the fetch is successful
   let fetchWasSuccessful = null;

@@ -1,20 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { AEMHeadless } from "@adobe/aem-headless-client-js";
-import Panel from "../components/Panel";
-import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
-import { getData, fetchAndSetData } from "../components/utils";
-import Head from "next/head";
+import { fetchAndSetData } from "../components/utils";
+import Page from '../components/Page';
 
 export default function Graphiql(props) {
   const [data, setData] = useState(null);
   const [type, setType] = useState("desktop");
-  const [loadRest, setLoadRest] = useState(false);
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
   const [hash, setHash] = useState(null);
+  const [loadRest, setLoadRest] = useState(false);
   const [ignoreHash, setIgnoreHash] = useState(false);
   const [forceView, setForceView] = useState(null);
 
@@ -122,41 +119,18 @@ export default function Graphiql(props) {
       <ErrorComponent type={fetchError.type} url={fetchError.host} error={fetchError.error} />
     ) : null
   ) : (
-    <div className={"page"} style={type === "mobile" ? { maxWidth: 840, margin: "0 auto" } : null}>
-      <Head>
-        <title>{data?.title || "Sparkle Demo"}</title>
-        <meta name="description" content={data?.description?.plaintext} />
-      </Head>
-      {type === "mobile" && (
-        <MobileHeader
-          isAuthorVersion={isAuthorVersion}
-          host={customHost}
-          mobileNavObj={data?.mobileNavMenu}
-          debugAnim={debugAnim}
-          maxWidth={840}
-        />
-      )}
-      {data?.panels?.map &&
-        data.panels.map((panel, index) => {
-          if (type === "desktop" && index > 0 && !loadRest) {
-            document.body.style.overflowY = "scroll";
-            return null;
-          }
-          return (
-            <Panel
-              panel={panel}
-              panelNr={index}
-              settings={{ type }}
-              key={index}
-              runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
-              isAuthorVersion={isAuthorVersion}
-              host={customHost}
-              hash={hash}
-              ignoreHash={ignoreHash}
-              setIgnoreHash={setIgnoreHash}
-            />
-          );
-        })}
-    </div>
-  );
+    <Page
+      data={data}
+      type={type}
+      isAuthorVersion={isAuthorVersion}
+      host={customHost}
+      hash={hash}
+      ignoreHash={ignoreHash}
+      setIgnoreHash={setIgnoreHash}
+      mobileNavObj={data?.mobileNavMenu}
+      debugAnim={debugAnim}
+      handleEndOfIntroAnimation={handleEndOfIntroAnimation}
+      loadRest={loadRest}
+    />
+  )
 }
