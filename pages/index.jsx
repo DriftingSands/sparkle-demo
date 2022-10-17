@@ -16,6 +16,7 @@ export default function Graphiql(props) {
   const [fetchError, setFetchError] = useState(null);
   const [hash, setHash] = useState(null);
   const [ignoreHash, setIgnoreHash] = useState(false);
+  const [forceView, setForceView] = useState(null);
 
   const [desktopData, setDesktopData] = useState(null);
   const [mobileData, setMobileData] = useState(null);
@@ -40,10 +41,20 @@ export default function Graphiql(props) {
     }
   };
 
-
   useEffect(() => {
-    const setStates = { setIsAuthorVersion, setFetchError, setCustomHost, setDesktopData, setMobileData, setDebugAnim };
-    fetchAndSetData(hostConfig, setStates)
+    setForceView(new URLSearchParams(window.location.search).get("forceView"));
+    const setStates = { setIsAuthorVersion, setFetchError, setCustomHost, setDebugAnim };
+    const fetchVariations = [
+      {
+        variationName: "desktop",
+        setData: setDesktopData,
+      },
+      {
+        variationName: "mobile",
+        setData: setMobileData,
+      },
+    ];
+    fetchAndSetData(hostConfig, setStates, fetchVariations);
 
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
@@ -53,7 +64,7 @@ export default function Graphiql(props) {
   // reset content on width change
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
-    if (windowSize.width === null) {
+    if (windowSize.width === null || forceView) {
       return;
     }
 
@@ -73,12 +84,23 @@ export default function Graphiql(props) {
     if (data !== null) {
       return;
     }
-    if (windowSize.width > 840 || windowSize.width === null) {
-      setData(desktopData);
-      type !== "desktop" && setType("desktop");
+    if (forceView) {
+      if (forceView.toLocaleLowerCase() === "desktop") {
+        setData(desktopData);
+        setType("desktop");
+      }
+      if (forceView.toLocaleLowerCase() === "mobile") {
+        setData(mobileData);
+        setType("mobile");
+      }
     } else {
-      setData(mobileData);
-      type !== "mobile" && setType("mobile");
+      if (windowSize.width > 840 || windowSize.width === null) {
+        setData(desktopData);
+        type !== "desktop" && setType("desktop");
+      } else {
+        setData(mobileData);
+        type !== "mobile" && setType("mobile");
+      }
     }
     ScrollTrigger.refresh();
   }, [data, desktopData, mobileData, windowSize.width]);
@@ -100,7 +122,7 @@ export default function Graphiql(props) {
       <ErrorComponent type={fetchError.type} url={fetchError.host} error={fetchError.error} />
     ) : null
   ) : (
-    <div className={"page"}>
+    <div className={"page"} style={type === "mobile" ? { maxWidth: 840, margin: "0 auto" } : null}>
       <Head>
         <title>{data?.title || "Sparkle Demo"}</title>
         <meta name="description" content={data?.description?.plaintext} />
@@ -111,6 +133,7 @@ export default function Graphiql(props) {
           host={customHost}
           mobileNavObj={data?.mobileNavMenu}
           debugAnim={debugAnim}
+          maxWidth={840}
         />
       )}
       {data?.panels?.map &&

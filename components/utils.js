@@ -8,8 +8,9 @@ export const scrollToId = id => {
   if (!element) {
     return null;
   }
+  const boundingBox = element.getBoundingClientRect()
   window.scrollBy({
-    top: element.getBoundingClientRect().top,
+    top: boundingBox.top,
     behavior: "smooth",
   });
 };
@@ -61,7 +62,7 @@ export const getData = async (variation, setStates, hostConfig, authorHost, publ
 };
 
 
-export const fetchAndSetData = (hostConfig, setStates, ) => {
+export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
   // initializing AEM headless here for later
   const aemHeadlessClient = new AEMHeadless({ serviceUrl: "" });
 
@@ -95,17 +96,6 @@ export const fetchAndSetData = (hostConfig, setStates, ) => {
   if (debugAnimQuery) {
     setStates.setDebugAnim(debugAnimQuery);
   }
-
-  const fetchVariations = [
-    {
-      variationName: "desktop",
-      setData: setStates.setDesktopData,
-    },
-    {
-      variationName: "mobile",
-      setData: setStates.setMobileData,
-    },
-  ];
 
   fetchVariations.forEach((fetchVariation) => {
     getData(

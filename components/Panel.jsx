@@ -34,15 +34,17 @@ export default function Panel({
     }
     createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]); // adding runOnEnd makes into animations re-run on end
+
+  useEffect(() => {
     // if hash matches id, scroll this panel
-    if (hash === "#" + panel.id && !ignoreHash) {
+    if (hash === ("#" + panel.id) && !ignoreHash) {
       scrollToId(hash);
       // stops page from scrolling to hash every time viewport is resized
       setIgnoreHash(true);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]); // adding runOnEnd makes into animations re-run on end
+  }, []);
 
   return (
     <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>

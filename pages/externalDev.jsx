@@ -14,7 +14,7 @@ export default function Graphiql(props) {
   const [loadRest, setLoadRest] = useState(false);
   const [hash, setHash] = useState(null);
   const [ignoreHash, setIgnoreHash] = useState(false);
-  const [customHost, setCustomHost] = useState('https://publish-p54352-e657273.adobeaemcloud.com')
+  const [customHost, setCustomHost] = useState("https://publish-p81252-e700817.adobeaemcloud.com/");
 
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {

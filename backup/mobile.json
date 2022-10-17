@@ -5,7 +5,7 @@
   ],
   "panels": [
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikerInCanyon",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/mtnBikerInCanyon",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -55,12 +55,12 @@
       "dark": false,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/image-files/sky_m.jpg",
+          "_path": "/content/dam/sample-wknd-app/en/image-files/sky_m.jpg",
           "type": "image",
           "width": 857,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky_m.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky_m.jpg"
+          "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/sky_m.jpg",
+          "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/sky_m.jpg"
         },
         "color": null,
         "altText": "sky"
@@ -76,9 +76,9 @@
             "type": "image",
             "width": 355,
             "height": 189,
-            "_path": "/content/dam/sparkle-demo/en/image-files/rocks1_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks1_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks1_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/rocks1_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/rocks1_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/rocks1_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -102,9 +102,9 @@
             "type": "image",
             "width": 261,
             "height": 107,
-            "_path": "/content/dam/sparkle-demo/en/image-files/rocks3_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks3_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/rocks3_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/rocks3_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/rocks3_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/rocks3_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -128,9 +128,9 @@
             "type": "image",
             "width": 415,
             "height": 357,
-            "_path": "/content/dam/sparkle-demo/en/image-files/biker_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/biker_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/biker_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/biker_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/biker_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -164,7 +164,7 @@
               "type": "h2",
               "id": null,
               "content": {
-                "plaintext": "The great outdoors is calling"
+                "plaintext": "Your next great adventure is calling"
               },
               "styles": [
                 "thin",
@@ -176,7 +176,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikerOnWkndYellow",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/mtnBikerOnWkndYellow",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -273,20 +273,13 @@
               "pricetag": "$49.99",
               "x": 23.5,
               "y": 5
-            },
-            {
-              "id": "shorts",
-              "text": "my awesome golden shorts",
-              "pricetag": "84",
-              "x": -9,
-              "y": -10
             }
           ]
         }
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/mtnBikersVideo",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/mtnBikersVideo",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -328,12 +321,12 @@
       "dark": true,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/image-files/AdobeStock_427738038.jpg",
+          "_path": "/content/dam/sample-wknd-app/en/image-files/AdobeStock_427738038.jpg",
           "type": "image",
           "width": 1920,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/AdobeStock_427738038.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/AdobeStock_427738038.jpg"
+          "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/AdobeStock_427738038.jpg",
+          "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/AdobeStock_427738038.jpg"
         },
         "color": null,
         "altText": null
@@ -359,7 +352,7 @@
               "type": "h3",
               "id": null,
               "content": {
-                "plaintext": "Name your dates, distances and lodging style. We'll take care of the rest..."
+                "plaintext": "Name your dates, distances and lodging style. We'll take care of the rest."
               },
               "styles": [
                 "thin",
@@ -381,7 +374,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/hikerInMountains",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/hikerInMountains",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -497,12 +490,12 @@
       "dark": false,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/image-files/sky0.jpg",
+          "_path": "/content/dam/sample-wknd-app/en/image-files/sky0.jpg",
           "type": "image",
           "width": 1620,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky0.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/sky0.jpg"
+          "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/sky0.jpg",
+          "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/sky0.jpg"
         },
         "color": null,
         "altText": "sky"
@@ -518,9 +511,9 @@
             "type": "image",
             "width": 835,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/image-files/mountains_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountains_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountains_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/mountains_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountains_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountains_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -544,9 +537,9 @@
             "type": "image",
             "width": 805,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/image-files/water_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/water_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/water_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/water_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/water_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/water_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -570,9 +563,9 @@
             "type": "image",
             "width": 1108,
             "height": 2146,
-            "_path": "/content/dam/sparkle-demo/en/image-files/female-hiker.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/female-hiker.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/female-hiker.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/female-hiker.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/female-hiker.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/female-hiker.png"
           },
           "_variation": "master",
           "_variations": [],
@@ -604,7 +597,7 @@
               "type": "h3",
               "id": null,
               "content": {
-                "plaintext": "into the nature"
+                "plaintext": "choose your adventure"
               },
               "styles": [
                 "yellowBox"
@@ -614,7 +607,7 @@
               "type": "h2",
               "id": null,
               "content": {
-                "plaintext": "From coastal paths\nto hilltop climbs."
+                "plaintext": "Coastal paths to hilltop climbs"
               },
               "styles": [
                 "thin"
@@ -625,7 +618,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/hikerOnWkndYellow",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/hikerOnWkndYellow",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -691,7 +684,7 @@
               "type": "h2",
               "id": null,
               "content": {
-                "plaintext": "Your dates, your distances\nand your style of lodging!"
+                "plaintext": "Unforgettable experiences, expertly crafted"
               },
               "styles": [
                 "thin",
@@ -702,7 +695,7 @@
               "type": "span",
               "id": null,
               "content": {
-                "plaintext": "DURING YOUR TOUR, WE TAKE CARE OF ALL THE LOGISTICS AND OUT SUPPORT VANS"
+                "plaintext": "This is adventure travel done right. Join us."
               },
               "styles": [
                 "uppercase"
@@ -712,7 +705,7 @@
               "type": "button",
               "id": null,
               "content": {
-                "plaintext": "sign up"
+                "plaintext": "Learn more"
               },
               "styles": [
                 "darkButton"
@@ -723,7 +716,7 @@
       ]
     },
     {
-      "_path": "/content/dam/sparkle-demo/en/content-fragments/panels/arcticCamping",
+      "_path": "/content/dam/sample-wknd-app/en/content-fragments/panels/arcticCamping",
       "_variation": "mobile",
       "_variations": [
         "mobile"
@@ -876,12 +869,12 @@
       "dark": true,
       "background": {
         "backgroundContent": {
-          "_path": "/content/dam/sparkle-demo/en/image-files/uptothesky sky.jpg",
+          "_path": "/content/dam/sample-wknd-app/en/image-files/uptothesky sky.jpg",
           "type": "image",
           "width": 1618,
           "height": 1080,
-          "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/uptothesky%20sky.jpg",
-          "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/uptothesky%20sky.jpg"
+          "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/uptothesky%20sky.jpg",
+          "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/uptothesky%20sky.jpg"
         },
         "color": null,
         "altText": null
@@ -897,9 +890,9 @@
             "type": "image",
             "width": 826,
             "height": 964,
-            "_path": "/content/dam/sparkle-demo/en/image-files/mountain1_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain1_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain1_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/mountain1_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain1_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain1_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -923,9 +916,9 @@
             "type": "image",
             "width": 1232,
             "height": 568,
-            "_path": "/content/dam/sparkle-demo/en/image-files/mountain2.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain2.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain2.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/mountain2.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain2.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain2.png"
           },
           "_variation": "master",
           "_variations": [],
@@ -947,9 +940,9 @@
             "type": "image",
             "width": 873,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/image-files/mountain3_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain3_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/mountain3_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/mountain3_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain3_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/mountain3_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -973,9 +966,9 @@
             "type": "image",
             "width": 779,
             "height": 1080,
-            "_path": "/content/dam/sparkle-demo/en/image-files/tent_m.png",
-            "_authorUrl": "https://author-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/tent_m.png",
-            "_publishUrl": "https://publish-p54352-e657273.adobeaemcloud.com/content/dam/sparkle-demo/en/image-files/tent_m.png"
+            "_path": "/content/dam/sample-wknd-app/en/image-files/tent_m.png",
+            "_authorUrl": "https://author-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/tent_m.png",
+            "_publishUrl": "https://publish-p81252-e700817.adobeaemcloud.com/content/dam/sample-wknd-app/en/image-files/tent_m.png"
           },
           "_variation": "mobile",
           "_variations": [
@@ -1009,7 +1002,7 @@
               "type": "h3",
               "id": "t0",
               "content": {
-                "plaintext": "into the nature"
+                "plaintext": "be amazed"
               },
               "styles": [
                 "yellowBox"
@@ -1019,7 +1012,7 @@
               "type": "h2",
               "id": "t1",
               "content": {
-                "plaintext": "What’s better than\nnature by night?"
+                "plaintext": "Amazing thrills await"
               },
               "styles": [
                 "thin",
@@ -1031,7 +1024,7 @@
               "type": "span",
               "id": "t2",
               "content": {
-                "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud"
+                "plaintext": "WKND Adventures are unique travel packages to destinations worldwide. Each adventure is expertly planned and managed for groups of all ages."
               },
               "styles": [
                 "L",
