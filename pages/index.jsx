@@ -3,11 +3,11 @@ import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
 import { fetchAndSetData } from "../components/utils";
-import Page from '../components/Page';
+import Page from "../components/Page";
 
 export default function Graphiql(props) {
   const [data, setData] = useState(null);
-  const [type, setType] = useState("desktop");
+  const [viewType, setViewType] = useState("desktop");
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
   const [hash, setHash] = useState(null);
@@ -26,12 +26,12 @@ export default function Graphiql(props) {
   const [customHost, setCustomHost] = useState("");
   const [debugAnim, setDebugAnim] = useState(null);
 
-  const saveBackupData = (type, data) => {
+  const saveBackupData = (viewType, data) => {
     if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === "true") {
       fetch("http://localhost:3000/api/saveJson", {
         method: "POST",
         body: JSON.stringify({
-          type: type,
+          viewType: viewType,
           data: data,
         }),
       });
@@ -64,8 +64,15 @@ export default function Graphiql(props) {
     if (windowSize.width === null || forceView) {
       return;
     }
-
-    setData(null);
+    // reset data on resize if passing breakpoint with another viewType set
+    if (windowSize.width > 840 && viewType !== "desktop") {
+      setData(null);
+      setIgnoreHash(false);
+    }
+    if (windowSize.width <= 840 && viewType !== "mobile") {
+      setData(null);
+      setIgnoreHash(false);
+    }
   }, [windowSize.width]);
 
   // refresh scrolltrigger on height change
@@ -76,7 +83,8 @@ export default function Graphiql(props) {
     ScrollTrigger.refresh();
   }, [windowSize.height]);
 
-  // setData depending on width
+  // setData depending on width if data is null
+  // data must be set to null for one render, in order to fully remove animations
   useEffect(() => {
     if (data !== null) {
       return;
@@ -84,19 +92,19 @@ export default function Graphiql(props) {
     if (forceView) {
       if (forceView.toLocaleLowerCase() === "desktop") {
         setData(desktopData);
-        setType("desktop");
+        setViewType("desktop");
       }
       if (forceView.toLocaleLowerCase() === "mobile") {
         setData(mobileData);
-        setType("mobile");
+        setViewType("mobile");
       }
     } else {
       if (windowSize.width > 840 || windowSize.width === null) {
         setData(desktopData);
-        type !== "desktop" && setType("desktop");
+        viewType !== "desktop" && setViewType("desktop");
       } else {
         setData(mobileData);
-        type !== "mobile" && setType("mobile");
+        viewType !== "mobile" && setViewType("mobile");
       }
     }
     ScrollTrigger.refresh();
@@ -108,7 +116,7 @@ export default function Graphiql(props) {
       setLoadRest(true);
       setHash(window.location.hash);
     }
-  }, [type]);
+  }, [viewType]);
 
   const handleEndOfIntroAnimation = () => {
     setLoadRest(true);
@@ -121,7 +129,7 @@ export default function Graphiql(props) {
   ) : (
     <Page
       data={data}
-      type={type}
+      viewType={viewType}
       isAuthorVersion={isAuthorVersion}
       host={customHost}
       hash={hash}
@@ -132,5 +140,5 @@ export default function Graphiql(props) {
       handleEndOfIntroAnimation={handleEndOfIntroAnimation}
       loadRest={loadRest}
     />
-  )
+  );
 }

@@ -5,7 +5,7 @@ import Head from "next/head";
 
 export default function Page({
   data,
-  type,
+  viewType,
   isAuthorVersion,
   host,
   hash,
@@ -18,12 +18,12 @@ export default function Page({
   }) {
     
   return (
-    <div className={"page"} style={type === "mobile" ? { maxWidth: 840, margin: "0 auto" } : null}>
+    <div className={"page"} style={viewType === "mobile" ? { maxWidth: 840, margin: "0 auto" } : null}>
       <Head>
         <title>{data?.title || "Sparkle Demo"}</title>
         <meta name="description" content={data?.description?.plaintext} />
       </Head>
-      {type === "mobile" && (
+      {viewType === "mobile" && (
         <MobileHeader
           isAuthorVersion={isAuthorVersion}
           host={host}
@@ -34,7 +34,7 @@ export default function Page({
       )}
       {data?.panels?.map &&
         data.panels.map((panel, index) => {
-          if (type === "desktop" && index > 0 && !loadRest) {
+          if (viewType === "desktop" && index > 0 && !loadRest) {
             document.body.style.overflowY = "scroll";
             return null;
           }
@@ -42,7 +42,7 @@ export default function Page({
             <Panel
               panel={panel}
               panelNr={index}
-              settings={{ type }}
+              settings={{ viewType }}
               key={index}
               runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
               isAuthorVersion={isAuthorVersion}

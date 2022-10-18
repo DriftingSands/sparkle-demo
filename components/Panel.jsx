@@ -48,7 +48,7 @@ export default function Panel({
 
   return (
     <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>
-      {settings?.type === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
+      {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
         <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} />
       )}
