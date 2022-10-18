@@ -19,7 +19,7 @@ export default function PointTextMap({ data }) {
       return;
     }
     setAspectRatio(`${el.naturalWidth} / ${el.naturalHeight}`);
-  }, [retries]);
+  }, [retries, data?.height, data?.imageSelector, data?.width]);
 
   return (
     <div className="wrapperForRatio" id={data.id} style={{ aspectRatio }}>

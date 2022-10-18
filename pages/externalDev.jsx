@@ -45,7 +45,7 @@ export default function Graphiql(props) {
       setData(null);
       setIgnoreHash(false);
     }
-  }, [windowSize.width]);
+  }, [windowSize.width, forceView, viewType]);
 
   useEffect(() => {
     if (windowSize.height === null) {

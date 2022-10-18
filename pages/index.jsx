@@ -73,7 +73,7 @@ export default function Graphiql(props) {
       setData(null);
       setIgnoreHash(false);
     }
-  }, [windowSize.width]);
+  }, [windowSize.width, forceView, viewType]);
 
   // refresh scrolltrigger on height change
   useEffect(() => {
@@ -108,7 +108,7 @@ export default function Graphiql(props) {
       }
     }
     ScrollTrigger.refresh();
-  }, [data, desktopData, mobileData, windowSize.width]);
+  }, [data, desktopData, mobileData, windowSize.width, forceView]);
 
   // if a hash exists don't wait for first animation to finish
   useEffect(() => {

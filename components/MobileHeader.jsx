@@ -59,7 +59,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
   }
 
   // run without debounce if debugAnim is not set
-  const handleScroll = debugAnim !== "instant" ? debounce(() => findCurrentElement(), 100) : () => findCurrentElement();
+  const handleScroll = debounce(() => findCurrentElement(), debugAnim !== "instant" ? 100 : 0);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

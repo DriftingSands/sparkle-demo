@@ -44,7 +44,7 @@ export default function Panel({
       // stops page from scrolling to hash every time viewport is resized
       setIgnoreHash(true);
     }
-  }, []);
+  }, [hash, ignoreHash, panel.id, setIgnoreHash]);
 
   return (
     <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>
