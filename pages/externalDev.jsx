@@ -1,13 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import Panel from "../components/Panel";
-import MobileHeader from "../components/MobileHeader";
 import { WindowSizeProvider } from "../components/ResizeProvider";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
 import desktopData from "../backup/desktop.json";
 import mobileData from "../backup/mobile.json";
-import Head from "next/head";
-import Page from '../components/Page';
+import Page from "../components/Page";
 
 export default function Graphiql(props) {
   const [data, setData] = useState(null);
@@ -18,21 +14,26 @@ export default function Graphiql(props) {
   const [customHost, setCustomHost] = useState("https://publish-p81252-e700817.adobeaemcloud.com/");
   const [debugAnim, setDebugAnim] = useState(null);
   const [forceView, setForceView] = useState(null)
-  
+
   const windowSize = useContext(WindowSizeProvider);
+
 
   useEffect(() => {
     if (!window.location.search) {
-      return
+      return;
     }
-    const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = new URLSearchParams(window.location.search);
 
-    setDebugAnim(searchParams.get('debugAnim'))
-    setForceView(searchParams.get('forceView'))
-  }, [])
+    setDebugAnim(searchParams.get("debugAnim"));
+    let hostParam = searchParams.get("authorHost");
+    if (!hostParam) {
+      hostParam = searchParams.get("publishHost");
+    }
+    hostParam && setCustomHost(hostParam);
+  }, []);
 
   useEffect(() => {
-    if (windowSize.width === null ||forceView) {
+    if (windowSize.width === null || forceView) {
       return;
     }
     // reset data on resize if passing breakpoint with another viewType set
@@ -57,17 +58,21 @@ export default function Graphiql(props) {
     if (data !== null) {
       return;
     }
-    if (forceView) {
-      if (forceView.toLocaleLowerCase() === "desktop") {
+
+    // Param must be checked here, otherwise setState updates with data skipping a render
+    const forceViewParam = new URLSearchParams(window.location.search).get("forceView")
+    if (forceViewParam) {
+      setForceView(forceViewParam)
+      if (forceViewParam.toLocaleLowerCase() === "desktop") {
         setData(desktopData);
         setViewType("desktop");
       }
-      if (forceView.toLocaleLowerCase() === "mobile") {
+      if (forceViewParam.toLocaleLowerCase() === "mobile") {
         setData(mobileData);
         setViewType("mobile");
       }
     } else {
-      if ((windowSize.width > 840) || windowSize.width === null) {
+      if (windowSize.width > 840 || windowSize.width === null) {
         setData(desktopData);
         setViewType("desktop");
       } else {

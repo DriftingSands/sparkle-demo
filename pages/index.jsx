@@ -101,10 +101,10 @@ export default function Graphiql(props) {
     } else {
       if (windowSize.width > 840 || windowSize.width === null) {
         setData(desktopData);
-        viewType !== "desktop" && setViewType("desktop");
+        setViewType("desktop");
       } else {
         setData(mobileData);
-        viewType !== "mobile" && setViewType("mobile");
+        setViewType("mobile");
       }
     }
     ScrollTrigger.refresh();
