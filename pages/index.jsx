@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ErrorComponent from "../components/ErrorComponent";
 import { fetchAndSetData } from "../components/utils";
 import Page from "../components/Page";
+import { useRouter } from 'next/router';
 
 export default function Graphiql(props) {
   const [data, setData] = useState(null);
@@ -31,14 +32,22 @@ export default function Graphiql(props) {
       fetch("http://localhost:3000/api/saveJson", {
         method: "POST",
         body: JSON.stringify({
-          viewType: viewType,
+          type: viewType,
           data: data,
         }),
       });
     }
   };
 
+  const handleHashUpdateEvent = (e) => {
+    if (e.origin !== window.location.host && e.data.type !== 'hashUpdate') {
+      return
+    }
+    setHash(e.data.hash)
+  }
+
   useEffect(() => {
+    window.addEventListener('message', handleHashUpdateEvent) 
     setForceView(new URLSearchParams(window.location.search).get("forceView"));
     const setStates = { setIsAuthorVersion, setFetchError, setCustomHost, setDebugAnim };
     const fetchVariations = [
@@ -55,6 +64,8 @@ export default function Graphiql(props) {
 
     desktopData && saveBackupData("desktop", desktopData);
     mobileData && saveBackupData("mobile", mobileData);
+
+    return () => window.removeEventListener('message', handleHashUpdateEvent)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

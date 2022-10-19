@@ -7,6 +7,7 @@ export default function Menu({ menuItems, activeMenuItem }) {
     }
     // add hash to url without refreshing page
     window.history.replaceState(window.location.href.split("#")[0], null, link);
+    window.postMessage({type: 'hashUpdate', hash: link}, window.location.origin)
   };
 
   return (
