@@ -29,7 +29,7 @@ export default function Panel({
   const createTimeline = useContext(TimelineProvider);
 
   useEffect(() => {
-    if (!createTimeline || !panel?.animations?.timelineAnimations) {
+    if (!createTimeline) {
       return;
     }
     createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
@@ -52,7 +52,7 @@ export default function Panel({
       {panel?.background && (
         <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} />
       )}
-      {panel?.layers?.length &&
+      {(Array.isArray(panel?.layers) && panel?.layers?.length) &&
         panel.layers.map((layer, index) => {
           const Component = lookupObject[layer.type || layer?._model?.title];
           if (!Component) {

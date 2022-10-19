@@ -17,7 +17,7 @@ export default function Menu({ menuItems, activeMenuItem }) {
           return (
             <a
               key={index}
-              href={!item.active ? (!item.link.startsWith("#") ? item.link : null) : null}
+              href={!item.active ? (!item?.link?.startsWith("#") ? item.link : null) : null}
               onClick={() => onClickHandler(item?.link)}
             >
               <li
