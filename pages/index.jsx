@@ -16,18 +16,6 @@ export default function Graphiql(props) {
     endpoint: "sample-wknd-app/homepage",
   };
 
-  const saveBackupData = (viewType, data) => {
-    if (process.env.NEXT_PUBLIC_SAVE_BACKUP_DATA === "true") {
-      fetch("http://localhost:3000/api/saveJson", {
-        method: "POST",
-        body: JSON.stringify({
-          type: viewType,
-          data: data,
-        }),
-      });
-    }
-  };
-
   useEffect(() => {
     const setStates = { setIsAuthorVersion, setFetchError, setCustomHost };
     const fetchVariations = [
@@ -41,9 +29,6 @@ export default function Graphiql(props) {
       },
     ];
     fetchAndSetData(hostConfig, setStates, fetchVariations);
-
-    desktopData && saveBackupData("desktop", desktopData);
-    mobileData && saveBackupData("mobile", mobileData);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
