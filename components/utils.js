@@ -92,11 +92,6 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
     endpoint = endpoint.substring(1);
   }
 
-  let debugAnimQuery = urlParams.get("debugAnim");
-  if (debugAnimQuery) {
-    setStates.setDebugAnim(debugAnimQuery);
-  }
-
   fetchVariations.forEach((fetchVariation) => {
     getData(
       fetchVariation.variationName,
