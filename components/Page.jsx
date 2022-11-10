@@ -137,6 +137,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
                 hash={hash}
                 ignoreHash={ignoreHash}
                 setIgnoreHash={setIgnoreHash}
+                viewType={viewType}
               />
             );
           })}

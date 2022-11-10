@@ -11,8 +11,8 @@ export default function Graphiql(props) {
   const [customHost, setCustomHost] = useState("");
 
   const hostConfig = {
-    authorHost: "https://author-p81252-e700817.adobeaemcloud.com",
-    publishHost: "https://publish-p81252-e700817.adobeaemcloud.com/",
+    authorHost: "https://author-p54352-e845472.adobeaemcloud.com",
+    publishHost: "https://publish-p54352-e845472.adobeaemcloud.com",
     endpoint: "sample-wknd-app/homepage",
   };
 

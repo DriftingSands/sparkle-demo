@@ -1,4 +1,4 @@
-import AEMHeadless from '@adobe/aem-headless-client-js';
+import AEMHeadless from "@adobe/aem-headless-client-js";
 
 export const scrollToId = id => {
   if (!id.startsWith("#")) {
@@ -8,7 +8,7 @@ export const scrollToId = id => {
   if (!element) {
     return null;
   }
-  const boundingBox = element.getBoundingClientRect()
+  const boundingBox = element.getBoundingClientRect();
   window.scrollBy({
     top: boundingBox.top,
     behavior: "smooth",
@@ -17,7 +17,7 @@ export const scrollToId = id => {
 
 const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuthor) => {
   try {
-    AEMHeadless.serviceURL = host;
+    AEMHeadless.serviceURL = host+'/';
 
     // get data from AEM graphql call at endpoint, causes error if fetch fails
     const response = await AEMHeadless.runPersistedQuery(
@@ -34,21 +34,23 @@ const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuth
   }
 };
 
-const getData = async (variation, setStates, hostConfig, authorHost, publishHost, endpoint, AEMHeadless) => {
+const getData = async (variation, setStates, hostConfig, AEMHeadless) => {
   const { setData, setIsAuthorVersion, setFetchError, setCustomHost } = setStates;
   // tryFetch() will return a truthy value if the fetch is successful
   let fetchWasSuccessful = null;
 
   const arr = [
-    {host: authorHost, isAuthor: true},
-    {host: publishHost, isAuthor: false},
-  ]
+    { host: hostConfig.authorHost, isAuthor: true },
+    { host: hostConfig.publishHost, isAuthor: false },
+  ];
 
   for (let i = 0; i < arr.length; i++) {
-    const {host, isAuthor} = arr[i]
-    setCustomHost(host)
-    fetchWasSuccessful = await tryFetch(AEMHeadless, host, endpoint, variation, setData, isAuthor)
-    if (fetchWasSuccessful) {break;}
+    const { host, isAuthor } = arr[i];
+    setCustomHost(host);
+    fetchWasSuccessful = await tryFetch(AEMHeadless, host, hostConfig.endpoint, variation, setData, isAuthor);
+    if (fetchWasSuccessful) {
+      break;
+    }
   }
 
   // if no fetch was successful, set error state
@@ -61,46 +63,41 @@ const getData = async (variation, setStates, hostConfig, authorHost, publishHost
   }
 };
 
-
 export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
   // initializing AEM headless here for later
   const aemHeadlessClient = new AEMHeadless({ serviceUrl: "" });
 
   // get queryparams and replace with default if it's not present
-  const urlParams = new URLSearchParams(window.location.search);
-  let authorHost = urlParams.get("authorHost");
-  if (!authorHost) {
-    authorHost = hostConfig.authorHost;
-  }
-  if (!authorHost?.endsWith("/")) {
-    authorHost = authorHost + "/";
+  const searchParams = new URLSearchParams(window.location.search);
+  const author = searchParams.get("authorHost");
+  if (author) {
+    const authorUrl = new URL(author);
+    hostConfig.authorUrl = `${authorUrl.protocol}//${authorUrl.host}${authorUrl.port ? ":" + authorUrl.port : ""}`;
   }
 
-  let publishHost = urlParams.get("publishHost");
-  if (!publishHost) {
-    publishHost = hostConfig.publishHost;
-  }
-  if (!publishHost?.endsWith("/")) {
-    publishHost = publishHost + "/";
+  const publish = searchParams.get("publishHost");
+  if (publish) {
+    const publishUrl = new URL(publish);
+    hostConfig.publishUrl = `${publishUrl.protocol}//${publishUrl.host}${publishUrl.port ? ":" + publishUrl.port : ""}`;
   }
 
-  let endpoint = urlParams.get("endpoint");
-  if (!endpoint) {
-    endpoint = hostConfig.endpoint;
-  }
-  if (endpoint?.startsWith("/")) {
-    endpoint = endpoint.substring(1);
+  let endpoint = searchParams.get("endpoint");
+  if (endpoint) {
+    if (endpoint.startsWith("/")) {
+      endpoint = endpoint.slice(1);
+    }
+    if (endpoint.endsWith("/")) {
+      endpoint = endpoint.slice(0, -1);
+    }
+    hostConfig.endpoint = endpoint;
   }
 
-  fetchVariations.forEach((fetchVariation) => {
+  fetchVariations.forEach(fetchVariation => {
     getData(
       fetchVariation.variationName,
-      {setData: fetchVariation.setData, ...setStates},
+      { setData: fetchVariation.setData, ...setStates },
       hostConfig,
-      authorHost,
-      publishHost,
-      endpoint,
-      aemHeadlessClient,
-    )
-  })
-}
+      aemHeadlessClient
+    );
+  });
+};

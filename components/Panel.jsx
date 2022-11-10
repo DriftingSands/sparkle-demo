@@ -25,6 +25,7 @@ export default function Panel({
   hash,
   ignoreHash,
   setIgnoreHash,
+  viewType,
 }) {
   const createTimeline = useContext(TimelineProvider);
 
@@ -50,7 +51,7 @@ export default function Panel({
     <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>
       {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
-        <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} />
+        <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} viewType={viewType} />
       )}
       {(Array.isArray(panel?.layers) && panel?.layers?.length) &&
         panel.layers.map((layer, index) => {
@@ -59,7 +60,7 @@ export default function Panel({
             return null;
           }
           return (
-            <Component host={host} activeMenuItem={panel.activeMenuItem} data={layer} panelNr={panelNr} key={index} />
+            <Component host={host} activeMenuItem={panel.activeMenuItem} data={layer} panelNr={panelNr} key={index} viewType={viewType} />
           );
         })}
     </div>
