@@ -23,7 +23,7 @@ export default function Background({ backgroundProps, lazy, host, viewType }) {
   return (
     <div className={`backgroundWrapper ${isVideo ? "isVideo" : ""}`} style={{ backgroundColor: color, zIndex }}>
       {backgroundContent?.type === "image" && (
-        <img src={source} alt={altText} className="backgroundImage" loading={lazy ? "lazy" : "eager"} />
+        <img src={source} alt={altText || 'Panel Background'} className="backgroundImage" loading={lazy ? "lazy" : "eager"} />
       )}
       {backgroundContent?.format?.includes("video/") && (
         <video className="videoWrapper" autoPlay loop muted>

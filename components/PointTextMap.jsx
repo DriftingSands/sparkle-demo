@@ -37,7 +37,7 @@ export default function PointTextMap({ data }) {
             >
               <div className="textWrapper">
                 <div className="buyText">
-                  <a href={item.link || null}>Buy for {item.pricetag}</a>
+                  <a href={item.link || window.location.href}>Buy for {item.pricetag}</a>
                 </div>
                 <div className="text">{item.text}</div>
                 <div className="arrow" />

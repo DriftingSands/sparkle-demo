@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { scrollToId } from "./utils";
 import { useEffect, useState } from "react";
 
@@ -72,7 +71,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
     }
     // add hash to url without refreshing page
     window.history.replaceState(window.location.href.split("#")[0], null, link);
-    window.postMessage({type: 'hashUpdate', hash: link}, window.location.origin)
+    window.postMessage({ type: "hashUpdate", hash: link }, window.location.origin);
     setOpenNav(false);
   };
 
@@ -82,6 +81,9 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
         <button
           className={`menuButton ${openMenu ? "menuOpen" : "menuClosed"}`}
           id={"mobile-menu-button"}
+          aria-label="Menu Button"
+          aria-controls='mobileHeaderMenu'
+          aria-expanded={`${openMenu ? 'true': 'false'}`}
           onClick={() => setOpenMenu(true)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
@@ -97,12 +99,13 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           src={"/wknd-logo-dk.svg"}
           alt="logo"
           height={22}
+          width={60}
           className={`logo ${openMenu ? "menuOpen" : "menuClosed"}`}
         />
 
-        <a className="profileIconWrapper">
+        <span className="profileIconWrapper">
           <img className="menuProfileIcon" src={"/stacey-roswells.webp"} width={42} height={42} alt="profile picture" />
-        </a>
+        </span>
       </div>
 
       <nav className="headerNavigation">
@@ -110,17 +113,20 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           className={`navigationButton ${openNav ? "navOpen" : "navClosed"}`}
           id={"mobile-nav-button"}
           onClick={() => setOpenNav(!openNav)}
+          aria-label="Navigation Button"
+          aria-controls='navigationMenu'
+          aria-expanded={`${openNav ? 'true' : 'false'}`}
         >
           <span>{navLabel}</span>
           <DropdownIcon />
         </button>
-        <menu className={`navigationMenu ${openNav ? "open" : "closed"}`}>
+        <menu aria-labelledby='mobile-nav-button' id='navigationMenu' className={`navigationMenu ${openNav ? "open" : "closed"}`}>
           <ul>
             {navItems.map((item, index) => {
               return (
-                <a onClick={() => onClickHandler(item.link)} key={index}>
+                <span onClick={() => onClickHandler(item.link)} key={index}>
                   <li> {item.text} </li>
-                </a>
+                </span>
               );
             })}
           </ul>
@@ -128,6 +134,8 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
       </nav>
 
       <menu
+        id='mobileHeaderMenu'
+        aria-labelledby='mobile-menu-button'
         className={`headerMenu ${openMenu ? "open" : "closed"}`}
         style={{ maxWidth: maxWidth ? maxWidth * 0.6 : null }}
       >
@@ -146,7 +154,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
         </div>
 
         <div className="bottom">
-          <a href={isAuthorVersion ? "" : host} target="_blank" rel="noopener noreferrer">
+          <a href={isAuthorVersion ? window.location.href : host} target="_blank" rel="noopener noreferrer">
             <span>{isAuthorVersion ? "my account" : "login"}</span>
           </a>
 
