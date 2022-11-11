@@ -42,10 +42,14 @@ const getData = async (variation, setStates, hostConfig, AEMHeadless) => {
   const arr = [
     { host: hostConfig.authorHost, isAuthor: true },
     { host: hostConfig.publishHost, isAuthor: false },
+    { host: hostConfig.fallbackHost, isAuthor: false },
   ];
 
   for (let i = 0; i < arr.length; i++) {
     const { host, isAuthor } = arr[i];
+    if (!host) {
+      continue;
+    }
     setCustomHost(host);
     fetchWasSuccessful = await tryFetch(AEMHeadless, host, hostConfig.endpoint, variation, setData, isAuthor);
     if (fetchWasSuccessful) {
