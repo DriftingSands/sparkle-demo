@@ -22,7 +22,7 @@ const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuth
     // get data from AEM graphql call at endpoint, causes error if fetch fails
     const response = await AEMHeadless.runPersistedQuery(
       endpoint,
-      { variation: variation, timestamp: Date.now() },
+      isAuthor ? { variation: variation, timestamp: Date.now() } : {variation: variation},
       { credentials: "include" }
     );
 
@@ -35,6 +35,7 @@ const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuth
 };
 
 const getData = async (variation, setStates, hostConfig, AEMHeadless) => {
+  console.log("\x1b[31m ~ hostConfig", hostConfig)
   const { setData, setIsAuthorVersion, setFetchError, setCustomHost } = setStates;
   // tryFetch() will return a truthy value if the fetch is successful
   let fetchWasSuccessful = null;
@@ -71,14 +72,14 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
   const searchParams = new URLSearchParams(window.location.search);
   const author = searchParams.get("authorHost");
   if (author) {
-    const authorUrl = new URL(author);
-    hostConfig.authorUrl = `${authorUrl.protocol}//${authorUrl.host}${authorUrl.port ? ":" + authorUrl.port : ""}`;
+    const authorHost = new URL(author);
+    hostConfig.authorHost = `${authorHost.protocol}//${authorHost.host}${authorHost.port ? ":" + authorHost.port : ""}`;
   }
 
   const publish = searchParams.get("publishHost");
   if (publish) {
-    const publishUrl = new URL(publish);
-    hostConfig.publishUrl = `${publishUrl.protocol}//${publishUrl.host}${publishUrl.port ? ":" + publishUrl.port : ""}`;
+    const publishHost = new URL(publish);
+    hostConfig.publishHost = `${publishHost.protocol}//${publishHost.host}${publishHost.port ? ":" + publishHost.port : ""}`;
   }
 
   let endpoint = searchParams.get("endpoint");
@@ -91,7 +92,7 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
     }
     hostConfig.endpoint = endpoint;
   }
-
+  
   fetchVariations.forEach(fetchVariation => {
     getData(
       fetchVariation.variationName,
