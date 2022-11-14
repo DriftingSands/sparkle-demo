@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from 'next/script'
 import "../styles/globals.scss";
 import { TimelineAnimationWrapper } from "../components/TimelineWrapper";
 import ResizeProvider from "../components/ResizeProvider";
@@ -8,9 +9,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Sparkle Demo</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Script id='testScript' src='/dataFetch.js' strategy='beforeInteractive' />
       <ResizeProvider>
         <TimelineAnimationWrapper>
           <Component {...pageProps} />
