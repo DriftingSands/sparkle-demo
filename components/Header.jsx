@@ -21,13 +21,13 @@ export default function Header({ isAuthorVersion, host }) {
         </div>
 
         <div className="middle">
-          <a href="">
+          <a href="#">
             <h4>adventures</h4>
           </a>
-          <a href="">
+          <a href="#">
             <h4>magazine</h4>
           </a>
-          <a href="">
+          <a href="#">
             <h4>settings</h4>
           </a>
         </div>

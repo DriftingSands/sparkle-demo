@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }) {
         <title>Sparkle Demo</title>
       </Head>
 
-      <Script id='testScript' src='/dataFetch.js' strategy='beforeInteractive' />
       <ResizeProvider>
         <TimelineAnimationWrapper>
           <Component {...pageProps} />

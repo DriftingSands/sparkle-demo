@@ -1,3 +1,5 @@
+import fetchConfig from './initializeQueries.js';
+
 
 function fallbackFetch(fetchConfig, variation, resolve) {
   fetch(`${fetchConfig.fallbackHost}/${fetchConfig.endpoint};variation=${variation}`)
@@ -58,41 +60,6 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
 }
 
 
-const fetchConfig = {
-  sparkle: "https://sparkle-data.vercel.app",
-  // authorHost: "https://author-p54352-e845472.adobeaemcloud.com",
-  // publishHost: "https://publish-p54352-e845472.adobeaemcloud.com",
-  fallbackHost: "https://publish-p81252-e700817.adobeaemcloud.com",
-  endpoint: "graphql/execute.json/sample-wknd-app/homepage",
-};
-
-const searchParams = new URLSearchParams(window.location.search);
-
-const author = searchParams.get("authorHost");
-if (author) {
-  const authorUrl = new URL(author);
-  fetchConfig.authorHost = `${authorUrl.protocol}//${authorUrl.host}${authorUrl.port ? ":" + authorUrl.port : ""}`;
-}
-
-const publish = searchParams.get("publishHost");
-if (publish) {
-  const publishUrl = new URL(publish);
-  fetchConfig.publishHost = `${publishUrl.protocol}//${publishUrl.host}${
-    publishUrl.port ? ":" + publishUrl.port : ""
-  }`;
-}
-
-let endpoint = searchParams.get("endpoint");
-if (endpoint) {
-  if (endpoint.startsWith("/")) {
-    endpoint = endpoint.slice(1);
-  }
-  if (endpoint.endsWith("/")) {
-    endpoint = endpoint.slice(0, -1);
-  }
-  fetchConfig.endpoint = endpoint;
-}
-
 if (window.innerWidth <= 820) {
   attemptFetch(fetchConfig, "mobile");
   attemptFetch(fetchConfig, 'desktop', null, 5000)
@@ -100,3 +67,41 @@ if (window.innerWidth <= 820) {
   attemptFetch(fetchConfig, "desktop");
   attemptFetch(fetchConfig, 'mobile', null, 5000)
 }
+
+let preFetchUrl = fetchConfig.fallbackHost
+
+if (fetchConfig.publishHost) {
+  preFetchUrl = fetchConfig.publishHost
+}
+if (fetchConfig.authorHost) {
+  preFetchUrl = fetchConfig.authorHost
+}
+
+const preconnectLink = document.createElement('link')
+
+preconnectLink.rel = 'preconnect'
+preconnectLink.crossorigin = ''
+preconnectLink.href = preFetchUrl
+
+document.head.appendChild(preconnectLink)
+
+const preconnectBiker = document.createElement('link')
+
+preconnectBiker.rel = 'preload'
+preconnectBiker.fetchpriority = 'high'
+preconnectBiker.as = 'image'
+preconnectBiker.id = 'preload-biker'
+preconnectBiker.type = 'image/webm'
+preconnectBiker.href = `${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${ window.innerWidth <= 820 ? '_m' : ''}.png/_jcr_content/renditions/mobile-vertical.webp`
+
+document.head.appendChild(preconnectBiker)
+
+{/* <link
+  fetchpriority="high"
+  rel="preload"
+  href={`${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${ window.innerWidth <= 820 ? '_m' : ''}.png/_jcr_content/renditions/mobile-vertical.webp`}
+  id="preload-biker"
+  as="image"
+  type="image/webp"
+/>
+<link rel="preconnect" href={preFetchUrl} crossorigin /> */}
