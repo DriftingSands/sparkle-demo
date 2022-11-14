@@ -92,7 +92,7 @@ preconnectBiker.fetchpriority = 'high'
 preconnectBiker.as = 'image'
 preconnectBiker.id = 'preload-biker'
 preconnectBiker.type = 'image/webp'
-preconnectBiker.href = `${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${ window.innerWidth <= 820 ? '_m' : ''}.png/_jcr_content/renditions/mobile-vertical.webp`
+preconnectBiker.href = `${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${ window.innerWidth <= 820 ? '_m' : ''}.png/_jcr_content/renditions/${window.innerWidth <= 820 ? 'mobile-vertical' : 'desktop'}.webp`
 
 document.head.appendChild(preconnectBiker)
 
