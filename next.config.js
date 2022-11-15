@@ -5,7 +5,10 @@ const nextConfig = {
   i18n: {
     locales: ['en'],
     defaultLocale: 'en'
-  }
+  },
+  images: {
+    minimumCacheTTL: 60,
+  },
 }
 
 module.exports = nextConfig
