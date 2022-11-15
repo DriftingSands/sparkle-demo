@@ -43,8 +43,7 @@ export default function Header({ isAuthorVersion, host }) {
 
           {isAuthorVersion && (
             <div className="accountIcon">
-              {/* using next Image component causes the image to be blurry for some reason */}
-              <img src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+              <Image src={"/stacey-roswells.webp"} quality={100} width={42} height={42} alt="profile picture" />
             </div>
           )}
         </div>

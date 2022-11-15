@@ -6,14 +6,14 @@ export default function Document() {
     <Html lang="en" >
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <link
+        {/* <link
           fetchpriority="high"
           rel="preload"
           href="/stacey-roswells.webp"
           id="profile-icon"
           as="image"
           type="image/webp"
-        />
+        /> */}
         <link
           fetchpriority="high"
           rel="preload"

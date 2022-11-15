@@ -28,7 +28,7 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
       return fallbackFetch(fetchConfig, variation, resolve);
     }
     fetch(
-      `${fetchConfig.authorUrl}/${fetchConfig.endpoint}${
+      `${fetchConfig.authorHost}/${fetchConfig.endpoint}${
         sparkleFetch ? `/${variation}.json` : `;variation=${variation}`
       }`,
       !sparkleFetch ? { credentials: "include" } : null
@@ -37,16 +37,16 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
         return response.json();
       })
       .then(data => {
-        window.customHost = fetchConfig.authorUrl;
+        window.customHost = fetchConfig.authorHost;
         window.isAuthorHost = true;
         resolve(data);
       })
       .catch(error => {
         console.log("Author fetch failed, attempting published version");
-        fetch(`${fetchConfig.publishUrl}/${fetchConfig.endpoint};variation=${variation}`)
+        fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
           .then(response => response.json())
           .then(data => {
-            window.customHost = fetchConfig.authorUrl;
+            window.customHost = fetchConfig.authorHost;
             resolve(data);
           })
           .catch(error => {
