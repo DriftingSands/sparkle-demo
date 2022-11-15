@@ -7,7 +7,7 @@ const nextConfig = {
     defaultLocale: 'en'
   },
   images: {
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000,
   },
 }
 
