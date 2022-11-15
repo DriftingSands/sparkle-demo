@@ -59,10 +59,10 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
 
 if (window.innerWidth <= 820) {
   attemptFetch(fetchConfig, "mobile");
-  attemptFetch(fetchConfig, "desktop", null, 5000);
+  attemptFetch(fetchConfig, "desktop", null, 2000);
 } else {
   attemptFetch(fetchConfig, "desktop");
-  attemptFetch(fetchConfig, "mobile", null, 5000);
+  attemptFetch(fetchConfig, "mobile", null, 2000);
 }
 
 let preFetchUrl = fetchConfig.fallbackHost;

@@ -37,7 +37,7 @@ export default function Header({ isAuthorVersion, host }) {
             <ArrowSvg />
           </button> */}
 
-          <a href={isAuthorVersion ? "" : host} target="_blank" rel="noopener noreferrer" className="accountLink">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="accountLink">
             <span>{isAuthorVersion ? "my account" : "login"}</span>
           </a>
 
