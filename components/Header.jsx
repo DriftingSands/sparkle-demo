@@ -20,17 +20,17 @@ export default function Header({ isAuthorVersion, host }) {
           <Image src={"/wknd-logo-dk.svg"} alt="logo" height={36} width={"100%"} className="logo" />
         </div>
 
-        <div className="middle">
+        <ul className="middle">
           <a href="#">
-            <h4>adventures</h4>
+            <li>adventures</li>
           </a>
           <a href="#">
-            <h4>magazine</h4>
+            <li>magazine</li>
           </a>
           <a href="#">
-            <h4>settings</h4>
+            <li>settings</li>
           </a>
-        </div>
+        </ul>
 
         <div className="right">
           {/* <button className="arrowButton">
