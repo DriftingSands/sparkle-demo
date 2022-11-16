@@ -43,7 +43,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
     }
     const timeout = setTimeout(() => {
       setLoadRest(true)
-    }, 2000);
+    }, 3000);
 
     const handleEarlyScroll = () => {
       setLoadRest(true)
