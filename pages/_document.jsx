@@ -24,9 +24,9 @@ export default function Document() {
         />
 
         <link rel="DNS-prefetch" href="https://use.typekit.net" />
-        <link rel="preconnect" href="https://use.typekit.net" crossOrigin />
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="true" />
         <link rel="DNS-prefetch" href="https://p.typekit.net" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="true" />
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
         <Script id='testScript' type='module' src='/dataFetch.js' strategy='beforeInteractive' />

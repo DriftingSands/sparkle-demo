@@ -46,7 +46,8 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
         fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
           .then(response => response.json())
           .then(data => {
-            window.customHost = fetchConfig.authorHost;
+            console.log("\x1b[31m ~ data", data)
+            window.customHost = fetchConfig.publishHost;
             resolve(data);
           })
           .catch(error => {
@@ -77,7 +78,7 @@ if (fetchConfig.authorHost) {
 const preconnectLink = document.createElement("link");
 
 preconnectLink.rel = "preconnect";
-preconnectLink.crossOrigin = "";
+preconnectLink.crossOrigin = "true";
 preconnectLink.href = preFetchUrl;
 
 document.head.appendChild(preconnectLink);
