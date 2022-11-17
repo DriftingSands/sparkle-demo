@@ -29,7 +29,7 @@ export default function Document() {
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="true" />
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
-        <Script id='testScript' type='module' src='/dataFetch.js' strategy='beforeInteractive' />
+        <Script id='dataFetchScript' type='module' src='/dataFetch.js' strategy='beforeInteractive' />
       </Head>
       <body>
         <Main />
