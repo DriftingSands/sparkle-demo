@@ -2,10 +2,12 @@ const config = require("./test.config");
 
 const baseURL = `http://localhost:3000/`;
 
-const queryParams = "?" + new URLSearchParams({
+const queryParams =
+  "?" +
+  new URLSearchParams({
     debugAnim: "instant",
     publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
-    endpoint: "sample-wknd-app/homepage",
+    endpoint: "graphql/execute.json/sample-wknd-app/homepage",
   }).toString();
 
 // add pages you want tested here:

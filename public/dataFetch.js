@@ -46,7 +46,7 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
         fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
           .then(response => response.json())
           .then(data => {
-            console.log("\x1b[31m ~ data", data)
+            console.log("\x1b[31m ~ data", data);
             window.customHost = fetchConfig.publishHost;
             resolve(data);
           })
@@ -90,6 +90,8 @@ preconnectBiker.fetchPriority = "high";
 preconnectBiker.as = "image";
 preconnectBiker.id = "preload-biker";
 preconnectBiker.type = "image/webp";
-preconnectBiker.href = `${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${window.innerWidth <= 820 ? "_m" : ""}.png/_jcr_content/renditions/${window.innerWidth <= 820 ? "mobile-vertical" : "desktop"}.webp`;
+preconnectBiker.href = `${preFetchUrl}/content/dam/sample-wknd-app/en/image-files/biker${
+  window.innerWidth <= 820 ? "_m" : ""
+}.png/_jcr_content/renditions/${window.innerWidth <= 820 ? "mobile-vertical" : "desktop"}.webp`;
 
 document.head.appendChild(preconnectBiker);

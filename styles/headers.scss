@@ -1,8 +1,6 @@
-
-
 .logoText {
   font-size: 48px;
-  font-weight: 600;  
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
@@ -65,7 +63,7 @@
   .left {
     font-size: 48px;
   }
-  
+
   .middle {
     display: flex;
     gap: 20px;
@@ -73,7 +71,7 @@
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
-    
+
     li {
       font-family: source-sans-pro;
       letter-spacing: 0.28px;
@@ -82,7 +80,7 @@
       list-style: none;
     }
   }
-  
+
   .right {
     display: flex;
     align-items: center;

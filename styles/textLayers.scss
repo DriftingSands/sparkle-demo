@@ -1,7 +1,6 @@
-
 .menuWrapper {
   z-index: 100;
-  
+
   .menuList {
     list-style: none;
     text-align: right;
@@ -20,8 +19,10 @@
       align-items: center;
       justify-content: flex-end;
       cursor: pointer;
-      
-      &:hover, &:focus, &.active {
+
+      &:hover,
+      &:focus,
+      &.active {
         transition: all 0.3s ease-in-out;
         font-size: 18px;
         letter-spacing: 0.36px;
@@ -36,8 +37,6 @@
     }
   }
 }
-
-
 
 .textLayer {
   max-width: $contentMaxWidth;
@@ -55,11 +54,11 @@
     @media screen and (max-width: 840px) {
       font-size: 40px;
     }
-    font-family: Asar, 'Times New Roman', Times, serif;
+    font-family: Asar, "Times New Roman", Times, serif;
   }
   .h3 {
     font-size: 34px;
-    font-family: Asar, 'Times New Roman', Times, serif;
+    font-family: Asar, "Times New Roman", Times, serif;
   }
   .thin {
     font-weight: 400;
@@ -74,21 +73,24 @@
     color: black;
     font-family: source-sans-pro;
     letter-spacing: 0.4px;
-    
-    &.h2{font-size: 18px;}
-    &.h3{font-size: 14px;}
+
+    &.h2 {
+      font-size: 18px;
+    }
+    &.h3 {
+      font-size: 14px;
+    }
   }
-  
-  .left, .right {
+
+  .left,
+  .right {
     width: 50%;
     display: flex;
     flex-direction: column;
-
   }
   .left {
     align-items: flex-start;
     gap: 20px;
-
   }
   .right {
     align-items: flex-end;
@@ -101,28 +103,33 @@
     width: 100%;
     height: 100%;
     padding: 5% 35%;
-    &.noPadding {padding: 5% 10%;}
+    &.noPadding {
+      padding: 5% 10%;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
 
-    &.top-left{justify-content: flex-start;align-items: flex-start;}
-    &.top-center{justify-content: flex-start;align-items: center;}
-    &.top-right{justify-content: flex-start;align-items: flex-end;}
-    &.center-left{justify-content: center;align-items: flex-start;}
-    &.center-right{justify-content: center;align-items: flex-end;}
-    &.bottom-left{justify-content: flex-end;align-items: flex-start;}
-    &.bottom-center{justify-content: flex-end;align-items: center;}
-    &.bottom-right{justify-content: flex-end;align-items: flex-end;}
+    // prettier-ignore
+    &.top-left{justify-content: flex-start;align-items: flex-start;} // prettier-ignore
+    &.top-center{justify-content: flex-start;align-items: center;} // prettier-ignore
+    &.top-right{justify-content: flex-start;align-items: flex-end;} // prettier-ignore
+    &.center-left{justify-content: center;align-items: flex-start;} // prettier-ignore
+    &.center-right{justify-content: center;align-items: flex-end;} // prettier-ignore
+    &.bottom-left{justify-content: flex-end;align-items: flex-start;} // prettier-ignore
+    &.bottom-center{justify-content: flex-end;align-items: center;} // prettier-ignore
+    &.bottom-right{justify-content: flex-end;align-items: flex-end;} // prettier-ignore
   }
 
   .span {
     color: $gray;
     font-size: 14px;
     font-family: source-sans-pro;
-    &.L {font-size: 18px;}
+    &.L {
+      font-size: 18px;
+    }
   }
 
   .bold {
@@ -134,7 +141,6 @@
   .alignCenter {
     text-align: center;
   }
-  
 
   .uppercase {
     text-transform: uppercase;
@@ -153,13 +159,12 @@
     font-weight: 600;
     color: white;
     background-color: $dark;
-  
+
     &:hover {
       background-color: black;
     }
   }
 }
-
 
 .wrapperForRatio {
   position: absolute;
@@ -171,13 +176,12 @@
   max-width: 100%;
   max-height: 100%;
 }
-.pointTextLayer{
+.pointTextLayer {
   position: absolute;
   max-width: 100%;
   max-height: 100%;
   height: 100%;
-  
-  
+
   .pointTextItemWrapper {
     position: absolute;
     display: flex;
@@ -186,7 +190,7 @@
     justify-content: flex-end;
     width: 2px;
     height: 2px;
-    
+
     .textWrapper {
       width: 150px;
       margin-bottom: 20px;
@@ -196,10 +200,10 @@
       border-radius: 4px;
       position: relative;
       cursor: pointer;
-      
+
       .text {
         font-family: source-sans-pro;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         opacity: 1;
       }
       .buyText {
@@ -214,10 +218,12 @@
         border: 2px solid white;
         border-radius: 999px;
         background-color: $blue;
-        
-        transition: all .3s ease-in-out;
+
+        transition: all 0.3s ease-in-out;
         opacity: 0;
-        > a {font-family: source-sans-pro;}
+        > a {
+          font-family: source-sans-pro;
+        }
       }
     }
     .textWrapper:hover {
@@ -228,7 +234,7 @@
         opacity: 1;
       }
     }
-    
+
     .arrow {
       position: absolute;
       top: calc(100% - 1px);
@@ -239,7 +245,7 @@
       clip-path: polygon(50% 100%, 0 0, 100% 0);
       background-color: $blue;
     }
-  
+
     .dot {
       background-color: white;
       border: black solid 2px;

@@ -1,19 +1,11 @@
-import { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
+import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en" >
+    <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        {/* <link
-          fetchpriority="high"
-          rel="preload"
-          href="/stacey-roswells.webp"
-          id="profile-icon"
-          as="image"
-          type="image/webp"
-        /> */}
         <link
           fetchpriority="high"
           rel="preload"
@@ -29,12 +21,12 @@ export default function Document() {
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="true" />
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
-        <Script id='dataFetchScript' type='module' src='/dataFetch.js' strategy='beforeInteractive' />
+        <Script id="dataFetchScript" type="module" src="/dataFetch.js" strategy="beforeInteractive" />
       </Head>
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

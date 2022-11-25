@@ -1,6 +1,6 @@
 import { scrollToId } from "./utils";
 import { useEffect, useState } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 
 const DropdownIcon = () => (
   <svg className="dropdownIcon" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
@@ -83,8 +83,8 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           className={`menuButton ${openMenu ? "menuOpen" : "menuClosed"}`}
           id={"mobile-menu-button"}
           aria-label="Menu Button"
-          aria-controls='mobileHeaderMenu'
-          aria-expanded={`${openMenu ? 'true': 'false'}`}
+          aria-controls="mobileHeaderMenu"
+          aria-expanded={openMenu ? true : false}
           onClick={() => setOpenMenu(true)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
@@ -95,7 +95,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           </svg>
         </button>
 
-        {/* eslint-expect-error-next-line @next/next/no-img-element */}
+        {/* eslint-disable @next/next/no-img-element */}
         <img
           src={"/wknd-logo-dk.svg"}
           alt="logo"
@@ -104,9 +104,17 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           width={60}
           className={`logo ${openMenu ? "menuOpen" : "menuClosed"}`}
         />
+        {/* eslint-enable @next/next/no-img-element */}
 
         <span className="profileIconWrapper">
-          <Image quality={100} className="menuProfileIcon" src={"/stacey-roswells.webp"} width={42} height={42} alt="profile picture" />
+          <Image
+            quality={100}
+            className="menuProfileIcon"
+            src={"/stacey-roswells.webp"}
+            width={42}
+            height={42}
+            alt="profile picture"
+          />
         </span>
       </div>
 
@@ -116,13 +124,17 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
           id={"mobile-nav-button"}
           onClick={() => setOpenNav(!openNav)}
           aria-label="Navigation Button"
-          aria-controls='navigationMenu'
-          aria-expanded={`${openNav ? 'true' : 'false'}`}
+          aria-controls="navigationMenu"
+          aria-expanded={openNav ? true : false}
         >
           <span>{navLabel}</span>
           <DropdownIcon />
         </button>
-        <menu aria-labelledby='mobile-nav-button' id='navigationMenu' className={`navigationMenu ${openNav ? "open" : "closed"}`}>
+        <menu
+          aria-labelledby="mobile-nav-button"
+          id="navigationMenu"
+          className={`navigationMenu ${openNav ? "open" : "closed"}`}
+        >
           <ul>
             {navItems.map((item, index) => {
               return (
@@ -136,8 +148,8 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
       </nav>
 
       <menu
-        id='mobileHeaderMenu'
-        aria-labelledby='mobile-menu-button'
+        id="mobileHeaderMenu"
+        aria-labelledby="mobile-menu-button"
         className={`headerMenu ${openMenu ? "open" : "closed"}`}
         style={{ maxWidth: maxWidth ? maxWidth * 0.6 : null }}
       >
@@ -160,7 +172,9 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
             <span>{isAuthorVersion ? "my account" : "login"}</span>
           </a>
 
-          {isAuthorVersion && <Image quality={100} src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />}
+          {isAuthorVersion && (
+            <Image quality={100} src={"/stacey-roswells.webp"} width={40} height={40} alt="profile picture" />
+          )}
         </div>
       </menu>
     </header>

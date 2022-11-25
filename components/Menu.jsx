@@ -1,7 +1,7 @@
 import { scrollToId } from "./utils";
 
 export default function Menu({ menuItems, activeMenuItem }) {
-  const onClickHandler = (link) => {
+  const onClickHandler = link => {
     if (link) {
       scrollToId(link);
     }

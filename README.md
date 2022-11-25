@@ -2,7 +2,78 @@
 
 Thank you for your interest in Adobe’s products and services! The images in this demo website are from [Adobe Stock](https://stock.adobe.com/) and are Third Party Material as defined in the Demo Asset Additional Terms at [https://www.adobe.com/legal/terms.html](https://www.adobe.com/legal/terms.html).  If you want to use an Adobe Stock image for other purposes beyond viewing this demo website, such as featuring it on a website, or in marketing materials, you can purchase a license on [Adobe Stock](https://stock.adobe.com/).
 
-?authorHost=https://author-p54352-e657273.adobeaemcloud.com&publishHost=https://publish-p54352-e657273.adobeaemcloud.com&endpoint=sparkle-demo/homepage
+By default the app will connect to https://publish-p81252-e700817.adobeaemcloud.com. If you wish to connect to another AEM instance you can do so by setting the following query parameters:
+```
+?authorHost=https://author-p81252-e700817.adobeaemcloud.com
+&publishHost=https://publish-p81252-e700817.adobeaemcloud.com
+&endpoint=graphql/execute.json/sample-wknd-app/homepage
+```
+
+>Note that for an author host to work, you must first login to the AEM environment within another tab.
+
+If connecting to the author host and publish host fails, the app will fallback to: https://publish-p81252-e700817.adobeaemcloud.com.
+
+## Content Fragment Structure
+
+### *Pages*
+Pages contain an array of Panels
+
+### *Panels*
+Panels contain an array called layers, within you can have image layers, text layers, or shoppable moments.
+
+Panels also have a background, this can contain an image, video or just a solid color.
+
+Panels also have a dark-mode setting, an ID and an active menu item. (this should match the ID of a menu item, this will control which one isn't clickable & is active on the current panel.)
+
+> IDs are important to add as they are the best way to apply animations to something, additionally they are needed for menu navigation
+
+Finally panels also have an animation JSON object that contains two properties: `timelineAnimationSettings` that contains a few options, and `timelineAnimations`, an array that contains slightly altered GSAP animation objects.
+
+### *Image Layer / Background Layer*
+Image layers contain an image, along with some style options like the anchor point or the fit setting.
+```JSONC
+"altText": {
+  "plaintext": "rocks1"
+},
+"id": "rocks1", // ID for the <img />
+"layerId": "layer-rocks1",  // ID for the layer
+"basePosition": "bottom-left",
+"fit": "contain",
+"overflow": false,  // allows image to overflow over the panel
+"forceLoad": false  // won't allow image to be lazy loaded
+```
+> Using layerID is usually more intuitive for creating animations, because the image layer will have the same dimensions as the panel.
+
+> Any panel images beyond the first on a page are set to lazy load, this can be overwritten.
+
+### *Text Layer*
+Text layers have two ways to place text. In a column or on the left or right side. Menus can also be put inside the L/R content arrays.
+
+Each text layer can have `text items` in all three content arrays at the same time (column, left, right).
+
+```JSONC
+// example text item
+"type": "h3",
+"id": null,
+"content": {
+  "plaintext": "get in gear"
+},
+"styles": [
+  "yellowBox",
+  "uppercase"
+]
+```
+The text layer has a few settings options. `textPosition` and `noPadding` only applies to the column
+```JSONC
+// text layer options
+"id": "layer-button",
+"textPosition": "bottom-center",
+"noPadding": true,
+```
+
+
+
+
 
 ## Getting Started
 
@@ -18,16 +89,16 @@ Afterward you can run the app with:
 npm run dev
 ```
 
-Without any queryparams our app will default to the following URLs:
-```json
+Without any queryparams our app will default to the following fallback URL: https://publish-p81252-e700817.adobeaemcloud.com
+<!-- ```json
 "authorHost": "https://author-p81252-e700817.adobeaemcloud.com"
 "publishHost": "https://publish-p81252-e700817.adobeaemcloud.com/"
 "endpoint": "sample-wknd-app/homepage"
-```
+``` -->
 
 To use custom URLs simply set these queryparams with your URL, if there are any missing parameters the default will be used in its place.
 
-example URL: http://localhost:3000/?authorHost=https://author-pYOUR-eHOST.adobeaemcloud.com&publishHost=https://publish-pYOUR-eHOST.adobeaemcloud.com&endpoint=GRAPHQL/ENDPOINT
+example URL: http://localhost:3000/?authorHost=https://author-pYOUR-eHOST.adobeaemcloud.com&publishHost=https://publish-pYOUR-eHOST.adobeaemcloud.com&endpoint=graphql/execute.json/GRAPHQL/ENDPOINT
 
 ## Host priority
 
@@ -35,7 +106,7 @@ In order for the **author host** to work, you must login as an author within ano
 
 The app will first try to use the author host, if it could not fetch data from it, it will try using the publish host.
 
-When both hosts fail to work, the app will display an error message. **The data fetch will only work if the dev page is open on the same machine as the dev server!** If you wish to preview the app on another device on the same network, first make sure you have an `.env.local` file with a property `NEXT_PUBLIC_SAVE_BACKUP_DATA=true`, then refresh the root page. A json file will be created with the saved data, and can be accessed under http://localhost:3000/externalDev/ **(for images to load, you need a `publishHost` queryparam!)**
+When both hosts fail to work, the app will fallback to https://publish-p81252-e700817.adobeaemcloud.com. 
 
 ## Visual Regression Testing
 
@@ -75,7 +146,7 @@ const baseURL = "http://localhost:3000/";
 const queryParams = "?" + new URLSearchParams({
     debugAnim: "instant",
     publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
-    endpoint: "sample-wknd-app/homepage",
+    endpoint: "graphql/execute.json/sample-wknd-app/homepage",
   }).toString();
 ```
 

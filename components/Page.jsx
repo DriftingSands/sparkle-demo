@@ -5,7 +5,6 @@ import { useState, useEffect, useContext } from "react";
 import { WindowSizeProvider } from "./ResizeProvider";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-
 export default function Page({ desktopData, mobileData, isAuthorVersion, host }) {
   const [data, setData] = useState(null);
   const [viewType, setViewType] = useState("desktop");
@@ -22,11 +21,8 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
     setHash(e.data.hash);
   };
 
-  const handleEndOfIntroAnimation = () => {
-    setLoadRest(true);
-  };
-
   useEffect(() => {
+    // making sure a scrollbar is always visible if there are multiple panels, other panels are rendered later for performance.
     if (desktopData?.panels?.length > 1 || mobileData?.panels?.length > 1) {
       document.body.style.overflowY = "scroll";
     }
@@ -41,24 +37,26 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
     if (forceViewQuery) {
       setForceView(forceViewQuery);
     }
+
+    // load rest of the panels, after 3s or when page is scrolled
     const timeout = setTimeout(() => {
-      setLoadRest(true)
+      setLoadRest(true);
     }, 3000);
 
     const handleEarlyScroll = () => {
-      setLoadRest(true)
-      clearTimeout(timeout)
-      window.removeEventListener('wheel', handleEarlyScroll)
-      window.removeEventListener('touchmove', handleEarlyScroll)
-    }
+      setLoadRest(true);
+      clearTimeout(timeout);
+      window.removeEventListener("wheel", handleEarlyScroll);
+      window.removeEventListener("touchmove", handleEarlyScroll);
+    };
 
-    window.addEventListener('wheel', handleEarlyScroll)
-    window.addEventListener('touchmove', handleEarlyScroll)
+    window.addEventListener("wheel", handleEarlyScroll);
+    window.addEventListener("touchmove", handleEarlyScroll);
 
     return () => {
-      window.removeEventListener("message", handleHashUpdateEvent)
-      window.removeEventListener('wheel', handleEarlyScroll)
-      window.removeEventListener('touchmove', handleEarlyScroll)
+      window.removeEventListener("message", handleHashUpdateEvent);
+      window.removeEventListener("wheel", handleEarlyScroll);
+      window.removeEventListener("touchmove", handleEarlyScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -141,14 +139,15 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
         )}
         {data?.panels?.map &&
           data.panels.map((panel, index) => {
-            if (index !== 0 && !loadRest) {return null;}
+            if (index !== 0 && !loadRest) {
+              return null;
+            }
             return (
               <Panel
                 panel={panel}
                 panelNr={index}
                 settings={{ viewType }}
                 key={index}
-                // runOnEnd={index === 0 ? handleEndOfIntroAnimation : null}
                 isAuthorVersion={isAuthorVersion}
                 host={host}
                 hash={hash}

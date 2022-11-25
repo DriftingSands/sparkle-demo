@@ -40,7 +40,7 @@ export default function Panel({
 
   useEffect(() => {
     // if hash matches id, scroll this panel
-    if (hash === ("#" + panel.id) && !ignoreHash) {
+    if (hash === "#" + panel.id && !ignoreHash) {
       scrollToId(hash);
       // stops page from scrolling to hash every time viewport is resized
       setIgnoreHash(true);
@@ -51,16 +51,29 @@ export default function Panel({
     <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>
       {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
-        <Background backgroundProps={panel.background} lazy={panelNr > 0 ? true : false} host={host} viewType={viewType} />
+        <Background
+          backgroundProps={panel.background}
+          lazy={panelNr > 0 ? true : false}
+          host={host}
+          viewType={viewType}
+        />
       )}
-      {(Array.isArray(panel?.layers) && panel?.layers?.length) &&
+      {Array.isArray(panel?.layers) &&
+        panel?.layers?.length &&
         panel.layers.map((layer, index) => {
           const Component = lookupObject[layer.type || layer?._model?.title];
           if (!Component) {
             return null;
           }
           return (
-            <Component host={host} activeMenuItem={panel.activeMenuItem} data={layer} panelNr={panelNr} key={index} viewType={viewType} />
+            <Component
+              host={host}
+              activeMenuItem={panel.activeMenuItem}
+              data={layer}
+              panelNr={panelNr}
+              key={index}
+              viewType={viewType}
+            />
           );
         })}
     </div>

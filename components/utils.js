@@ -17,12 +17,12 @@ export const scrollToId = id => {
 
 const tryFetch = async (AEMHeadless, host, endpoint, variation, setState, isAuthor) => {
   try {
-    AEMHeadless.serviceURL = host+'/';
+    AEMHeadless.serviceURL = host + "/";
 
     // get data from AEM graphql call at endpoint, causes error if fetch fails
     const response = await AEMHeadless.runPersistedQuery(
       endpoint,
-      isAuthor ? { variation: variation, timestamp: Date.now() } : {variation: variation},
+      isAuthor ? { variation: variation, timestamp: Date.now() } : { variation: variation },
       { credentials: "include" }
     );
 
@@ -82,7 +82,9 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
   const publish = searchParams.get("publishHost");
   if (publish) {
     const publishHost = new URL(publish);
-    hostConfig.publishHost = `${publishHost.protocol}//${publishHost.host}${publishHost.port ? ":" + publishHost.port : ""}`;
+    hostConfig.publishHost = `${publishHost.protocol}//${publishHost.host}${
+      publishHost.port ? ":" + publishHost.port : ""
+    }`;
   }
 
   let endpoint = searchParams.get("endpoint");
@@ -95,7 +97,7 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
     }
     hostConfig.endpoint = endpoint;
   }
-  
+
   fetchVariations.forEach(fetchVariation => {
     getData(
       fetchVariation.variationName,

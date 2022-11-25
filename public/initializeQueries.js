@@ -6,7 +6,6 @@ const fetchConfig = {
   endpoint: "graphql/execute.json/sample-wknd-app/homepage",
 };
 
-
 const searchParams = new URLSearchParams(window.location.search);
 
 const author = searchParams.get("authorHost");
@@ -18,9 +17,7 @@ if (author) {
 const publish = searchParams.get("publishHost");
 if (publish) {
   const publishUrl = new URL(publish);
-  fetchConfig.publishHost = `${publishUrl.protocol}//${publishUrl.host}${
-    publishUrl.port ? ":" + publishUrl.port : ""
-  }`;
+  fetchConfig.publishHost = `${publishUrl.protocol}//${publishUrl.host}${publishUrl.port ? ":" + publishUrl.port : ""}`;
 }
 
 let endpoint = searchParams.get("endpoint");
@@ -34,4 +31,4 @@ if (endpoint) {
   fetchConfig.endpoint = endpoint;
 }
 
-export default fetchConfig
+export default fetchConfig;
