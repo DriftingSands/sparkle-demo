@@ -15,6 +15,24 @@ function fallbackFetch(fetchConfig, variation, resolve) {
     });
 }
 
+function publishFetch(fetchConfig, variation, resolve) {
+  if (!fetchConfig.publishHost) {
+    console.log("No publish host specified, using fallback.")
+    fallbackFetch(fetchConfig, variation, resolve)
+    return
+  }
+  fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
+    .then(response => response.json())
+    .then(data => {
+      window.customHost = fetchConfig.publishHost;
+      resolve(data);
+    })
+    .catch(error => {
+      console.log("Publish host failed, using fallback.");
+      fallbackFetch(fetchConfig, variation, resolve);
+    });
+}
+
 function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
   if (window[variation + "Data"]) {
     return;
@@ -24,37 +42,32 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
       await new Promise(resolve => setTimeout(resolve, delay));
     }
     if (!fetchConfig.authorHost && !fetchConfig.publishHost) {
-      console.log("no author or publish host specified");
+      console.log("No author or publish host specified, using fallback.");
       return fallbackFetch(fetchConfig, variation, resolve);
     }
-    fetch(
-      `${fetchConfig.authorHost}/${fetchConfig.endpoint}${
-        sparkleFetch ? `/${variation}.json` : `;variation=${variation}`
-      }`,
-      !sparkleFetch ? { credentials: "include" } : null
-    )
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        window.customHost = fetchConfig.authorHost;
-        window.isAuthorHost = true;
-        resolve(data);
-      })
-      .catch(error => {
-        console.log("Author fetch failed, attempting published version");
-        fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
-          .then(response => response.json())
-          .then(data => {
-            console.log("\x1b[31m ~ data", data);
-            window.customHost = fetchConfig.publishHost;
-            resolve(data);
-          })
-          .catch(error => {
-            console.log("Publish url also failed.");
-            fallbackFetch(fetchConfig, variation, resolve);
-          });
-      });
+    if (fetchConfig.authorHost) {
+      fetch(
+        `${fetchConfig.authorHost}/${fetchConfig.endpoint}${
+          sparkleFetch ? `/${variation}.json` : `;variation=${variation}`
+        }`,
+        !sparkleFetch ? { credentials: "include" } : null
+      )
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          window.customHost = fetchConfig.authorHost;
+          window.isAuthorHost = true;
+          resolve(data);
+        })
+        .catch(error => {
+          console.log("Author host failed, attempting publish host.");
+          publishFetch(fetchConfig, variation, resolve);
+        });
+      } else {
+      console.log("No author host specified, using publish host.");
+      publishFetch(fetchConfig, variation, resolve);
+    }
   });
 }
 
