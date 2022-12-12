@@ -8,9 +8,8 @@ import { useCallback, useEffect, useRef } from 'react';
 function MyApp({ Component, pageProps }) {
   const boundingRectElement = useRef(null)
 
-  console.log("\x1b[31m ~ process.env", process.env)
   const handleMessage = useCallback((event) => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       const message = event.data;
       if (message.type === "setCfData" && message.cfType === "marketing-page") {
         setData(message.payload.data);
@@ -19,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       window.addEventListener('message', handleMessage);
       return () => {
         window.removeEventListener('message', handleMessage);
@@ -28,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   }, [handleMessage]);
 
   const handleClick = useCallback((event) => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       let editable = event.target;
       let paths = [];
       while (editable && !editable?.dataset?.editablePath) {
@@ -45,7 +44,7 @@ function MyApp({ Component, pageProps }) {
             boundingBox.height,
             boundingBox.width
           ],
-        }, process.env.REACT_APP_PREVIEW_IFRAME_HOST);
+        }, process.env.NEXT_PUBLIC_APP_PREVIEW_IFRAME_HOST);
         paths.push(editable.dataset.editablePath);
       }
       while (editable) {
@@ -58,13 +57,13 @@ function MyApp({ Component, pageProps }) {
         window.parent.postMessage({
           type: "editablePath",
           payload: paths.reverse(),
-        }, process.env.REACT_APP_PREVIEW_IFRAME_HOST);
+        }, process.env.NEXT_PUBLIC_APP_PREVIEW_IFRAME_HOST);
       }
     }
   }, []);
 
   useEffect(() => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       window.addEventListener('click', handleClick);
       return () => {
         window.removeEventListener('click', handleClick);
@@ -73,16 +72,16 @@ function MyApp({ Component, pageProps }) {
   }, [handleClick]);
 
   const handleScroll = useCallback((event) => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       window.parent.postMessage({
         type: "scrollTop",
         payload: document.documentElement.scrollTop
-      }, process.env.REACT_APP_PREVIEW_IFRAME_HOST);
+      }, process.env.NEXT_PUBLIC_APP_PREVIEW_IFRAME_HOST);
     }
   }, []);
 
   useEffect(() => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       window.addEventListener('scroll', handleScroll);
       return () => {
         window.removeEventListener('scroll', handleScroll);
@@ -91,7 +90,7 @@ function MyApp({ Component, pageProps }) {
   }, [handleScroll]);
 
   const handleResize = useCallback((event) => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       if (boundingRectElement.current) {
         const boundingBox = boundingRectElement.current.getBoundingClientRect();
         if (boundingBox) {
@@ -103,14 +102,14 @@ function MyApp({ Component, pageProps }) {
               boundingBox.height,
               boundingBox.width
             ],
-          }, process.env.REACT_APP_PREVIEW_IFRAME_HOST);
+          }, process.env.NEXT_PUBLIC_APP_PREVIEW_IFRAME_HOST);
         }
       }
     }
   }, [boundingRectElement]);
 
   useEffect(() => {
-    if (process.env.REACT_APP_PREVIEW === 'true') {
+    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
       window.addEventListener('resize', handleResize);
       return () => {
         window.removeEventListener('resize', handleResize);

@@ -6,6 +6,7 @@ import PointTextMap from "./PointTextMap";
 import Header from "./Header";
 import { TimelineProvider } from "./TimelineWrapper";
 import { scrollToId } from "../components/utils";
+import { Editable } from './Editable';
 
 const lookupObject = {
   image: LayerImage,
@@ -15,7 +16,7 @@ const lookupObject = {
   "Shoppable Moment Layer": PointTextMap,
 };
 
-export default function Panel({
+function Panel({
   panel,
   panelNr,
   settings,
@@ -79,3 +80,5 @@ export default function Panel({
     </div>
   );
 }
+
+export default Editable(Panel)

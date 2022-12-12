@@ -1,4 +1,3 @@
-import { Editable } from './Editable';
 import Menu from "./Menu";
 
 const textItemLookup = {
@@ -65,4 +64,4 @@ function TextLayer({ data, activeMenuItem }) {
   );
 }
 
-export default Editable(TextLayer)
+export default TextLayer

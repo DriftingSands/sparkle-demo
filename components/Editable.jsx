@@ -1,13 +1,14 @@
 import { useEffect, useCallback, useRef } from "react";
 
 export const Editable = (WrappedComponent) => (props) => {
-  if (process.env.REACT_APP_PREVIEW === 'true') {
-    const path = props?.data?._path;
+  if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
+    const path = props?.path;
     const divRef = useRef();
+    
 
     const handleScrollMessage = useCallback((event) => {
       const message = event.data;
-        if (path && divRef.current && message.type === "scrollToPath" && message.path === path) {
+      if (path && divRef.current && message.type === "scrollToPath" && message.path === path) {
           divRef.current.scrollIntoView({ behavior: "smooth" });
         }
     }, [path, divRef]);

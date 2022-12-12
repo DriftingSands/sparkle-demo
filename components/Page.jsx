@@ -154,6 +154,8 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
                 ignoreHash={ignoreHash}
                 setIgnoreHash={setIgnoreHash}
                 viewType={viewType}
+                // path={index === 3 ? '/content/dam/golfdigest-schools/content-fragments/instructors/your-instructors' : panel?._path} // testing with golf data
+                path={panel?._path}
               />
             );
           })}
