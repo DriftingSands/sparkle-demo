@@ -3,7 +3,6 @@
 ![first panel](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/first-panel.jpg?raw=true)
 
 Thank you for your interest in Adobe’s products and services!
-<!-- The images in this demo website are from [Adobe Stock](https://stock.adobe.com/) and are Third Party Material as defined in the Demo Asset Additional Terms at [https://www.adobe.com/legal/terms.html](https://www.adobe.com/legal/terms.html).  If you want to use an Adobe Stock image for other purposes beyond viewing this demo website, such as featuring it on a website, or in marketing materials, you can purchase a license on [Adobe Stock](https://stock.adobe.com/). -->
 
 ## **What is Adobe Sparkle?**
 
@@ -62,10 +61,6 @@ npm run dev
 ```
 
 The app is now running locally!
-
-<!-- ### **Visual Regression Tests**
-
-If you wish to create reference images -->
 
 ### **Adjusting Default Hosts**
 By default the app will connect to https://publish-p81252-e700817.adobeaemcloud.com. If you wish to connect to another AEM instance without setting the query parameters, you can change the defaults in `public/initializeQueries.js`
