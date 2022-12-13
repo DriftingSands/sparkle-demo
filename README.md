@@ -32,6 +32,7 @@ If you intend to edit the app:
 
 
 ### **Get Set Up**
+
 This demo website is a next js app that will render panels that allow for [animation timelines](https://greensock.com/docs/v3/GSAP/Timeline) powered by [GSAP](https://greensock.com/gsap/).
 
 The app is setup to work entirely on the client-side with the ability to specify your own author publish URLs along with a custom endpoint. Just make sure you're using the correct Content Fragments and graphql call.
@@ -75,6 +76,102 @@ const fetchConfig = {
 };
 ```
 The app will attempt connections to the specified hosts in this order: authorHost → publishHost → fallbackHost
+
+---
+
+## **Structure & Definition**
+
+The basic structure of Content Fragments is:
+- Pages
+  - Panels
+    - Layers
+      - Images
+      - Text
+      - Shoppable moments
+
+We've broken down the structure and included elements below, as well as provided descriptions
+for each element.
+
+### ***Pages***
+
+![panel in page](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/pages-image.jpg?raw=true)
+
+- Pages contain an array of Panels
+
+### ***Panels***
+
+![hiker panel](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/panels-image.jpg?raw=true)
+
+- Panels contain an array called "layers". Different types of layers are:
+  - Image
+  - Text
+  - Shoppable moments
+- Panels can have a background, which can contain an image, video or solid color
+- Panels have a dark-mode setting, an ID and an active menu item
+  - The active menu item should match the ID of a menu item; this will control which one isn't clickable and is active on the current panel
+
+>IDs are important to add as they are the best way to apply animations to something, additionally they are needed for menu navigation
+
+- Panels have an animation JSON object that contains two properties:
+`timelineAnimationSettings` that contains a few options, and `timelineAnimations` , an array that contains slightly altered GSAP animation objects.
+
+### ***Image Layer / Background Layer***
+
+![background](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/background.jpg?raw=true)
+
+- Image layers contain an image, along with some style options like the anchor point or the fit setting.
+
+```jsonc
+"altText": {
+  "plaintext": "rocks1"
+},
+"id": "rocks1", // ID for the <img />
+"layerId": "layer-rocks1", // ID for the layer
+"basePosition": "bottom-left",
+"fit": "contain",
+"overflow": false, // allows image to overflow over the panel
+"forceLoad": false // won't allow image to be lazy loaded
+```
+
+> Using layerID is usually more intuitive for creating animations, because the image layer will have the same dimensions as the panel.
+
+> Any panel images beyond the first on a page are set to lazy load, this can be overwritten
+
+### ***Text Layer***
+
+![text layer](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/text-layer.jpg?raw=true)
+
+Text layers have two ways to place text:
+1. In a column
+2. On the left or right side
+
+Menus can also be put inside the L/R content arrays.
+
+Each text layer can have `text items` in all three content arrays at the same time (column, left, right).
+
+```jsonc
+// example text item
+"type": "h3",
+"id": null,
+"content": {
+  "plaintext": "get in gear"
+},
+"styles": [
+  "yellowBox",
+  "uppercase"
+]
+```
+
+The text layer has a few settings options. `textPosition` and noPadding only applies to the column.
+
+```jsonc
+// text layer options
+"id": "layer-button",
+"textPosition": "bottom-center",
+"noPadding": true,
+```
+
+---
 
 ## **Advanced Guide / Demo**
 
@@ -223,97 +320,6 @@ const advancedScenarios = [
 ```
 
 For more information on how BackstopJS configs can be configured check out the [GitHub Page](https://github.com/garris/BackstopJS#using-backstopjs).
-
-
----
-
-## **Structure & Definition**
-
-The basic structure of Content Fragments is:
-- Pages
-  - Panels
-    - Layers
-      - Images
-      - Text
-      - Shoppable moments
-
-We've broken down the structure and included elements below, as well as provided descriptions
-for each element.
-
-### ***Pages***
-
-![panel in page](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/pages-image.jpg?raw=true)
-
-- Pages contain an array of Panels
-
-### ***Panels***
-
-![hiker panel](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/panels-image.jpg?raw=true)
-
-- Panels contain an array called "layers". Different types of layers are:
-  - Image
-  - Text
-  - Shoppable moments
-- Panels can have a background, which can contain an image, video or solid color
-- Panels have a dark-mode setting, an ID and an active menu item
-  - The active menu item should match the ID of a menu item; this will control which one isn't clickable and is active on the current panel
-
->IDs are important to add as they are the best way to apply animations to something, additionally they are needed for menu navigation
-
-- Panels have an animation JSON object that contains two properties:
-`timelineAnimationSettings` that contains a few options, and `timelineAnimations` , an array that contains slightly altered GSAP animation objects.
-
-### ***Image Layer / Background Layer***
-
-- Image layers contain an image, along with some style options like the anchor point or the fit setting.
-
-```jsonc
-"altText": {
-  "plaintext": "rocks1"
-},
-"id": "rocks1", // ID for the <img />
-"layerId": "layer-rocks1", // ID for the layer
-"basePosition": "bottom-left",
-"fit": "contain",
-"overflow": false, // allows image to overflow over the panel
-"forceLoad": false // won't allow image to be lazy loaded
-```
-
-> Using layerID is usually more intuitive for creating animations, because the image layer will have the same dimensions as the panel.
-
-> Any panel images beyond the first on a page are set to lazy load, this can be overwritten
-
-### ***Text Layer***
-
-Text layers have two ways to place text:
-1. In a column
-2. On the left or right side
-
-Menus can also be put inside the L/R content arrays.
-
-Each text layer can have `text items` in all three content arrays at the same time (column, left, right).
-
-```jsonc
-// example text item
-"type": "h3",
-"id": null,
-"content": {
-  "plaintext": "get in gear"
-},
-"styles": [
-  "yellowBox",
-  "uppercase"
-]
-```
-
-The text layer has a few settings options. `textPosition` and noPadding only applies to the column.
-
-```jsonc
-// text layer options
-"id": "layer-button",
-"textPosition": "bottom-center",
-"noPadding": true,
-```
 
 ---
 
