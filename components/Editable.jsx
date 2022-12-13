@@ -1,11 +1,14 @@
 import { useEffect, useCallback, useRef } from "react";
 
+// eslint-disable-next-line react/display-name
 export const Editable = (WrappedComponent) => (props) => {
   if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
     const path = props?.path;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const divRef = useRef();
     
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const handleScrollMessage = useCallback((event) => {
       const message = event.data;
       if (path && divRef.current && message.type === "scrollToPath" && message.path === path) {
@@ -13,6 +16,7 @@ export const Editable = (WrappedComponent) => (props) => {
         }
     }, [path, divRef]);
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       if (path) {
         window.addEventListener('message', handleScrollMessage);
