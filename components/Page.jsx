@@ -90,9 +90,10 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
   // setData depending on width if data is null
   // data must be set to null for one render, in order to fully remove animations
   useEffect(() => {
-    if (data !== null) {
-      return;
-    }
+    console.log("resetting data")
+    // if (data !== null) {
+    //   return;
+    // }
     if (forceView) {
       if (forceView.toLocaleLowerCase() === "desktop") {
         setData(desktopData);

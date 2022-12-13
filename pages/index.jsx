@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ErrorComponent from "../components/ErrorComponent";
 import Page from "../components/Page";
 
@@ -33,6 +33,24 @@ export default function Graphiql(props) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  const handleMessage = useCallback((event) => {
+    const message = event.data;
+    if (message.type === "setCfData" && message.cfType === "page") {
+      console.log("existing data", desktopData)
+      console.log("incoming data", message.payload.data);
+      setDesktopData(message.payload.data);
+    }
+  }, []);
+
+  useEffect(() => {
+      window.addEventListener('message', handleMessage);
+      return () => {
+        window.removeEventListener('message', handleMessage);
+      };
+  }, [handleMessage]);
+
 
   return !desktopData && !mobileData ? (
     fetchError ? (
