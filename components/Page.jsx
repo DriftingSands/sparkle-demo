@@ -61,6 +61,15 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // if a hash exists don't wait for first animation to finish
+  useEffect(() => {
+    if (window.location.hash) {
+      setLoadRest(true);
+      setHash(window.location.hash);
+    }
+  }, [viewType]);
+
+
   // reset content on width change
   const windowSize = useContext(WindowSizeProvider);
   useEffect(() => {
@@ -77,15 +86,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
       setIgnoreHash(false);
     }
   }, [windowSize.width, forceView, viewType]);
-
-  // refresh scrolltrigger on height change
-  useEffect(() => {
-    if (windowSize.height === null) {
-      return;
-    }
-    ScrollTrigger.refresh();
-  }, [windowSize.height]);
-
+  
   // setData depending on width if data is null
   // data must be set to null for one render, in order to fully remove animations
   useEffect(() => {
@@ -112,14 +113,15 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host })
     }
     ScrollTrigger.refresh();
   }, [data, desktopData, mobileData, windowSize.width, forceView]);
-
-  // if a hash exists don't wait for first animation to finish
-  useEffect(() => {
-    if (window.location.hash) {
-      setLoadRest(true);
-      setHash(window.location.hash);
-    }
-  }, [viewType]);
+  
+    // refresh scrolltrigger on height change
+    useEffect(() => {
+      if (windowSize.height === null) {
+        return;
+      }
+      ScrollTrigger.refresh();
+    }, [windowSize.height]);
+  
 
   return (
     data && (
