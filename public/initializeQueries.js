@@ -10,20 +10,17 @@ const searchParams = new URLSearchParams(window.location.search);
 const author = searchParams.get("authorHost");
 if (author) {
   const authorUrl = new URL(author);
-  fetchConfig.authorHost = `${authorUrl.protocol}//${authorUrl.host}${authorUrl.port ? ":" + authorUrl.port : ""}`;
+  fetchConfig.authorHost = `${authorUrl.protocol}//${authorUrl.host}`;
 }
 
 const publish = searchParams.get("publishHost");
 if (publish) {
   const publishUrl = new URL(publish);
-  fetchConfig.publishHost = `${publishUrl.protocol}//${publishUrl.host}${publishUrl.port ? ":" + publishUrl.port : ""}`;
+  fetchConfig.publishHost = `${publishUrl.protocol}//${publishUrl.host}`;
 }
 
 let endpoint = searchParams.get("endpoint");
 if (endpoint) {
-  if (endpoint.startsWith("/")) {
-    endpoint = endpoint.slice(1);
-  }
   if (endpoint.endsWith("/")) {
     endpoint = endpoint.slice(0, -1);
   }
