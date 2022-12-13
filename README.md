@@ -1,6 +1,6 @@
 # **Adobe Sparkle**
 
-![first panel](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/first-panel.jpg?raw=true)
+![first panel](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/first-panel.jpg?raw=true)
 
 Thank you for your interest in Adobe’s products and services!
 
@@ -8,7 +8,7 @@ Thank you for your interest in Adobe’s products and services!
 
 Sparkle is an app, built using AEM content fragments, that allows you to create a website using animated panels as building blocks.
 
-![panel GIF](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/Amazing-thrills-gif.gif?raw=true)
+![panel GIF](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/Amazing-thrills-gif.gif?raw=true)
 
 
 ## **Included in this Demo**
@@ -94,13 +94,13 @@ for each element.
 
 ### ***Pages***
 
-![panel in page](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/pages-image.jpg?raw=true)
+![panel in page](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/pages-image.jpg?raw=true)
 
 - Pages contain an array of Panels
 
 ### ***Panels***
 
-![hiker panel](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/panels-image.jpg?raw=true)
+![hiker panel](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/panels-image.jpg?raw=true)
 
 - Panels contain an array called "layers". Different types of layers are:
   - Image
@@ -117,7 +117,7 @@ for each element.
 
 ### ***Image Layer / Background Layer***
 
-![background](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/background.jpg?raw=true)
+![background](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/background.jpg?raw=true)
 
 - Image layers contain an image, along with some style options like the anchor point or the fit setting.
 
@@ -139,7 +139,7 @@ for each element.
 
 ### ***Text Layer***
 
-![text layer](https://github.com/DriftingSands/sparkle-demo/blob/new-readme/README-images/text-layer.jpg?raw=true)
+![text layer](https://github.com/DriftingSands/sparkle-demo/blob/main/README-images/text-layer.jpg?raw=true)
 
 Text layers have two ways to place text:
 1. In a column
