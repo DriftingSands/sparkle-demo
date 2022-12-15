@@ -9,7 +9,13 @@ export const Editable = (WrappedComponent) => (props) => {
     const handleScrollMessage = useCallback((event) => {
       const message = event.data;
       if (path && divRef.current && message.type === "scrollToPath" && message.path === path) {
-          divRef.current.scrollIntoView({ behavior: "smooth" });
+          const box = divRef.current.getBoundingClientRect()
+          // ignoring message if already inside panel
+          if (box.top <= 0 && box.bottom >= window.innerHeight) {
+            return
+          }
+          // scrollTo clashes with gsap snap
+          window.scrollBy({top: box.top, left: 0, behavior: "smooth" });
         }
     }, [path, divRef]);
 

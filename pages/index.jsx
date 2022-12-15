@@ -5,6 +5,7 @@ import Page from "../components/Page";
 export default function Graphiql(props) {
   const [desktopData, setDesktopData] = useState(null);
   const [mobileData, setMobileData] = useState(null);
+  const [dataFromMessages, setDataFromMessages] = useState(false)
   const [isAuthorVersion, setIsAuthorVersion] = useState(false);
   const [fetchError, setFetchError] = useState(null);
   const [customHost, setCustomHost] = useState("");
@@ -38,8 +39,8 @@ export default function Graphiql(props) {
   const handleMessage = useCallback((event) => {
     const message = event.data;
     if (message.type === "setCfData" && message.cfType === "page") {
-      console.log("existing data", desktopData)
-      console.log("incoming data", message.payload.data);
+      console.log("\x1b[31m ~ new data coming in", )
+      !dataFromMessages && setDataFromMessages(true)
       setDesktopData(message.payload.data);
     }
   }, []);
@@ -57,6 +58,6 @@ export default function Graphiql(props) {
       <ErrorComponent type={fetchError.type} url={fetchError.host} error={fetchError.error} />
     ) : null
   ) : (
-    <Page desktopData={desktopData} mobileData={mobileData} isAuthorVersion={isAuthorVersion} host={customHost} />
+    <Page desktopData={desktopData} mobileData={mobileData} isAuthorVersion={isAuthorVersion} host={customHost} dataFromMessages={dataFromMessages} />
   );
 }
