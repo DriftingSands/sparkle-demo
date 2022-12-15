@@ -1,3 +1,4 @@
+import editable from './Editable';
 import Menu from "./Menu";
 
 const textItemLookup = {
@@ -14,51 +15,39 @@ const textItemLookup = {
 };
 
 const isMenu = obj => {
-  return obj?._model.title === "Panel Menu";
+  return obj?._model?.title === "Panel Menu";
 };
+
+const TextItem = editable(({index, item, activeMenuItem}) => {
+  const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
+  return (
+    <MatchingComponent
+      menuItems={item.menuItems}
+      activeMenuItem={activeMenuItem}
+      key={index}
+      className={`${item.type} ${item?.styles?.join(" ")}`}
+      id={item.id}
+    >
+      {item.content?.plaintext}
+    </MatchingComponent>
+  );
+})
 
 function TextLayer({ data, activeMenuItem }) {
   return (
     <div className={"textLayer"} id={data?.id}>
       {data?.column?.length ? (
         <div className={`columnWrapper ${data?.textPosition || ""} ${data?.noPadding ? "noPadding" : ""}`}>
-          {data?.column?.map((item, index) => {
-            const MatchingComponent = textItemLookup[item.type] || "p";
-            return (
-              <MatchingComponent key={index} className={`${item.type} ${item?.styles?.join(" ")}`} id={item.id}>
-                {item.content?.plaintext}
-              </MatchingComponent>
-            );
-          })}
+          {data?.column?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
         </div>
       ) : null}
 
       <div className="left">
-        {data?.leftBox?.map((item, index) => {
-          const MatchingComponent = textItemLookup[item.type] || "p";
-          return (
-            <MatchingComponent key={index} className={`${item.type} ${item?.styles?.join(" ")}`} id={item.id}>
-              {item.content?.plaintext}
-            </MatchingComponent>
-          );
-        })}
+        {data?.leftBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
       </div>
 
       <div className="right">
-        {data?.rightBox?.map((item, index) => {
-          const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
-          return (
-            <MatchingComponent
-              menuItems={item.menuItems}
-              activeMenuItem={activeMenuItem}
-              key={index}
-              className={`${item.type} ${item?.styles?.join(" ")}`}
-              id={item.id}
-            >
-              {item.content?.plaintext}
-            </MatchingComponent>
-          );
-        })}
+        {data?.rightBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
       </div>
     </div>
   );

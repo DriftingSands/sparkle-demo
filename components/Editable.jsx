@@ -24,7 +24,7 @@ function editable(WrappedComponent) {
       );
 
       useEffect(() => {
-        if (path) {
+        if (path && !props.noScrollTo) {
           window.addEventListener("message", handleScrollMessage);
           return () => {
             window.removeEventListener("message", handleScrollMessage);
