@@ -43,7 +43,7 @@ export default function Graphiql(props) {
       !dataFromMessages && setDataFromMessages(true)
       setDesktopData(message.payload.data);
     }
-  }, []);
+  }, [desktopData]);
 
   useEffect(() => {
       window.addEventListener('message', handleMessage);
