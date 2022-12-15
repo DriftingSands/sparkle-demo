@@ -38,16 +38,16 @@ function TextLayer({ data, activeMenuItem }) {
     <div className={"textLayer"} id={data?.id}>
       {data?.column?.length ? (
         <div className={`columnWrapper ${data?.textPosition || ""} ${data?.noPadding ? "noPadding" : ""}`}>
-          {data?.column?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+          {data?.column?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
         </div>
       ) : null}
 
       <div className="left">
-        {data?.leftBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+        {data?.leftBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
       </div>
 
       <div className="right">
-        {data?.rightBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+        {data?.rightBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
       </div>
     </div>
   );
