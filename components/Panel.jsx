@@ -6,7 +6,7 @@ import PointTextMap from "./PointTextMap";
 import Header from "./Header";
 import { TimelineProvider } from "./TimelineWrapper";
 import { scrollToId } from "../components/utils";
-import { Editable } from './Editable';
+import editable from "./Editable";
 
 const lookupObject = {
   image: LayerImage,
@@ -81,4 +81,4 @@ function Panel({
   );
 }
 
-export default Editable(Panel)
+export default editable(Panel);
