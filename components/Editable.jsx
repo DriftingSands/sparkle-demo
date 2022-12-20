@@ -1,10 +1,14 @@
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef, Fragment } from "react";
 
-function editable(WrappedComponent) {
+function editable(WrappedComponent, externalPath, noEditWrapper) {
+  externalPath && console.log("\x1b[31m ~ externalPath", externalPath)
   // eslint-disable-next-line react/display-name
   return props => {
     if (process.env.NEXT_PUBLIC_APP_PREVIEW === "true") {
       const path = props?.path;
+      if (path === undefined && externalPath === undefined) {
+        return <WrappedComponent {...props} />
+      }
       const divRef = useRef();
 
       const handleScrollMessage = useCallback(
@@ -32,13 +36,15 @@ function editable(WrappedComponent) {
         }
       }, [handleScrollMessage, path]);
 
-      return path !== undefined ? (
-        <div ref={divRef} data-editable-path={path}>
-          <WrappedComponent {...props} />
-        </div>
-      ) : (
-        <WrappedComponent {...props} />
-      );
+      return noEditWrapper ? (
+        <WrappedComponent {...props} ref={divRef} data-editable-path={path}  />
+      
+        ) : (
+          <div ref={divRef} data-editable-path={path} style={{border: 'blue 2px solid'}} >
+            <WrappedComponent {...props} />
+          </div>
+        )
+      
     } else {
       return <WrappedComponent {...props} />;
     }

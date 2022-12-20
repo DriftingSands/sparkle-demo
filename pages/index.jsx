@@ -12,13 +12,16 @@ export default function Graphiql(props) {
 
   useEffect(() => {
     window.mobileData &&
-      window.mobileData.then(data => {
+      window.mobileData.then(async(data) => {
         if (!data) {
           setFetchError({ type: "publish", host: window.customHost });
           return;
         }
-        setMobileData(data.data.pageByPath.item);
-        setCustomHost(window.customHost);
+        console.log('one')
+        await new Promise(resolve => setTimeout(() => resolve(), 2000))
+        console.log('two')
+        // setMobileData(data.data.pageByPath.item);
+        !customHost && setCustomHost(window.customHost);
         setIsAuthorVersion(window.isAuthorHost);
       });
     window.desktopData &&
@@ -28,12 +31,16 @@ export default function Graphiql(props) {
           return;
         }
         setDesktopData(data.data.pageByPath.item);
-        setCustomHost(window.customHost);
+        !customHost && setCustomHost(window.customHost);
         setIsAuthorVersion(window.isAuthorHost);
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log("\x1b[31m ~ mobileData UPDATE", mobileData)
+  }, [mobileData])
 
   const handleMessage = useCallback(
     event => {
@@ -62,7 +69,7 @@ export default function Graphiql(props) {
   ) : (
     <Page
       desktopData={desktopData}
-      mobileData={mobileData}
+      // mobileData={mobileData}
       isAuthorVersion={isAuthorVersion}
       host={customHost}
       dataFromMessages={dataFromMessages}

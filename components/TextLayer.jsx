@@ -14,16 +14,22 @@ const textItemLookup = {
   button: "button",
 };
 
-const isMenu = obj => {
-  return obj?._model?.title === "Panel Menu";
-};
 
 const TextItem = editable(({index, item, activeMenuItem}) => {
-  const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
-  return (
+  const isMenu = item?._model?.title === "Panel Menu"
+  const MatchingComponent = isMenu ? Menu : textItemLookup[item.type] || "p";
+  return isMenu ? (
     <MatchingComponent
       menuItems={item.menuItems}
       activeMenuItem={activeMenuItem}
+      key={index}
+      className={`${item.type} ${item?.styles?.join(" ")}`}
+      id={item.id}
+    >
+      {item.content?.plaintext}
+    </MatchingComponent>
+  ) : (
+    <MatchingComponent
       key={index}
       className={`${item.type} ${item?.styles?.join(" ")}`}
       id={item.id}

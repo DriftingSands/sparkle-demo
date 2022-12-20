@@ -68,6 +68,7 @@ function Panel({
           }
           return (
             <Component
+              path={layer._path}
               host={host}
               activeMenuItem={panel.activeMenuItem}
               data={layer}
