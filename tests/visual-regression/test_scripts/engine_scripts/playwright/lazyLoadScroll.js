@@ -5,10 +5,7 @@ module.exports = async (page, scenario) => {
   await page.evaluate(async () => {
     await new Promise((resolve, reject) => {
       const scrollCheck = setInterval(() => {
-        if (
-          window.scrollY >=
-          Math.floor(document.body.scrollHeight - window.innerHeight - 1)
-        ) {
+        if (window.scrollY >= Math.floor(document.body.scrollHeight - window.innerHeight - 1)) {
           clearInterval(scrollCheck);
           resolve();
         }
@@ -23,12 +20,16 @@ module.exports = async (page, scenario) => {
 
   await page.evaluate(async () => {
     const selectors = Array.from(document.querySelectorAll("img"));
-    await Promise.all(selectors.map(img => {
-      if (img.complete) return;
-      return new Promise((resolve, reject) => {
-        img.addEventListener('load', resolve);
-        img.addEventListener('error', reject);
-      });
-    }));
-  })
+    await Promise.all(
+      selectors.map(img => {
+        if (img.complete) return;
+        return new Promise((resolve, reject) => {
+          img.addEventListener("load", resolve);
+          img.addEventListener("error", reject);
+        });
+      })
+    );
+  });
+
+  await page.waitForLoadState("networkidle");
 };
