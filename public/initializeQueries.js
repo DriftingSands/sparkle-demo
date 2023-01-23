@@ -3,6 +3,7 @@ const fetchConfig = {
   // publishHost: "",
   fallbackHost: "https://publish-p81252-e700817.adobeaemcloud.com",
   endpoint: "graphql/execute.json/sample-wknd-app/homepage",
+  noAuthorTimestamp: false,
 };
 
 const searchParams = new URLSearchParams(window.location.search);
@@ -11,6 +12,11 @@ const author = searchParams.get("authorHost");
 if (author) {
   const authorUrl = new URL(author);
   fetchConfig.authorHost = `${authorUrl.protocol}//${authorUrl.host}`;
+}
+
+const noAuthorTimestampParam = searchParams.get("noAuthorTimestamp")
+if (noAuthorTimestampParam?.toLowerCase() === "true") {
+  fetchConfig.noAuthorTimestamp = true
 }
 
 const publish = searchParams.get("publishHost");

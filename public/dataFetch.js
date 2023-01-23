@@ -50,7 +50,7 @@ function attemptFetch(fetchConfig, variation, delay) {
     if (fetchConfig.authorHost) {
       const url = new URL(fetchConfig.endpoint, fetchConfig.authorHost)
       fetch(
-        `${url.toString()};variation=${variation};timestamp=${Date.now()}`,
+        `${url.toString()};variation=${variation}${fetchConfig.noAuthorTimestamp ? "" : `;timestamp=${Date.now()}`}`,
         { credentials: "include" }
       )
         .then(response => {
