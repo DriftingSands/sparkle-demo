@@ -35,7 +35,7 @@ function publishFetch(fetchConfig, variation, resolve) {
     });
 }
 
-function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
+function attemptFetch(fetchConfig, variation, delay) {
   if (window[variation + "Data"]) {
     return;
   }
@@ -50,7 +50,7 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
     if (fetchConfig.authorHost) {
       const url = new URL(fetchConfig.endpoint, fetchConfig.authorHost)
       fetch(
-        `${url.toString()};variation=${variation}`,
+        `${url.toString()};variation=${variation}${fetchConfig.noAuthorTimestamp ? "" : `;timestamp=${Date.now()}`}`,
         { credentials: "include" }
       )
         .then(response => {
@@ -74,10 +74,10 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
 
 if (window.innerWidth <= 820) {
   attemptFetch(fetchConfig, "mobile");
-  attemptFetch(fetchConfig, "desktop", null, 3000);
+  attemptFetch(fetchConfig, "desktop", 3000);
 } else {
   attemptFetch(fetchConfig, "desktop");
-  attemptFetch(fetchConfig, "mobile", null, 3000);
+  attemptFetch(fetchConfig, "mobile", 3000);
 }
 
 let preFetchUrl = fetchConfig.fallbackHost;

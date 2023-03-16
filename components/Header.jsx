@@ -20,15 +20,17 @@ export default function Header({ isAuthorVersion, host }) {
         </div>
 
         <ul className="middle">
-          <a href="#">
-            <li>adventures</li>
-          </a>
-          <a href="#">
-            <li>magazine</li>
-          </a>
-          <a href="#">
-            <li>settings</li>
-          </a>
+          <li>
+            <a href="#">adventures</a>
+          </li>
+
+          <li>
+            <a href="#">magazine</a>
+          </li>
+
+          <li>
+            <a href="#">settings</a>
+          </li>
         </ul>
 
         <div className="right">

@@ -231,15 +231,24 @@ Run the app
 npm run dev
 ```
 
-To run a test in another terminal with the following command:
+Now that the app is running, open another terminal to run tests in.
+
+We did not include the reference images into this git repository. To create a set of reference images run the following command:
+```
+npx backstop reference --config=./tests/visual-regression/local.test.config.js
+```
+
+To run a test use the following command:
 ```
 npx backstop test --config=./tests/visual-regression/local.test.config.js
 ```
 
-If you want to create/update the reference images with the results of the last test use:
+If you want to update the reference images with the results of the last test use:
 ```
 npx backstop approve --config=./tests/visual-regression/local.test.config.js
 ```
+
+>Multiple tests scenarios are run asynchronously, depending on the hardware this could cause issues when rendering content during the tests. If that is the case you can adjust the `asyncCaptureLimit` property in `./tests/visual-regression/test.config.js`
 
 ### **Adjusting Tests**
 
