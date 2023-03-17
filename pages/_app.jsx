@@ -7,10 +7,49 @@ import { useCallback, useEffect, useRef } from "react";
 function MyApp({ Component, pageProps }) {
   const boundingRectElement = useRef(null);
 
-    const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
-  
+  const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
+
   const handleClick = useCallback(event => {
-    if (searchParams.get('editMode') === "true") {
+    // console.log("\x1b[31m ~ event:", event)
+    const nodeList = document.elementsFromPoint(event.x, event.y);
+    console.log("\x1b[31m ~ nodeList:", nodeList);
+
+    const topMostEditableElement = nodeList.find(node => node?.dataset?.editablePath);
+    if (!topMostEditableElement) {
+      return;
+    }
+
+    let paths = [];
+    console.log("\x1b[31m ~ topMostEditableElement:", topMostEditableElement.dataset);
+
+    boundingRectElement.current = topMostEditableElement;
+    const boundingBox = topMostEditableElement.getBoundingClientRect();
+    window.parent.postMessage(
+      {
+        type: "editableBoundingRect",
+        payload: [
+          boundingBox.top + document.documentElement.scrollTop,
+          boundingBox.left,
+          boundingBox.height,
+          boundingBox.width,
+        ],
+      },
+      searchParams.get("iFrameHost")
+    );
+
+    paths.push(topMostEditableElement.dataset.editablePath);
+
+    if (paths) {
+      window.parent.postMessage(
+        {
+          type: "editablePath",
+          payload: paths.reverse(),
+        },
+        searchParams.get("iFrameHost")
+      );
+    }
+    return;
+    if (searchParams.get("editMode") === "true") {
       let editable = event.target;
       let paths = [];
       while (editable && !editable?.dataset?.editablePath) {
@@ -29,7 +68,7 @@ function MyApp({ Component, pageProps }) {
               boundingBox.width,
             ],
           },
-          searchParams.get('iFrameHost')
+          searchParams.get("iFrameHost")
         );
         paths.push(editable.dataset.editablePath);
       }
@@ -45,14 +84,14 @@ function MyApp({ Component, pageProps }) {
             type: "editablePath",
             payload: paths.reverse(),
           },
-          searchParams.get('iFrameHost')
+          searchParams.get("iFrameHost")
         );
       }
     }
   }, []);
 
   useEffect(() => {
-    if (searchParams.get('editMode') === "true") {
+    if (searchParams.get("editMode") === "true") {
       window.addEventListener("click", handleClick);
       return () => {
         window.removeEventListener("click", handleClick);
@@ -61,19 +100,19 @@ function MyApp({ Component, pageProps }) {
   }, [handleClick]);
 
   const handleScroll = useCallback(event => {
-    if (searchParams.get('editMode') === "true") {
+    if (searchParams.get("editMode") === "true") {
       window.parent.postMessage(
         {
           type: "scrollTop",
           payload: document.documentElement.scrollTop,
         },
-        searchParams.get('iFrameHost')
+        searchParams.get("iFrameHost")
       );
     }
   }, []);
 
   useEffect(() => {
-    if (searchParams.get('editMode') === "true") {
+    if (searchParams.get("editMode") === "true") {
       window.addEventListener("scroll", handleScroll);
       return () => {
         window.removeEventListener("scroll", handleScroll);
@@ -83,7 +122,7 @@ function MyApp({ Component, pageProps }) {
 
   const handleResize = useCallback(
     event => {
-      if (searchParams.get('editMode') === "true") {
+      if (searchParams.get("editMode") === "true") {
         if (boundingRectElement.current) {
           const boundingBox = boundingRectElement.current.getBoundingClientRect();
           if (boundingBox) {
@@ -97,7 +136,7 @@ function MyApp({ Component, pageProps }) {
                   boundingBox.width,
                 ],
               },
-              searchParams.get('iFrameHost')
+              searchParams.get("iFrameHost")
             );
           }
         }
@@ -107,7 +146,7 @@ function MyApp({ Component, pageProps }) {
   );
 
   useEffect(() => {
-    if (searchParams.get('editMode') === "true") {
+    if (searchParams.get("editMode") === "true") {
       window.addEventListener("resize", handleResize);
       return () => {
         window.removeEventListener("resize", handleResize);

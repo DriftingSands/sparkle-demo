@@ -1,4 +1,4 @@
-import editable from './Editable';
+import editable from "./Editable";
 import Menu from "./Menu";
 
 const textItemLookup = {
@@ -18,10 +18,11 @@ const isMenu = obj => {
   return obj?._model?.title === "Panel Menu";
 };
 
-const TextItem = editable(({index, item, activeMenuItem}) => {
+const TextItem = ({ path, index, item, activeMenuItem }) => {
   const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
   return (
     <MatchingComponent
+      data-editable-path={path}
       menuItems={item.menuItems}
       activeMenuItem={activeMenuItem}
       key={index}
@@ -31,26 +32,53 @@ const TextItem = editable(({index, item, activeMenuItem}) => {
       {item.content?.plaintext}
     </MatchingComponent>
   );
-})
+};
 
 function TextLayer({ data, activeMenuItem }) {
   return (
     <div className={"textLayer"} id={data?.id}>
       {data?.column?.length ? (
         <div className={`columnWrapper ${data?.textPosition || ""} ${data?.noPadding ? "noPadding" : ""}`}>
-          {data?.column?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+          {data?.column?.map((item, index) => (
+            <TextItem
+              noScrollTo={true}
+              path={item._path}
+              key={index}
+              index={index}
+              item={item}
+              activeMenuItem={activeMenuItem}
+            />
+          ))}
         </div>
       ) : null}
 
       <div className="left">
-        {data?.leftBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+        {data?.leftBox?.map((item, index) => (
+          <TextItem
+            noScrollTo={true}
+            path={item._path}
+            key={index}
+            index={index}
+            item={item}
+            activeMenuItem={activeMenuItem}
+          />
+        ))}
       </div>
 
       <div className="right">
-        {data?.rightBox?.map((item, index) => <TextItem noScrollTo={true} path={item._path} key={index} index={index} item={item} activeMenuItem={activeMenuItem} />)}
+        {data?.rightBox?.map((item, index) => (
+          <TextItem
+            noScrollTo={true}
+            path={item._path}
+            key={index}
+            index={index}
+            item={item}
+            activeMenuItem={activeMenuItem}
+          />
+        ))}
       </div>
     </div>
   );
 }
 
-export default TextLayer
+export default TextLayer;

@@ -170,7 +170,6 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
                 ignoreHash={ignoreHash}
                 setIgnoreHash={setIgnoreHash}
                 viewType={viewType}
-                path={panel?._path}
               />
             );
           })}

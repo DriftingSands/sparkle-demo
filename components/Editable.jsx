@@ -5,6 +5,11 @@ function editable(WrappedComponent) {
   const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '') 
   // eslint-disable-next-line react/display-name
   return props => {
+    const path = props?.path
+    console.log("\x1b[31m ~ props?.path:", props?.path)
+    return <WrappedComponent {...props} data-editable-path={path}  />
+  }
+  return props => {
     if (searchParams.get('editMode') === "true") {
       const path = props?.path;
       const divRef = useRef();

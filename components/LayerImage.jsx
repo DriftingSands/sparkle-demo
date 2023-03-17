@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 export default function LayerImage({ data, panelNr, host, viewType = "desktop" }) {
-  const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
+  const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad, _path } = data;
 
   const typeLookup = {
     mobile: "mobile-vertical.webp",
@@ -21,6 +21,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
         }`}
       >
         <img
+          data-editable-path={_path}
           id={id}
           loading={panelNr === 0 || forceLoad ? "eager" : "lazy"}
           className="image"

@@ -49,7 +49,7 @@ function Panel({
   }, [hash, ignoreHash, panel.id, setIgnoreHash]);
 
   return (
-    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id}>
+    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} data-editable-path={panel?._path}>
       {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
         <Background
@@ -81,4 +81,4 @@ function Panel({
   );
 }
 
-export default editable(Panel);
+export default Panel;
