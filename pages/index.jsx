@@ -31,7 +31,6 @@ export default function Graphiql(props) {
         setCustomHost(window.customHost);
         setIsAuthorVersion(window.isAuthorHost);
       });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
