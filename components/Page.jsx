@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useState, useEffect, useContext } from "react";
 import { WindowSizeProvider } from "./ResizeProvider";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useRouter } from "next/router";
 
 export default function Page({ desktopData, mobileData, isAuthorVersion, host, dataFromMessages }) {
   const [data, setData] = useState(null);
@@ -13,6 +14,8 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
   const [ignoreHash, setIgnoreHash] = useState(false);
   const [debugAnim, setDebugAnim] = useState(null);
   const [forceView, setForceView] = useState(null);
+
+  const router = useRouter();
 
   const handleHashUpdateEvent = e => {
     if (e.origin !== window.location.host && e.data.type !== "hashUpdate") {
@@ -67,13 +70,12 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
     if (window.location.hash) {
       setLoadRest(true);
       setHash(window.location.hash);
-      return
+      return;
     }
-    if (process.env.NEXT_PUBLIC_APP_PREVIEW === 'true') {
-      setLoadRest(true)
+    if (router?.query?.editMode === "true") {
+      setLoadRest(true);
     }
   }, [viewType]);
-
 
   // reset content on width change
   const windowSize = useContext(WindowSizeProvider);
@@ -95,14 +97,14 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
   useEffect(() => {
     // if desktopData is inserted by cf-editor, set null which will rerender
     if (dataFromMessages) {
-      setData(null)
+      setData(null);
     }
-  }, [desktopData, mobileData, dataFromMessages])
-  
+  }, [desktopData, mobileData, dataFromMessages]);
+
   // setData depending on width if data is null
   // data must be set to null for one render, in order to fully remove animations
   useEffect(() => {
-    console.log("resetting data")
+    console.log("resetting data");
     if (data !== null) {
       return;
     }
@@ -126,15 +128,14 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
     }
     ScrollTrigger.refresh();
   }, [data, windowSize.width, forceView]);
-  
-    // refresh scrolltrigger on height change
-    useEffect(() => {
-      if (windowSize.height === null) {
-        return;
-      }
-      ScrollTrigger.refresh();
-    }, [windowSize.height]);
-  
+
+  // refresh scrolltrigger on height change
+  useEffect(() => {
+    if (windowSize.height === null) {
+      return;
+    }
+    ScrollTrigger.refresh();
+  }, [windowSize.height]);
 
   return (
     data && (

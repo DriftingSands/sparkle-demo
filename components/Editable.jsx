@@ -1,9 +1,11 @@
 import { useEffect, useCallback, useRef } from "react";
 
 function editable(WrappedComponent) {
+  // next js useRouter doesn't seem to work in higher order components
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '') 
   // eslint-disable-next-line react/display-name
   return props => {
-    if (process.env.NEXT_PUBLIC_APP_PREVIEW === "true") {
+    if (searchParams.get('editMode') === "true") {
       const path = props?.path;
       const divRef = useRef();
 
@@ -45,4 +47,4 @@ function editable(WrappedComponent) {
   };
 }
 
-export default editable
+export default editable;

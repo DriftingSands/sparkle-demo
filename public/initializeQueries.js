@@ -15,9 +15,9 @@ if (author) {
   fetchConfig.authorHost = `${authorUrl.protocol}//${authorUrl.host}`;
 }
 
-const noAuthorTimestampParam = searchParams.get("noAuthorTimestamp")
+const noAuthorTimestampParam = searchParams.get("noAuthorTimestamp");
 if (noAuthorTimestampParam?.toLowerCase() === "true") {
-  fetchConfig.noAuthorTimestamp = true
+  fetchConfig.noAuthorTimestamp = true;
 }
 
 const publish = searchParams.get("publishHost");
@@ -33,5 +33,10 @@ if (endpoint) {
   }
   fetchConfig.endpoint = endpoint;
 }
+
+if (searchParams.get('onlyExternalData')) {
+  fetchConfig.noFetch = true
+}
+
 
 export default fetchConfig;

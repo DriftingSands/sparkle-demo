@@ -1,7 +1,7 @@
 import fetchConfig from "./initializeQueries.js";
 
 function fallbackFetch(fetchConfig, variation, resolve) {
-  const url = new URL(fetchConfig.endpoint, fetchConfig.fallbackHost)
+  const url = new URL(fetchConfig.endpoint, fetchConfig.fallbackHost);
   fetch(`${url.toString()};variation=${variation}`)
     .then(response => {
       return response.json();
@@ -18,11 +18,11 @@ function fallbackFetch(fetchConfig, variation, resolve) {
 
 function publishFetch(fetchConfig, variation, resolve) {
   if (!fetchConfig.publishHost) {
-    console.log("No publish host specified, using fallback.")
-    fallbackFetch(fetchConfig, variation, resolve)
-    return
+    console.log("No publish host specified, using fallback.");
+    fallbackFetch(fetchConfig, variation, resolve);
+    return;
   }
-  const url = new URL(fetchConfig.endpoint, fetchConfig.publishHost)
+  const url = new URL(fetchConfig.endpoint, fetchConfig.publishHost);
   fetch(`${url.toString()};variation=${variation}`)
     .then(response => response.json())
     .then(data => {
@@ -48,7 +48,7 @@ function attemptFetch(fetchConfig, variation, delay) {
       return fallbackFetch(fetchConfig, variation, resolve);
     }
     if (fetchConfig.authorHost) {
-      const url = new URL(fetchConfig.endpoint, fetchConfig.authorHost)
+      const url = new URL(fetchConfig.endpoint, fetchConfig.authorHost);
       fetch(
         `${url.toString()};variation=${variation}${fetchConfig.noAuthorTimestamp ? "" : `;timestamp=${Date.now()}`}`,
         { credentials: "include" }
@@ -65,21 +65,23 @@ function attemptFetch(fetchConfig, variation, delay) {
           console.log("Author host failed, attempting publish host.");
           publishFetch(fetchConfig, variation, resolve);
         });
-      } else {
+    } else {
       console.log("No author host specified, using publish host.");
       publishFetch(fetchConfig, variation, resolve);
     }
   });
 }
 
-if (window.innerWidth <= 820) {
-  attemptFetch(fetchConfig, "mobile");
-  attemptFetch(fetchConfig, "desktop", 3000);
-} else {
-  attemptFetch(fetchConfig, "desktop");
-  attemptFetch(fetchConfig, "mobile", 3000);
+if (fetchConfig.noFetch !== true) {
+  window.noFatch = true
+  if (window.innerWidth <= 820) {
+    attemptFetch(fetchConfig, "mobile");
+    attemptFetch(fetchConfig, "desktop", 3000);
+  } else {
+    attemptFetch(fetchConfig, "desktop");
+    attemptFetch(fetchConfig, "mobile", 3000);
+  }
 }
-
 let preFetchUrl = fetchConfig.fallbackHost;
 
 if (fetchConfig.publishHost) {
