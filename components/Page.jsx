@@ -161,6 +161,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
             return (
               <Panel
                 panel={panel}
+                path={panel._path}
                 panelNr={index}
                 settings={{ viewType }}
                 key={index}

@@ -12,15 +12,13 @@ function MyApp({ Component, pageProps }) {
   const handleClick = useCallback(event => {
     // console.log("\x1b[31m ~ event:", event)
     const nodeList = document.elementsFromPoint(event.x, event.y);
-    console.log("\x1b[31m ~ nodeList:", nodeList);
 
-    const topMostEditableElement = nodeList.find(node => node?.dataset?.editablePath);
+    const topMostEditableElement = nodeList.find(node => node?.dataset?.editablePath || node.attributes.path);
     if (!topMostEditableElement) {
       return;
     }
 
     let paths = [];
-    console.log("\x1b[31m ~ topMostEditableElement:", topMostEditableElement.dataset);
 
     boundingRectElement.current = topMostEditableElement;
     const boundingBox = topMostEditableElement.getBoundingClientRect();

@@ -27,6 +27,8 @@ function Panel({
   ignoreHash,
   setIgnoreHash,
   viewType,
+  editableRef,
+  "data-editable-path": dataEditablePath,
 }) {
   const createTimeline = useContext(TimelineProvider);
 
@@ -49,7 +51,7 @@ function Panel({
   }, [hash, ignoreHash, panel.id, setIgnoreHash]);
 
   return (
-    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} data-editable-path={panel?._path}>
+    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} path={panel?._path} ref={editableRef} data-editable-path={dataEditablePath} >
       {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
         <Background
@@ -81,4 +83,4 @@ function Panel({
   );
 }
 
-export default Panel;
+export default editable(Panel);

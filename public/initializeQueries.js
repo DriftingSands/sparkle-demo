@@ -34,7 +34,7 @@ if (endpoint) {
   fetchConfig.endpoint = endpoint;
 }
 
-if (searchParams.get('onlyExternalData')) {
+if (searchParams.get('onlyExternalData') === 'true') {
   fetchConfig.noFetch = true
 }
 

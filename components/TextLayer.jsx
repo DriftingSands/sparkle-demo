@@ -18,11 +18,12 @@ const isMenu = obj => {
   return obj?._model?.title === "Panel Menu";
 };
 
-const TextItem = ({ path, index, item, activeMenuItem }) => {
+const TextItem = editable(({ path, index, item, activeMenuItem, editableRef, "data-editable-path": dataEditablePath }) => {
   const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
   return (
     <MatchingComponent
-      data-editable-path={path}
+      ref={editableRef}
+      data-editable-path={dataEditablePath}
       menuItems={item.menuItems}
       activeMenuItem={activeMenuItem}
       key={index}
@@ -32,7 +33,7 @@ const TextItem = ({ path, index, item, activeMenuItem }) => {
       {item.content?.plaintext}
     </MatchingComponent>
   );
-};
+});
 
 function TextLayer({ data, activeMenuItem }) {
   return (

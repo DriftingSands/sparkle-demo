@@ -73,7 +73,6 @@ function attemptFetch(fetchConfig, variation, delay) {
 }
 
 if (fetchConfig.noFetch !== true) {
-  window.noFatch = true
   if (window.innerWidth <= 820) {
     attemptFetch(fetchConfig, "mobile");
     attemptFetch(fetchConfig, "desktop", 3000);
@@ -81,6 +80,9 @@ if (fetchConfig.noFetch !== true) {
     attemptFetch(fetchConfig, "desktop");
     attemptFetch(fetchConfig, "mobile", 3000);
   }
+} else {
+  window.noFetch = true
+  window.customHost = fetchConfig.publishHost || fetchConfig.authorHost || fetchConfig.fallbackHost
 }
 let preFetchUrl = fetchConfig.fallbackHost;
 
