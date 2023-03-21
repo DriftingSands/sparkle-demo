@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
   const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
 
   const handleClick = useCallback(event => {
-    // console.log("\x1b[31m ~ event:", event)
     const nodeList = document.elementsFromPoint(event.x, event.y);
 
     const topMostEditableElement = nodeList.find(node => node?.dataset?.editablePath || node.attributes.path);
@@ -47,45 +46,6 @@ function MyApp({ Component, pageProps }) {
       );
     }
     return;
-    if (searchParams.get("editMode") === "true") {
-      let editable = event.target;
-      let paths = [];
-      while (editable && !editable?.dataset?.editablePath) {
-        editable = editable.parentElement;
-      }
-      if (editable?.dataset?.editablePath) {
-        boundingRectElement.current = editable;
-        const boundingBox = editable.getBoundingClientRect();
-        window.parent.postMessage(
-          {
-            type: "editableBoundingRect",
-            payload: [
-              boundingBox.top + document.documentElement.scrollTop,
-              boundingBox.left,
-              boundingBox.height,
-              boundingBox.width,
-            ],
-          },
-          searchParams.get("iFrameHost")
-        );
-        paths.push(editable.dataset.editablePath);
-      }
-      while (editable) {
-        editable = editable.parentElement;
-        if (editable?.dataset?.editablePath) {
-          paths.push(editable.dataset.editablePath);
-        }
-      }
-      if (paths) {
-        window.parent.postMessage(
-          {
-            type: "editablePath",
-            payload: paths.reverse(),
-          },
-          searchParams.get("iFrameHost")
-        );
-      }
-    }
   }, []);
 
   useEffect(() => {

@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { useCallback } from 'react';
 import editable from "./Editable";
 
 export default function LayerImage({ data, panelNr, host, viewType = "desktop" }) {
-  const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad, _path } = data;
+  const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
 
   const typeLookup = {
     mobile: "mobile-vertical.webp",
@@ -14,7 +15,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
     image?._path.startsWith("/") ? image._path.substring(1) : image._path
   }/_jcr_content/renditions/${typeLookup[viewType] || "desktop.webp"}`;
 
-  const Image = editable(props => {
+  const Image = useCallback(editable(props => {
     return (
       <img
         ref={props.editableRef}
@@ -29,7 +30,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
         alt={altText?.plaintext || "Panel Image"}
       />
     );
-  });
+  }), [data]);
 
   return (
     <div className={`overflowImageWrapper  ${overflow ? "showOverflow" : "hideOverflow"}`}>

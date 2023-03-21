@@ -38,7 +38,6 @@ function editable(WrappedComponent) {
       }
     }, [handleScrollMessage, path]);
     // const path = props?.path
-    console.log("\x1b[31m ~ path:", path);
     return <WrappedComponent {...props} data-editable-path={path} editableRef={editableRef} />;
   };
 }
