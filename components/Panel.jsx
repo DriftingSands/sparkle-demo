@@ -6,6 +6,7 @@ import PointTextMap from "./PointTextMap";
 import Header from "./Header";
 import { TimelineProvider } from "./TimelineWrapper";
 import { scrollToId } from "../components/utils";
+import { gsap } from "gsap/dist/gsap";
 
 const lookupObject = {
   image: LayerImage,
@@ -33,8 +34,13 @@ export default function Panel({
     if (!createTimeline) {
       return;
     }
-    createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
+    const ctx = gsap.context(() => {
+      createTimeline(panel?.animations?.timelineAnimations, panel?.animations?.timelineAnimationSettings, runOnEnd);
+    });
 
+    return () => {
+      ctx.revert();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [createTimeline, panel?.animations?.timelineAnimationSettings, panel?.animations?.timelineAnimations]); // adding runOnEnd makes into animations re-run on end
 
