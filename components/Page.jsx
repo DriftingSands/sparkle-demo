@@ -153,7 +153,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
             maxWidth={840}
           />
         )}
-        {data?.panels?.map &&
+        {data?.panels?.length ?
           data.panels.map((panel, index) => {
             if (index !== 0 && !loadRest) {
               return null;
@@ -173,7 +173,11 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
                 viewType={viewType}
               />
             );
-          })}
+          }) : data ?(
+            <div style={{height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <h2>Waiting for data...</h2>
+            </div>
+          ) : null}
       </div>
     )
   );

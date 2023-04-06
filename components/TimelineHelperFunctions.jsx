@@ -36,7 +36,10 @@ const createScrollTriggerAnimation = (gsap, q, animation, instant) => {
 
 const createAnimationTimeline = (gsap, q, timelineArray, timelineSettings, runOnEnd, debugAnim) => {
   if (!timelineArray || timelineArray.length === 0) {
-    return runOnEnd();
+    if (typeof runOnEnd === 'function') {
+      runOnEnd();
+    }
+    return
   }
   // value to control duration overrides
   try {

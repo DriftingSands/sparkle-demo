@@ -44,11 +44,6 @@ export default function Graphiql(props) {
         console.log("\x1b[31m ~ new data coming in");
         !dataFromMessages && setDataFromMessages(true);
         setDesktopData(message.payload.data);
-        let bodyHeight = message?.payload?.data.panels?.length * window.innerHeight
-        if (bodyHeight < 100) {
-          bodyHeight = 100
-        }
-        document.body.style.minHeight = message.payload.data.panels.length * window.innerHeight + "px";
       }
     },
     [desktopData]

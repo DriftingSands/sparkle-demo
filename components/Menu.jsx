@@ -13,7 +13,7 @@ export default function Menu({ menuItems, activeMenuItem }) {
   return (
     <div className="menuWrapper">
       <ul className="menuList">
-        {menuItems.map((item, index) => {
+        {menuItems?.length && menuItems.map((item, index) => {
           return (
             <li
               key={index}
