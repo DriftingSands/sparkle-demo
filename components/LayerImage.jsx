@@ -6,6 +6,10 @@ import editable from "./Editable";
 export default function LayerImage({ data, panelNr, host, viewType = "desktop" }) {
   const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
 
+  if (!image?._path) {
+    return null;
+  }
+
   const typeLookup = {
     mobile: "mobile-vertical.webp",
     desktop: "desktop.webp",
