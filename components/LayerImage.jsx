@@ -6,10 +6,6 @@ import editable from "./Editable";
 export default function LayerImage({ data, panelNr, host, viewType = "desktop" }) {
   const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
 
-  if (!image?._path) {
-    return null;
-  }
-
   const typeLookup = {
     mobile: "mobile-vertical.webp",
     desktop: "desktop.webp",
@@ -36,7 +32,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
     );
   }), [data]);
 
-  return (
+  return !image?._path ? null : (
     <div className={`overflowImageWrapper  ${overflow ? "showOverflow" : "hideOverflow"}`}>
       <div
         id={layerId}
