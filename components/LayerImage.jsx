@@ -11,7 +11,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
     desktop: "desktop.webp",
   };
 
-  const source = `${host}/${
+  const source = !image?._path ? null : `${host}/${
     image?._path.startsWith("/") ? image._path.substring(1) : image._path
   }/_jcr_content/renditions/${typeLookup[viewType] || "desktop.webp"}`;
 
@@ -32,7 +32,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
     );
   }), [data]);
 
-  return !image?._path ? null : (
+  return !source ? null : (
     <div className={`overflowImageWrapper  ${overflow ? "showOverflow" : "hideOverflow"}`}>
       <div
         id={layerId}
