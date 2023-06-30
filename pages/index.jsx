@@ -43,7 +43,7 @@ export default function Graphiql(props) {
     event => {
       const message = event.data;
       if (message.type === "setCfData" && message.cfType === "page") {
-        console.log("\x1b[31m ~ new data coming in");
+        console.log("new data coming in");
         !dataFromMessages && setDataFromMessages(true);
         setDesktopData(message.payload.data);
       }

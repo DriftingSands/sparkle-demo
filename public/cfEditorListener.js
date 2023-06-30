@@ -77,7 +77,6 @@ const dataHandler = (event) => {
 
 const scrollMessageHandler = (event) => {
 	const matchingPathElement = document.querySelector(`[data-editable-path='${event.data.path}']`);
-	console.log("\x1b[31m ~ matchingPathElement:", matchingPathElement)
 	if (!matchingPathElement) {return}
 	const box = matchingPathElement.getBoundingClientRect();
 	if (box.top >= 0 || box.bottom <= window.innerHeight) {
