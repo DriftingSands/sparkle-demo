@@ -10,6 +10,8 @@ export default function Graphiql(props) {
   const [fetchError, setFetchError] = useState(null);
   const [customHost, setCustomHost] = useState("");
 
+  const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
+
   useEffect(() => {
     window.mobileData &&
       window.mobileData.then(data => {
@@ -50,7 +52,12 @@ export default function Graphiql(props) {
   );
 
   useEffect(() => {
-    window.addEventListener("message", handleMessage);
+    if (searchParams.get("editMode") !== "false") {
+      window.cfEditorDataFunction = setDesktopData;
+    }
+    if (searchParams.get("editMode") === "HOC") {
+      window.addEventListener("message", handleMessage);
+    }
     return () => {
       window.removeEventListener("message", handleMessage);
     };

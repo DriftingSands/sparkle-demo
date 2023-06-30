@@ -72,7 +72,7 @@ export default function Page({ desktopData, mobileData, isAuthorVersion, host, d
       setHash(window.location.hash);
       return;
     }
-    if (router?.query?.editMode === "true") {
+    if (router?.query?.editMode !== "false") {
       setLoadRest(true);
     }
   }, [viewType]);

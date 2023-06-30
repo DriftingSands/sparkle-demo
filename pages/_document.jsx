@@ -22,6 +22,7 @@ export default function Document() {
         <link rel="stylesheet" href="https://use.typekit.net/bud6jdy.css" />
 
         <Script id="dataFetchScript" type="module" src="/dataFetch.js" strategy="beforeInteractive" />
+        <script id="cfEditor" type="module" src="/cfEditorListener.js" strategy="beforeInteractive" />
       </Head>
       <body>
         <Main />

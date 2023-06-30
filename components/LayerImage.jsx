@@ -19,7 +19,7 @@ export default function LayerImage({ data, panelNr, host, viewType = "desktop" }
     return (
       <img
         ref={props.editableRef}
-        data-editable-path={props["data-editable-path"]}
+        data-editable-path={props["data-editable-path"] || image?._path}
         noScrollTo={true}
         id={id}
         loading={panelNr === 0 || forceLoad ? "eager" : "lazy"}

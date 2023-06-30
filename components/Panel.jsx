@@ -57,7 +57,7 @@ function Panel({
   }, [hash, ignoreHash, panel.id, setIgnoreHash]);
 
   return (
-    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} path={panel?._path} ref={editableRef} data-editable-path={dataEditablePath} >
+    <div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} path={panel?._path} ref={editableRef} data-editable-path={dataEditablePath || panel?._path} >
       {settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host} />}
       {panel?.background && (
         <Background

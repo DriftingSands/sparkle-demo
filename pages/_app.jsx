@@ -9,10 +9,10 @@ function MyApp({ Component, pageProps }) {
 
   const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
 
-  const handleClick = useCallback(event => {
+  const handleClick = useCallback((event) => {
     const nodeList = document.elementsFromPoint(event.x, event.y);
 
-    const topMostEditableElement = nodeList.find(node => node?.dataset?.editablePath || node.attributes.path);
+    const topMostEditableElement = nodeList.find((node) => node?.dataset?.editablePath || node.attributes.path);
     if (!topMostEditableElement) {
       return;
     }
@@ -40,7 +40,13 @@ function MyApp({ Component, pageProps }) {
       window.parent.postMessage(
         {
           type: "editablePath",
-          payload: paths.reverse(),
+          payload: {
+            path: paths.reverse(),
+            content: {
+              textContent: topMostEditableElement.textContent,
+              src: topMostEditableElement?.src || topMostEditableElement.querySelector("img")?.src,
+            },
+          },
         },
         searchParams.get("iFrameHost")
       );
@@ -48,69 +54,53 @@ function MyApp({ Component, pageProps }) {
     return;
   }, []);
 
-  useEffect(() => {
-    if (searchParams.get("editMode") === "true") {
-      window.addEventListener("click", handleClick);
-      return () => {
-        window.removeEventListener("click", handleClick);
-      };
-    }
-  }, [handleClick]);
-
-  const handleScroll = useCallback(event => {
-    if (searchParams.get("editMode") === "true") {
-      window.parent.postMessage(
-        {
-          type: "scrollTop",
-          payload: document.documentElement.scrollTop,
-        },
-        searchParams.get("iFrameHost")
-      );
-    }
+  const handleScroll = useCallback((event) => {
+    window.parent.postMessage(
+      {
+        type: "scrollTop",
+        payload: document.documentElement.scrollTop,
+      },
+      searchParams.get("iFrameHost")
+    );
   }, []);
 
-  useEffect(() => {
-    if (searchParams.get("editMode") === "true") {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, [handleScroll]);
-
   const handleResize = useCallback(
-    event => {
-      if (searchParams.get("editMode") === "true") {
-        if (boundingRectElement.current) {
-          const boundingBox = boundingRectElement.current.getBoundingClientRect();
-          if (boundingBox) {
-            window.parent.postMessage(
-              {
-                type: "editableBoundingRect",
-                payload: [
-                  boundingBox.top + document.documentElement.scrollTop,
-                  boundingBox.left,
-                  boundingBox.height,
-                  boundingBox.width,
-                ],
-              },
-              searchParams.get("iFrameHost")
-            );
-          }
+    (event) => {
+      if (boundingRectElement.current) {
+        const boundingBox = boundingRectElement.current.getBoundingClientRect();
+        if (boundingBox) {
+          window.parent.postMessage(
+            {
+              type: "editableBoundingRect",
+              payload: [
+                boundingBox.top + document.documentElement.scrollTop,
+                boundingBox.left,
+                boundingBox.height,
+                boundingBox.width,
+              ],
+            },
+            searchParams.get("iFrameHost")
+          );
         }
-      }
+        }
     },
     [boundingRectElement]
   );
 
   useEffect(() => {
-    if (searchParams.get("editMode") === "true") {
+    if (searchParams.get("editMode") === "HOC") {
+      window.addEventListener("click", handleClick);
+      window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
     }
-  }, [handleResize]);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleResize, handleScroll, handleClick]);
+
 
   return (
     <>

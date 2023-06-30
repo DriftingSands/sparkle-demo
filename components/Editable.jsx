@@ -5,21 +5,21 @@ function editable(WrappedComponent) {
   const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
   // eslint-disable-next-line react/display-name
   return props => {
-    if (searchParams.get("editMode") !== "true") {
+    if (searchParams.get("editMode") !== "HOC") {
       return <WrappedComponent {...props} />;
     }
 
     const path = props.path;
-
+    
     const editableRef = useRef(null);
-
+    
     const handleScrollMessage = useCallback(
       event => {
         const message = event.data;
         if (path && editableRef.current && message.type === "scrollToPath" && message.path === path) {
           const box = editableRef.current.getBoundingClientRect();
           // ignoring message if already inside panel
-          if (box.top <= 0 && box.bottom >= window.innerHeight) {
+          if (box.top >= 0 || box.bottom <= window.innerHeight) {
             return;
           }
           // scrollTo clashes with gsap snap
@@ -32,10 +32,10 @@ function editable(WrappedComponent) {
     useEffect(() => {
       if (path && !props.noScrollTo) {
         window.addEventListener("message", handleScrollMessage);
-        return () => {
-          window.removeEventListener("message", handleScrollMessage);
-        };
       }
+      return () => {
+        window.removeEventListener("message", handleScrollMessage);
+      };
     }, [handleScrollMessage, path]);
     // const path = props?.path
     return <WrappedComponent {...props} data-editable-path={path} editableRef={editableRef} />;

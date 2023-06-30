@@ -23,7 +23,7 @@ const TextItem = editable(({ path, index, item, activeMenuItem, editableRef, "da
   return (
     <MatchingComponent
       ref={editableRef}
-      data-editable-path={dataEditablePath}
+      data-editable-path={dataEditablePath || path}
       menuItems={item.menuItems}
       activeMenuItem={activeMenuItem}
       key={index}
@@ -42,7 +42,6 @@ function TextLayer({ data, activeMenuItem }) {
         <div className={`columnWrapper ${data?.textPosition || ""} ${data?.noPadding ? "noPadding" : ""}`}>
           {data?.column?.map((item, index) => (
             <TextItem
-              noScrollTo={true}
               path={item._path}
               key={index}
               index={index}
@@ -56,7 +55,6 @@ function TextLayer({ data, activeMenuItem }) {
       <div className="left">
         {data?.leftBox?.map((item, index) => (
           <TextItem
-            noScrollTo={true}
             path={item._path}
             key={index}
             index={index}
@@ -69,7 +67,6 @@ function TextLayer({ data, activeMenuItem }) {
       <div className="right">
         {data?.rightBox?.map((item, index) => (
           <TextItem
-            noScrollTo={true}
             path={item._path}
             key={index}
             index={index}
