@@ -24,6 +24,7 @@ const TextItem = editable(({ path, index, item, activeMenuItem, editableRef, "da
     <MatchingComponent
       ref={editableRef}
       data-editable-path={dataEditablePath || path}
+      data-cf-add-new={true}
       menuItems={item.menuItems}
       activeMenuItem={activeMenuItem}
       key={index}
@@ -53,15 +54,15 @@ function TextLayer({ data, activeMenuItem }) {
       ) : null}
 
       <div className="left">
-        {data?.leftBox?.map((item, index) => (
-          <TextItem
+        {data?.leftBox?.map((item, index) => {
+          return <TextItem
             path={item._path}
             key={index}
             index={index}
             item={item}
             activeMenuItem={activeMenuItem}
           />
-        ))}
+        })}
       </div>
 
       <div className="right">

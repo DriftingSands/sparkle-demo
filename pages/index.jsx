@@ -53,7 +53,7 @@ export default function Graphiql(props) {
 
   useEffect(() => {
     if (searchParams.get("editMode") !== "false") {
-      window.cfEditorDataFunction = setDesktopData;
+      window.cfEditorDataFunction = handleMessage;
     }
     if (searchParams.get("editMode") === "HOC") {
       window.addEventListener("message", handleMessage);
