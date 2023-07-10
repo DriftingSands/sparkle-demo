@@ -14,7 +14,7 @@ styleForInsertButton.innerHTML = `
 	align-items: center;
 	background-color: #4096F3;
 	transform: translateY(-5px);
-	opacity: 1;
+	opacity: 0;
 	transition: 0.5s opacity ease-in-out;
 	flex: 0 0 100%;
 }
@@ -42,37 +42,38 @@ document.head.appendChild(styleForInsertButton);
 let topMostEditableElement;
 
 const applyAdaptiveStyling = (wrapperDiv, element, placeAfter = false) => {
-	const parentBox = element.parentNode.getBoundingClientRect()
-	const elementBox = element.getBoundingClientRect()
+  const parentBox = element.parentNode.getBoundingClientRect();
+  const elementBox = element.getBoundingClientRect();
 
+  const parentStyle = window.getComputedStyle(element.parentNode);
 
-	const parentStyle = window.getComputedStyle(element.parentNode)
-	
+  if (parentStyle.getPropertyValue("display") === "flex") {
+    wrapperDiv.top = 0;
+    wrapperDiv.left = 0;
 
-	if (parentStyle.getPropertyValue('display') === "flex") {
-		wrapperDiv.top = 0
-		wrapperDiv.left = 0
-
-		if (parentStyle.getPropertyValue("flex-direction") === "column") {
-			wrapperDiv.style.marginTop = placeAfter ? `${elementBox.bottom-parentBox.top+3}px` : `${elementBox.top-parentBox.top-6}px`
-		} else {
-			wrapperDiv.style.width = '3px'
-			wrapperDiv.style.height = "100%"
-			wrapperDiv.style.marginLeft = placeAfter ? `${elementBox.right-parentBox.left+3}px` : `${elementBox.left-parentBox.left-6}px`
-		}
-	}
-	
-}
+    if (parentStyle.getPropertyValue("flex-direction") === "column") {
+      wrapperDiv.style.marginTop = placeAfter
+        ? `${elementBox.bottom - parentBox.top + 3}px`
+        : `${elementBox.top - parentBox.top - 6}px`;
+    } else {
+      wrapperDiv.style.width = "3px";
+      wrapperDiv.style.height = "100%";
+      wrapperDiv.style.marginLeft = placeAfter
+        ? `${elementBox.right - parentBox.left + 3}px`
+        : `${elementBox.left - parentBox.left - 6}px`;
+    }
+  }
+};
 
 const createInsertButton = (element, placeAfter = false) => {
   const wrapperDiv = document.createElement("div");
   wrapperDiv.className = "cfEditorEditableContentInsertWrapper";
   const addAfterButton = document.createElement("button");
 
-  addAfterButton.onclick = (event) => {
-    if (window.getComputedStyle(event.target) !== "1") {return} // prettier-ignore
+  addAfterButton.onclick = () => {
+    if (window.getComputedStyle(wrapperDiv).opacity !== "1") {return} // prettier-ignore
     if (placeAfter) {
-      window.parent.postMessage({type: "editableInsertNew", payload: {path: element.dataset.editablePath, innerCfPath: element.dataset.innerCfPath, lastItem: true}},searchParams.get("iFrameHost")) // prettier-ignore
+      return window.parent.postMessage({type: "editableInsertNew", payload: {path: element.dataset.editablePath, innerCfPath: element.dataset.innerCfPath, lastItem: true}},searchParams.get("iFrameHost")) // prettier-ignore
     }
     window.parent.postMessage({type: "editableInsertNew", payload: {path: element.dataset.editablePath, innerCfPath: element.dataset.innerCfPath}},searchParams.get("iFrameHost")) // prettier-ignore
   };
@@ -80,9 +81,9 @@ const createInsertButton = (element, placeAfter = false) => {
   addAfterButton.innerHTML = svg;
   wrapperDiv.appendChild(addAfterButton);
 
-  applyAdaptiveStyling(wrapperDiv, element, placeAfter)
-  return wrapperDiv
-}
+  applyAdaptiveStyling(wrapperDiv, element, placeAfter);
+  return wrapperDiv;
+};
 
 const insertAddAfterButtons = () => {
   const addItemsAfter = document.querySelectorAll("*[data-editable-path][data-cf-add-new='true']");
@@ -90,47 +91,33 @@ const insertAddAfterButtons = () => {
     return;
   }
 
-  const addItemsIn = document.querySelectorAll("*:has(*[data-editable-path][data-cf-add-new='true'])")
+  const addItemsIn = document.querySelectorAll("*:has(*[data-editable-path][data-cf-add-new='true'])");
 
   addItemsIn.forEach((parentElement) => {
-    const editableArrayItems = [...parentElement.querySelectorAll("*[data-editable-path][data-cf-add-new='true']"), "lastItem"]
+    const editableArrayItems = [
+      ...parentElement.querySelectorAll("*[data-editable-path][data-cf-add-new='true']"),
+      "lastItem",
+    ];
 
     editableArrayItems.forEach((element, index) => {
-      if (element === 'lastItem') {
-        const prevElement = editableArrayItems[index-1]
-        const lastInsertButton = createInsertButton(prevElement, true)
+      if (element === "lastItem") {
+        const prevElement = editableArrayItems[index - 1];
+        const lastInsertButton = createInsertButton(prevElement, true);
         prevElement.parentNode.insertBefore(lastInsertButton, prevElement.nextSibling);
-        return
+        return;
       }
 
-      const insertButton = createInsertButton(element)
-  
+      const insertButton = createInsertButton(element);
+
       element.parentNode.insertBefore(insertButton, element);
-    })
-  })
-
-
-  // addItemsAfter.forEach((element) => {
-  //   const wrapperDiv = document.createElement("div");
-  //   wrapperDiv.className = "cfEditorEditableContentInsertWrapper";
-  //   const addAfterButton = document.createElement("button");
-
-  //   addAfterButton.onclick = () => {
-  //     window.parent.postMessage({type: "editableInsertNew", payload: {path: element.dataset.editablePath, innerCfPath: element.dataset.innerCfPath}},searchParams.get("iFrameHost")) // prettier-ignore
-  //   };
-
-  //   addAfterButton.innerHTML = svg;
-  //   wrapperDiv.appendChild(addAfterButton);
-	// 	applyAdaptiveStyling(wrapperDiv, element)
-
-  //   element.parentNode.insertBefore(wrapperDiv, element);
-  // });
+    });
+  });
 };
 
 const handleClick = (event) => {
   // ignore clicks on add-between buttons
   if (event.target.closest(".cfEditorEditableContentInsertWrapper")) {
-    return
+    return;
   }
   const nodeList = document.elementsFromPoint(event.x, event.y);
 
@@ -196,13 +183,15 @@ const handleScroll = () => {
 };
 
 const dataHandler = (event) => {
-  searchParams.get("logData" === "true") && console.log("new data:", event.data.payload.data)
+  searchParams.get("logData" === "true") && console.log("new data:", event.data.payload.data);
   window?.cfEditorDataFunction(event);
 };
 
 const scrollMessageHandler = (event) => {
   const matchingPathElement = document.querySelector(`[data-editable-path='${event.data.path}']`);
-	if (!matchingPathElement) {return}
+  if (!matchingPathElement) {
+    return;
+  }
   const box = matchingPathElement.getBoundingClientRect();
   if (box.top >= 0 || box.bottom <= window.innerHeight) {
     return;
@@ -213,7 +202,11 @@ const scrollMessageHandler = (event) => {
 const messageHandler = (event) => {
   if (event.data.type === "setCfData") {
     dataHandler(event);
-    window.requestAnimationFrame(() => window.requestAnimationFrame(() => window.requestAnimationFrame(() => window.requestAnimationFrame(() => insertAddAfterButtons()))));
+    window.requestAnimationFrame(() =>
+      window.requestAnimationFrame(() =>
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => insertAddAfterButtons()))
+      )
+    );
     return;
   }
 
