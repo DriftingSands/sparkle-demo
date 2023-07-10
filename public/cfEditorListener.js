@@ -184,7 +184,25 @@ const handleScroll = () => {
 
 const dataHandler = (event) => {
   searchParams.get("logData" === "true") && console.log("new data:", event.data.payload.data);
-  window?.cfEditorDataFunction(event);
+
+  if (typeof window.cfEditorDataFunction === "function") {
+    return window.cfEditorDataFunction(event);
+  }
+
+  // if cfEditorDataFunction is not defined, wait for it to be set before calling it.
+  Object.defineProperty(window, "cfEditorDataFunction", {
+    set: (value) => {
+      Object.defineProperty(window, "cfEditorDataFunction", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: value,
+      });
+      value(event);
+    },
+    configurable: true,
+  });
+  return;
 };
 
 const scrollMessageHandler = (event) => {
